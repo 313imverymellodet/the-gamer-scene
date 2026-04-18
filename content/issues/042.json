@@ -4,7 +4,7 @@
     "date": "April 18, 2026",
     "weekday": "Saturday",
     "volume": "Vol. VII",
-    "subscribers": "184,302",
+    "subscribers": "2,841",
     "weather": "Cloudy w/ chance of patch notes",
     "location": "Worldwide",
     "readTime": "12 min"
@@ -37,43 +37,43 @@
     { "id": "discourse","num": "06", "label": "Discourse" }
   ],
   "poll": {
-    "question": "Which 2026 release has the most to prove?",
+    "question": "Which game from this week are you picking up first?",
     "options": [
-      { "label": "GTA VI (now 2027)", "pct": 41 },
-      { "label": "Metroid Prime 4",   "pct": 27 },
-      { "label": "Fable",             "pct": 22 },
-      { "label": "The Wolf Among Us 2","pct": 10 }
+      { "label": "Pragmata",             "pct": 0 },
+      { "label": "Hades II (PS5/Xbox)",  "pct": 0 },
+      { "label": "Mouse: P.I. For Hire", "pct": 0 },
+      { "label": "Waiting for Saros",    "pct": 0 }
     ],
-    "total": "14,821",
+    "total": "0",
     "closes": "Closes Sunday 23:59 UTC"
   },
   "calendar": [
-    { "day": "APR", "date": "22", "title": "Soulframe",         "sub": "Airwing Update · 1.4",    "platform": "PC" },
-    { "day": "APR", "date": "24", "title": "Clair Obscur II",   "sub": "Full Launch",              "platform": "PS5 · XSX" },
-    { "day": "APR", "date": "29", "title": "Monster Hunter Wilds","sub": "Title Update 3",         "platform": "Multi" },
-    { "day": "MAY", "date": "06", "title": "Subnautica 2",      "sub": "1.0 — Early Access Exit", "platform": "PC" },
-    { "day": "MAY", "date": "13", "title": "Bokura no Kaseki",  "sub": "Western Release",         "platform": "Switch 2" }
+    { "day": "APR", "date": "24", "title": "Clair Obscur: Expedition 33", "sub": "Full Launch",              "platform": "PS5 · XSX · PC" },
+    { "day": "APR", "date": "28", "title": "Diablo IV: Lord of Hatred",   "sub": "Expansion Launch",        "platform": "Multi" },
+    { "day": "APR", "date": "29", "title": "Monster Hunter Wilds",        "sub": "Title Update 3",          "platform": "Multi" },
+    { "day": "APR", "date": "30", "title": "Saros",                       "sub": "PS5 Exclusive · Deluxe Early Access Apr 28", "platform": "PS5" },
+    { "day": "MAY", "date": "06", "title": "Subnautica 2",                "sub": "1.0 — Early Access Exit", "platform": "PC · Console" }
   ],
   "spotlight": {
     "kicker": "Indie Room · Issue 042",
-    "title": "A Radio Station at the End of the World",
-    "blurb": "In <em>Longwave</em>, you broadcast from a lighthouse after the signal dies. There is no combat, no inventory — only listeners to find and songs to choose. It's the most affecting thing a solo developer has shipped all year.",
-    "dev": "Aria Lindqvist",
-    "price": "$14.99",
-    "platforms": "PC · Mac",
-    "runtime": "~6 hours"
+    "title": "The Cartoon Detective Shooter Nobody Saw Coming",
+    "blurb": "<em>Mouse: P.I. For Hire</em> renders an entire city in 1930s rubber-hose animation and wraps a boomer shooter inside it. It's a debut that has no right being this confident — and at $39.99, it's the easiest recommendation of the week.",
+    "dev": "Fumi Games",
+    "price": "$39.99",
+    "platforms": "PC · PS5 · Xbox · Switch · Switch 2",
+    "runtime": "~8 hours"
   },
   "reactions": [
-    { "glyph": "★", "label": "Brilliant",  "count": 1284, "key": "brilliant" },
-    { "glyph": "◐", "label": "Conflicted", "count": 342,  "key": "conflicted" },
-    { "glyph": "▲", "label": "Spot on",    "count": 892,  "key": "spoton" },
-    { "glyph": "✕", "label": "Disagree",   "count": 156,  "key": "disagree" },
-    { "glyph": "♫", "label": "Mood",       "count": 421,  "key": "mood" }
+    { "glyph": "★", "label": "Brilliant",  "count": 0, "key": "brilliant" },
+    { "glyph": "◐", "label": "Conflicted", "count": 0, "key": "conflicted" },
+    { "glyph": "▲", "label": "Spot on",    "count": 0, "key": "spoton" },
+    { "glyph": "✕", "label": "Disagree",   "count": 0, "key": "disagree" },
+    { "glyph": "♫", "label": "Mood",       "count": 0, "key": "mood" }
   ],
   "comments": [
-    { "name": "Devon A.", "handle": "@devon_plays", "time": "2h", "initials": "DA", "body": "The correction point is real but it cuts both ways — indies are absorbing the design risk while AAA hides behind 'service.' Who's paying the rent on experimentation?", "replies": 12, "likes": 48 },
-    { "name": "Priya N.", "handle": "@priyan",      "time": "3h", "initials": "PN", "body": "Hollow Season review is correct. Spent three hours last night just arranging jars on a shelf. The game lets you be tired. Nothing else does.", "replies": 8, "likes": 91 },
-    { "name": "Kenji R.", "handle": "@kenjiwrites", "time": "5h", "initials": "KR", "body": "Miyazaki quote is huge if true. Elden Ring was magnificent but the formula has edges we've all felt. A return to Sekiro-shaped spaces would be a gift.", "replies": 24, "likes": 167 },
-    { "name": "Sana O.",  "handle": "@sana.o",      "time": "7h", "initials": "SO", "body": "Longwave is my new religion. I don't know how to describe it to people without sounding like I've joined a cult.", "replies": 5, "likes": 203 }
+    { "name": "Marcus T.",  "handle": "@marcust",      "time": "1h", "initials": "MT", "body": "Pragmata 9.2 is not a surprise to anyone who played the demo. That hacking mechanic alone sold me — 2 million demo downloads don't lie.", "replies": 3, "likes": 14 },
+    { "name": "Jade W.",    "handle": "@jadewright",   "time": "3h", "initials": "JW", "body": "Hades II on PS5 at 120fps is genuinely something else. Console players were sleeping on what PC had — glad the wait is finally over.", "replies": 6, "likes": 27 },
+    { "name": "Chris B.",   "handle": "@chrisb_plays", "time": "4h", "initials": "CB", "body": "Pokemon Champions is rough right now but I'm not writing it off yet. Among Us took 2 years to find its audience. Give it a few patches.", "replies": 9, "likes": 8 },
+    { "name": "Aisha M.",   "handle": "@aisham",       "time": "6h", "initials": "AM", "body": "Mouse P.I. might be my sleeper pick of 2026. Nobody was talking about it before launch and now it's everywhere. Classic indie moment.", "replies": 2, "likes": 19 }
   ]
 }
