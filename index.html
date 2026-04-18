@@ -1,0 +1,1125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The Gamer Scene · Issue 042</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* The Gamer Scene — editorial-brutalist newsletter */
+
+:root {
+  --bg: oklch(0.97 0.008 85);
+  --bg-alt: oklch(0.94 0.012 85);
+  --ink: oklch(0.16 0.01 60);
+  --ink-soft: oklch(0.35 0.01 60);
+  --ink-faint: oklch(0.55 0.01 60);
+  --rule: oklch(0.18 0.01 60);
+  --accent: oklch(0.82 0.22 130);
+  --accent-ink: oklch(0.18 0.03 130);
+  --hot: oklch(0.62 0.22 25);
+  --paper-tint: oklch(0.92 0.02 85);
+
+  --serif: 'Fraunces', 'Times New Roman', Times, serif;
+  --sans: 'Inter Tight', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  --grid-gap: 20px;
+  --page-pad: 32px;
+}
+
+[data-theme="midnight"] {
+  --bg: oklch(0.14 0.02 260);
+  --bg-alt: oklch(0.19 0.025 260);
+  --ink: oklch(0.96 0.01 110);
+  --ink-soft: oklch(0.78 0.02 110);
+  --ink-faint: oklch(0.55 0.02 110);
+  --rule: oklch(0.95 0.01 110);
+  --accent: oklch(0.86 0.22 140);
+  --accent-ink: oklch(0.14 0.02 260);
+  --hot: oklch(0.72 0.2 30);
+  --paper-tint: oklch(0.22 0.03 260);
+}
+
+[data-theme="riso"] {
+  --bg: oklch(0.95 0.025 75);
+  --bg-alt: oklch(0.91 0.03 75);
+  --ink: oklch(0.35 0.16 260);
+  --ink-soft: oklch(0.5 0.13 260);
+  --ink-faint: oklch(0.6 0.06 260);
+  --rule: oklch(0.35 0.16 260);
+  --accent: oklch(0.7 0.2 25);
+  --accent-ink: oklch(0.98 0 0);
+  --hot: oklch(0.7 0.2 25);
+  --paper-tint: oklch(0.88 0.04 75);
+}
+
+[data-theme="heat"] {
+  --bg: oklch(0.98 0 0);
+  --bg-alt: oklch(0.94 0 0);
+  --ink: oklch(0.14 0 0);
+  --ink-soft: oklch(0.3 0 0);
+  --ink-faint: oklch(0.5 0 0);
+  --rule: oklch(0.14 0 0);
+  --accent: oklch(0.6 0.24 28);
+  --accent-ink: oklch(0.98 0 0);
+  --hot: oklch(0.6 0.24 28);
+  --paper-tint: oklch(0.88 0 0);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "ss01", "cv11";
+}
+
+body {
+  min-height: 100vh;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+body[data-theme="newsprint"]::before,
+body[data-theme="riso"]::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.4;
+  mix-blend-mode: multiply;
+  background-image:
+    radial-gradient(circle at 20% 30%, oklch(0.88 0.01 85) 0, transparent 2px),
+    radial-gradient(circle at 70% 60%, oklch(0.88 0.01 85) 0, transparent 1.5px),
+    radial-gradient(circle at 40% 80%, oklch(0.88 0.01 85) 0, transparent 2px);
+  background-size: 180px 180px, 220px 220px, 260px 260px;
+}
+
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+.serif { font-family: var(--serif); font-weight: 500; letter-spacing: -0.02em; }
+.mono  { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.08em; font-size: 11px; }
+.sans  { font-family: var(--sans); }
+
+h1, h2, h3, h4 { margin: 0; font-family: var(--serif); font-weight: 500; letter-spacing: -0.025em; line-height: 1; }
+
+.app {
+  position: relative;
+  z-index: 2;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 var(--page-pad);
+}
+
+/* === MASTHEAD === */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink-soft);
+}
+.topbar .right { display: flex; gap: 20px; align-items: center; }
+.topbar .ticker {
+  overflow: hidden;
+  white-space: nowrap;
+  flex: 1;
+  margin: 0 24px;
+  position: relative;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.topbar .ticker-track {
+  display: inline-block;
+  animation: ticker 60s linear infinite;
+}
+.topbar .ticker-track span { margin-right: 40px; }
+.topbar .ticker-track em { font-style: normal; color: var(--hot); margin-right: 6px; }
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.masthead {
+  padding: 40px 0 20px;
+  border-bottom: 4px double var(--rule);
+  position: relative;
+}
+.masthead-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--ink-soft);
+  margin-bottom: 24px;
+}
+.masthead-top .stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border: 1.5px solid var(--rule);
+  background: var(--accent);
+  color: var(--accent-ink);
+  transform: rotate(-2deg);
+}
+.masthead-title {
+  font-family: var(--serif);
+  font-size: clamp(64px, 11vw, 180px);
+  font-weight: 500;
+  line-height: 0.85;
+  letter-spacing: -0.045em;
+  color: var(--ink);
+  display: flex;
+  align-items: baseline;
+  gap: 0.05em;
+}
+.masthead-title .amp {
+  font-style: italic;
+  color: var(--hot);
+}
+.masthead-meta {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding-top: 18px;
+  margin-top: 18px;
+  border-top: 1px solid var(--rule);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--ink-soft);
+}
+.masthead-meta > div { display: flex; flex-direction: column; gap: 4px; }
+.masthead-meta b { color: var(--ink); font-weight: 500; font-size: 11px; }
+
+/* === NAV TABS === */
+.tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--rule);
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  z-index: 20;
+  margin: 0 calc(var(--page-pad) * -1);
+  padding: 0 var(--page-pad);
+}
+.tab {
+  padding: 18px 20px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  border-bottom: 3px solid transparent;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+.tab:hover { color: var(--ink); }
+.tab[aria-selected="true"] {
+  color: var(--ink);
+  border-bottom-color: var(--accent);
+  font-weight: 600;
+}
+.tab .num { font-size: 9px; color: var(--ink-faint); }
+.tab[aria-selected="true"] .num { color: var(--accent-ink); background: var(--accent); padding: 2px 6px; }
+
+/* === HERO / LEAD === */
+.lead {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 32px;
+  padding: 32px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.lead-art {
+  aspect-ratio: 4 / 3;
+  background: var(--paper-tint);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+  cursor: pointer;
+}
+.lead-art .placeholder {
+  position: absolute; inset: 0;
+  background:
+    repeating-linear-gradient(-45deg, transparent 0 14px, oklch(from var(--ink) l c h / 0.05) 14px 15px);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono); font-size: 11px; color: var(--ink-soft);
+  letter-spacing: 0.1em;
+}
+.lead-art .hero-tag {
+  position: absolute;
+  top: 14px; left: 14px;
+  background: var(--ink);
+  color: var(--bg);
+  padding: 6px 10px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+}
+.lead-art .hero-play {
+  position: absolute;
+  bottom: 16px; left: 16px;
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--accent-ink);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+}
+.lead-art .hero-runtime {
+  position: absolute;
+  bottom: 22px; left: 88px;
+  color: var(--bg);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+.lead-text .kicker {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--hot);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.lead-text .kicker::before { content: ""; width: 24px; height: 1px; background: var(--hot); }
+.lead-text h1 {
+  font-size: clamp(36px, 4.5vw, 64px);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  margin-bottom: 18px;
+}
+.lead-text h1 em { font-style: italic; color: var(--hot); }
+.lead-text .dek {
+  font-family: var(--serif);
+  font-size: 19px;
+  line-height: 1.45;
+  color: var(--ink-soft);
+  margin-bottom: 24px;
+  max-width: 52ch;
+}
+.lead-text .byline {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--ink-soft);
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+}
+.lead-text .byline .avatar {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700;
+  color: var(--accent-ink);
+  font-family: var(--serif);
+  font-size: 14px;
+}
+.lead-text .byline b { color: var(--ink); font-weight: 500; }
+
+/* === COLUMNS GRID === */
+.columns {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+  padding: 32px 0;
+}
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--rule);
+}
+.section-head h2 { font-size: 28px; letter-spacing: -0.02em; }
+.section-head .num { font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: 0.1em; }
+.section-head .tag { margin-left: auto; font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; color: var(--ink-soft); }
+
+/* News */
+.news-row {
+  display: grid;
+  grid-template-columns: 80px 1fr 140px;
+  gap: 20px;
+  padding: 18px 0;
+  border-bottom: 1px solid oklch(from var(--rule) l c h / 0.25);
+  align-items: start;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.news-row:hover { background: var(--bg-alt); }
+.news-row .idx { font-family: var(--serif); font-size: 36px; line-height: 1; color: var(--ink); font-feature-settings: "tnum"; }
+.news-row .body h3 { font-family: var(--serif); font-size: 22px; line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.015em; }
+.news-row .body p { margin: 0; color: var(--ink-soft); font-size: 14px; line-height: 1.45; }
+.news-row .meta { text-align: right; font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; color: var(--ink-faint); display: flex; flex-direction: column; gap: 6px; align-items: flex-end; }
+.news-row .meta .chip { padding: 3px 8px; background: var(--bg-alt); border: 1px solid var(--rule); color: var(--ink-soft); }
+
+/* Reviews */
+.reviews {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  padding: 32px 0;
+  border-top: 1px solid var(--rule);
+}
+.review {
+  border: 1px solid var(--rule);
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+.review:hover { transform: translate(-3px, -3px); box-shadow: 6px 6px 0 var(--ink); }
+.review .cover { aspect-ratio: 4 / 3; background: var(--paper-tint); position: relative; border-bottom: 1px solid var(--rule); }
+.review .cover .placeholder {
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(45deg, transparent 0 12px, oklch(from var(--ink) l c h / 0.05) 12px 13px);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono); font-size: 10px; color: var(--ink-soft); letter-spacing: 0.1em;
+}
+.review .score {
+  position: absolute; bottom: -22px; right: 16px;
+  width: 64px; height: 64px;
+  background: var(--ink); color: var(--bg);
+  border: 3px solid var(--bg);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  font-family: var(--serif);
+}
+.review .score b { font-size: 24px; line-height: 1; }
+.review .score .outof { font-family: var(--mono); font-size: 8px; letter-spacing: 0.1em; opacity: 0.7; }
+.review .score.hot { background: var(--accent); color: var(--accent-ink); }
+.review .meta { padding: 20px 18px 6px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; color: var(--ink-soft); display: flex; gap: 10px; }
+.review h3 { padding: 4px 18px 8px; font-family: var(--serif); font-size: 24px; line-height: 1.1; letter-spacing: -0.02em; }
+.review .pull { padding: 0 18px 16px; font-family: var(--serif); font-style: italic; color: var(--ink-soft); font-size: 14px; line-height: 1.4; }
+.review .foot { margin-top: auto; padding: 12px 18px; border-top: 1px solid oklch(from var(--rule) l c h / 0.3); display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; color: var(--ink-faint); }
+
+/* Sidebar */
+.sidebar { display: flex; flex-direction: column; gap: 36px; }
+
+.poll { border: 2px solid var(--rule); padding: 20px; background: var(--bg); position: relative; }
+.poll::before { content: "LIVE"; position: absolute; top: -10px; left: 16px; background: var(--hot); color: white; padding: 3px 10px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; }
+.poll .label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; color: var(--ink-soft); margin-bottom: 8px; }
+.poll h3 { font-family: var(--serif); font-size: 22px; line-height: 1.1; margin-bottom: 18px; letter-spacing: -0.015em; }
+.poll .opts { display: flex; flex-direction: column; gap: 8px; }
+.poll .opt { border: 1px solid var(--rule); padding: 10px 12px; font-family: var(--sans); font-size: 14px; text-align: left; position: relative; overflow: hidden; display: flex; justify-content: space-between; align-items: center; transition: all 0.15s; }
+.poll .opt:not(.voted):hover { background: var(--bg-alt); border-color: var(--ink); }
+.poll .opt.voted { cursor: default; }
+.poll .opt .fill { position: absolute; left: 0; top: 0; bottom: 0; background: var(--accent); opacity: 0.3; transition: width 0.5s cubic-bezier(.2,.8,.2,1); z-index: 0; }
+.poll .opt.selected .fill { opacity: 0.6; }
+.poll .opt > * { position: relative; z-index: 1; }
+.poll .opt .pct { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; }
+.poll .total { margin-top: 14px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; color: var(--ink-faint); display: flex; justify-content: space-between; }
+
+.calendar { border-top: 1px solid var(--rule); padding-top: 16px; }
+.cal-row { display: grid; grid-template-columns: 60px 1fr auto; gap: 12px; padding: 12px 0; border-bottom: 1px solid oklch(from var(--rule) l c h / 0.25); align-items: center; }
+.cal-row .date { font-family: var(--serif); font-size: 14px; line-height: 1; }
+.cal-row .date b { display: block; font-size: 22px; margin-bottom: 2px; font-weight: 500; }
+.cal-row .title { font-family: var(--sans); font-size: 14px; font-weight: 500; }
+.cal-row .title small { display: block; font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; color: var(--ink-faint); font-weight: normal; margin-top: 2px; }
+.cal-row .platform { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; color: var(--ink-soft); padding: 3px 6px; border: 1px solid var(--rule); }
+
+/* Indie spotlight */
+.spotlight { padding: 32px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); background: var(--bg-alt); margin: 0 calc(var(--page-pad) * -1); padding-left: var(--page-pad); padding-right: var(--page-pad); }
+.spotlight-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+.spotlight .art { aspect-ratio: 1; background: var(--ink); position: relative; overflow: hidden; }
+.spotlight .art .ph {
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(90deg, transparent 0 20px, oklch(from var(--bg) l c h / 0.1) 20px 21px);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono); font-size: 11px; color: var(--bg); letter-spacing: 0.1em;
+}
+.spotlight .kicker { font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em; color: var(--accent); background: var(--ink); display: inline-block; padding: 5px 10px; margin-bottom: 18px; }
+[data-theme="riso"] .spotlight .kicker { color: var(--bg); }
+.spotlight h2 { font-size: clamp(32px, 4vw, 52px); line-height: 0.95; letter-spacing: -0.03em; margin-bottom: 18px; }
+.spotlight p { font-family: var(--serif); font-size: 17px; line-height: 1.5; color: var(--ink-soft); margin: 0 0 20px; max-width: 48ch; }
+.spotlight .meta-row { display: flex; gap: 16px; padding-top: 16px; border-top: 1px solid var(--rule); font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; }
+.spotlight .meta-row > div > small { display: block; color: var(--ink-faint); margin-bottom: 3px; }
+.spotlight .meta-row > div > b { color: var(--ink); font-weight: 500; font-size: 12px; letter-spacing: 0.08em; }
+
+/* Discussion */
+.discussion { padding: 32px 0; border-top: 1px solid var(--rule); }
+.reactions { display: flex; gap: 10px; margin-bottom: 24px; flex-wrap: wrap; }
+.reaction { padding: 10px 14px; border: 1.5px solid var(--rule); font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; display: flex; align-items: center; gap: 8px; transition: all 0.15s; }
+.reaction:hover { background: var(--bg-alt); }
+.reaction.active { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.reaction .count { font-weight: 600; }
+.reaction .glyph { font-family: var(--serif); font-size: 16px; line-height: 1; }
+
+.comments { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.comment { padding: 18px; border: 1px solid var(--rule); background: var(--bg); }
+.comment-head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; color: var(--ink-soft); }
+.comment-head .av { width: 28px; height: 28px; border-radius: 50%; background: var(--ink); color: var(--bg); display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 12px; font-weight: 500; }
+.comment-head b { color: var(--ink); font-weight: 500; }
+.comment-head .dot { opacity: 0.4; }
+.comment p { font-family: var(--serif); font-size: 15px; line-height: 1.5; margin: 0; color: var(--ink); }
+.comment .foot { display: flex; gap: 16px; margin-top: 12px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; color: var(--ink-faint); }
+
+.comment-compose { grid-column: span 2; padding: 18px; border: 2px dashed var(--rule); background: var(--bg-alt); display: flex; gap: 12px; align-items: flex-start; }
+.comment-compose .av { width: 36px; height: 36px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-weight: 600; flex-shrink: 0; }
+.comment-compose textarea { flex: 1; border: none; background: transparent; font-family: var(--serif); font-size: 15px; line-height: 1.5; color: var(--ink); resize: none; min-height: 52px; outline: none; }
+.comment-compose textarea::placeholder { color: var(--ink-faint); font-style: italic; }
+.comment-compose button { padding: 8px 14px; background: var(--ink); color: var(--bg); font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; align-self: flex-end; }
+
+/* Footer */
+.footer { padding: 48px 0 32px; border-top: 4px double var(--rule); margin-top: 48px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px; }
+.footer h4 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em; color: var(--ink-soft); margin-bottom: 14px; font-weight: 500; }
+.footer .brand { font-family: var(--serif); font-size: 48px; line-height: 0.85; letter-spacing: -0.03em; margin-bottom: 12px; }
+.footer p { font-size: 14px; color: var(--ink-soft); line-height: 1.5; margin: 0 0 16px; max-width: 32ch; }
+.footer ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; font-size: 14px; }
+.footer li { color: var(--ink-soft); }
+.footer li:hover { color: var(--ink); }
+.footer .colophon { grid-column: 1 / -1; display: flex; justify-content: space-between; padding-top: 24px; border-top: 1px solid var(--rule); margin-top: 24px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; color: var(--ink-faint); }
+
+.subscribe { display: flex; border: 2px solid var(--rule); }
+.subscribe input { flex: 1; padding: 10px 12px; border: none; background: transparent; font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; outline: none; color: var(--ink); }
+.subscribe input::placeholder { color: var(--ink-faint); }
+.subscribe button { padding: 10px 14px; background: var(--ink); color: var(--bg); font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; }
+
+/* Tweaks Panel */
+.tweaks { position: fixed; bottom: 20px; right: 20px; width: 280px; background: var(--bg); border: 2px solid var(--ink); box-shadow: 6px 6px 0 var(--ink); z-index: 100; font-family: var(--sans); transform: translateX(calc(100% + 40px)); transition: transform 0.3s cubic-bezier(.2,.8,.2,1); }
+.tweaks.open { transform: translateX(0); }
+.tweaks-head { display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; border-bottom: 1.5px solid var(--ink); background: var(--ink); color: var(--bg); font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em; }
+.tweaks-body { padding: 14px; display: flex; flex-direction: column; gap: 16px; }
+.tweak-group .lbl { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; color: var(--ink-soft); margin-bottom: 8px; }
+.tweak-group .opts { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.tweak-group .opt { padding: 8px; border: 1.5px solid var(--rule); font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-align: left; display: flex; flex-direction: column; gap: 4px; transition: all 0.15s; }
+.tweak-group .opt:hover { background: var(--bg-alt); }
+.tweak-group .opt.active { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.tweak-group .opt .swatch { width: 100%; height: 14px; border: 1px solid var(--rule); }
+
+.tweaks-fab { position: fixed; bottom: 20px; right: 20px; width: 48px; height: 48px; border-radius: 50%; background: var(--ink); color: var(--bg); display: flex; align-items: center; justify-content: center; box-shadow: 3px 3px 0 oklch(from var(--ink) l c h / 0.4); z-index: 99; font-size: 20px; transition: transform 0.15s; }
+.tweaks-fab:hover { transform: rotate(30deg); }
+
+/* Video modal */
+.modal { position: fixed; inset: 0; background: oklch(0 0 0 / 0.85); z-index: 200; display: flex; align-items: center; justify-content: center; padding: 40px; animation: fade 0.2s ease; }
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+.modal-inner { max-width: 1100px; width: 100%; background: var(--bg); border: 2px solid var(--bg); position: relative; }
+.modal-close { position: absolute; top: -40px; right: 0; color: white; font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; }
+.modal video, .modal .fake-video { width: 100%; aspect-ratio: 16 / 9; background: #111; display: block; }
+.fake-video { display: flex; align-items: center; justify-content: center; color: #888; font-family: var(--mono); font-size: 12px; letter-spacing: 0.15em; position: relative; overflow: hidden; }
+.fake-video::before { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, transparent 0 3px, rgba(255,255,255,0.02) 3px 4px); }
+.fake-video .play-lg { width: 80px; height: 80px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); display: flex; align-items: center; justify-content: center; font-size: 28px; }
+
+/* Tab panel animation */
+.panel { display: none; }
+.panel.active { display: block; animation: panelIn 0.25s ease; }
+@keyframes panelIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Responsive */
+@media (max-width: 980px) {
+  :root { --page-pad: 20px; }
+  .lead { grid-template-columns: 1fr; }
+  .columns { grid-template-columns: 1fr; }
+  .reviews { grid-template-columns: 1fr; }
+  .spotlight-inner { grid-template-columns: 1fr; }
+  .comments { grid-template-columns: 1fr; }
+  .comment-compose { grid-column: span 1; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .masthead-meta { grid-template-columns: 1fr 1fr; }
+  .news-row { grid-template-columns: 60px 1fr; }
+  .news-row .meta { display: none; }
+  .tabs { overflow-x: auto; }
+}
+</style>
+</head>
+<body data-theme="newsprint">
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+
+  <script>
+// Content data for The Gamer Scene — Issue 042, April 18 2026
+window.TGS_DATA = {
+  issue: {
+    number: "042",
+    date: "April 18, 2026",
+    weekday: "Saturday",
+    volume: "Vol. VII",
+    subscribers: "184,302",
+    weather: "Cloudy w/ chance of patch notes",
+    location: "Worldwide",
+    readTime: "12 min",
+  },
+  ticker: [
+    { tag: "BREAKING", text: "Rockstar confirms GTA VI delay — now Spring 2027" },
+    { tag: "LIVE", text: "Summer Game Fest 2026 floor reveals in 38 days" },
+    { tag: "DEAL", text: "Steam Spring Sale ends Monday — 67% off Elden Ring: Nightreign" },
+    { tag: "PATCH", text: "Helldivers 3 hotfix 2.4.1 rolling out now" },
+    { tag: "RUMOR", text: "Nintendo Direct whispers for early May" },
+  ],
+  lead: {
+    kicker: "The Cover Story",
+    title: "The Year Games Stopped <em>Chasing</em> Hollywood",
+    dek: "A quiet revolution is underway. After a decade of bigger-is-better, the industry's most ambitious studios are turning inward — toward systems, strangeness, and the kind of craft that doesn't fit in a trailer. An essay on the 2026 correction.",
+    author: "Mira Okafor",
+    role: "Editor-in-Chief",
+    initials: "MO",
+    readTime: "18 min read",
+    tag: "FEATURE",
+    videoTag: "WATCH · 2:14",
+    videoTitle: "Trailer: The 2026 Correction",
+  },
+  tabs: [
+    { id: "scene", num: "01", label: "The Scene" },
+    { id: "news",  num: "02", label: "Dispatch" },
+    { id: "reviews", num: "03", label: "Reviews" },
+    { id: "indie", num: "04", label: "Indie Room" },
+    { id: "calendar", num: "05", label: "Calendar" },
+    { id: "discourse", num: "06", label: "Discourse" },
+  ],
+  news: [
+    { n: "01", title: "Sony restructures PlayStation Studios around three 'pillars'", blurb: "The reorg collapses twelve studios into Narrative, Service, and Experimental arms. Insiders call it a belated admission.", cat: "Industry", time: "2h ago" },
+    { n: "02", title: "Valve's Steam Deck 2 leaks show an OLED with 8-hour battery", blurb: "FCC filings spotted last night confirm specs Gabe has been coy about since January.", cat: "Hardware", time: "6h ago" },
+    { n: "03", title: "Larian announces next RPG set in 'the age before Faerûn'", blurb: "Swen Vincke teases a prehistoric fantasy with eight-player co-op. No engine footage yet.", cat: "Reveal", time: "1d ago" },
+    { n: "04", title: "A record 14 indies broke 1M copies on Game Pass this quarter", blurb: "Microsoft's internal numbers, obtained by TGS, show the curation bet is paying off.", cat: "Exclusive", time: "1d ago" },
+    { n: "05", title: "FromSoftware's Miyazaki: 'We are done with open worlds — for now'", blurb: "A rare interview in Famitsu suggests the next project returns to tight, authored spaces.", cat: "Interview", time: "2d ago" },
+    { n: "06", title: "Unity posts first profitable quarter since 2022 layoffs", blurb: "Matt Bromberg's turnaround appears to be working. The runtime fee fallout still lingers.", cat: "Industry", time: "3d ago" },
+  ],
+  reviews: [
+    { title: "Hollow Season", studio: "Dusk Fox Games", platforms: ["PC", "PS5"], score: 9.2, pull: "A farming sim that understands grief. The best thing I've played this year.", author: "J. Reyes", hours: "32h played", hot: true },
+    { title: "Crescent // Below", studio: "Neon Sigil", platforms: ["PC", "XSX"], score: 7.8, pull: "Gorgeous. Uneven. The first four hours are transcendent; the ending deflates.", author: "A. Park", hours: "14h played", hot: false },
+    { title: "Field Marshal 2", studio: "Paradox", platforms: ["PC"], score: 8.5, pull: "A sequel that trusts its audience. Also: goodbye to my social life.", author: "S. Bellamy", hours: "48h played", hot: false },
+  ],
+  poll: {
+    question: "Which 2026 release has the most to prove?",
+    options: [
+      { label: "GTA VI (now 2027)", pct: 41 },
+      { label: "Metroid Prime 4", pct: 27 },
+      { label: "Fable", pct: 22 },
+      { label: "The Wolf Among Us 2", pct: 10 },
+    ],
+    total: "14,821",
+    closes: "Closes Sunday 23:59 UTC",
+  },
+  calendar: [
+    { day: "APR", date: "22", title: "Soulframe", sub: "Airwing Update · 1.4", platform: "PC" },
+    { day: "APR", date: "24", title: "Clair Obscur II", sub: "Full Launch", platform: "PS5 · XSX" },
+    { day: "APR", date: "29", title: "Monster Hunter Wilds", sub: "Title Update 3", platform: "Multi" },
+    { day: "MAY", date: "06", title: "Subnautica 2", sub: "1.0 — Early Access Exit", platform: "PC" },
+    { day: "MAY", date: "13", title: "Bokura no Kaseki", sub: "Western Release", platform: "Switch 2" },
+  ],
+  spotlight: {
+    kicker: "Indie Room · Issue 042",
+    title: "A Radio Station at the End of the World",
+    blurb: "In <em>Longwave</em>, you broadcast from a lighthouse after the signal dies. There is no combat, no inventory — only listeners to find and songs to choose. It's the most affecting thing a solo developer has shipped all year.",
+    dev: "Aria Lindqvist",
+    price: "$14.99",
+    platforms: "PC · Mac",
+    runtime: "~6 hours",
+  },
+  reactions: [
+    { glyph: "★", label: "Brilliant", count: 1284, key: "brilliant" },
+    { glyph: "◐", label: "Conflicted", count: 342, key: "conflicted" },
+    { glyph: "▲", label: "Spot on", count: 892, key: "spoton" },
+    { glyph: "✕", label: "Disagree", count: 156, key: "disagree" },
+    { glyph: "♫", label: "Mood", count: 421, key: "mood" },
+  ],
+  comments: [
+    { name: "Devon A.", handle: "@devon_plays", time: "2h", initials: "DA", body: "The correction point is real but it cuts both ways — indies are absorbing the design risk while AAA hides behind 'service.' Who's paying the rent on experimentation?", replies: 12, likes: 48 },
+    { name: "Priya N.", handle: "@priyan", time: "3h", initials: "PN", body: "Hollow Season review is correct. Spent three hours last night just arranging jars on a shelf. The game lets you be tired. Nothing else does.", replies: 8, likes: 91 },
+    { name: "Kenji R.", handle: "@kenjiwrites", time: "5h", initials: "KR", body: "Miyazaki quote is huge if true. Elden Ring was magnificent but the formula has edges we've all felt. A return to Sekiro-shaped spaces would be a gift.", replies: 24, likes: 167 },
+    { name: "Sana O.", handle: "@sana.o", time: "7h", initials: "SO", body: "Longwave is my new religion. I don't know how to describe it to people without sounding like I've joined a cult.", replies: 5, likes: 203 },
+  ],
+};
+  </script>
+
+  <script type="text/babel">
+const { useState, useEffect } = React;
+const D = window.TGS_DATA;
+
+function Topbar() {
+  const items = [...D.ticker, ...D.ticker];
+  return (
+    <div className="topbar">
+      <div className="left">TGS · Issue {D.issue.number}</div>
+      <div className="ticker">
+        <div className="ticker-track">
+          {items.map((t, i) => (
+            <span key={i}><em>{t.tag}</em>{t.text}</span>
+          ))}
+        </div>
+      </div>
+      <div className="right">
+        <span>{D.issue.weekday}, {D.issue.date}</span>
+        <span>·</span>
+        <span>{D.issue.subscribers} readers</span>
+      </div>
+    </div>
+  );
+}
+
+function Masthead() {
+  return (
+    <header className="masthead">
+      <div className="masthead-top">
+        <div>Est. 2019 · {D.issue.volume} · No. {D.issue.number}</div>
+        <div className="stamp">◆ TGS / 26 · THE GAMER SCENE</div>
+        <div>{D.issue.weekday}, {D.issue.date}</div>
+      </div>
+      <div className="masthead-title">
+        The Gamer<span className="amp">·</span>Scene
+      </div>
+      <div className="masthead-meta">
+        <div><span>Issue</span><b>№ {D.issue.number} / 2026</b></div>
+        <div><span>Read Time</span><b>{D.issue.readTime}</b></div>
+        <div><span>Weather</span><b>{D.issue.weather}</b></div>
+        <div><span>Dispatched From</span><b>{D.issue.location}</b></div>
+      </div>
+    </header>
+  );
+}
+
+function Tabs({ active, setActive }) {
+  return (
+    <nav className="tabs" role="tablist">
+      {D.tabs.map(t => (
+        <button key={t.id} role="tab" aria-selected={active === t.id}
+          onClick={() => setActive(t.id)} className="tab">
+          <span className="num">{t.num}</span>
+          {t.label}
+        </button>
+      ))}
+    </nav>
+  );
+}
+
+function Lead({ onPlay }) {
+  return (
+    <section className="lead">
+      <div className="lead-art" onClick={onPlay} role="button" tabIndex={0}>
+        <div className="placeholder">[ COVER · EDITORIAL ILLUSTRATION ]</div>
+        <div className="hero-tag">{D.lead.tag}</div>
+        <div className="hero-play">▶</div>
+        <div className="hero-runtime">{D.lead.videoTag}</div>
+      </div>
+      <div className="lead-text">
+        <div className="kicker">{D.lead.kicker}</div>
+        <h1 dangerouslySetInnerHTML={{ __html: D.lead.title }} />
+        <p className="dek">{D.lead.dek}</p>
+        <div className="byline">
+          <div className="avatar">{D.lead.initials}</div>
+          <div><b>{D.lead.author}</b> · <span>{D.lead.role}</span></div>
+          <div style={{ marginLeft: "auto" }}>{D.lead.readTime}</div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function News() {
+  return (
+    <div>
+      <div className="section-head">
+        <span className="num">§ 02</span>
+        <h2>The Dispatch</h2>
+        <span className="tag">Filed this week</span>
+      </div>
+      {D.news.map((n) => (
+        <article className="news-row" key={n.n}>
+          <div className="idx">{n.n}</div>
+          <div className="body">
+            <h3>{n.title}</h3>
+            <p>{n.blurb}</p>
+          </div>
+          <div className="meta">
+            <span className="chip">{n.cat}</span>
+            <span>{n.time}</span>
+          </div>
+        </article>
+      ))}
+    </div>
+  );
+}
+
+function Poll() {
+  const [voted, setVoted] = useState(null);
+  const opts = D.poll.options;
+  return (
+    <div className="poll">
+      <div className="label">Reader Poll · 24H</div>
+      <h3>{D.poll.question}</h3>
+      <div className="opts">
+        {opts.map((o, i) => (
+          <button key={i}
+            className={`opt${voted !== null ? " voted" : ""}${voted === i ? " selected" : ""}`}
+            onClick={() => voted === null && setVoted(i)}
+            disabled={voted !== null}>
+            <div className="fill" style={{ width: voted !== null ? `${o.pct}%` : "0%" }} />
+            <span>{o.label}{voted === i ? " ✓" : ""}</span>
+            <span className="pct">{voted !== null ? `${o.pct}%` : ""}</span>
+          </button>
+        ))}
+      </div>
+      <div className="total">
+        <span>{D.poll.total} votes</span>
+        <span>{D.poll.closes}</span>
+      </div>
+    </div>
+  );
+}
+
+function Calendar() {
+  return (
+    <div>
+      <div className="section-head">
+        <span className="num">§ 05</span>
+        <h2>On Deck</h2>
+        <span className="tag">Next 4 weeks</span>
+      </div>
+      <div className="calendar">
+        {D.calendar.map((c, i) => (
+          <div className="cal-row" key={i}>
+            <div className="date">{c.day}<b>{c.date}</b></div>
+            <div className="title">{c.title}<small>{c.sub}</small></div>
+            <div className="platform">{c.platform}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function Reviews() {
+  return (
+    <section className="reviews">
+      {D.reviews.map((r, i) => (
+        <article className="review" key={i}>
+          <div className="cover">
+            <div className="placeholder">[ KEY ART ]</div>
+            <div className={`score${r.hot ? " hot" : ""}`}>
+              <b>{r.score}</b>
+              <span className="outof">/ 10</span>
+            </div>
+          </div>
+          <div className="meta">
+            <span>{r.studio}</span>
+            <span>· {r.platforms.join(" · ")}</span>
+          </div>
+          <h3>{r.title}</h3>
+          <p className="pull">"{r.pull}"</p>
+          <div className="foot">
+            <span>{r.author}</span>
+            <span>{r.hours}</span>
+          </div>
+        </article>
+      ))}
+    </section>
+  );
+}
+
+function Spotlight() {
+  return (
+    <section className="spotlight">
+      <div className="spotlight-inner">
+        <div className="art">
+          <div className="ph">[ INDIE SPOTLIGHT · KEY ART ]</div>
+        </div>
+        <div>
+          <div className="kicker">{D.spotlight.kicker}</div>
+          <h2>{D.spotlight.title}</h2>
+          <p dangerouslySetInnerHTML={{ __html: D.spotlight.blurb }} />
+          <div className="meta-row">
+            <div><small>Developer</small><b>{D.spotlight.dev}</b></div>
+            <div><small>Price</small><b>{D.spotlight.price}</b></div>
+            <div><small>Platforms</small><b>{D.spotlight.platforms}</b></div>
+            <div><small>Length</small><b>{D.spotlight.runtime}</b></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Discussion() {
+  const [active, setActive] = useState(new Set());
+  const [counts, setCounts] = useState(
+    Object.fromEntries(D.reactions.map(r => [r.key, r.count]))
+  );
+  const [composeVal, setCompose] = useState("");
+  const [comments, setComments] = useState(D.comments);
+
+  const toggle = (k) => {
+    const next = new Set(active);
+    const newCounts = { ...counts };
+    if (next.has(k)) { next.delete(k); newCounts[k]--; }
+    else { next.add(k); newCounts[k]++; }
+    setActive(next); setCounts(newCounts);
+  };
+
+  const submit = () => {
+    if (!composeVal.trim()) return;
+    setComments([{
+      name: "You", handle: "@you", time: "now", initials: "YO",
+      body: composeVal.trim(), replies: 0, likes: 0
+    }, ...comments]);
+    setCompose("");
+  };
+
+  return (
+    <section className="discussion">
+      <div className="section-head">
+        <span className="num">§ 06</span>
+        <h2>Discourse</h2>
+        <span className="tag">{comments.length} readers chiming in</span>
+      </div>
+      <div className="reactions">
+        {D.reactions.map(r => (
+          <button key={r.key}
+            className={`reaction${active.has(r.key) ? " active" : ""}`}
+            onClick={() => toggle(r.key)}>
+            <span className="glyph">{r.glyph}</span>
+            <span>{r.label}</span>
+            <span className="count">{counts[r.key].toLocaleString()}</span>
+          </button>
+        ))}
+      </div>
+      <div className="comments">
+        <div className="comment-compose">
+          <div className="av">YO</div>
+          <textarea placeholder="Share a thought on this week's issue…"
+            value={composeVal} onChange={e => setCompose(e.target.value)} />
+          <button onClick={submit}>POST →</button>
+        </div>
+        {comments.map((c, i) => (
+          <article className="comment" key={i}>
+            <div className="comment-head">
+              <div className="av">{c.initials}</div>
+              <b>{c.name}</b>
+              <span>{c.handle}</span>
+              <span className="dot">·</span>
+              <span>{c.time}</span>
+            </div>
+            <p>{c.body}</p>
+            <div className="foot">
+              <span>↑ {c.likes}</span>
+              <span>↳ {c.replies} replies</span>
+              <span>SHARE</span>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="footer">
+      <div className="footer-grid">
+        <div>
+          <div className="brand">The Gamer·Scene</div>
+          <p>An independent gaming newsletter. Published Saturdays. Read by {D.issue.subscribers} people who take games seriously.</p>
+          <div className="subscribe">
+            <input type="email" placeholder="YOUR@EMAIL.COM" />
+            <button>SUBSCRIBE</button>
+          </div>
+        </div>
+        <div>
+          <h4>Sections</h4>
+          <ul><li>The Scene</li><li>Dispatch</li><li>Reviews</li><li>Indie Room</li><li>Discourse</li></ul>
+        </div>
+        <div>
+          <h4>Archive</h4>
+          <ul><li>Issues 2026</li><li>Issues 2025</li><li>Best of 2024</li><li>Longreads</li></ul>
+        </div>
+        <div>
+          <h4>Follow</h4>
+          <ul><li>RSS</li><li>Bluesky</li><li>Mastodon</li><li>YouTube</li></ul>
+        </div>
+        <div className="colophon">
+          <span>© 2026 THE GAMER SCENE · SET IN FRAUNCES &amp; INTER TIGHT</span>
+          <span>MANIFESTO / ETHICS / CONTACT</span>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+function VideoModal({ open, onClose }) {
+  if (!open) return null;
+  return (
+    <div className="modal" onClick={onClose}>
+      <div className="modal-inner" onClick={e => e.stopPropagation()}>
+        <button className="modal-close" onClick={onClose}>✕ CLOSE</button>
+        <div className="fake-video">
+          <div className="play-lg">▶</div>
+          <div style={{ position: "absolute", bottom: 20, left: 24, color: "white", fontFamily: "var(--mono)", fontSize: 11, letterSpacing: "0.12em" }}>
+            {D.lead.videoTitle.toUpperCase()} · 2:14
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const THEMES = [
+  { id: "newsprint", label: "Newsprint", swatch: "oklch(0.97 0.008 85)" },
+  { id: "midnight",  label: "Midnight",  swatch: "oklch(0.14 0.02 260)" },
+  { id: "riso",      label: "Risograph", swatch: "oklch(0.7 0.2 25)" },
+  { id: "heat",      label: "Heat",      swatch: "oklch(0.6 0.24 28)" },
+];
+
+function Tweaks({ theme, setTheme, density, setDensity, tone, setTone, open, setOpen }) {
+  return (
+    <>
+      {!open && (
+        <button className="tweaks-fab" onClick={() => setOpen(true)} title="Tweaks">✦</button>
+      )}
+      <div className={`tweaks${open ? " open" : ""}`}>
+        <div className="tweaks-head">
+          <span>◆ TWEAKS</span>
+          <button onClick={() => setOpen(false)}>✕</button>
+        </div>
+        <div className="tweaks-body">
+          <div className="tweak-group">
+            <div className="lbl">Visual Theme</div>
+            <div className="opts">
+              {THEMES.map(t => (
+                <button key={t.id} className={`opt${theme === t.id ? " active" : ""}`}
+                  onClick={() => setTheme(t.id)}>
+                  <div className="swatch" style={{ background: t.swatch }} />
+                  {t.label}
+                </button>
+              ))}
+            </div>
+          </div>
+          <div className="tweak-group">
+            <div className="lbl">Density</div>
+            <div className="opts">
+              {["Editorial", "Compact"].map(d => (
+                <button key={d} className={`opt${density === d ? " active" : ""}`}
+                  onClick={() => setDensity(d)}>{d.toUpperCase()}</button>
+              ))}
+            </div>
+          </div>
+          <div className="tweak-group">
+            <div className="lbl">Editorial Tone</div>
+            <div className="opts">
+              {["Measured", "Punchy"].map(t => (
+                <button key={t} className={`opt${tone === t ? " active" : ""}`}
+                  onClick={() => setTone(t)}>{t.toUpperCase()}</button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+
+function App() {
+  const initial = (() => {
+    try { return JSON.parse(localStorage.getItem("tgs-state") || "{}"); }
+    catch { return {}; }
+  })();
+
+  const [tab, setTab] = useState(initial.tab || "scene");
+  const [theme, setTheme] = useState(initial.theme || "newsprint");
+  const [density, setDensity] = useState(initial.density || "Editorial");
+  const [tone, setTone] = useState(initial.tone || "Measured");
+  const [open, setOpen] = useState(false);
+  const [video, setVideo] = useState(false);
+
+  useEffect(() => {
+    document.body.setAttribute("data-theme", theme);
+    document.body.setAttribute("data-density", density.toLowerCase());
+    document.body.setAttribute("data-tone", tone.toLowerCase());
+    localStorage.setItem("tgs-state", JSON.stringify({ tab, theme, density, tone }));
+  }, [tab, theme, density, tone]);
+
+  return (
+    <div className="app">
+      <Topbar />
+      <Masthead />
+      <Tabs active={tab} setActive={setTab} />
+
+      <div className={`panel${tab === "scene" ? " active" : ""}`}>
+        <Lead onPlay={() => setVideo(true)} />
+        <div className="columns">
+          <News />
+          <div className="sidebar">
+            <Poll />
+            <Calendar />
+          </div>
+        </div>
+        <Spotlight />
+        <Reviews />
+        <Discussion />
+      </div>
+
+      <div className={`panel${tab === "news" ? " active" : ""}`}>
+        <div style={{ padding: "32px 0" }}><News /></div>
+      </div>
+
+      <div className={`panel${tab === "reviews" ? " active" : ""}`}>
+        <div style={{ padding: "32px 0" }}>
+          <div className="section-head">
+            <span className="num">§ 03</span>
+            <h2>Reviews</h2>
+            <span className="tag">This week's verdicts</span>
+          </div>
+          <Reviews />
+        </div>
+      </div>
+
+      <div className={`panel${tab === "indie" ? " active" : ""}`}>
+        <Spotlight />
+      </div>
+
+      <div className={`panel${tab === "calendar" ? " active" : ""}`}>
+        <div style={{ padding: "32px 0", maxWidth: 720 }}><Calendar /></div>
+      </div>
+
+      <div className={`panel${tab === "discourse" ? " active" : ""}`}>
+        <Discussion />
+      </div>
+
+      <Footer />
+
+      <Tweaks theme={theme} setTheme={setTheme}
+        density={density} setDensity={setDensity}
+        tone={tone} setTone={setTone}
+        open={open} setOpen={setOpen} />
+      <VideoModal open={video} onClose={() => setVideo(false)} />
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
+</body>
+</html>

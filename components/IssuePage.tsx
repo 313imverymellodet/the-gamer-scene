@@ -1,0 +1,549 @@
+'use client'
+
+import { useState, useEffect } from 'react'
+import type { IssueData, CommentItem } from '@/types'
+
+// ─── Topbar ──────────────────────────────────────────────────────────────────
+
+function Topbar({ data }: { data: IssueData }) {
+  const items = [...data.ticker, ...data.ticker]
+  return (
+    <div className="topbar">
+      <div className="left">TGS · Issue {data.issue.number}</div>
+      <div className="ticker">
+        <div className="ticker-track">
+          {items.map((t, i) => (
+            <span key={i}><em>{t.tag}</em>{t.text}</span>
+          ))}
+        </div>
+      </div>
+      <div className="right">
+        <span>{data.issue.weekday}, {data.issue.date}</span>
+        <span>·</span>
+        <span>{data.issue.subscribers} readers</span>
+      </div>
+    </div>
+  )
+}
+
+// ─── Masthead ─────────────────────────────────────────────────────────────────
+
+function Masthead({ data }: { data: IssueData }) {
+  return (
+    <header className="masthead">
+      <div className="masthead-top">
+        <div>Est. 2019 · {data.issue.volume} · No. {data.issue.number}</div>
+        <div className="stamp">◆ TGS / 26 · THE GAMER SCENE</div>
+        <div>{data.issue.weekday}, {data.issue.date}</div>
+      </div>
+      <div className="masthead-title">
+        The Gamer<span className="amp">·</span>Scene
+      </div>
+      <div className="masthead-meta">
+        <div><span>Issue</span><b>№ {data.issue.number} / 2026</b></div>
+        <div><span>Read Time</span><b>{data.issue.readTime}</b></div>
+        <div><span>Weather</span><b>{data.issue.weather}</b></div>
+        <div><span>Dispatched From</span><b>{data.issue.location}</b></div>
+      </div>
+    </header>
+  )
+}
+
+// ─── Tabs ─────────────────────────────────────────────────────────────────────
+
+function IssueTabs({ active, setActive, data }: { active: string; setActive: (id: string) => void; data: IssueData }) {
+  return (
+    <nav className="tabs" role="tablist">
+      {data.tabs.map(t => (
+        <button
+          key={t.id}
+          role="tab"
+          aria-selected={active === t.id}
+          onClick={() => setActive(t.id)}
+          className="tab"
+        >
+          <span className="num">{t.num}</span>
+          {t.label}
+        </button>
+      ))}
+    </nav>
+  )
+}
+
+// ─── Lead ─────────────────────────────────────────────────────────────────────
+
+function Lead({ data, onPlay }: { data: IssueData; onPlay: () => void }) {
+  return (
+    <section className="lead">
+      <div className="lead-art" onClick={onPlay} role="button" tabIndex={0} onKeyDown={e => e.key === 'Enter' && onPlay()}>
+        <div className="placeholder">[ COVER · EDITORIAL ILLUSTRATION ]</div>
+        <div className="hero-tag">{data.lead.tag}</div>
+        <div className="hero-play">▶</div>
+        <div className="hero-runtime">{data.lead.videoTag}</div>
+      </div>
+      <div className="lead-text">
+        <div className="kicker">{data.lead.kicker}</div>
+        <h1 dangerouslySetInnerHTML={{ __html: data.lead.title }} />
+        <p className="dek">{data.lead.dek}</p>
+        <div className="byline">
+          <div className="avatar">{data.lead.initials}</div>
+          <div><b>{data.lead.author}</b> · <span>{data.lead.role}</span></div>
+          <div style={{ marginLeft: 'auto' }}>{data.lead.readTime}</div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// ─── News ─────────────────────────────────────────────────────────────────────
+
+function News({ data }: { data: IssueData }) {
+  return (
+    <div>
+      <div className="section-head">
+        <span className="num">§ 02</span>
+        <h2>The Dispatch</h2>
+        <span className="tag">Filed this week</span>
+      </div>
+      {data.news.map(n => (
+        <article className="news-row" key={n.n}>
+          <div className="idx">{n.n}</div>
+          <div className="body">
+            <h3>{n.title}</h3>
+            <p>{n.blurb}</p>
+          </div>
+          <div className="meta">
+            <span className="chip">{n.cat}</span>
+            <span>{n.time}</span>
+          </div>
+        </article>
+      ))}
+    </div>
+  )
+}
+
+// ─── Poll ─────────────────────────────────────────────────────────────────────
+
+function Poll({ data }: { data: IssueData }) {
+  const [voted, setVoted] = useState<number | null>(null)
+  const opts = data.poll.options
+  return (
+    <div className="poll">
+      <div className="label">Reader Poll · 24H</div>
+      <h3>{data.poll.question}</h3>
+      <div className="opts">
+        {opts.map((o, i) => (
+          <button
+            key={i}
+            className={`opt${voted !== null ? ' voted' : ''}${voted === i ? ' selected' : ''}`}
+            onClick={() => voted === null && setVoted(i)}
+            disabled={voted !== null}
+          >
+            <div className="fill" style={{ width: voted !== null ? `${o.pct}%` : '0%' }} />
+            <span>{o.label}{voted === i ? ' ✓' : ''}</span>
+            <span className="pct">{voted !== null ? `${o.pct}%` : ''}</span>
+          </button>
+        ))}
+      </div>
+      <div className="total">
+        <span>{data.poll.total} votes</span>
+        <span>{data.poll.closes}</span>
+      </div>
+    </div>
+  )
+}
+
+// ─── Release Calendar ─────────────────────────────────────────────────────────
+
+function ReleaseCalendar({ data }: { data: IssueData }) {
+  return (
+    <div>
+      <div className="section-head">
+        <span className="num">§ 05</span>
+        <h2>On Deck</h2>
+        <span className="tag">Next 4 weeks</span>
+      </div>
+      <div className="calendar">
+        {data.calendar.map((c, i) => (
+          <div className="cal-row" key={i}>
+            <div className="date">{c.day}<b>{c.date}</b></div>
+            <div className="title">{c.title}<small>{c.sub}</small></div>
+            <div className="platform">{c.platform}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+// ─── Reviews ─────────────────────────────────────────────────────────────────
+
+function Reviews({ data }: { data: IssueData }) {
+  return (
+    <section className="reviews">
+      {data.reviews.map((r, i) => (
+        <article className="review" key={i}>
+          <div className="cover">
+            <div className="placeholder">[ KEY ART ]</div>
+            <div className={`score${r.hot ? ' hot' : ''}`}>
+              <b>{r.score}</b>
+              <span className="outof">/ 10</span>
+            </div>
+          </div>
+          <div className="meta">
+            <span>{r.studio}</span>
+            <span>· {r.platforms.join(' · ')}</span>
+          </div>
+          <h3>{r.title}</h3>
+          <p className="pull">&ldquo;{r.pull}&rdquo;</p>
+          <div className="foot">
+            <span>{r.author}</span>
+            <span>{r.hours}</span>
+          </div>
+        </article>
+      ))}
+    </section>
+  )
+}
+
+// ─── Indie Spotlight ──────────────────────────────────────────────────────────
+
+function IndieSpotlight({ data }: { data: IssueData }) {
+  return (
+    <section className="spotlight">
+      <div className="spotlight-inner">
+        <div className="art">
+          <div className="ph">[ INDIE SPOTLIGHT · KEY ART ]</div>
+        </div>
+        <div>
+          <div className="kicker">{data.spotlight.kicker}</div>
+          <h2>{data.spotlight.title}</h2>
+          <p dangerouslySetInnerHTML={{ __html: data.spotlight.blurb }} />
+          <div className="meta-row">
+            <div><small>Developer</small><b>{data.spotlight.dev}</b></div>
+            <div><small>Price</small><b>{data.spotlight.price}</b></div>
+            <div><small>Platforms</small><b>{data.spotlight.platforms}</b></div>
+            <div><small>Length</small><b>{data.spotlight.runtime}</b></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// ─── Discussion ───────────────────────────────────────────────────────────────
+
+function Discussion({ data }: { data: IssueData }) {
+  const [active, setActive] = useState<Set<string>>(new Set())
+  const [counts, setCounts] = useState<Record<string, number>>(
+    Object.fromEntries(data.reactions.map(r => [r.key, r.count]))
+  )
+  const [composeVal, setCompose] = useState('')
+  const [comments, setComments] = useState<CommentItem[]>(data.comments)
+
+  const toggle = (k: string) => {
+    const next = new Set(active)
+    const newCounts = { ...counts }
+    if (next.has(k)) { next.delete(k); newCounts[k]-- }
+    else { next.add(k); newCounts[k]++ }
+    setActive(next)
+    setCounts(newCounts)
+  }
+
+  const submit = () => {
+    if (!composeVal.trim()) return
+    setComments([{
+      name: 'You', handle: '@you', time: 'now', initials: 'YO',
+      body: composeVal.trim(), replies: 0, likes: 0,
+    }, ...comments])
+    setCompose('')
+  }
+
+  return (
+    <section className="discussion">
+      <div className="section-head">
+        <span className="num">§ 06</span>
+        <h2>Discourse</h2>
+        <span className="tag">{comments.length} readers chiming in</span>
+      </div>
+      <div className="reactions">
+        {data.reactions.map(r => (
+          <button
+            key={r.key}
+            className={`reaction${active.has(r.key) ? ' active' : ''}`}
+            onClick={() => toggle(r.key)}
+          >
+            <span className="glyph">{r.glyph}</span>
+            <span>{r.label}</span>
+            <span className="count">{counts[r.key].toLocaleString()}</span>
+          </button>
+        ))}
+      </div>
+      <div className="comments">
+        <div className="comment-compose">
+          <div className="av">YO</div>
+          <textarea
+            placeholder="Share a thought on this week's issue…"
+            value={composeVal}
+            onChange={e => setCompose(e.target.value)}
+          />
+          <button onClick={submit}>POST →</button>
+        </div>
+        {comments.map((c, i) => (
+          <article className="comment" key={i}>
+            <div className="comment-head">
+              <div className="av">{c.initials}</div>
+              <b>{c.name}</b>
+              <span>{c.handle}</span>
+              <span className="dot">·</span>
+              <span>{c.time}</span>
+            </div>
+            <p>{c.body}</p>
+            <div className="foot">
+              <span>↑ {c.likes}</span>
+              <span>↳ {c.replies} replies</span>
+              <span>SHARE</span>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+// ─── Footer ───────────────────────────────────────────────────────────────────
+
+function Footer({ data }: { data: IssueData }) {
+  return (
+    <footer className="footer">
+      <div className="footer-grid">
+        <div>
+          <div className="brand">The Gamer·Scene</div>
+          <p>An independent gaming publication. Published Saturdays. Read by {data.issue.subscribers} people who take games seriously.</p>
+          <div className="subscribe">
+            <input type="email" placeholder="YOUR@EMAIL.COM" />
+            <button>SUBSCRIBE</button>
+          </div>
+        </div>
+        <div>
+          <h4>Sections</h4>
+          <ul>
+            <li>The Scene</li>
+            <li>Dispatch</li>
+            <li>Reviews</li>
+            <li>Indie Room</li>
+            <li>Discourse</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Archive</h4>
+          <ul>
+            <li>Issues 2026</li>
+            <li>Issues 2025</li>
+            <li>Best of 2024</li>
+            <li>Longreads</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Follow</h4>
+          <ul>
+            <li>RSS</li>
+            <li>Bluesky</li>
+            <li>Mastodon</li>
+            <li>YouTube</li>
+          </ul>
+        </div>
+        <div className="colophon">
+          <span>© 2026 THE GAMER SCENE · SET IN FRAUNCES &amp; INTER TIGHT</span>
+          <span>MANIFESTO / ETHICS / CONTACT</span>
+        </div>
+      </div>
+    </footer>
+  )
+}
+
+// ─── Video Modal ──────────────────────────────────────────────────────────────
+
+function VideoModal({ open, onClose, videoTitle }: { open: boolean; onClose: () => void; videoTitle: string }) {
+  if (!open) return null
+  return (
+    <div className="modal" onClick={onClose}>
+      <div className="modal-inner" onClick={e => e.stopPropagation()}>
+        <button className="modal-close" onClick={onClose}>✕ CLOSE</button>
+        <div className="fake-video">
+          <div className="play-lg">▶</div>
+          <div style={{ position: 'absolute', bottom: 20, left: 24, color: 'white', fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.12em' }}>
+            {videoTitle.toUpperCase()} · 2:14
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// ─── Tweaks Panel ─────────────────────────────────────────────────────────────
+
+const THEMES = [
+  { id: 'newsprint', label: 'Newsprint', swatch: 'oklch(0.97 0.008 85)' },
+  { id: 'midnight',  label: 'Midnight',  swatch: 'oklch(0.14 0.02 260)' },
+  { id: 'riso',      label: 'Risograph', swatch: 'oklch(0.7 0.2 25)' },
+  { id: 'heat',      label: 'Heat',      swatch: 'oklch(0.6 0.24 28)' },
+]
+
+function TweaksPanel({
+  theme, setTheme,
+  density, setDensity,
+  tone, setTone,
+  open, setOpen,
+}: {
+  theme: string; setTheme: (t: string) => void
+  density: string; setDensity: (d: string) => void
+  tone: string; setTone: (t: string) => void
+  open: boolean; setOpen: (o: boolean) => void
+}) {
+  return (
+    <>
+      {!open && (
+        <button className="tweaks-fab" onClick={() => setOpen(true)} title="Tweaks">✦</button>
+      )}
+      <div className={`tweaks${open ? ' open' : ''}`}>
+        <div className="tweaks-head">
+          <span>◆ TWEAKS</span>
+          <button onClick={() => setOpen(false)}>✕</button>
+        </div>
+        <div className="tweaks-body">
+          <div className="tweak-group">
+            <div className="lbl">Visual Theme</div>
+            <div className="opts">
+              {THEMES.map(t => (
+                <button key={t.id} className={`opt${theme === t.id ? ' active' : ''}`} onClick={() => setTheme(t.id)}>
+                  <div className="swatch" style={{ background: t.swatch }} />
+                  {t.label}
+                </button>
+              ))}
+            </div>
+          </div>
+          <div className="tweak-group">
+            <div className="lbl">Density</div>
+            <div className="opts">
+              {['Editorial', 'Compact'].map(d => (
+                <button key={d} className={`opt${density === d ? ' active' : ''}`} onClick={() => setDensity(d)}>
+                  {d.toUpperCase()}
+                </button>
+              ))}
+            </div>
+          </div>
+          <div className="tweak-group">
+            <div className="lbl">Editorial Tone</div>
+            <div className="opts">
+              {['Measured', 'Punchy'].map(t => (
+                <button key={t} className={`opt${tone === t ? ' active' : ''}`} onClick={() => setTone(t)}>
+                  {t.toUpperCase()}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  )
+}
+
+// ─── IssuePage (main export) ──────────────────────────────────────────────────
+
+export default function IssuePage({ data }: { data: IssueData }) {
+  const [tab, setTab] = useState('scene')
+  const [theme, setTheme] = useState('newsprint')
+  const [density, setDensity] = useState('Editorial')
+  const [tone, setTone] = useState('Measured')
+  const [tweaksOpen, setTweaksOpen] = useState(false)
+  const [videoOpen, setVideoOpen] = useState(false)
+
+  // Restore preferences from localStorage
+  useEffect(() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem('tgs-state') || '{}')
+      if (saved.tab) setTab(saved.tab)
+      if (saved.theme) setTheme(saved.theme)
+      if (saved.density) setDensity(saved.density)
+      if (saved.tone) setTone(saved.tone)
+    } catch {}
+  }, [])
+
+  // Apply theme + persist preferences
+  useEffect(() => {
+    document.body.setAttribute('data-theme', theme)
+    document.body.setAttribute('data-density', density.toLowerCase())
+    document.body.setAttribute('data-tone', tone.toLowerCase())
+    localStorage.setItem('tgs-state', JSON.stringify({ tab, theme, density, tone }))
+  }, [tab, theme, density, tone])
+
+  return (
+    <div className="app">
+      <Topbar data={data} />
+      <Masthead data={data} />
+      <IssueTabs active={tab} setActive={setTab} data={data} />
+
+      {/* The Scene — main hub */}
+      <div className={`panel${tab === 'scene' ? ' active' : ''}`}>
+        <Lead data={data} onPlay={() => setVideoOpen(true)} />
+        <div className="columns">
+          <News data={data} />
+          <div className="sidebar">
+            <Poll data={data} />
+            <ReleaseCalendar data={data} />
+          </div>
+        </div>
+        <IndieSpotlight data={data} />
+        <Reviews data={data} />
+        <Discussion data={data} />
+      </div>
+
+      {/* Dispatch */}
+      <div className={`panel${tab === 'news' ? ' active' : ''}`}>
+        <div style={{ padding: '32px 0' }}>
+          <News data={data} />
+        </div>
+      </div>
+
+      {/* Reviews */}
+      <div className={`panel${tab === 'reviews' ? ' active' : ''}`}>
+        <div style={{ padding: '32px 0' }}>
+          <div className="section-head">
+            <span className="num">§ 03</span>
+            <h2>Reviews</h2>
+            <span className="tag">This week&apos;s verdicts</span>
+          </div>
+          <Reviews data={data} />
+        </div>
+      </div>
+
+      {/* Indie Room */}
+      <div className={`panel${tab === 'indie' ? ' active' : ''}`}>
+        <IndieSpotlight data={data} />
+      </div>
+
+      {/* Calendar */}
+      <div className={`panel${tab === 'calendar' ? ' active' : ''}`}>
+        <div style={{ padding: '32px 0', maxWidth: 720 }}>
+          <ReleaseCalendar data={data} />
+        </div>
+      </div>
+
+      {/* Discourse */}
+      <div className={`panel${tab === 'discourse' ? ' active' : ''}`}>
+        <Discussion data={data} />
+      </div>
+
+      <Footer data={data} />
+
+      <TweaksPanel
+        theme={theme} setTheme={setTheme}
+        density={density} setDensity={setDensity}
+        tone={tone} setTone={setTone}
+        open={tweaksOpen} setOpen={setTweaksOpen}
+      />
+      <VideoModal open={videoOpen} onClose={() => setVideoOpen(false)} videoTitle={data.lead.videoTitle} />
+    </div>
+  )
+}

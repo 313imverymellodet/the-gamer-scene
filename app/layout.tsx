@@ -1,0 +1,51 @@
+import type { Metadata } from 'next'
+import { Fraunces, Inter_Tight, JetBrains_Mono } from 'next/font/google'
+import './globals.css'
+
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  variable: '--font-fraunces',
+  display: 'swap',
+})
+
+const interTight = Inter_Tight({
+  subsets: ['latin'],
+  variable: '--font-inter-tight',
+  display: 'swap',
+})
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-jetbrains-mono',
+  display: 'swap',
+})
+
+export const metadata: Metadata = {
+  title: {
+    default: 'The Gamer Scene',
+    template: '%s — The Gamer Scene',
+  },
+  description: 'An independent gaming publication. Reviews, news, and criticism published weekly.',
+  openGraph: {
+    title: 'The Gamer Scene',
+    description: 'An independent gaming publication. Reviews, news, and criticism published weekly.',
+    type: 'website',
+    siteName: 'The Gamer Scene',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'The Gamer Scene',
+    description: 'An independent gaming publication.',
+  },
+}
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html
+      lang="en"
+      className={`${fraunces.variable} ${interTight.variable} ${jetbrainsMono.variable}`}
+    >
+      <body data-theme="newsprint">{children}</body>
+    </html>
+  )
+}
