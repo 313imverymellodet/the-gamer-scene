@@ -10,23 +10,23 @@
     "readTime": "12 min"
   },
   "ticker": [
-    { "tag": "BREAKING", "text": "Rockstar confirms GTA VI delay — now Spring 2027" },
-    { "tag": "LIVE",     "text": "Summer Game Fest 2026 floor reveals in 38 days" },
-    { "tag": "DEAL",     "text": "Steam Spring Sale ends Monday — 67% off Elden Ring: Nightreign" },
-    { "tag": "PATCH",    "text": "Helldivers 3 hotfix 2.4.1 rolling out now" },
-    { "tag": "RUMOR",    "text": "Nintendo Direct whispers for early May" }
+    { "tag": "NEW",      "text": "Pragmata launches to 97% positive on Steam — Capcom delivers" },
+    { "tag": "BREAKING", "text": "GTA 6 confirmed for November 19 — Rockstar enters release fiscal year" },
+    { "tag": "LIVE",     "text": "Hades II now on PS5 and Xbox — day one on Game Pass" },
+    { "tag": "COMING",   "text": "Saros goes gold — Housemarque's Returnal follow-up locks April 30 date" },
+    { "tag": "RUMOR",    "text": "Epic Games reportedly building a Disney extraction shooter separate from Fortnite" }
   ],
   "lead": {
     "kicker": "The Cover Story",
-    "title": "The Year Games Stopped <em>Chasing</em> Hollywood",
-    "dek": "A quiet revolution is underway. After a decade of bigger-is-better, the industry's most ambitious studios are turning inward — toward systems, strangeness, and the kind of craft that doesn't fit in a trailer. An essay on the 2026 correction.",
-    "author": "Mira Okafor",
+    "title": "Capcom's Moon Game Was Worth <em>Every</em> Delay",
+    "dek": "Six years of cryptic trailers, broken release windows, and meme-worthy silence — and then Pragmata landed and reminded everyone why patience in gaming still means something. A deep look at the year's first must-play.",
+    "author": "Romello Morris",
     "role": "Editor-in-Chief",
-    "initials": "MO",
-    "readTime": "18 min read",
-    "tag": "FEATURE",
-    "videoTag": "WATCH · 2:14",
-    "videoTitle": "Trailer: The 2026 Correction"
+    "initials": "RM",
+    "readTime": "14 min read",
+    "tag": "REVIEW",
+    "videoTag": "WATCH · 1:48",
+    "videoTitle": "Pragmata — Launch Trailer"
   },
   "tabs": [
     { "id": "scene",    "num": "01", "label": "The Scene" },
