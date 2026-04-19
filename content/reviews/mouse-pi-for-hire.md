@@ -9,6 +9,7 @@ hours: 9
 hot: false
 date: 2026-04-16
 issue: "042"
+image: /images/mouse-pi.jpg
 ---
 
 Let's get the obvious out of the way: Mouse: P.I. For Hire is one of the most visually striking games of the year. Fumi Games' debut title renders an entire city in black-and-white 1930s rubber-hose animation — the same style that gave us early Mickey Mouse and the original Popeye cartoons. Enemies squash and stretch. Bullets are drawn in thick ink. Explosions bloom like comic panel splash pages. It is, genuinely, extraordinary to look at.

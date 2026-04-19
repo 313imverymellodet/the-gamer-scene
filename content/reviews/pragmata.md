@@ -9,6 +9,7 @@ hours: 14
 hot: true
 date: 2026-04-17
 issue: "042"
+image: /images/pragmata.jpg
 ---
 
 It would be easy to approach Pragmata with lowered expectations. Announced at Sony's original PS5 reveal in June 2020, the game racked up delay after delay, morphing from a mysterious 2022 launch window into a running joke about vaporware. And yet here we are — April 2026, the game is finally in our hands, and Capcom has done it again.

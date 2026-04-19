@@ -24,7 +24,8 @@
     "role": "Editor-in-Chief",
     "initials": "RM",
     "readTime": "14 min read",
-    "tag": "REVIEW"
+    "tag": "REVIEW",
+    "image": "/images/pragmata.jpg"
   },
   "tabs": [
     { "id": "scene",    "num": "01", "label": "The Scene" },
@@ -59,7 +60,8 @@
     "dev": "Fumi Games",
     "price": "$39.99",
     "platforms": "PC · PS5 · Xbox · Switch · Switch 2",
-    "runtime": "~8 hours"
+    "runtime": "~8 hours",
+    "image": "/images/mouse-pi.jpg"
   },
   "reactions": [
     { "glyph": "★", "label": "Brilliant",  "count": 0, "key": "brilliant" },

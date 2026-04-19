@@ -12,6 +12,7 @@ export interface LeadData {
   initials: string
   readTime: string
   tag: string
+  image?: string
 }
 
 export interface TabItem {
@@ -40,6 +41,7 @@ export interface ReviewItem {
   hot: boolean
   slug?: string
   issue?: string
+  image?: string
 }
 
 export interface PollOption {
@@ -70,6 +72,7 @@ export interface SpotlightData {
   price: string
   platforms: string
   runtime: string
+  image?: string
 }
 
 export interface ReactionItem {

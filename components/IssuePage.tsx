@@ -76,7 +76,10 @@ function Lead({ data }: { data: IssueData }) {
   return (
     <section className="lead">
       <div className="lead-art">
-        <div className="placeholder" />
+        {data.lead.image
+          ? <img src={data.lead.image} alt={data.lead.title} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+          : <div className="placeholder" />
+        }
         <div className="hero-tag">{data.lead.tag}</div>
       </div>
       <div className="lead-text">
@@ -182,7 +185,10 @@ function Reviews({ data }: { data: IssueData }) {
       {data.reviews.map((r, i) => (
         <article className="review" key={i}>
           <div className="cover">
-            <div className="placeholder" />
+            {r.image
+              ? <img src={r.image} alt={r.title} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+              : <div className="placeholder" />
+            }
             <div className={`score${r.hot ? ' hot' : ''}`}>
               <b>{r.score}</b>
               <span className="outof">/ 10</span>
@@ -211,7 +217,10 @@ function IndieSpotlight({ data }: { data: IssueData }) {
     <section className="spotlight">
       <div className="spotlight-inner">
         <div className="art">
-          <div className="ph" />
+          {data.spotlight.image
+            ? <img src={data.spotlight.image} alt={data.spotlight.title} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+            : <div className="ph" />
+          }
         </div>
         <div>
           <div className="kicker">{data.spotlight.kicker}</div>

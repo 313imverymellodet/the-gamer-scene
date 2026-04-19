@@ -54,6 +54,7 @@ export function getReviews(issue?: string): ReviewItem[] {
         hot: Boolean(data.hot),
         slug: file.replace('.md', ''),
         issue: data.issue as string | undefined,
+        image: data.image as string | undefined,
       }
     })
     .filter(r => !issue || r.issue === issue)
