@@ -72,14 +72,12 @@ function IssueTabs({ active, setActive, data }: { active: string; setActive: (id
 
 // ─── Lead ─────────────────────────────────────────────────────────────────────
 
-function Lead({ data, onPlay }: { data: IssueData; onPlay: () => void }) {
+function Lead({ data }: { data: IssueData }) {
   return (
     <section className="lead">
-      <div className="lead-art" onClick={onPlay} role="button" tabIndex={0} onKeyDown={e => e.key === 'Enter' && onPlay()}>
-        <div className="placeholder">[ COVER · EDITORIAL ILLUSTRATION ]</div>
+      <div className="lead-art">
+        <div className="placeholder" />
         <div className="hero-tag">{data.lead.tag}</div>
-        <div className="hero-play">▶</div>
-        <div className="hero-runtime">{data.lead.videoTag}</div>
       </div>
       <div className="lead-text">
         <div className="kicker">{data.lead.kicker}</div>
@@ -184,7 +182,7 @@ function Reviews({ data }: { data: IssueData }) {
       {data.reviews.map((r, i) => (
         <article className="review" key={i}>
           <div className="cover">
-            <div className="placeholder">[ KEY ART ]</div>
+            <div className="placeholder" />
             <div className={`score${r.hot ? ' hot' : ''}`}>
               <b>{r.score}</b>
               <span className="outof">/ 10</span>
@@ -213,7 +211,7 @@ function IndieSpotlight({ data }: { data: IssueData }) {
     <section className="spotlight">
       <div className="spotlight-inner">
         <div className="art">
-          <div className="ph">[ INDIE SPOTLIGHT · KEY ART ]</div>
+          <div className="ph" />
         </div>
         <div>
           <div className="kicker">{data.spotlight.kicker}</div>
@@ -314,6 +312,14 @@ function Discussion({ data }: { data: IssueData }) {
 // ─── Footer ───────────────────────────────────────────────────────────────────
 
 function Footer({ data }: { data: IssueData }) {
+  const [email, setEmail] = useState('')
+  const [subscribed, setSubscribed] = useState(false)
+
+  const handleSubscribe = () => {
+    if (!email.trim() || !email.includes('@')) return
+    setSubscribed(true)
+  }
+
   return (
     <footer className="footer">
       <div className="footer-grid">
@@ -321,36 +327,48 @@ function Footer({ data }: { data: IssueData }) {
           <div className="brand">The Gamer·Scene</div>
           <p>An independent gaming publication. Published Saturdays. Read by {data.issue.subscribers} people who take games seriously.</p>
           <div className="subscribe">
-            <input type="email" placeholder="YOUR@EMAIL.COM" />
-            <button>SUBSCRIBE</button>
+            {subscribed ? (
+              <div className="subscribed-msg">✓ You&apos;re on the list.</div>
+            ) : (
+              <>
+                <input
+                  type="email"
+                  placeholder="YOUR@EMAIL.COM"
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
+                  onKeyDown={e => e.key === 'Enter' && handleSubscribe()}
+                />
+                <button onClick={handleSubscribe}>SUBSCRIBE</button>
+              </>
+            )}
           </div>
         </div>
         <div>
           <h4>Sections</h4>
           <ul>
-            <li>The Scene</li>
-            <li>Dispatch</li>
-            <li>Reviews</li>
-            <li>Indie Room</li>
-            <li>Discourse</li>
+            <li><a href="/">The Scene</a></li>
+            <li><a href="/">Dispatch</a></li>
+            <li><a href="/">Reviews</a></li>
+            <li><a href="/">Indie Room</a></li>
+            <li><a href="/">Discourse</a></li>
           </ul>
         </div>
         <div>
           <h4>Archive</h4>
           <ul>
-            <li>Issues 2026</li>
-            <li>Issues 2025</li>
-            <li>Best of 2024</li>
-            <li>Longreads</li>
+            <li><a href="#">Issues 2026</a></li>
+            <li><a href="#">Issues 2025</a></li>
+            <li><a href="#">Best of 2024</a></li>
+            <li><a href="#">Longreads</a></li>
           </ul>
         </div>
         <div>
           <h4>Follow</h4>
           <ul>
-            <li>RSS</li>
-            <li>Bluesky</li>
-            <li>Mastodon</li>
-            <li>YouTube</li>
+            <li><a href="#" rel="noopener noreferrer">RSS</a></li>
+            <li><a href="#" rel="noopener noreferrer">Bluesky</a></li>
+            <li><a href="#" rel="noopener noreferrer">Mastodon</a></li>
+            <li><a href="#" rel="noopener noreferrer">YouTube</a></li>
           </ul>
         </div>
         <div className="colophon">
@@ -362,121 +380,22 @@ function Footer({ data }: { data: IssueData }) {
   )
 }
 
-// ─── Video Modal ──────────────────────────────────────────────────────────────
-
-function VideoModal({ open, onClose, videoTitle }: { open: boolean; onClose: () => void; videoTitle: string }) {
-  if (!open) return null
-  return (
-    <div className="modal" onClick={onClose}>
-      <div className="modal-inner" onClick={e => e.stopPropagation()}>
-        <button className="modal-close" onClick={onClose}>✕ CLOSE</button>
-        <div className="fake-video">
-          <div className="play-lg">▶</div>
-          <div style={{ position: 'absolute', bottom: 20, left: 24, color: 'white', fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.12em' }}>
-            {videoTitle.toUpperCase()} · 2:14
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-// ─── Tweaks Panel ─────────────────────────────────────────────────────────────
-
-const THEMES = [
-  { id: 'newsprint', label: 'Newsprint', swatch: 'oklch(0.97 0.008 85)' },
-  { id: 'midnight',  label: 'Midnight',  swatch: 'oklch(0.14 0.02 260)' },
-  { id: 'riso',      label: 'Risograph', swatch: 'oklch(0.7 0.2 25)' },
-  { id: 'heat',      label: 'Heat',      swatch: 'oklch(0.6 0.24 28)' },
-]
-
-function TweaksPanel({
-  theme, setTheme,
-  density, setDensity,
-  tone, setTone,
-  open, setOpen,
-}: {
-  theme: string; setTheme: (t: string) => void
-  density: string; setDensity: (d: string) => void
-  tone: string; setTone: (t: string) => void
-  open: boolean; setOpen: (o: boolean) => void
-}) {
-  return (
-    <>
-      {!open && (
-        <button className="tweaks-fab" onClick={() => setOpen(true)} title="Tweaks">✦</button>
-      )}
-      <div className={`tweaks${open ? ' open' : ''}`}>
-        <div className="tweaks-head">
-          <span>◆ TWEAKS</span>
-          <button onClick={() => setOpen(false)}>✕</button>
-        </div>
-        <div className="tweaks-body">
-          <div className="tweak-group">
-            <div className="lbl">Visual Theme</div>
-            <div className="opts">
-              {THEMES.map(t => (
-                <button key={t.id} className={`opt${theme === t.id ? ' active' : ''}`} onClick={() => setTheme(t.id)}>
-                  <div className="swatch" style={{ background: t.swatch }} />
-                  {t.label}
-                </button>
-              ))}
-            </div>
-          </div>
-          <div className="tweak-group">
-            <div className="lbl">Density</div>
-            <div className="opts">
-              {['Editorial', 'Compact'].map(d => (
-                <button key={d} className={`opt${density === d ? ' active' : ''}`} onClick={() => setDensity(d)}>
-                  {d.toUpperCase()}
-                </button>
-              ))}
-            </div>
-          </div>
-          <div className="tweak-group">
-            <div className="lbl">Editorial Tone</div>
-            <div className="opts">
-              {['Measured', 'Punchy'].map(t => (
-                <button key={t} className={`opt${tone === t ? ' active' : ''}`} onClick={() => setTone(t)}>
-                  {t.toUpperCase()}
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
-  )
-}
 
 // ─── IssuePage (main export) ──────────────────────────────────────────────────
 
 export default function IssuePage({ data }: { data: IssueData }) {
   const [tab, setTab] = useState('scene')
-  const [theme, setTheme] = useState('newsprint')
-  const [density, setDensity] = useState('Editorial')
-  const [tone, setTone] = useState('Measured')
-  const [tweaksOpen, setTweaksOpen] = useState(false)
-  const [videoOpen, setVideoOpen] = useState(false)
 
-  // Restore preferences from localStorage
   useEffect(() => {
     try {
-      const saved = JSON.parse(localStorage.getItem('tgs-state') || '{}')
-      if (saved.tab) setTab(saved.tab)
-      if (saved.theme) setTheme(saved.theme)
-      if (saved.density) setDensity(saved.density)
-      if (saved.tone) setTone(saved.tone)
+      const saved = localStorage.getItem('tgs-tab')
+      if (saved) setTab(saved)
     } catch {}
   }, [])
 
-  // Apply theme + persist preferences
   useEffect(() => {
-    document.body.setAttribute('data-theme', theme)
-    document.body.setAttribute('data-density', density.toLowerCase())
-    document.body.setAttribute('data-tone', tone.toLowerCase())
-    localStorage.setItem('tgs-state', JSON.stringify({ tab, theme, density, tone }))
-  }, [tab, theme, density, tone])
+    try { localStorage.setItem('tgs-tab', tab) } catch {}
+  }, [tab])
 
   return (
     <div className="app">
@@ -486,7 +405,7 @@ export default function IssuePage({ data }: { data: IssueData }) {
 
       {/* The Scene — main hub */}
       <div className={`panel${tab === 'scene' ? ' active' : ''}`}>
-        <Lead data={data} onPlay={() => setVideoOpen(true)} />
+        <Lead data={data} />
         <div className="columns">
           <News data={data} />
           <div className="sidebar">
@@ -537,13 +456,6 @@ export default function IssuePage({ data }: { data: IssueData }) {
 
       <Footer data={data} />
 
-      <TweaksPanel
-        theme={theme} setTheme={setTheme}
-        density={density} setDensity={setDensity}
-        tone={tone} setTone={setTone}
-        open={tweaksOpen} setOpen={setTweaksOpen}
-      />
-      <VideoModal open={videoOpen} onClose={() => setVideoOpen(false)} videoTitle={data.lead.videoTitle} />
     </div>
   )
 }
