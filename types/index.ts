@@ -12,8 +12,6 @@ export interface LeadData {
   initials: string
   readTime: string
   tag: string
-  videoTag: string
-  videoTitle: string
 }
 
 export interface TabItem {

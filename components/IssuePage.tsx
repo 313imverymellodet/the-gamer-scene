@@ -32,7 +32,7 @@ function Masthead({ data }: { data: IssueData }) {
   return (
     <header className="masthead">
       <div className="masthead-top">
-        <div>Est. 2019 · {data.issue.volume} · No. {data.issue.number}</div>
+        <div>Est. 2013 · {data.issue.volume} · No. {data.issue.number}</div>
         <div className="stamp">◆ TGS / 26 · THE GAMER SCENE</div>
         <div>{data.issue.weekday}, {data.issue.date}</div>
       </div>
@@ -314,10 +314,21 @@ function Discussion({ data }: { data: IssueData }) {
 function Footer({ data }: { data: IssueData }) {
   const [email, setEmail] = useState('')
   const [subscribed, setSubscribed] = useState(false)
+  const [loading, setLoading] = useState(false)
 
-  const handleSubscribe = () => {
+  const handleSubscribe = async () => {
     if (!email.trim() || !email.includes('@')) return
-    setSubscribed(true)
+    setLoading(true)
+    try {
+      await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      })
+    } finally {
+      setLoading(false)
+      setSubscribed(true)
+    }
   }
 
   return (
@@ -338,7 +349,9 @@ function Footer({ data }: { data: IssueData }) {
                   onChange={e => setEmail(e.target.value)}
                   onKeyDown={e => e.key === 'Enter' && handleSubscribe()}
                 />
-                <button onClick={handleSubscribe}>SUBSCRIBE</button>
+                <button onClick={handleSubscribe} disabled={loading}>
+                  {loading ? '...' : 'SUBSCRIBE'}
+                </button>
               </>
             )}
           </div>

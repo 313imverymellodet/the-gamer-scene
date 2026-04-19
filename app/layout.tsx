@@ -22,6 +22,7 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://thegamerscene.news'),
   title: {
     default: 'The Gamer Scene',
     template: '%s — The Gamer Scene',
@@ -32,6 +33,7 @@ export const metadata: Metadata = {
     description: 'An independent gaming publication. Reviews, news, and criticism published weekly.',
     type: 'website',
     siteName: 'The Gamer Scene',
+    url: 'https://thegamerscene.news',
   },
   twitter: {
     card: 'summary_large_image',
