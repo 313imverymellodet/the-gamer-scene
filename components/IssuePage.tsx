@@ -411,19 +411,17 @@ function Footer({ data }: { data: IssueData }) {
         <div>
           <h4>Archive</h4>
           <ul>
-            <li><a href="#">Issues 2026</a></li>
-            <li><a href="#">Issues 2025</a></li>
-            <li><a href="#">Best of 2024</a></li>
-            <li><a href="#">Longreads</a></li>
+            <li><a href="/">Issues 2026</a></li>
+            <li><a href="/">Issues 2025</a></li>
+            <li><a href="/">Best of 2024</a></li>
+            <li><a href="/">Longreads</a></li>
           </ul>
         </div>
         <div>
           <h4>Follow</h4>
           <ul>
-            <li><a href="#" rel="noopener noreferrer">RSS</a></li>
-            <li><a href="#" rel="noopener noreferrer">Bluesky</a></li>
-            <li><a href="#" rel="noopener noreferrer">Mastodon</a></li>
-            <li><a href="#" rel="noopener noreferrer">YouTube</a></li>
+            <li><a href="https://thegamerscenedaily.substack.com" target="_blank" rel="noopener noreferrer">Newsletter</a></li>
+            <li><a href="https://thegamerscenedaily.substack.com" target="_blank" rel="noopener noreferrer">Substack</a></li>
           </ul>
         </div>
         <div className="colophon">

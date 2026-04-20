@@ -1,12 +1,32 @@
 import { MetadataRoute } from 'next'
+import { getAllNewsSlugs, getAllReviewSlugs } from '@/lib/content'
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const base = 'https://thegamerscene.news'
+  const now = new Date()
+
+  const newsSlugs = getAllNewsSlugs().map(slug => ({
+    url: `${base}/news/${slug}`,
+    lastModified: now,
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }))
+
+  const reviewSlugs = getAllReviewSlugs().map(slug => ({
+    url: `${base}/reviews/${slug}`,
+    lastModified: now,
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }))
+
   return [
     {
-      url: 'https://thegamerscene.news',
-      lastModified: new Date(),
+      url: base,
+      lastModified: now,
       changeFrequency: 'weekly',
       priority: 1,
     },
+    ...reviewSlugs,
+    ...newsSlugs,
   ]
 }
