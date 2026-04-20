@@ -449,6 +449,39 @@ h1, h2, h3, h4 { margin: 0; font-family: var(--serif); font-weight: 500; letter-
 @keyframes panelIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 
 /* Responsive */
+/* Article body (news + review pages) */
+.article-body h1,
+.article-body h2,
+.article-body h3 {
+  font-family: var(--serif);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin: 2em 0 0.5em;
+  color: var(--ink);
+}
+.article-body h1 { font-size: 1.75rem; }
+.article-body h2 { font-size: 1.3rem; border-bottom: 1px solid var(--rule); padding-bottom: 6px; }
+.article-body h3 { font-size: 1.1rem; }
+.article-body p { margin: 0 0 1.2em; }
+.article-body strong { font-weight: 700; }
+.article-body em { font-style: italic; }
+.article-body ul, .article-body ol { padding-left: 1.5em; margin: 0 0 1.2em; }
+.article-body li { margin-bottom: 0.4em; }
+.article-body a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+.article-body hr {
+  border: none;
+  border-top: 1px solid var(--rule);
+  margin: 2.5em 0;
+}
+.article-body blockquote {
+  border-left: 3px solid var(--accent);
+  margin: 1.5em 0;
+  padding: 0.5em 0 0.5em 1em;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
 @media (max-width: 980px) {
   :root { --page-pad: 20px; }
   .lead { grid-template-columns: 1fr; }

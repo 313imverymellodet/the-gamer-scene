@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
+import { marked } from 'marked'
 import type { IssueData, NewsItem, ReviewItem } from '@/types'
 
 const contentDir = path.join(process.cwd(), 'content')
@@ -95,6 +96,77 @@ export async function getIssue(slug: string): Promise<IssueData> {
     news: getNewsItems(6),
     reviews: getReviews(base.issue.number),
   }
+}
+
+// ─── Single Article / Review ──────────────────────────────────────────────────
+
+export interface FullNewsItem {
+  title: string
+  blurb: string
+  category: string
+  date: string
+  image?: string
+  slug: string
+  bodyHtml: string
+}
+
+export interface FullReviewItem extends ReviewItem {
+  date: string
+  bodyHtml: string
+}
+
+export function getNewsItemBySlug(slug: string): FullNewsItem | null {
+  const file = path.join(contentDir, 'news', `${slug}.md`)
+  if (!fs.existsSync(file)) return null
+  const raw = fs.readFileSync(file, 'utf-8')
+  const { data, content } = matter(raw)
+  return {
+    title: data.title as string,
+    blurb: data.blurb as string,
+    category: data.category as string,
+    date: data.date ? String(data.date) : '',
+    image: data.image as string | undefined,
+    slug,
+    bodyHtml: marked(content) as string,
+  }
+}
+
+export function getReviewBySlug(slug: string): FullReviewItem | null {
+  const file = path.join(contentDir, 'reviews', `${slug}.md`)
+  if (!fs.existsSync(file)) return null
+  const raw = fs.readFileSync(file, 'utf-8')
+  const { data, content } = matter(raw)
+  return {
+    title: data.title as string,
+    studio: data.studio as string,
+    platforms: (data.platforms as string[]) ?? [],
+    score: data.score as number,
+    pull: data.pull as string,
+    author: data.author as string,
+    hours: `${data.hours}h played`,
+    hot: Boolean(data.hot),
+    slug,
+    issue: data.issue as string | undefined,
+    image: data.image as string | undefined,
+    date: data.date ? String(data.date) : '',
+    bodyHtml: marked(content) as string,
+  }
+}
+
+export function getAllNewsSlugs(): string[] {
+  const newsDir = path.join(contentDir, 'news')
+  if (!fs.existsSync(newsDir)) return []
+  return fs.readdirSync(newsDir)
+    .filter(f => f.endsWith('.md'))
+    .map(f => f.replace('.md', ''))
+}
+
+export function getAllReviewSlugs(): string[] {
+  const reviewsDir = path.join(contentDir, 'reviews')
+  if (!fs.existsSync(reviewsDir)) return []
+  return fs.readdirSync(reviewsDir)
+    .filter(f => f.endsWith('.md'))
+    .map(f => f.replace('.md', ''))
 }
 
 export function getAllIssueSlugs(): string[] {

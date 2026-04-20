@@ -1,0 +1,80 @@
+{
+  "issue": {
+    "number": "043",
+    "date": "April 20, 2026",
+    "weekday": "Monday",
+    "volume": "Vol. VII",
+    "subscribers": "2,841",
+    "weather": "Cloudy w/ chance of patch notes",
+    "location": "Worldwide",
+    "readTime": "14 min"
+  },
+  "ticker": [
+    { "tag": "REVIEW",   "text": "Pragmata — 9.2/10. Hugh and Diana are gaming's best new duo" },
+    { "tag": "REVIEW",   "text": "Hades II on PS5/Xbox — 9.5/10. 120fps, day-one Game Pass, still perfect" },
+    { "tag": "COMING",   "text": "Vampire Crawlers drops Tuesday — $9.99, day one Game Pass" },
+    { "tag": "COMING",   "text": "Saros launches April 30 — five years to the day after Returnal" },
+    { "tag": "BREAKING", "text": "GTA 6 confirmed for November 19 — Rockstar is in its release fiscal year" }
+  ],
+  "lead": {
+    "kicker": "Cover Review",
+    "title": "Capcom Waited Six Years to Deliver This. It Was Worth <em>Every</em> Second.",
+    "dek": "After delay after delay, Pragmata landed with a 9.2 and 97% positive on Steam. Hugh and Diana are gaming's best new duo, and the hacking-shooting combat is the freshest thing in the genre in years. Our full verdict is in.",
+    "author": "Romello Morris",
+    "role": "Editor-in-Chief",
+    "initials": "RM",
+    "readTime": "14 min read",
+    "tag": "REVIEW",
+    "image": "/images/pragmata.jpg",
+    "readLink": "/reviews/pragmata"
+  },
+  "tabs": [
+    { "id": "scene",    "num": "01", "label": "The Scene" },
+    { "id": "news",     "num": "02", "label": "Dispatch" },
+    { "id": "reviews",  "num": "03", "label": "Reviews" },
+    { "id": "indie",    "num": "04", "label": "Indie Room" },
+    { "id": "calendar", "num": "05", "label": "Calendar" },
+    { "id": "discourse","num": "06", "label": "Discourse" }
+  ],
+  "poll": {
+    "question": "What are you playing this week?",
+    "options": [
+      { "label": "Vampire Crawlers",        "pct": 0 },
+      { "label": "Hades II (PS5/Xbox)",     "pct": 0 },
+      { "label": "WoW Midnight Patch 12.0.5", "pct": 0 },
+      { "label": "Waiting for Saros",       "pct": 0 }
+    ],
+    "total": "0",
+    "closes": "Closes Tuesday 23:59 UTC"
+  },
+  "calendar": [
+    { "day": "APR", "date": "21", "title": "Vampire Crawlers",             "sub": "Full Launch · Day One Game Pass",              "platform": "Multi" },
+    { "day": "APR", "date": "22", "title": "Masters of Albion",            "sub": "Full Launch",                                  "platform": "PC" },
+    { "day": "APR", "date": "24", "title": "Clair Obscur: Expedition 33",  "sub": "Full Launch",                                  "platform": "PS5 · XSX · PC" },
+    { "day": "APR", "date": "28", "title": "Diablo IV: Lord of Hatred",    "sub": "Expansion Launch",                             "platform": "Multi" },
+    { "day": "APR", "date": "30", "title": "Saros",                        "sub": "PS5 Exclusive · Deluxe Early Access Apr 28",   "platform": "PS5" }
+  ],
+  "spotlight": {
+    "kicker": "Indie Room · Issue 043",
+    "title": "The Cartoon Detective Shooter Nobody Saw Coming",
+    "blurb": "<em>Mouse: P.I. For Hire</em> renders an entire city in 1930s rubber-hose animation and wraps a boomer shooter inside it. It's a debut that has no right being this confident — and at $39.99, it's the easiest recommendation of the week.",
+    "dev": "Fumi Games",
+    "price": "$39.99",
+    "platforms": "PC · PS5 · Xbox · Switch · Switch 2",
+    "runtime": "~9 hours",
+    "image": "/images/mouse-pi.jpg"
+  },
+  "reactions": [
+    { "glyph": "★", "label": "Brilliant",  "count": 0, "key": "brilliant" },
+    { "glyph": "◐", "label": "Conflicted", "count": 0, "key": "conflicted" },
+    { "glyph": "▲", "label": "Spot on",    "count": 0, "key": "spoton" },
+    { "glyph": "✕", "label": "Disagree",   "count": 0, "key": "disagree" },
+    { "glyph": "♫", "label": "Mood",       "count": 0, "key": "mood" }
+  ],
+  "comments": [
+    { "name": "Marcus T.",  "handle": "@marcust",      "time": "2h", "initials": "MT", "body": "Pragmata 9.2 is deserved. The hacking mechanic genuinely changes how you think about the gunplay — Diana isn't a gimmick, she's the whole game.", "replies": 4, "likes": 21 },
+    { "name": "Jade W.",    "handle": "@jadewright",   "time": "4h", "initials": "JW", "body": "Hades II at 120fps on PS5 is something else. Console players were sleeping on what PC had. It's not hyperbole to call this one of the best games ever made.", "replies": 7, "likes": 34 },
+    { "name": "Devon K.",   "handle": "@devonk",       "time": "5h", "initials": "DK", "body": "Mouse P.I. is my sleeper of the year. Nobody was talking about it two weeks ago. At $9.99 it would be a steal — at $39.99 it's still an easy yes.", "replies": 3, "likes": 18 },
+    { "name": "Aisha M.",   "handle": "@aisham",       "time": "7h", "initials": "AM", "body": "Vampire Crawlers tomorrow. Poncle going from Vampire Survivors to a first-person deckbuilder blobber is the most unhinged pivot in indie dev history and I respect it completely.", "replies": 5, "likes": 29 }
+  ]
+}

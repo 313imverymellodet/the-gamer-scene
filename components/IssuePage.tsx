@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
 import type { IssueData, CommentItem } from '@/types'
 
 // ─── Topbar ──────────────────────────────────────────────────────────────────
@@ -91,6 +92,26 @@ function Lead({ data }: { data: IssueData }) {
           <div><b>{data.lead.author}</b> · <span>{data.lead.role}</span></div>
           <div style={{ marginLeft: 'auto' }}>{data.lead.readTime}</div>
         </div>
+        {data.lead.readLink && (
+          <Link
+            href={data.lead.readLink}
+            style={{
+              display: 'inline-block',
+              marginTop: '16px',
+              fontFamily: 'var(--sans)',
+              fontSize: '0.72rem',
+              fontWeight: 700,
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              background: 'var(--ink)',
+              color: 'var(--bg)',
+              padding: '8px 16px',
+              textDecoration: 'none',
+            }}
+          >
+            Read Now →
+          </Link>
+        )}
       </div>
     </section>
   )
@@ -107,17 +128,23 @@ function News({ data }: { data: IssueData }) {
         <span className="tag">Filed this week</span>
       </div>
       {data.news.map(n => (
-        <article className="news-row" key={n.n}>
-          <div className="idx">{n.n}</div>
-          <div className="body">
-            <h3>{n.title}</h3>
-            <p>{n.blurb}</p>
-          </div>
-          <div className="meta">
-            <span className="chip">{n.cat}</span>
-            <span>{n.time}</span>
-          </div>
-        </article>
+        <Link
+          key={n.n}
+          href={n.slug ? `/news/${n.slug}` : '#'}
+          style={{ display: 'block', textDecoration: 'none', color: 'inherit' }}
+        >
+          <article className="news-row" style={{ cursor: 'pointer' }}>
+            <div className="idx">{n.n}</div>
+            <div className="body">
+              <h3>{n.title}</h3>
+              <p>{n.blurb}</p>
+            </div>
+            <div className="meta">
+              <span className="chip">{n.cat}</span>
+              <span>{n.time}</span>
+            </div>
+          </article>
+        </Link>
       ))}
     </div>
   )
@@ -183,28 +210,34 @@ function Reviews({ data }: { data: IssueData }) {
   return (
     <section className="reviews">
       {data.reviews.map((r, i) => (
-        <article className="review" key={i}>
-          <div className="cover">
-            {r.image
-              ? <img src={r.image} alt={r.title} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
-              : <div className="placeholder" />
-            }
-            <div className={`score${r.hot ? ' hot' : ''}`}>
-              <b>{r.score}</b>
-              <span className="outof">/ 10</span>
+        <Link
+          key={i}
+          href={r.slug ? `/reviews/${r.slug}` : '#'}
+          style={{ display: 'block', textDecoration: 'none', color: 'inherit' }}
+        >
+          <article className="review" style={{ cursor: 'pointer' }}>
+            <div className="cover">
+              {r.image
+                ? <img src={r.image} alt={r.title} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                : <div className="placeholder" />
+              }
+              <div className={`score${r.hot ? ' hot' : ''}`}>
+                <b>{r.score}</b>
+                <span className="outof">/ 10</span>
+              </div>
             </div>
-          </div>
-          <div className="meta">
-            <span>{r.studio}</span>
-            <span>· {r.platforms.join(' · ')}</span>
-          </div>
-          <h3>{r.title}</h3>
-          <p className="pull">&ldquo;{r.pull}&rdquo;</p>
-          <div className="foot">
-            <span>{r.author}</span>
-            <span>{r.hours}</span>
-          </div>
-        </article>
+            <div className="meta">
+              <span>{r.studio}</span>
+              <span>· {r.platforms.join(' · ')}</span>
+            </div>
+            <h3>{r.title}</h3>
+            <p className="pull">&ldquo;{r.pull}&rdquo;</p>
+            <div className="foot">
+              <span>{r.author}</span>
+              <span>{r.hours}</span>
+            </div>
+          </article>
+        </Link>
       ))}
     </section>
   )

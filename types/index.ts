@@ -13,6 +13,7 @@ export interface LeadData {
   readTime: string
   tag: string
   image?: string
+  readLink?: string
 }
 
 export interface TabItem {
