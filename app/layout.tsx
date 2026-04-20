@@ -41,6 +41,9 @@ export const metadata: Metadata = {
     title: 'The Gamer Scene',
     description: 'An independent gaming publication.',
   },
+  other: {
+    'google-adsense-account': 'ca-pub-3986912390941751',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
