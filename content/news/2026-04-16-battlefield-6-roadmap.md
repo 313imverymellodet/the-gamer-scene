@@ -1,12 +1,24 @@
 ---
 title: "Battlefield 6 Goes All-In: 7 New Maps, Naval Warfare & a Real Server Browser"
-blurb: "DICE has finally heard the community loud and clear — and the 2026 roadmap is its answer."
+blurb: "DICE drops its full 2026 roadmap and it's everything the community has been asking for — classic maps, naval warfare, and a server browser with persistent servers."
 category: Update
 date: 2026-04-16
+image: /images/battlefield-6-roadmap.jpg
 ---
 
-After two seasons that failed to satisfy a player base hungry for more content, EA and Battlefield Studios dropped a sweeping 2026 roadmap this week covering Seasons 3 through 5. The headliners: seven new maps including remakes of fan-favourite Railway to Golmud (Battlefield 4) and Grand Bazaar (Battlefield 3), the return of naval warfare, a long-demanded server browser with persistent servers, proximity chat, ranked play, and official multiplayer leaderboards.
+After two seasons that failed to hold the player base, EA and Battlefield Studios dropped their full 2026 roadmap this week — and it's a direct response to every major community complaint since launch.
 
-Season 3 kicks off in May with Golmud — described as the biggest map in BF6 to date — supporting all vehicle types. Season 4 brings Wake Island and naval battles in July. Battlefield Studios also confirmed reworks of divisive launch maps Blackwell and Sobek City, and the return of the Platoons social system that built communities in the series' heyday.
+**Seven new maps** are confirmed across Seasons 3 through 5, including fan-favourite remakes of **Railway to Golmud** (Battlefield 4) and **Grand Bazaar** (Battlefield 3, reimagined as Cairo Bazaar). Golmud will be the single largest map in Battlefield 6 to date, supporting all vehicle types. **Wake Island** returns in Season 4 alongside the reintroduction of **naval warfare** — big ships, sea battles, the works.
 
-This is the kind of roadmap the game needed at launch. Whether DICE can execute on all of it remains to be seen, but the commitment to fan-requested features — proximity chat and server browsers especially — signals the studio is finally listening. Season 3 starts in May, which means the real test of these promises is only weeks away.
+Beyond maps, the roadmap confirms a stack of long-requested features coming throughout the year:
+
+- **Server browser with persistent servers** — one of the most requested features since before launch
+- **Proximity chat** for in-match communication
+- **Platoons** — the return of clan-style community groups
+- **Official multiplayer leaderboards**
+- **Spectator Mode** and **Custom Lobbies**
+- Map reworks for divisive launch maps Blackwell and Sobek City
+
+Season 3 begins in May. Season 4 (naval warfare, Wake Island) arrives in July. Season 5 brings three more maps as a "holiday treat" in the fall.
+
+Battlefield 6 was the best-selling game of 2025. The question now is whether this roadmap is enough to win back the players who drifted after Season 2. The community response so far has been cautiously optimistic — which, for Battlefield in 2026, is pretty much a standing ovation.
