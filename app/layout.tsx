@@ -49,9 +49,39 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="en"
       className={`${fraunces.variable} ${interTight.variable} ${jetbrainsMono.variable}`}
     >
+      <head>
+        {/* Ezoic Privacy Scripts — must load first for consent compliance */}
+        <Script
+          data-cfasync="false"
+          src="https://cmp.gatekeeperconsent.com/min.js"
+          strategy="beforeInteractive"
+        />
+        <Script
+          data-cfasync="false"
+          src="https://the.gatekeeperconsent.com/cmp.min.js"
+          strategy="beforeInteractive"
+        />
+        {/* Ezoic Header Script — initializes ad system */}
+        <Script
+          src="//www.ezojs.com/ezoic/sa.min.js"
+          strategy="beforeInteractive"
+        />
+        <Script
+          id="ezoic-standalone-init"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `window.ezstandalone = window.ezstandalone || {}; ezstandalone.cmd = ezstandalone.cmd || [];`,
+          }}
+        />
+        <Script
+          src="//ezoicanalytics.com/analytics.js"
+          strategy="beforeInteractive"
+        />
+      </head>
       <body data-theme="newsprint">
         {children}
         <Analytics />
+        {/* Google AdSense */}
         <Script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3986912390941751"
