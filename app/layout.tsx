@@ -81,6 +81,24 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body data-theme="newsprint">
         {children}
         <Analytics />
+        {/* Google Analytics */}
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-BXRRBXKLPX"
+          strategy="afterInteractive"
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-BXRRBXKLPX');
+            `,
+          }}
+        />
         {/* Google AdSense */}
         <Script
           async
