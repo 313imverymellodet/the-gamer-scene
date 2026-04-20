@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Fraunces, Inter_Tight, JetBrains_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import Script from 'next/script'
 import './globals.css'
 
 const fraunces = Fraunces({
@@ -48,7 +49,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="en"
       className={`${fraunces.variable} ${interTight.variable} ${jetbrainsMono.variable}`}
     >
-      <body data-theme="newsprint">{children}<Analytics /></body>
+      <body data-theme="newsprint">
+        {children}
+        <Analytics />
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3986912390941751"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
+      </body>
     </html>
   )
 }
