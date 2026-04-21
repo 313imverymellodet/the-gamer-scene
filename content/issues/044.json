@@ -1,0 +1,80 @@
+{
+  "issue": {
+    "number": "044",
+    "date": "April 21, 2026",
+    "weekday": "Tuesday",
+    "volume": "Vol. VII",
+    "subscribers": "2,841",
+    "weather": "Cloudy w/ chance of patch notes",
+    "location": "Worldwide",
+    "readTime": "13 min"
+  },
+  "ticker": [
+    { "tag": "LIVE",     "text": "Vampire Crawlers out now — 80 Metacritic, day one Game Pass" },
+    { "tag": "LIVE",     "text": "AoM Retold: Obsidian Mirror drops today — Aztecs finally arrive" },
+    { "tag": "LIVE",     "text": "WoW Midnight Patch 12.0.5 live — Void Assaults, Decor Duels, Voidforge" },
+    { "tag": "COMING",   "text": "Saros 9 days out — Housemarque's Returnal follow-up locks April 30" },
+    { "tag": "RUMOUR",   "text": "Starfield Switch 2 rating filed in Taiwan — Xbox Showcase June 7 eyed" }
+  ],
+  "lead": {
+    "kicker": "Launch Day",
+    "title": "Vampire Crawlers Is Here — Poncle Just Did It <em>Again</em>",
+    "dek": "The one-person studio behind Vampire Survivors took their beloved universe and turned it into a first-person deckbuilding dungeon crawler. It launched today to an 80 on Metacritic and it's day one on Game Pass. Here's what critics are saying.",
+    "author": "Romello Morris",
+    "role": "Editor-in-Chief",
+    "initials": "RM",
+    "readTime": "6 min read",
+    "tag": "NEWS",
+    "image": "/images/pragmata.jpg",
+    "readLink": "/news/2026-04-21-vampire-crawlers-launch-reviews"
+  },
+  "tabs": [
+    { "id": "scene",    "num": "01", "label": "The Scene" },
+    { "id": "news",     "num": "02", "label": "Dispatch" },
+    { "id": "reviews",  "num": "03", "label": "Reviews" },
+    { "id": "indie",    "num": "04", "label": "Indie Room" },
+    { "id": "calendar", "num": "05", "label": "Calendar" },
+    { "id": "discourse","num": "06", "label": "Discourse" }
+  ],
+  "poll": {
+    "question": "What's your most anticipated game still to come this month?",
+    "options": [
+      { "label": "Saros (Apr 30)",                "pct": 0 },
+      { "label": "Diablo 4: Lord of Hatred (Apr 28)", "pct": 0 },
+      { "label": "Clair Obscur: Expedition 33 (Apr 24)", "pct": 0 },
+      { "label": "Something else entirely",       "pct": 0 }
+    ],
+    "total": "0",
+    "closes": "Closes Wednesday 23:59 UTC"
+  },
+  "calendar": [
+    { "day": "APR", "date": "22", "title": "Masters of Albion",            "sub": "Full Launch · PC",                             "platform": "PC" },
+    { "day": "APR", "date": "23", "title": "Kiln",                         "sub": "Full Launch · Day One Game Pass",               "platform": "Multi" },
+    { "day": "APR", "date": "24", "title": "Clair Obscur: Expedition 33",  "sub": "Full Launch",                                  "platform": "PS5 · XSX · PC" },
+    { "day": "APR", "date": "28", "title": "Diablo IV: Lord of Hatred",    "sub": "Expansion Launch",                             "platform": "Multi" },
+    { "day": "APR", "date": "30", "title": "Saros",                        "sub": "PS5 Exclusive · Deluxe Early Access Apr 28",   "platform": "PS5" }
+  ],
+  "spotlight": {
+    "kicker": "Indie Room · Issue 044",
+    "title": "Vampire Crawlers: Poncle's Wildest Swing Yet",
+    "blurb": "A one-person studio turned their bullet-heaven hit into a first-person deckbuilding blobber. <em>Vampire Crawlers</em> launched today at $9.99 with day-one Game Pass — and critics are calling it one of the year's best indie releases.",
+    "dev": "Poncle",
+    "price": "$9.99",
+    "platforms": "PC · PS5 · Xbox · Switch · Switch 2",
+    "runtime": "~20+ hours",
+    "image": "/images/mouse-pi.jpg"
+  },
+  "reactions": [
+    { "glyph": "★", "label": "Brilliant",  "count": 0, "key": "brilliant" },
+    { "glyph": "◐", "label": "Conflicted", "count": 0, "key": "conflicted" },
+    { "glyph": "▲", "label": "Spot on",    "count": 0, "key": "spoton" },
+    { "glyph": "✕", "label": "Disagree",   "count": 0, "key": "disagree" },
+    { "glyph": "♫", "label": "Mood",       "count": 0, "key": "mood" }
+  ],
+  "comments": [
+    { "name": "Marcus T.",  "handle": "@marcust",      "time": "1h", "initials": "MT", "body": "Vampire Crawlers demo was already 30 hours of content. At $9.99 day one Game Pass this is the easiest recommendation of the year. Poncle cannot miss.", "replies": 5, "likes": 31 },
+    { "name": "Jade W.",    "handle": "@jadewright",   "time": "2h", "initials": "JW", "body": "Saros in 9 days. I finished Returnal twice and I still don't feel ready. Housemarque is something else.", "replies": 4, "likes": 22 },
+    { "name": "Devon K.",   "handle": "@devonk",       "time": "3h", "initials": "DK", "body": "Diablo 4 Lord of Hatred confirmed for Switch 2 is the announcement I didn't know I needed. The first major Diablo on Nintendo since 2018. Wild.", "replies": 2, "likes": 17 },
+    { "name": "Priya S.",   "handle": "@priyasplays",  "time": "5h", "initials": "PS", "body": "Starfield Switch 2 rating is real. Taiwan BSRR has been accurate on every single leak this year. June 7 Xbox Showcase is the announcement window, calling it now.", "replies": 8, "likes": 41 }
+  ]
+}
