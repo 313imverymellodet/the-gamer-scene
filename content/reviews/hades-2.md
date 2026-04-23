@@ -9,6 +9,7 @@ hot: false
 date: 2026-04-15
 author: Romello Morris
 issue: "045"
+image: /images/hades-2.avif
 ---
 
 There is a version of this review where I spend a thousand words explaining what Hades II is, how it builds on the original, what Supergiant Games' pedigree is, and why the roguelite genre is having a renaissance. You don't need that version. You need the answer to the question you actually have: is this worth playing, and is the PS5 and Xbox version good?
