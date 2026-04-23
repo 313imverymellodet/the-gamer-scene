@@ -425,8 +425,16 @@ function Footer({ data }: { data: IssueData }) {
           </ul>
         </div>
         <div className="colophon">
-          <span>© 2026 THE GAMER SCENE · SET IN FRAUNCES &amp; INTER TIGHT</span>
-          <span>MANIFESTO / ETHICS / CONTACT</span>
+          <span>© 2026 THE GAMER SCENE · EST. 2013 · SET IN FRAUNCES &amp; INTER TIGHT</span>
+          <span>
+            <Link href="/about" style={{ color: 'inherit', textDecoration: 'none' }}>ABOUT</Link>
+            {' / '}
+            <Link href="/contact" style={{ color: 'inherit', textDecoration: 'none' }}>CONTACT</Link>
+            {' / '}
+            <Link href="/privacy" style={{ color: 'inherit', textDecoration: 'none' }}>PRIVACY</Link>
+            {' / '}
+            <Link href="/terms" style={{ color: 'inherit', textDecoration: 'none' }}>TERMS</Link>
+          </span>
         </div>
       </div>
     </footer>
