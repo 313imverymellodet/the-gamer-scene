@@ -102,6 +102,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             `,
           }}
         />
+        {/* PropellerAds — Service Worker Push Notifications */}
+        <Script
+          id="propellerads-sw"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('/sw.js', { scope: '/' })
+                  .catch(function(err) { console.log('SW registration failed:', err); });
+              }
+            `,
+          }}
+        />
         {/* Google AdSense */}
         <Script
           async
