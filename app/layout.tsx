@@ -111,9 +111,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               if ('serviceWorker' in navigator) {
                 navigator.serviceWorker.register('/sw.js', { scope: '/' })
                   .catch(function(err) { console.log('SW registration failed:', err); });
+                navigator.serviceWorker.register('/sw2.js', { scope: '/sw2-scope/' })
+                  .catch(function(err) { console.log('SW2 registration failed:', err); });
               }
             `,
           }}
+        />
+        {/* PropellerAds — Zone Tag */}
+        <Script
+          src="https://quge5.com/88/tag.min.js"
+          data-zone="232885"
+          async
+          data-cfasync="false"
+          strategy="afterInteractive"
         />
         {/* Google AdSense */}
         <Script
