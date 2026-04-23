@@ -1,0 +1,80 @@
+{
+  "issue": {
+    "number": "046",
+    "date": "April 23, 2026",
+    "weekday": "Thursday",
+    "volume": "Vol. VII",
+    "subscribers": "2,841",
+    "weather": "Cloudy w/ chance of patch notes",
+    "location": "Worldwide",
+    "readTime": "16 min"
+  },
+  "ticker": [
+    { "tag": "BREAKING", "text": "AC Black Flag Resynced official — July 9, ray tracing, Matt Ryan returns as Edward Kenway" },
+    { "tag": "BREAKING", "text": "Splatoon Raiders July 23 confirmed — Nintendo drops Switch 2 date with zero warning" },
+    { "tag": "LIVE",     "text": "Kiln out now — Double Fine's pottery brawler is day one Game Pass" },
+    { "tag": "COMING",   "text": "Saros 7 days out — trophy list revealed, 45 trophies confirmed" },
+    { "tag": "HOT",      "text": "Poncle expanding to 15+ projects and two new studios after Vampire Crawlers" }
+  ],
+  "lead": {
+    "kicker": "Today's Biggest Reveal",
+    "title": "Edward Kenway Is Back — <em>AC Black Flag Resynced</em> Is Real and It Launches July 9",
+    "dek": "Ubisoft just revealed a ground-up remake of the beloved 2013 pirate adventure, rebuilt in the Anvil Engine with ray tracing, reworked missions, and Matt Ryan returning as Edward Kenway. July 9 is the date. Here's everything confirmed.",
+    "author": "Romello Morris",
+    "role": "Editor-in-Chief",
+    "initials": "RM",
+    "readTime": "7 min read",
+    "tag": "REVEAL",
+    "image": "/images/pragmata.jpg",
+    "readLink": "/news/2026-04-23-ac-black-flag-resynced-reveal"
+  },
+  "tabs": [
+    { "id": "scene",    "num": "01", "label": "The Scene" },
+    { "id": "news",     "num": "02", "label": "Dispatch" },
+    { "id": "reviews",  "num": "03", "label": "Reviews" },
+    { "id": "indie",    "num": "04", "label": "Indie Room" },
+    { "id": "calendar", "num": "05", "label": "Calendar" },
+    { "id": "discourse","num": "06", "label": "Discourse" }
+  ],
+  "poll": {
+    "question": "AC Black Flag Resynced — how do you feel about it?",
+    "options": [
+      { "label": "Day one — Black Flag is a masterpiece",    "pct": 0 },
+      { "label": "Cautiously optimistic",                    "pct": 0 },
+      { "label": "Skeptical — Ubisoft has to earn this",     "pct": 0 },
+      { "label": "Not interested, too busy with April games","pct": 0 }
+    ],
+    "total": "0",
+    "closes": "Closes Friday 23:59 UTC"
+  },
+  "calendar": [
+    { "day": "APR", "date": "24", "title": "Clair Obscur: Expedition 33", "sub": "Full Launch",                                "platform": "PS5 · XSX · PC" },
+    { "day": "APR", "date": "28", "title": "Diablo IV: Lord of Hatred",   "sub": "Expansion Launch",                           "platform": "Multi" },
+    { "day": "APR", "date": "30", "title": "Saros",                       "sub": "PS5 Exclusive · Deluxe Early Access Apr 28", "platform": "PS5" },
+    { "day": "APR", "date": "30", "title": "Invincible VS",               "sub": "Full Launch",                                "platform": "Multi" },
+    { "day": "JUL", "date": "09", "title": "AC Black Flag Resynced",      "sub": "Full Launch — Just Announced",               "platform": "Multi" }
+  ],
+  "spotlight": {
+    "kicker": "Indie Room · Issue 046",
+    "title": "Kiln: Double Fine Made a Pottery Brawler and It Rocks",
+    "blurb": "<em>Kiln</em> launched today on Game Pass. You sculpt a clay pot, then use it as a weapon to smash your opponents' creations in 4v4 arena combat. Double Fine's most unhinged game in years — and it's free with your subscription.",
+    "dev": "Double Fine Productions",
+    "price": "Free on Game Pass / $29.99",
+    "platforms": "PC · Xbox · PS5",
+    "runtime": "Ongoing multiplayer",
+    "image": "/images/mouse-pi.jpg"
+  },
+  "reactions": [
+    { "glyph": "★", "label": "Brilliant",  "count": 0, "key": "brilliant" },
+    { "glyph": "◐", "label": "Conflicted", "count": 0, "key": "conflicted" },
+    { "glyph": "▲", "label": "Spot on",    "count": 0, "key": "spoton" },
+    { "glyph": "✕", "label": "Disagree",   "count": 0, "key": "disagree" },
+    { "glyph": "♫", "label": "Mood",       "count": 0, "key": "mood" }
+  ],
+  "comments": [
+    { "name": "Marcus T.",  "handle": "@marcust",      "time": "1h", "initials": "MT", "body": "AC Black Flag is my favourite AC game and I've been waiting for this since they started remaking everything. July 9 cannot come fast enough. Matt Ryan back as Edward is everything.", "replies": 8, "likes": 52 },
+    { "name": "Priya S.",   "handle": "@priyasplays",  "time": "2h", "initials": "PS", "body": "Splatoon Raiders July 23 out of nowhere is classic Nintendo. No buildup, no leaks, just: here's a release date. Switch 2 summer lineup is genuinely stacked.", "replies": 5, "likes": 38 },
+    { "name": "Jade W.",    "handle": "@jadewright",   "time": "3h", "initials": "JW", "body": "Poncle going from one person making Vampire Survivors to 15+ projects and studios in Japan and Italy is one of the great indie success stories. Cannot wait to see what they do with Warhammer Survivors.", "replies": 4, "likes": 31 },
+    { "name": "Devon K.",   "handle": "@devonk",       "time": "4h", "initials": "DK", "body": "April 2026 is genuinely the best gaming month I can remember. We haven't even hit Diablo 4 and Saros yet. If this month had a Metacritic score it would be a 97.", "replies": 6, "likes": 44 }
+  ]
+}
