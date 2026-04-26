@@ -1,12 +1,15 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import type { IssueData, CommentItem } from '@/types'
+
+const SearchModal = dynamic(() => import('./SearchModal'), { ssr: false })
 
 // ─── Topbar ──────────────────────────────────────────────────────────────────
 
-function Topbar({ data }: { data: IssueData }) {
+function Topbar({ data, onSearchOpen }: { data: IssueData; onSearchOpen: () => void }) {
   const items = [...data.ticker, ...data.ticker]
   return (
     <div className="topbar">
@@ -22,6 +25,13 @@ function Topbar({ data }: { data: IssueData }) {
         <span>{data.issue.weekday}, {data.issue.date}</span>
         <span>·</span>
         <span>{data.issue.subscribers} readers</span>
+        <button
+          onClick={onSearchOpen}
+          className="topbar-search-btn"
+          aria-label="Search"
+        >
+          ⌕ Search
+        </button>
       </div>
     </div>
   )
@@ -331,21 +341,64 @@ function IndieSpotlight({ data }: { data: IssueData }) {
 // ─── Discussion ───────────────────────────────────────────────────────────────
 
 function Discussion({ data }: { data: IssueData }) {
+  const issueNumber = data.issue.number
+  const storageKey = `tgs-reactions-${issueNumber}`
+
   const [active, setActive] = useState<Set<string>>(new Set())
   const [counts, setCounts] = useState<Record<string, number>>(
     Object.fromEntries(data.reactions.map(r => [r.key, r.count]))
   )
+  const [reactionsLoaded, setReactionsLoaded] = useState(false)
   const [composeVal, setCompose] = useState('')
   const [comments, setComments] = useState<CommentItem[]>(data.comments)
 
-  const toggle = (k: string) => {
+  // Load real reaction counts + restore which ones this device toggled
+  useEffect(() => {
+    const saved = localStorage.getItem(storageKey)
+    if (saved) {
+      try { setActive(new Set(JSON.parse(saved))) } catch {}
+    }
+
+    fetch(`/api/reactions?issue=${issueNumber}`)
+      .then(r => r.json())
+      .then(d => {
+        if (d.counts) setCounts(d.counts)
+      })
+      .catch(() => {})
+      .finally(() => setReactionsLoaded(true))
+  }, [issueNumber, storageKey])
+
+  const toggle = useCallback(async (k: string) => {
+    const isActive = active.has(k)
     const next = new Set(active)
     const newCounts = { ...counts }
-    if (next.has(k)) { next.delete(k); newCounts[k]-- }
-    else { next.add(k); newCounts[k]++ }
+
+    if (isActive) {
+      next.delete(k)
+      newCounts[k] = Math.max(0, (newCounts[k] || 0) - 1)
+    } else {
+      next.add(k)
+      newCounts[k] = (newCounts[k] || 0) + 1
+    }
+
     setActive(next)
     setCounts(newCounts)
-  }
+    localStorage.setItem(storageKey, JSON.stringify([...next]))
+
+    try {
+      const res = await fetch('/api/reactions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          issue: issueNumber,
+          key: k,
+          action: isActive ? 'remove' : 'add',
+        }),
+      })
+      const d = await res.json()
+      if (d.counts) setCounts(d.counts)
+    } catch {}
+  }, [active, counts, issueNumber, storageKey])
 
   const submit = () => {
     if (!composeVal.trim()) return
@@ -369,10 +422,12 @@ function Discussion({ data }: { data: IssueData }) {
             key={r.key}
             className={`reaction${active.has(r.key) ? ' active' : ''}`}
             onClick={() => toggle(r.key)}
+            disabled={!reactionsLoaded}
+            title={active.has(r.key) ? `Remove ${r.label} reaction` : `React with ${r.label}`}
           >
             <span className="glyph">{r.glyph}</span>
             <span>{r.label}</span>
-            <span className="count">{counts[r.key].toLocaleString()}</span>
+            <span className="count">{(counts[r.key] || 0).toLocaleString()}</span>
           </button>
         ))}
       </div>
@@ -405,6 +460,70 @@ function Discussion({ data }: { data: IssueData }) {
         ))}
       </div>
     </section>
+  )
+}
+
+// ─── Subscribe Banner ─────────────────────────────────────────────────────────
+
+function SubscribeBanner({ data }: { data: IssueData }) {
+  const [email, setEmail] = useState('')
+  const [status, setStatus] = useState<'idle' | 'loading' | 'done' | 'error'>('idle')
+
+  const handleSubmit = async (e?: React.FormEvent) => {
+    e?.preventDefault()
+    if (!email.trim() || !email.includes('@') || status === 'loading') return
+    setStatus('loading')
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      })
+      setStatus(res.ok ? 'done' : 'error')
+    } catch {
+      setStatus('error')
+    }
+  }
+
+  return (
+    <div className="subscribe-banner">
+      <div className="subscribe-banner-inner">
+        <div className="subscribe-banner-text">
+          <div className="subscribe-kicker">Free · Weekly · Independent</div>
+          <h2>Join {data.issue.subscribers} readers who actually care about games.</h2>
+          <p>Every Friday — news, reviews, the indie room, and a poll. No algorithm. No noise. Just the week in games, done right.</p>
+        </div>
+        <div className="subscribe-banner-form">
+          {status === 'done' ? (
+            <div className="subscribe-success">
+              <span className="subscribe-check">✓</span>
+              <div>
+                <strong>You&apos;re in.</strong>
+                <p>Check your inbox for a confirmation email.</p>
+              </div>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="subscribe-form-row">
+              <input
+                type="email"
+                placeholder="YOUR@EMAIL.COM"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+                disabled={status === 'loading'}
+                required
+              />
+              <button type="submit" disabled={status === 'loading'}>
+                {status === 'loading' ? 'SENDING…' : 'SUBSCRIBE FREE →'}
+              </button>
+              {status === 'error' && (
+                <p className="subscribe-error">Something went wrong — try again.</p>
+              )}
+            </form>
+          )}
+          <p className="subscribe-fine">No spam. Unsubscribe anytime. Published every Friday.</p>
+        </div>
+      </div>
+    </div>
   )
 }
 
@@ -503,6 +622,7 @@ function Footer({ data }: { data: IssueData }) {
 
 export default function IssuePage({ data }: { data: IssueData }) {
   const [tab, setTab] = useState('scene')
+  const [searchOpen, setSearchOpen] = useState(false)
 
   useEffect(() => {
     try {
@@ -515,9 +635,22 @@ export default function IssuePage({ data }: { data: IssueData }) {
     try { localStorage.setItem('tgs-tab', tab) } catch {}
   }, [tab])
 
+  // Global keyboard shortcut: Cmd+K or Ctrl+K to open search
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault()
+        setSearchOpen(prev => !prev)
+      }
+    }
+    document.addEventListener('keydown', handler)
+    return () => document.removeEventListener('keydown', handler)
+  }, [])
+
   return (
     <div className="app">
-      <Topbar data={data} />
+      <SearchModal isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
+      <Topbar data={data} onSearchOpen={() => setSearchOpen(true)} />
       <Masthead data={data} />
       <IssueTabs active={tab} setActive={setTab} data={data} />
 
@@ -572,6 +705,7 @@ export default function IssuePage({ data }: { data: IssueData }) {
         <Discussion data={data} />
       </div>
 
+      <SubscribeBanner data={data} />
       <Footer data={data} />
 
     </div>
