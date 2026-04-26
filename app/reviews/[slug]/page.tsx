@@ -5,7 +5,12 @@ import ReadingProgress from '@/components/ReadingProgress'
 import RelatedArticles from '@/components/RelatedArticles'
 import ArticleComments from '@/components/ArticleComments'
 import ArticleHero from '@/components/ArticleHero'
+import ViewCounter from '@/components/ViewCounter'
+import ShareButtons from '@/components/ShareButtons'
+import JsonLd from '@/components/JsonLd'
 import type { Metadata } from 'next'
+
+const BASE = 'https://thegamerscene.news'
 
 export async function generateStaticParams() {
   return getAllReviewSlugs().map(slug => ({ slug }))
@@ -68,8 +73,49 @@ export default async function ReviewPage({
   const relatedNews   = getRelatedNews(slug, undefined, 2)  // slug won't match news files, all news eligible
   const related       = [...otherReviews, ...relatedNews].slice(0, 3)
 
+  const isoDate = (() => {
+    if (!review.date) return undefined
+    const clean = review.date.match(/\d{4}-\d{2}-\d{2}/)
+    if (clean) return `${clean[0]}T12:00:00Z`
+    try { return new Date(review.date).toISOString() } catch { return undefined }
+  })()
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Review',
+    name: `${review.title} Review`,
+    url: `${BASE}/reviews/${slug}`,
+    datePublished: isoDate,
+    reviewBody: review.pull,
+    reviewRating: {
+      '@type': 'Rating',
+      ratingValue: String(review.score),
+      bestRating: '10',
+      worstRating: '0',
+    },
+    itemReviewed: {
+      '@type': 'VideoGame',
+      name: review.title,
+      author: { '@type': 'Organization', name: review.studio },
+      applicationCategory: 'Game',
+      operatingSystem: review.platforms.join(', '),
+    },
+    author: {
+      '@type': 'Person',
+      name: review.author,
+      worksFor: { '@type': 'Organization', name: 'The Gamer Scene', url: BASE },
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'The Gamer Scene',
+      url: BASE,
+      logo: { '@type': 'ImageObject', url: `${BASE}/icon.svg` },
+    },
+  }
+
   return (
     <div style={{ background: 'var(--bg)', minHeight: '100vh', color: 'var(--ink)' }}>
+      <JsonLd data={jsonLd} />
       <ReadingProgress />
 
       {/* Site header */}
@@ -217,7 +263,7 @@ export default async function ReviewPage({
           &ldquo;{review.pull}&rdquo;
         </p>
 
-        {/* Meta bar */}
+        {/* Meta bar + view counter */}
         <div style={{
           fontFamily: 'var(--sans)',
           fontSize: '0.72rem',
@@ -228,23 +274,33 @@ export default async function ReviewPage({
           borderTop: '1px solid var(--rule)',
           borderBottom: '1px solid var(--rule)',
           padding: '10px 0',
-          margin: '0 0 32px',
+          margin: '0 0 0',
           display: 'flex',
           gap: '16px',
           flexWrap: 'wrap',
+          alignItems: 'center',
         }}>
           <span>{review.author}</span>
           <span>{review.hours}</span>
           {formattedDate && <span>{formattedDate}</span>}
+          <ViewCounter
+            slug={slug}
+            style={{ marginLeft: 'auto', color: 'var(--ink-faint)', fontFamily: 'var(--mono)', fontSize: '9px', letterSpacing: '0.12em' }}
+          />
         </div>
 
+        {/* Share buttons */}
+        <ShareButtons title={review.title} url={`${BASE}/reviews/${slug}`} />
+
         {/* Hero image */}
-        <ArticleHero
-          src={review.image}
-          alt={review.title}
-          category="REVIEW"
-          title={review.title}
-        />
+        <div style={{ marginTop: '28px' }}>
+          <ArticleHero
+            src={review.image}
+            alt={review.title}
+            category="REVIEW"
+            title={review.title}
+          />
+        </div>
 
         {/* Review body */}
         <div

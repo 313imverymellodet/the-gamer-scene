@@ -5,7 +5,12 @@ import ReadingProgress from '@/components/ReadingProgress'
 import RelatedArticles from '@/components/RelatedArticles'
 import ArticleComments from '@/components/ArticleComments'
 import ArticleHero from '@/components/ArticleHero'
+import ViewCounter from '@/components/ViewCounter'
+import ShareButtons from '@/components/ShareButtons'
+import JsonLd from '@/components/JsonLd'
 import type { Metadata } from 'next'
+
+const BASE = 'https://thegamerscene.news'
 
 export async function generateStaticParams() {
   return getAllNewsSlugs().map(slug => ({ slug }))
@@ -66,8 +71,37 @@ export default async function NewsArticlePage({
   const relatedReviews = getRelatedReviews(slug, 1)  // slug won't match any review file, so all reviews eligible
   const related        = [...relatedNews, ...relatedReviews].slice(0, 3)
 
+  // Safe ISO date: item.date may be a stringified JS Date from gray-matter
+  const isoDate = (() => {
+    if (!item.date) return undefined
+    // If it looks like YYYY-MM-DD already, use it directly
+    const clean = item.date.match(/\d{4}-\d{2}-\d{2}/)
+    if (clean) return `${clean[0]}T12:00:00Z`
+    try { return new Date(item.date).toISOString() } catch { return undefined }
+  })()
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'NewsArticle',
+    headline: item.title,
+    description: item.blurb,
+    datePublished: isoDate,
+    dateModified: isoDate,
+    url: `${BASE}/news/${slug}`,
+    image: item.image ? `${BASE}${item.image}` : `${BASE}/news/${slug}/opengraph-image`,
+    author: { '@type': 'Organization', name: 'The Gamer Scene', url: BASE },
+    publisher: {
+      '@type': 'Organization',
+      name: 'The Gamer Scene',
+      url: BASE,
+      logo: { '@type': 'ImageObject', url: `${BASE}/icon.svg` },
+    },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `${BASE}/news/${slug}` },
+  }
+
   return (
     <div style={{ background: 'var(--bg)', minHeight: '100vh', color: 'var(--ink)' }}>
+      <JsonLd data={jsonLd} />
       <ReadingProgress />
 
       {/* Site header */}
@@ -161,7 +195,7 @@ export default async function NewsArticlePage({
           {item.blurb}
         </p>
 
-        {/* Meta */}
+        {/* Meta + view counter */}
         <div style={{
           fontFamily: 'var(--sans)',
           fontSize: '0.72rem',
@@ -172,21 +206,32 @@ export default async function NewsArticlePage({
           borderTop: '1px solid var(--rule)',
           borderBottom: '1px solid var(--rule)',
           padding: '10px 0',
-          margin: '0 0 32px',
+          margin: '0 0 0',
           display: 'flex',
           gap: '16px',
+          alignItems: 'center',
         }}>
           <span>The Gamer Scene</span>
           {formattedDate && <span>{formattedDate}</span>}
+          <ViewCounter
+            slug={slug}
+            style={{ marginLeft: 'auto', color: 'var(--ink-faint)', fontFamily: 'var(--mono)', fontSize: '9px', letterSpacing: '0.12em' }}
+          />
         </div>
 
+        {/* Share buttons */}
+        <ShareButtons title={item.title} url={`${BASE}/news/${slug}`} />
+
+
         {/* Hero image */}
-        <ArticleHero
-          src={item.image}
-          alt={item.title}
-          category={item.category}
-          title={item.title}
-        />
+        <div style={{ marginTop: '28px' }}>
+          <ArticleHero
+            src={item.image}
+            alt={item.title}
+            category={item.category}
+            title={item.title}
+          />
+        </div>
 
         {/* Article body */}
         <div

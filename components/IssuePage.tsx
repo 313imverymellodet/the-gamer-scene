@@ -6,6 +6,7 @@ import dynamic from 'next/dynamic'
 import type { IssueData, CommentItem } from '@/types'
 
 const SearchModal = dynamic(() => import('./SearchModal'), { ssr: false })
+const MobileNav   = dynamic(() => import('./MobileNav'),   { ssr: false })
 
 // ─── Topbar ──────────────────────────────────────────────────────────────────
 
@@ -613,7 +614,19 @@ export default function IssuePage({ data }: { data: IssueData }) {
   return (
     <div className="app">
       <SearchModal isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
-      <Topbar data={data} onSearchOpen={() => setSearchOpen(true)} />
+      {/* Desktop topbar — hidden on mobile via CSS */}
+      <div className="desktop-only">
+        <Topbar data={data} onSearchOpen={() => setSearchOpen(true)} />
+      </div>
+      {/* Mobile nav — hidden on desktop via CSS */}
+      <div className="mobile-only">
+        <MobileNav
+          data={data}
+          activeTab={tab}
+          onTabChange={t => { setTab(t); try { localStorage.setItem('tgs-tab', t) } catch {} }}
+          onSearchOpen={() => setSearchOpen(true)}
+        />
+      </div>
       <Masthead data={data} />
       <IssueTabs active={tab} setActive={setTab} data={data} />
 
