@@ -530,49 +530,12 @@ function SubscribeBanner({ data }: { data: IssueData }) {
 // ─── Footer ───────────────────────────────────────────────────────────────────
 
 function Footer({ data }: { data: IssueData }) {
-  const [email, setEmail] = useState('')
-  const [subscribed, setSubscribed] = useState(false)
-  const [loading, setLoading] = useState(false)
-
-  const handleSubscribe = async () => {
-    if (!email.trim() || !email.includes('@')) return
-    setLoading(true)
-    try {
-      await fetch('/api/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
-      })
-    } finally {
-      setLoading(false)
-      setSubscribed(true)
-    }
-  }
-
   return (
     <footer className="footer">
       <div className="footer-grid">
         <div>
           <div className="brand">The Gamer·Scene</div>
-          <p>An independent gaming publication. Published Saturdays. Read by {data.issue.subscribers} people who take games seriously.</p>
-          <div className="subscribe">
-            {subscribed ? (
-              <div className="subscribed-msg">✓ You&apos;re on the list.</div>
-            ) : (
-              <>
-                <input
-                  type="email"
-                  placeholder="YOUR@EMAIL.COM"
-                  value={email}
-                  onChange={e => setEmail(e.target.value)}
-                  onKeyDown={e => e.key === 'Enter' && handleSubscribe()}
-                />
-                <button onClick={handleSubscribe} disabled={loading}>
-                  {loading ? '...' : 'SUBSCRIBE'}
-                </button>
-              </>
-            )}
-          </div>
+          <p>An independent gaming publication. Published Fridays. Read by {data.issue.subscribers} people who take games seriously.</p>
         </div>
         <div>
           <h4>Sections</h4>

@@ -83,7 +83,7 @@ export default async function Image() {
             letterSpacing: '0.12em',
             color: '#888',
           }}>
-            Est. 2019
+            Est. 2013
           </div>
         </div>
       </div>

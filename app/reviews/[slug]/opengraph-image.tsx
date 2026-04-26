@@ -1,14 +1,9 @@
 import { ImageResponse } from 'next/og'
-import { getReviewBySlug, getAllReviewSlugs } from '@/lib/content'
+import { getReviewBySlug } from '@/lib/content'
 
-export const runtime = 'edge'
 export const alt = 'The Gamer Scene — Review'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
-
-export async function generateStaticParams() {
-  return getAllReviewSlugs().map(slug => ({ slug }))
-}
 
 function scoreColor(score: number): string {
   if (score >= 9) return '#c0392b'   // red/hot

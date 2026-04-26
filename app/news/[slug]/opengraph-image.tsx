@@ -1,14 +1,9 @@
 import { ImageResponse } from 'next/og'
-import { getNewsItemBySlug, getAllNewsSlugs } from '@/lib/content'
+import { getNewsItemBySlug } from '@/lib/content'
 
-export const runtime = 'edge'
 export const alt = 'The Gamer Scene'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
-
-export async function generateStaticParams() {
-  return getAllNewsSlugs().map(slug => ({ slug }))
-}
 
 // Category → accent color mapping
 const CAT_COLORS: Record<string, string> = {

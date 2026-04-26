@@ -63,7 +63,7 @@ export default async function NewsArticlePage({
 
   // Related: same-category news + 1 review (up to 3 total)
   const relatedNews    = getRelatedNews(slug, item.category, 2)
-  const relatedReviews = getRelatedReviews('', 1)
+  const relatedReviews = getRelatedReviews(slug, 1)  // slug won't match any review file, so all reviews eligible
   const related        = [...relatedNews, ...relatedReviews].slice(0, 3)
 
   return (

@@ -65,7 +65,7 @@ export default async function ReviewPage({
 
   // Related: other reviews + recent news
   const otherReviews  = getRelatedReviews(slug, 1)
-  const relatedNews   = getRelatedNews('', undefined, 2)
+  const relatedNews   = getRelatedNews(slug, undefined, 2)  // slug won't match news files, all news eligible
   const related       = [...otherReviews, ...relatedNews].slice(0, 3)
 
   return (

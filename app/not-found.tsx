@@ -79,7 +79,7 @@ export default function NotFound() {
         opacity: 0.3,
         textTransform: 'uppercase',
       }}>
-        The Gamer·Scene · Est. 2019
+        The Gamer·Scene · Est. 2013
       </div>
     </div>
   )
