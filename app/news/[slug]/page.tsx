@@ -1,6 +1,9 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { getNewsItemBySlug, getAllNewsSlugs } from '@/lib/content'
+import { getNewsItemBySlug, getAllNewsSlugs, getRelatedNews, getRelatedReviews } from '@/lib/content'
+import ReadingProgress from '@/components/ReadingProgress'
+import RelatedArticles from '@/components/RelatedArticles'
+import ArticleComments from '@/components/ArticleComments'
 import type { Metadata } from 'next'
 
 export async function generateStaticParams() {
@@ -23,6 +26,11 @@ export async function generateMetadata({
       description: item.blurb,
       images: item.image ? [item.image] : [],
     },
+    twitter: {
+      card: 'summary_large_image',
+      title: item.title,
+      description: item.blurb,
+    },
   }
 }
 
@@ -43,8 +51,15 @@ export default async function NewsArticlePage({
       })
     : ''
 
+  // Related: same-category news + 1 review (up to 3 total)
+  const relatedNews    = getRelatedNews(slug, item.category, 2)
+  const relatedReviews = getRelatedReviews('', 1)
+  const related        = [...relatedNews, ...relatedReviews].slice(0, 3)
+
   return (
     <div style={{ background: 'var(--bg)', minHeight: '100vh', color: 'var(--ink)' }}>
+      <ReadingProgress />
+
       {/* Site header */}
       <header style={{
         borderBottom: '2px solid var(--ink)',
@@ -67,20 +82,30 @@ export default async function NewsArticlePage({
         }}>
           THE GAMER SCENE
         </Link>
-        <Link href="/" style={{
-          fontFamily: 'var(--sans)',
-          fontSize: '0.72rem',
-          fontWeight: 600,
-          letterSpacing: '0.08em',
-          textTransform: 'uppercase',
-          color: 'var(--ink-soft)',
-          textDecoration: 'none',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '6px',
-        }}>
-          ← Back to Issue
-        </Link>
+        <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
+          <Link href="/issues" style={{
+            fontFamily: 'var(--sans)',
+            fontSize: '0.72rem',
+            fontWeight: 600,
+            letterSpacing: '0.08em',
+            textTransform: 'uppercase',
+            color: 'var(--ink-soft)',
+            textDecoration: 'none',
+          }}>
+            Archive
+          </Link>
+          <Link href="/" style={{
+            fontFamily: 'var(--sans)',
+            fontSize: '0.72rem',
+            fontWeight: 600,
+            letterSpacing: '0.08em',
+            textTransform: 'uppercase',
+            color: 'var(--ink-soft)',
+            textDecoration: 'none',
+          }}>
+            ← Back to Issue
+          </Link>
+        </div>
       </header>
 
       <main style={{ maxWidth: '720px', margin: '0 auto', padding: '48px 24px 80px' }}>
@@ -167,6 +192,12 @@ export default async function NewsArticlePage({
             color: 'var(--ink)',
           }}
         />
+
+        {/* Related articles */}
+        <RelatedArticles items={related} heading="More From The Gamer Scene" />
+
+        {/* Comments */}
+        <ArticleComments issueContext={slug} />
       </main>
 
       {/* Footer */}

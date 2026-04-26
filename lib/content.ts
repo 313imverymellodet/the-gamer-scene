@@ -169,6 +169,78 @@ export function getAllReviewSlugs(): string[] {
     .map(f => f.replace('.md', ''))
 }
 
+// ─── Related Content ──────────────────────────────────────────────────────────
+
+export interface RelatedItem {
+  type: 'news' | 'review'
+  title: string
+  blurb: string
+  category?: string
+  score?: number
+  slug: string
+  href: string
+}
+
+/**
+ * Returns up to `limit` related articles for a given news slug.
+ * Priority: same category → same issue → most recent. Excludes the current slug.
+ */
+export function getRelatedNews(currentSlug: string, category?: string, limit = 3): RelatedItem[] {
+  const newsDir = path.join(contentDir, 'news')
+  if (!fs.existsSync(newsDir)) return []
+
+  const files = fs.readdirSync(newsDir)
+    .filter(f => f.endsWith('.md') && f.replace('.md', '') !== currentSlug)
+    .sort()
+    .reverse()
+
+  const items: Array<{ item: RelatedItem; priority: number }> = files.map(file => {
+    const raw = fs.readFileSync(path.join(newsDir, file), 'utf-8')
+    const { data } = matter(raw)
+    const slug = file.replace('.md', '')
+    const item: RelatedItem = {
+      type: 'news',
+      title: String(data.title || ''),
+      blurb: String(data.blurb || ''),
+      category: String(data.category || ''),
+      slug,
+      href: `/news/${slug}`,
+    }
+    const sameCategory = category && data.category === category
+    return { item, priority: sameCategory ? 1 : 0 }
+  })
+
+  return items
+    .sort((a, b) => b.priority - a.priority)
+    .slice(0, limit)
+    .map(x => x.item)
+}
+
+/**
+ * Returns up to `limit` related reviews, excluding the current slug.
+ */
+export function getRelatedReviews(currentSlug: string, limit = 2): RelatedItem[] {
+  const reviewsDir = path.join(contentDir, 'reviews')
+  if (!fs.existsSync(reviewsDir)) return []
+
+  return fs.readdirSync(reviewsDir)
+    .filter(f => f.endsWith('.md') && f.replace('.md', '') !== currentSlug)
+    .slice(0, limit)
+    .map(file => {
+      const raw = fs.readFileSync(path.join(reviewsDir, file), 'utf-8')
+      const { data } = matter(raw)
+      const slug = file.replace('.md', '')
+      return {
+        type: 'review' as const,
+        title: String(data.title || ''),
+        blurb: String(data.pull || data.blurb || ''),
+        score: typeof data.score === 'number' ? data.score : undefined,
+        slug,
+        href: `/reviews/${slug}`,
+      }
+    })
+}
+
 export function getAllIssueSlugs(): string[] {
   const issuesDir = path.join(contentDir, 'issues')
   return fs.readdirSync(issuesDir)

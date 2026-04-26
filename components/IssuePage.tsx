@@ -587,10 +587,10 @@ function Footer({ data }: { data: IssueData }) {
         <div>
           <h4>Archive</h4>
           <ul>
-            <li><a href="/">Issues 2026</a></li>
-            <li><a href="/">Issues 2025</a></li>
-            <li><a href="/">Best of 2024</a></li>
-            <li><a href="/">Longreads</a></li>
+            <li><Link href="/issues">All Issues</Link></li>
+            <li><a href="/issues">Issues 2026</a></li>
+            <li><a href="/issues">Issues 2025</a></li>
+            <li><a href="/issues">Best of 2024</a></li>
           </ul>
         </div>
         <div>
