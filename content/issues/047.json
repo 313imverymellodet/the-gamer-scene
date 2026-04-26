@@ -1,0 +1,80 @@
+{
+  "issue": {
+    "number": "047",
+    "date": "April 24, 2026",
+    "weekday": "Friday",
+    "volume": "Vol. VII",
+    "subscribers": "2,841",
+    "weather": "Cloudy w/ chance of patch notes",
+    "location": "Worldwide",
+    "readTime": "14 min"
+  },
+  "ticker": [
+    { "tag": "BREAKING", "text": "'We Are Xbox' — Microsoft kills 'Microsoft Gaming' name in major brand reset" },
+    { "tag": "LEAK",     "text": "Game Pass Starter Edition leaked in Discord Nitro — 50+ games, cloud streaming" },
+    { "tag": "LIVE",     "text": "Little Nightmares VR: Altered Echoes out now on PSVR2, Meta Quest, PC VR" },
+    { "tag": "COMING",   "text": "Diablo 4: Lord of Hatred preloads live — 4 days until launch" },
+    { "tag": "COMING",   "text": "Saros 6 days out — pre-load details and final trailer breakdown" }
+  ],
+  "lead": {
+    "kicker": "Industry Shift",
+    "title": "<em>'We Are Xbox'</em> — Microsoft Admits Players Are Frustrated and Resets the Brand",
+    "dek": "Xbox CEO Asha Sharma and CCO Matt Booty dropped an internal memo killing 'Microsoft Gaming' for good and saying the quiet part out loud. Here's the full breakdown of what it means for the platform and its players.",
+    "author": "Romello Morris",
+    "role": "Editor-in-Chief",
+    "initials": "RM",
+    "readTime": "7 min read",
+    "tag": "INDUSTRY",
+    "image": "/images/pragmata.jpg",
+    "readLink": "/news/2026-04-24-we-are-xbox-rebrand-memo"
+  },
+  "tabs": [
+    { "id": "scene",    "num": "01", "label": "The Scene" },
+    { "id": "news",     "num": "02", "label": "Dispatch" },
+    { "id": "reviews",  "num": "03", "label": "Reviews" },
+    { "id": "indie",    "num": "04", "label": "Indie Room" },
+    { "id": "calendar", "num": "05", "label": "Calendar" },
+    { "id": "discourse","num": "06", "label": "Discourse" }
+  ],
+  "poll": {
+    "question": "Does the 'We Are Xbox' rebrand change how you feel about the platform?",
+    "options": [
+      { "label": "Yes — this feels like a real shift",        "pct": 0 },
+      { "label": "Words are cheap, show me the games",        "pct": 0 },
+      { "label": "Game Pass Starter on Discord is the move",  "pct": 0 },
+      { "label": "I don't own an Xbox so it doesn't matter",  "pct": 0 }
+    ],
+    "total": "0",
+    "closes": "Closes Saturday 23:59 UTC"
+  },
+  "calendar": [
+    { "day": "APR", "date": "26", "title": "Xbox Free Play Days End",         "sub": "Last day — 3 games free this weekend",          "platform": "Xbox" },
+    { "day": "APR", "date": "28", "title": "Diablo IV: Lord of Hatred",       "sub": "Expansion Launch — Pre-load live now",           "platform": "Multi" },
+    { "day": "APR", "date": "30", "title": "Saros",                           "sub": "PS5 Exclusive · Deluxe Early Access Apr 28",     "platform": "PS5" },
+    { "day": "APR", "date": "30", "title": "Invincible VS",                   "sub": "Full Launch",                                    "platform": "Multi" },
+    { "day": "MAY", "date": "19", "title": "Forza Horizon 6",                 "sub": "Japan · Day One Game Pass · Premium Apr 15",     "platform": "Multi" }
+  ],
+  "spotlight": {
+    "kicker": "Indie Room · Issue 047",
+    "title": "Little Nightmares VR Is Everything Horror VR Should Be",
+    "blurb": "<em>Little Nightmares VR: Altered Echoes</em> launched today on PSVR2, Meta Quest, and PC VR. Playing Dark Six searching for Six in first-person VR completely transforms how this franchise's dread lands. If you have a headset, this is the weekend's must-play.",
+    "dev": "Bandai Namco",
+    "price": "$29.99",
+    "platforms": "PSVR2 · Meta Quest · PC VR",
+    "runtime": "~5 hours",
+    "image": "/images/mouse-pi.jpg"
+  },
+  "reactions": [
+    { "glyph": "★", "label": "Brilliant",  "count": 0, "key": "brilliant" },
+    { "glyph": "◐", "label": "Conflicted", "count": 0, "key": "conflicted" },
+    { "glyph": "▲", "label": "Spot on",    "count": 0, "key": "spoton" },
+    { "glyph": "✕", "label": "Disagree",   "count": 0, "key": "disagree" },
+    { "glyph": "♫", "label": "Mood",       "count": 0, "key": "mood" }
+  ],
+  "comments": [
+    { "name": "Marcus T.",  "handle": "@marcust",      "time": "1h",  "initials": "MT", "body": "The 'We Are Xbox' memo is the most honest thing Microsoft Gaming has published in years. Asha Sharma literally said players are frustrated. That's not PR, that's an admission. Now back it up.", "replies": 9, "likes": 58 },
+    { "name": "Priya S.",   "handle": "@priyasplays",  "time": "2h",  "initials": "PS", "body": "Game Pass Starter in Discord Nitro is genuinely smart. That's 200 million Discord users who could stumble into Xbox's library. The subscription war just got interesting.", "replies": 6, "likes": 41 },
+    { "name": "Devon K.",   "handle": "@devonk",       "time": "3h",  "initials": "DK", "body": "April 30 survival guide is needed because Saros, Invincible VS, AND Diablo 4 all in the same week is criminal. My backlog has a backlog at this point.", "replies": 5, "likes": 33 },
+    { "name": "Jade W.",    "handle": "@jadewright",   "time": "5h",  "initials": "JW", "body": "Summer 2026 calendar piece is required reading. Forza Horizon 6 Japan, Elden Ring Nightreign, Splatoon Raiders, 007 First Light — we are genuinely eating this year.", "replies": 4, "likes": 27 }
+  ]
+}

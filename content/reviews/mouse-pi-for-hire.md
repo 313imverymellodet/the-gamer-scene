@@ -8,7 +8,7 @@ hours: 9
 hot: false
 date: 2026-04-18
 author: Romello Morris
-issue: "046"
+issue: "047"
 image: /images/mouse-pi.jpg
 ---
 

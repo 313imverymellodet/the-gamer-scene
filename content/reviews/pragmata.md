@@ -8,7 +8,7 @@ hours: 14
 hot: true
 date: 2026-04-18
 author: Romello Morris
-issue: "046"
+issue: "047"
 image: /images/pragmata.jpg
 ---
 
