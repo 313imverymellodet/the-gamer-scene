@@ -153,28 +153,85 @@ function News({ data }: { data: IssueData }) {
 // ─── Poll ─────────────────────────────────────────────────────────────────────
 
 function Poll({ data }: { data: IssueData }) {
-  const [voted, setVoted] = useState<number | null>(null)
+  const issueNumber = data.issue.number
+  const storageKey = `tgs-poll-${issueNumber}`
   const opts = data.poll.options
+
+  const [voted, setVoted] = useState<number | null>(null)
+  const [counts, setCounts] = useState<Record<string, number>>({})
+  const [total, setTotal] = useState(0)
+  const [loading, setLoading] = useState(true)
+  const [submitting, setSubmitting] = useState(false)
+
+  // Load current vote counts + check if already voted on this device
+  useEffect(() => {
+    const saved = localStorage.getItem(storageKey)
+    if (saved !== null) setVoted(Number(saved))
+
+    fetch(`/api/poll?issue=${issueNumber}`)
+      .then(r => r.json())
+      .then(d => {
+        setCounts(d.votes || {})
+        setTotal(d.total || 0)
+      })
+      .catch(() => {})
+      .finally(() => setLoading(false))
+  }, [issueNumber, storageKey])
+
+  const handleVote = async (i: number) => {
+    if (voted !== null || submitting) return
+    setSubmitting(true)
+    setVoted(i)
+    localStorage.setItem(storageKey, String(i))
+
+    try {
+      const res = await fetch('/api/poll', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ issue: issueNumber, option: i }),
+      })
+      const d = await res.json()
+      setCounts(d.votes || {})
+      setTotal(d.total || 0)
+    } catch {
+      // Keep local state even if request fails
+    } finally {
+      setSubmitting(false)
+    }
+  }
+
+  const getPct = (i: number) => {
+    if (total === 0) return 0
+    return Math.round(((counts[String(i)] || 0) / total) * 100)
+  }
+
+  const hasVoted = voted !== null
+
   return (
     <div className="poll">
-      <div className="label">Reader Poll · 24H</div>
+      <div className="label">Reader Poll · Issue {issueNumber}</div>
       <h3>{data.poll.question}</h3>
       <div className="opts">
-        {opts.map((o, i) => (
-          <button
-            key={i}
-            className={`opt${voted !== null ? ' voted' : ''}${voted === i ? ' selected' : ''}`}
-            onClick={() => voted === null && setVoted(i)}
-            disabled={voted !== null}
-          >
-            <div className="fill" style={{ width: voted !== null ? `${o.pct}%` : '0%' }} />
-            <span>{o.label}{voted === i ? ' ✓' : ''}</span>
-            <span className="pct">{voted !== null ? `${o.pct}%` : ''}</span>
-          </button>
-        ))}
+        {opts.map((o, i) => {
+          const pct = getPct(i)
+          return (
+            <button
+              key={i}
+              className={`opt${hasVoted ? ' voted' : ''}${voted === i ? ' selected' : ''}`}
+              onClick={() => handleVote(i)}
+              disabled={hasVoted || submitting || loading}
+            >
+              <div className="fill" style={{ width: hasVoted ? `${pct}%` : '0%' }} />
+              <span>{o.label}{voted === i ? ' ✓' : ''}</span>
+              <span className="pct">{hasVoted ? `${pct}%` : ''}</span>
+            </button>
+          )
+        })}
       </div>
       <div className="total">
-        <span>{data.poll.total} votes</span>
+        <span>
+          {loading ? 'Loading…' : `${total.toLocaleString()} ${total === 1 ? 'vote' : 'votes'}`}
+        </span>
         <span>{data.poll.closes}</span>
       </div>
     </div>
