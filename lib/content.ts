@@ -107,6 +107,7 @@ export interface FullNewsItem {
   date: string
   image?: string
   slug: string
+  author: string
   bodyHtml: string
 }
 
@@ -127,6 +128,7 @@ export function getNewsItemBySlug(slug: string): FullNewsItem | null {
     date: data.date ? String(data.date) : '',
     image: data.image as string | undefined,
     slug,
+    author: data.author ? String(data.author) : 'Romello Morris',
     bodyHtml: marked(content) as string,
   }
 }

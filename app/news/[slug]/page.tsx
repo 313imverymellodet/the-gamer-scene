@@ -8,7 +8,24 @@ import ArticleHero from '@/components/ArticleHero'
 import ViewCounter from '@/components/ViewCounter'
 import ShareButtons from '@/components/ShareButtons'
 import JsonLd from '@/components/JsonLd'
+import InlineSubscribeCTA from '@/components/InlineSubscribeCTA'
 import type { Metadata } from 'next'
+
+/** Split bodyHtml after the Nth closing </p> tag and inject a CTA node. */
+function injectMidArticleCTA(html: string, afterParagraph = 3): { before: string; after: string } {
+  let count = 0
+  let idx = -1
+  let search = 0
+  while (count < afterParagraph) {
+    const found = html.indexOf('</p>', search)
+    if (found === -1) break
+    count++
+    idx = found + 4
+    search = idx
+  }
+  if (idx === -1 || count < afterParagraph) return { before: html, after: '' }
+  return { before: html.slice(0, idx), after: html.slice(idx) }
+}
 
 const BASE = 'https://thegamerscene.news'
 
@@ -68,8 +85,10 @@ export default async function NewsArticlePage({
 
   // Related: same-category news + 1 review (up to 3 total)
   const relatedNews    = getRelatedNews(slug, item.category, 2)
-  const relatedReviews = getRelatedReviews(slug, 1)  // slug won't match any review file, so all reviews eligible
+  const relatedReviews = getRelatedReviews(slug, 1)
   const related        = [...relatedNews, ...relatedReviews].slice(0, 3)
+
+  const { before: bodyBefore, after: bodyAfter } = injectMidArticleCTA(item.bodyHtml, 3)
 
   // Safe ISO date: item.date may be a stringified JS Date from gray-matter
   const isoDate = (() => {
@@ -211,7 +230,9 @@ export default async function NewsArticlePage({
           gap: '16px',
           alignItems: 'center',
         }}>
-          <span>The Gamer Scene</span>
+          <Link href="/authors/romello-morris" style={{ color: 'inherit', textDecoration: 'none' }}>
+            {item.author}
+          </Link>
           {formattedDate && <span>{formattedDate}</span>}
           <ViewCounter
             slug={slug}
@@ -233,10 +254,10 @@ export default async function NewsArticlePage({
           />
         </div>
 
-        {/* Article body */}
+        {/* Article body — split around mid-article CTA */}
         <div
           className="article-body"
-          dangerouslySetInnerHTML={{ __html: item.bodyHtml }}
+          dangerouslySetInnerHTML={{ __html: bodyBefore }}
           style={{
             fontFamily: 'var(--serif)',
             fontSize: '1.05rem',
@@ -244,6 +265,19 @@ export default async function NewsArticlePage({
             color: 'var(--ink)',
           }}
         />
+        {bodyAfter && <InlineSubscribeCTA />}
+        {bodyAfter && (
+          <div
+            className="article-body"
+            dangerouslySetInnerHTML={{ __html: bodyAfter }}
+            style={{
+              fontFamily: 'var(--serif)',
+              fontSize: '1.05rem',
+              lineHeight: 1.75,
+              color: 'var(--ink)',
+            }}
+          />
+        )}
 
         {/* Related articles */}
         <RelatedArticles items={related} heading="More From The Gamer Scene" />

@@ -1,0 +1,19 @@
+{
+  "slug": "romello-morris",
+  "name": "Romello Morris",
+  "initials": "RM",
+  "role": "Editor-in-Chief",
+  "bio": "Romello Morris is the founder and Editor-in-Chief of The Gamer Scene. He has been writing about video games since 2013, covering everything from AAA blockbusters to indie gems that deserve more attention. Based in Detroit. Believes Hades II is the best roguelite ever made and will not be taking questions.",
+  "location": "Detroit, MI",
+  "since": "2013",
+  "social": {
+    "twitter": "https://x.com/thegamerscene",
+    "bluesky": "https://bsky.app/profile/thegamerscene.news",
+    "newsletter": "https://thegamerscenedaily.substack.com"
+  },
+  "stats": {
+    "reviewsPublished": 3,
+    "articlesPublished": 57,
+    "yearsActive": 13
+  }
+}

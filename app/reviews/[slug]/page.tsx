@@ -8,7 +8,23 @@ import ArticleHero from '@/components/ArticleHero'
 import ViewCounter from '@/components/ViewCounter'
 import ShareButtons from '@/components/ShareButtons'
 import JsonLd from '@/components/JsonLd'
+import InlineSubscribeCTA from '@/components/InlineSubscribeCTA'
 import type { Metadata } from 'next'
+
+function injectMidArticleCTA(html: string, afterParagraph = 3): { before: string; after: string } {
+  let count = 0
+  let idx = -1
+  let search = 0
+  while (count < afterParagraph) {
+    const found = html.indexOf('</p>', search)
+    if (found === -1) break
+    count++
+    idx = found + 4
+    search = idx
+  }
+  if (idx === -1 || count < afterParagraph) return { before: html, after: '' }
+  return { before: html.slice(0, idx), after: html.slice(idx) }
+}
 
 const BASE = 'https://thegamerscene.news'
 
@@ -70,8 +86,10 @@ export default async function ReviewPage({
 
   // Related: other reviews + recent news
   const otherReviews  = getRelatedReviews(slug, 1)
-  const relatedNews   = getRelatedNews(slug, undefined, 2)  // slug won't match news files, all news eligible
+  const relatedNews   = getRelatedNews(slug, undefined, 2)
   const related       = [...otherReviews, ...relatedNews].slice(0, 3)
+
+  const { before: bodyBefore, after: bodyAfter } = injectMidArticleCTA(review.bodyHtml, 3)
 
   const isoDate = (() => {
     if (!review.date) return undefined
@@ -280,7 +298,9 @@ export default async function ReviewPage({
           flexWrap: 'wrap',
           alignItems: 'center',
         }}>
-          <span>{review.author}</span>
+          <Link href="/authors/romello-morris" style={{ color: 'inherit', textDecoration: 'none' }}>
+            {review.author}
+          </Link>
           <span>{review.hours}</span>
           {formattedDate && <span>{formattedDate}</span>}
           <ViewCounter
@@ -302,10 +322,10 @@ export default async function ReviewPage({
           />
         </div>
 
-        {/* Review body */}
+        {/* Review body — split around mid-article CTA */}
         <div
           className="article-body"
-          dangerouslySetInnerHTML={{ __html: review.bodyHtml }}
+          dangerouslySetInnerHTML={{ __html: bodyBefore }}
           style={{
             fontFamily: 'var(--serif)',
             fontSize: '1.05rem',
@@ -313,6 +333,19 @@ export default async function ReviewPage({
             color: 'var(--ink)',
           }}
         />
+        {bodyAfter && <InlineSubscribeCTA />}
+        {bodyAfter && (
+          <div
+            className="article-body"
+            dangerouslySetInnerHTML={{ __html: bodyAfter }}
+            style={{
+              fontFamily: 'var(--serif)',
+              fontSize: '1.05rem',
+              lineHeight: 1.75,
+              color: 'var(--ink)',
+            }}
+          />
+        )}
 
         {/* Related articles */}
         <RelatedArticles items={related} heading="More From The Gamer Scene" />

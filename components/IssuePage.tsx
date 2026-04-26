@@ -5,8 +5,9 @@ import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import type { IssueData, CommentItem } from '@/types'
 
-const SearchModal = dynamic(() => import('./SearchModal'), { ssr: false })
-const MobileNav   = dynamic(() => import('./MobileNav'),   { ssr: false })
+const SearchModal    = dynamic(() => import('./SearchModal'),    { ssr: false })
+const MobileNav      = dynamic(() => import('./MobileNav'),      { ssr: false })
+const TrendingWidget = dynamic(() => import('./TrendingWidget'), { ssr: false })
 
 // ─── Topbar ──────────────────────────────────────────────────────────────────
 
@@ -637,6 +638,7 @@ export default function IssuePage({ data }: { data: IssueData }) {
           <News data={data} />
           <div className="sidebar">
             <Poll data={data} />
+            <TrendingWidget />
             <ReleaseCalendar data={data} />
           </div>
         </div>
