@@ -4,6 +4,7 @@ import { getReviewBySlug, getAllReviewSlugs, getRelatedNews, getRelatedReviews }
 import ReadingProgress from '@/components/ReadingProgress'
 import RelatedArticles from '@/components/RelatedArticles'
 import ArticleComments from '@/components/ArticleComments'
+import ArticleHero from '@/components/ArticleHero'
 import type { Metadata } from 'next'
 
 export async function generateStaticParams() {
@@ -18,18 +19,27 @@ export async function generateMetadata({
   const { slug } = await params
   const review = getReviewBySlug(slug)
   if (!review) return {}
+  const base = 'https://thegamerscene.news'
   return {
     title: `${review.title} Review — The Gamer Scene`,
     description: review.pull,
     openGraph: {
-      title: `${review.title} Review`,
+      title: `${review.title} Review — ${review.score}/10`,
       description: review.pull,
-      images: review.image ? [review.image] : [],
+      type: 'article',
+      url: `${base}/reviews/${slug}`,
+      siteName: 'The Gamer Scene',
+      // Next.js auto-generates /reviews/[slug]/opengraph-image as the OG image
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${review.title} Review — The Gamer Scene`,
+      title: `${review.title} Review — ${review.score}/10`,
       description: review.pull,
+      site: '@thegamerscene',
+      creator: '@rmorris',
+    },
+    alternates: {
+      canonical: `${base}/reviews/${slug}`,
     },
   }
 }
@@ -229,15 +239,12 @@ export default async function ReviewPage({
         </div>
 
         {/* Hero image */}
-        {review.image && (
-          <div style={{ margin: '0 0 36px', lineHeight: 0 }}>
-            <img
-              src={review.image}
-              alt={review.title}
-              style={{ width: '100%', display: 'block' }}
-            />
-          </div>
-        )}
+        <ArticleHero
+          src={review.image}
+          alt={review.title}
+          category="REVIEW"
+          title={review.title}
+        />
 
         {/* Review body */}
         <div

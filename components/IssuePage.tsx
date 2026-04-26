@@ -579,9 +579,9 @@ function Footer({ data }: { data: IssueData }) {
           <ul>
             <li><a href="/">The Scene</a></li>
             <li><a href="/">Dispatch</a></li>
-            <li><a href="/">Reviews</a></li>
-            <li><a href="/">Indie Room</a></li>
-            <li><a href="/">Discourse</a></li>
+            <li><Link href="/reviews">Review Index</Link></li>
+            <li><Link href="/issues">Issue Archive</Link></li>
+            <li><a href="/feed.xml">RSS Feed</a></li>
           </ul>
         </div>
         <div>

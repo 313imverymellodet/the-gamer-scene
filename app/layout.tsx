@@ -53,6 +53,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${fraunces.variable} ${interTight.variable} ${jetbrainsMono.variable}`}
     >
       <head>
+        {/* RSS Feed autodiscovery */}
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="The Gamer Scene"
+          href="/feed.xml"
+        />
         {/* Ezoic Privacy Scripts — must load first for consent compliance */}
         <Script
           data-cfasync="false"

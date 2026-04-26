@@ -761,6 +761,15 @@ h1, h2, h3, h4 { margin: 0; font-family: var(--serif); font-weight: 500; letter-
   margin: 0;
 }
 
+/* ─── Reviews Leaderboard ─────────────────────────────────────────────────── */
+.podium-card:hover { box-shadow: 4px 4px 0 var(--ink); }
+.review-row:hover { background: var(--bg-alt); padding-left: 8px; }
+@media (max-width: 720px) {
+  .podium-grid { grid-template-columns: 1fr !important; }
+  .review-row { grid-template-columns: 40px 60px 1fr !important; }
+  .review-row > div:last-child { display: none; }
+}
+
 /* ─── Archive Page ────────────────────────────────────────────────────────── */
 .archive-hero { transition: box-shadow 0.15s; }
 .archive-hero:hover { box-shadow: 6px 6px 0 var(--ink); }

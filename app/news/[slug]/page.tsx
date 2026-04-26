@@ -4,6 +4,7 @@ import { getNewsItemBySlug, getAllNewsSlugs, getRelatedNews, getRelatedReviews }
 import ReadingProgress from '@/components/ReadingProgress'
 import RelatedArticles from '@/components/RelatedArticles'
 import ArticleComments from '@/components/ArticleComments'
+import ArticleHero from '@/components/ArticleHero'
 import type { Metadata } from 'next'
 
 export async function generateStaticParams() {
@@ -18,18 +19,27 @@ export async function generateMetadata({
   const { slug } = await params
   const item = getNewsItemBySlug(slug)
   if (!item) return {}
+  const base = 'https://thegamerscene.news'
   return {
     title: `${item.title} — The Gamer Scene`,
     description: item.blurb,
     openGraph: {
       title: item.title,
       description: item.blurb,
-      images: item.image ? [item.image] : [],
+      type: 'article',
+      url: `${base}/news/${slug}`,
+      siteName: 'The Gamer Scene',
+      // Next.js auto-generates /news/[slug]/opengraph-image as the OG image
     },
     twitter: {
       card: 'summary_large_image',
       title: item.title,
       description: item.blurb,
+      site: '@thegamerscene',
+      creator: '@rmorris',
+    },
+    alternates: {
+      canonical: `${base}/news/${slug}`,
     },
   }
 }
@@ -171,15 +181,12 @@ export default async function NewsArticlePage({
         </div>
 
         {/* Hero image */}
-        {item.image && (
-          <div style={{ margin: '0 0 36px', lineHeight: 0 }}>
-            <img
-              src={item.image}
-              alt={item.title}
-              style={{ width: '100%', display: 'block' }}
-            />
-          </div>
-        )}
+        <ArticleHero
+          src={item.image}
+          alt={item.title}
+          category={item.category}
+          title={item.title}
+        />
 
         {/* Article body */}
         <div
