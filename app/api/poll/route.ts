@@ -1,5 +1,10 @@
-import { kv } from '@vercel/kv'
+import { Redis } from '@upstash/redis'
 import { NextRequest, NextResponse } from 'next/server'
+
+const redis = new Redis({
+  url: process.env.UPSTASH_REDIS_REST_URL!,
+  token: process.env.UPSTASH_REDIS_REST_TOKEN!,
+})
 
 // GET /api/poll?issue=047
 // Returns current vote counts and totals for an issue's poll
@@ -9,7 +14,7 @@ export async function GET(req: NextRequest) {
 
   try {
     const key = `poll:${issue}`
-    const votes = await kv.hgetall<Record<string, number>>(key)
+    const votes = await redis.hgetall<Record<string, number>>(key)
 
     if (!votes) {
       return NextResponse.json({ votes: {}, total: 0 })
@@ -44,10 +49,10 @@ export async function POST(req: NextRequest) {
     }
 
     const key = `poll:${issue}`
-    await kv.hincrby(key, String(option), 1)
+    await redis.hincrby(key, String(option), 1)
 
     // Return updated counts immediately
-    const votes = await kv.hgetall<Record<string, number>>(key)
+    const votes = await redis.hgetall<Record<string, number>>(key)
     const counts: Record<string, number> = {}
     let total = 0
     if (votes) {
