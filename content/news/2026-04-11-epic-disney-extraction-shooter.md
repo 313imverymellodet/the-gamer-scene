@@ -3,6 +3,7 @@ title: "Epic Games Is Building a Disney Extraction Shooter — and It's Not Fort
 blurb: "Bloomberg reports Epic has a separate extraction shooter in development built around Disney characters — and it positions them directly against Marathon."
 category: Rumor
 date: 2026-04-11
+image: /images/news/epic-disney-extraction-shooter.jpg
 ---
 
 A Bloomberg report that broke last week revealed Epic Games is in development on an all-new extraction shooter built around Disney characters — completely separate from Fortnite. The reported move positions Epic squarely against the likes of Marathon and Arc Raiders in the increasingly crowded extraction shooter space, with the Disney IP presumably bringing a built-in mass-market audience that neither competitor can match.

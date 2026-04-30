@@ -3,6 +3,7 @@ title: "Diablo 4: Lord of Hatred Is Almost Here — Blizzard Drops Patch Details
 blurb: "Blizzard reveals what's coming with the Lord of Hatred expansion and signals a huge week of updates across all its titles."
 category: Reveal
 date: 2026-04-18
+image: /images/news/diablo4-lord-of-hatred.jpg
 ---
 
 Blizzard has been busy preparing Diablo 4 for its upcoming Lord of Hatred expansion, due April 28 on PS4, PS5, Xbox, and PC. Ahead of launch, the studio revealed a lengthy list of changes coming with Patch 12.0.5 on April 21, signalling a big week of Blizzard updates across all its titles. Mark your calendars for April 23 as well — Blizzard has a special event planned that fans of the expansion will want to tune into.
