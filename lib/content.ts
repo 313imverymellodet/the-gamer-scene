@@ -243,6 +243,74 @@ export function getRelatedReviews(currentSlug: string, limit = 2): RelatedItem[]
     })
 }
 
+// ─── Opinion ──────────────────────────────────────────────────────────────────
+
+/** Strip social-media copy blocks from the bottom of opinion markdown */
+function stripSocialNotes(markdown: string): string {
+  return markdown
+    .replace(/\n\*🎬[^\n]*/g, '')
+    .replace(/\n\*📱[^\n]*/g, '')
+    .trimEnd()
+}
+
+export interface OpinionItem {
+  slug: string
+  title: string
+  blurb: string
+  date: string
+  author: string
+  image?: string
+}
+
+export interface FullOpinionItem extends OpinionItem {
+  bodyHtml: string
+}
+
+export function getAllOpinionSlugs(): string[] {
+  const opinionDir = path.join(contentDir, 'opinion')
+  if (!fs.existsSync(opinionDir)) return []
+  return fs.readdirSync(opinionDir)
+    .filter(f => f.endsWith('.md'))
+    .map(f => f.replace('.md', ''))
+}
+
+export function getAllOpinionItems(): OpinionItem[] {
+  const opinionDir = path.join(contentDir, 'opinion')
+  if (!fs.existsSync(opinionDir)) return []
+  return fs.readdirSync(opinionDir)
+    .filter(f => f.endsWith('.md'))
+    .sort()
+    .reverse()
+    .map(file => {
+      const raw = fs.readFileSync(path.join(opinionDir, file), 'utf-8')
+      const { data } = matter(raw)
+      return {
+        slug: file.replace('.md', ''),
+        title: String(data.title || ''),
+        blurb: String(data.blurb || ''),
+        date: data.date ? String(data.date) : '',
+        author: data.author ? String(data.author) : 'Romello Morris',
+        image: data.image as string | undefined,
+      }
+    })
+}
+
+export function getOpinionBySlug(slug: string): FullOpinionItem | null {
+  const file = path.join(contentDir, 'opinion', `${slug}.md`)
+  if (!fs.existsSync(file)) return null
+  const raw = fs.readFileSync(file, 'utf-8')
+  const { data, content } = matter(raw)
+  return {
+    slug,
+    title: String(data.title || ''),
+    blurb: String(data.blurb || ''),
+    date: data.date ? String(data.date) : '',
+    author: data.author ? String(data.author) : 'Romello Morris',
+    image: data.image as string | undefined,
+    bodyHtml: marked(stripSocialNotes(content)) as string,
+  }
+}
+
 export function getAllIssueSlugs(): string[] {
   const issuesDir = path.join(contentDir, 'issues')
   return fs.readdirSync(issuesDir)
