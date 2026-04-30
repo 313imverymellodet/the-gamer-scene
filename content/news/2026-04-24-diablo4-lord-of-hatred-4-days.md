@@ -3,7 +3,7 @@ title: "Diablo 4: Lord of Hatred Launches in 4 Days — Pre-Load Now, Here's the
 blurb: "Lord of Hatred drops Tuesday April 28. Pre-load is live across all platforms right now. Unlock times, what's new, how to prepare — your complete 96-hour countdown guide."
 category: Preview
 date: 2026-04-24
-image: /images/diablo4-lord-of-hatred-countdown.jpg
+image: /images/news/diablo4-lord-of-hatred-countdown.jpg
 ---
 
 # Diablo 4: Lord of Hatred Launches in 4 Days — Pre-Load Now, Here's the Full Unlock Schedule

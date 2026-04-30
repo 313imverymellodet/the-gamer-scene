@@ -3,7 +3,7 @@ title: "Xbox Free Play Days Are Live — 3 Games Free to Play All Weekend, April
 blurb: "Xbox Free Play Days are running April 23–26. Three games are available to play for free this weekend for all Xbox Live members — no Game Pass required. Here's what's available and whether any are worth buying at the discounted price."
 category: Update
 date: 2026-04-24
-image: /images/xbox-free-play-days-april.jpg
+image: /images/news/xbox-free-play-days-april.jpg
 ---
 
 # Xbox Free Play Days Are Live — 3 Games Free to Play All Weekend, April 24–26

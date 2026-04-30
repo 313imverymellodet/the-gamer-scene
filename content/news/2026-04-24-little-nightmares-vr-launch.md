@@ -3,7 +3,7 @@ title: "Little Nightmares VR: Altered Echoes Launches Today — The Horror Franc
 blurb: "Bandai Namco's acclaimed horror series takes its first dedicated VR step today with Altered Echoes on PSVR2, Meta Quest, and PC VR. Playing as Dark Six searching for Six in first-person VR changes everything about how this world feels."
 category: Industry
 date: 2026-04-24
-image: /images/little-nightmares-vr.jpg
+image: /images/news/little-nightmares-vr.jpg
 ---
 
 # Little Nightmares VR: Altered Echoes Launches Today — The Horror Franchise Goes Fully Immersive

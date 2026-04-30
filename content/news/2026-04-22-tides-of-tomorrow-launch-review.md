@@ -3,7 +3,7 @@ title: "Tides of Tomorrow Is Out — A Gorgeous Concept That Doesn't Quite Stick
 blurb: "DigixArt's asynchronous multiplayer narrative adventure launched today to a 75–81 on Metacritic and 77 on OpenCritic. Beautiful world, clever idea, divisive execution. Here's the full review breakdown."
 category: Industry
 date: 2026-04-22
-image: /images/tides-of-tomorrow-review.jpg
+image: /images/news/tides-of-tomorrow-review.jpg
 ---
 
 # Tides of Tomorrow Is Out — A Gorgeous Concept That Doesn't Quite Stick the Landing

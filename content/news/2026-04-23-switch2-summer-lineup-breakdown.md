@@ -3,7 +3,7 @@ title: "Nintendo Switch 2's Summer Lineup Is Stacked — Here's Every Confirmed 
 blurb: "Splatoon Raiders just confirmed July 23. The Duskbloods, Fire Emblem, Rhythm Heaven Groove, Yoshi, and Indiana Jones are all coming. Add in the third-party wave and Switch 2's summer is shaping up to be the strongest season of its first year."
 category: Preview
 date: 2026-04-23
-image: /images/switch2-summer-lineup.jpg
+image: /images/news/switch2-summer-lineup.jpg
 ---
 
 # Nintendo Switch 2's Summer Lineup Is Stacked — Here's Every Confirmed Game Through August

@@ -3,7 +3,7 @@ title: "Trepang2 Hits Game Pass Today — The Best Shooter You Never Played Is N
 blurb: "The F.E.A.R.-inspired supernatural FPS that built a cult following on PC in 2023 joins Xbox Game Pass today. If you slept on it at launch, this is your moment. Here's why Trepang2 is one of the most underrated shooters of the past three years."
 category: Update
 date: 2026-04-29
-image: /images/trepang2-game-pass.jpg
+image: /images/news/trepang2-game-pass.jpg
 keywords: [Trepang2 Game Pass, Trepang2 Xbox, Trepang2 review, best shooters on Game Pass 2026, FEAR inspired game, supernatural FPS Game Pass, Trepang2 release date Xbox]
 ---
 

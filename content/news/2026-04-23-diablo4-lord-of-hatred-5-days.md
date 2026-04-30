@@ -3,7 +3,7 @@ title: "Diablo 4: Lord of Hatred Is 5 Days Out — Here's Your Complete Pre-Laun
 blurb: "April 28 is almost here. Mephisto, the Warlock class, and a new region launch in less than a week. Here's everything you need to do before the expansion drops — from levelling to pre-downloading — so you're ready from day one."
 category: Preview
 date: 2026-04-23
-image: /images/diablo4-lord-of-hatred-checklist.jpg
+image: /images/news/diablo4-lord-of-hatred-checklist.jpg
 ---
 
 # Diablo 4: Lord of Hatred Is 5 Days Out — Here's Your Complete Pre-Launch Checklist

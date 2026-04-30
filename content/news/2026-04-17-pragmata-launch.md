@@ -3,7 +3,7 @@ title: "Capcom's Moon Mystery Is Finally Here — And It's Brilliant"
 blurb: "After six years of cryptic trailers and delay after delay, Pragmata has landed — and critics are calling it Capcom's sleeper hit of 2026."
 category: Industry
 date: 2026-04-17
-image: /images/pragmata-launch.jpg
+image: /images/news/pragmata-launch.jpg
 ---
 
 After six years of cryptic trailers and delay after delay, **Pragmata** has landed on PS5, Xbox Series X|S, PC, and Switch 2 — and it delivered on every bit of the hype.

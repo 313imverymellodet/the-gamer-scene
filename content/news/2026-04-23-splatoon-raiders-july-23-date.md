@@ -3,7 +3,7 @@ title: "Splatoon Raiders Gets a Release Date — Nintendo's First Splatoon Spino
 blurb: "Nintendo dropped a Splatoon Raiders release date trailer via the Nintendo Today app with zero warning. July 23, 2026, Switch 2 exclusive. Single-player focused, Deep Cut co-op, treasure hunting across the Spirhalite Islands. The summer Switch 2 lineup just got a lot stronger."
 category: Reveal
 date: 2026-04-23
-image: /images/splatoon-raiders-july.jpg
+image: /images/news/splatoon-raiders-july.jpg
 ---
 
 # Splatoon Raiders Gets a Release Date — Nintendo's First Splatoon Spinoff Hits Switch 2 on July 23

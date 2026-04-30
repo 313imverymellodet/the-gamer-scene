@@ -3,7 +3,7 @@ title: "April 30 Is the Single Biggest Game Release Day of the Year — Here's Y
 blurb: "Saros, Invincible VS, Inkonbini, and Bandit Trap all launch on the same day. Diablo 4 lands two days earlier. Your wallet, your schedule, and your backlog all need a plan. Here it is."
 category: Industry
 date: 2026-04-24
-image: /images/april-30-release-guide.jpg
+image: /images/news/april-30-release-guide.jpg
 ---
 
 # April 30 Is the Single Biggest Game Release Day of the Year — Here's Your Complete Survival Guide

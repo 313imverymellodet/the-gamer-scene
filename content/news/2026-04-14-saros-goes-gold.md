@@ -3,7 +3,7 @@ title: "Saros Has Gone Gold — Housemarque's Returnal Successor Is Locked In fo
 blurb: "The PS5 exclusive is complete and heading to launch exactly five years to the day after Returnal. No more delays."
 category: Industry
 date: 2026-04-14
-image: /images/saros-gold.jpg
+image: /images/news/saros-gold.jpg
 ---
 
 Housemarque has confirmed that **Saros** has officially gone gold ahead of its April 30 PS5 launch — meaning the final build is complete and approved for release. No more delays.

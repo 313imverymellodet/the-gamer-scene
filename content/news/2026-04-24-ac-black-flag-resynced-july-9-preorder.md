@@ -3,7 +3,7 @@ title: "AC Black Flag Resynced Preorders Are Live — July 9 Release, Editions E
 blurb: "Following yesterday's full reveal, Assassin's Creed Black Flag Resynced preorders are live across all platforms. Three editions, a $199 collector's set with an Edward Kenway statue, and day one Ubisoft+ access. Here's everything."
 category: Industry
 date: 2026-04-24
-image: /images/ac-black-flag-resynced-preorder.jpg
+image: /images/news/ac-black-flag-resynced-preorder.jpg
 ---
 
 # AC Black Flag Resynced Preorders Are Live — July 9 Release, Editions Explained, and the Collector's Edition Has a Kenway Statue

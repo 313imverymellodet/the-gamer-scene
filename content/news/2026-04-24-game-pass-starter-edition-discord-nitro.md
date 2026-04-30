@@ -3,7 +3,7 @@ title: "Game Pass Starter Edition Leaked — 50+ Games and Cloud Streaming Bundl
 blurb: "A Discord Previews leak confirmed Xbox is testing a new Game Pass 'Starter Edition' as a Discord Nitro perk. 50+ games, 10 hours of cloud gaming per month, Xbox Rewards. Here's everything we know and what it means for the subscription war."
 category: Industry
 date: 2026-04-24
-image: /images/game-pass-starter-discord.jpg
+image: /images/news/game-pass-starter-discord.jpg
 ---
 
 # Game Pass Starter Edition Leaked — 50+ Games and Cloud Streaming Bundled Into Discord Nitro

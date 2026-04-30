@@ -3,7 +3,7 @@ title: "Saros Is 6 Days Away — Pre-Load Details, Final Trailer Breakdown, and 
 blurb: "Six days to April 30. Housemarque's Returnal follow-up is gold, has a 45-trophy Platinum, and every preview says it's extraordinary. Here's everything you need to know before launch — including whether Digital Deluxe early access is worth the $10 premium."
 category: Preview
 date: 2026-04-24
-image: /images/saros-final-countdown.jpg
+image: /images/news/saros-final-countdown.jpg
 ---
 
 # Saros Is 6 Days Away — Pre-Load Details, Final Trailer Breakdown, and Why This Is PS5's Game of the Spring

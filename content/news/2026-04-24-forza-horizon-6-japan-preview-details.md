@@ -3,7 +3,7 @@ title: "Forza Horizon 6 Details Keep Dropping — Mount Fuji, Tokyo Expressways,
 blurb: "With the May 19 launch 25 days away, new Forza Horizon 6 details are emerging almost daily. Japan's geography, confirmed locations, what we know about the car list, and why this might be the best Horizon setting yet."
 category: Preview
 date: 2026-04-24
-image: /images/forza-horizon-6-japan-details.jpg
+image: /images/news/forza-horizon-6-japan-details.jpg
 ---
 
 # Forza Horizon 6 Details Keep Dropping — Mount Fuji, Tokyo Expressways, and a Confirmed Car List Teaser

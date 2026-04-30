@@ -3,7 +3,7 @@ title: "Mouse: P.I. For Hire Is the Weirdest, Most Wonderful Shooter of the Year
 blurb: "Fumi Games' debut title is a 1930s rubber-hose cartoon noir FPS — and it launched to an 81 on Metacritic and 83 on OpenCritic. Don't sleep on this one."
 category: Industry
 date: 2026-04-16
-image: /images/mouse-pi-launch.jpg
+image: /images/news/mouse-pi-launch.jpg
 ---
 
 What happens when you throw a boomer shooter into a blender with BioShock influences and a 1930s rubber-hose cartoon? You get **Mouse: P.I. For Hire**, the stylish black-and-white first-person shooter that launched April 16 from debut developer Fumi Games.

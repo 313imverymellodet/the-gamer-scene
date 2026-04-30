@@ -3,7 +3,7 @@ title: "Capcom Is Having the Greatest Year Any Publisher Has Ever Had — Pragma
 blurb: "Capcom officially confirmed Pragmata sold 1 million copies in two days. Resident Evil Requiem has now shipped 7 million worldwide. Onimusha: Way of the Sword is next. The numbers behind 2026's most dominant publisher run."
 category: Industry
 date: 2026-04-29
-image: /images/capcom-sales-2026.jpg
+image: /images/news/capcom-sales-2026.jpg
 keywords: [Pragmata sales, Resident Evil Requiem sales, Capcom 2026, Capcom best year, Pragmata 1 million, RE Requiem 7 million, Onimusha Way of the Sword, Capcom news]
 ---
 

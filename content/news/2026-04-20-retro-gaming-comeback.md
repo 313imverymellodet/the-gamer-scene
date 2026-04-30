@@ -3,7 +3,7 @@ title: "Why Everyone Is Going Back to Retro Games in 2026 (And Not Coming Back)"
 blurb: "Modern gaming is pushing players away with broken launches, aggressive monetization, and 100-hour live service commitments. Here's why millions are dusting off their old consoles — and never looking back."
 category: Industry
 date: 2026-04-20
-image: /images/retro-gaming-2026.jpg
+image: /images/news/retro-gaming-2026.jpg
 ---
 
 # Why Everyone Is Going Back to Retro Games in 2026 (And Not Coming Back)

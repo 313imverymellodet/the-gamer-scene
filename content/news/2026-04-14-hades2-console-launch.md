@@ -3,7 +3,7 @@ title: "Hades 2 Finally Storms PS5 and Xbox — Console Players Can Descend at L
 blurb: "Supergiant's celebrated roguelite sequel makes its console debut with 120fps, all post-launch patches, and day-one Xbox Game Pass availability."
 category: Update
 date: 2026-04-14
-image: /images/hades2-console.jpg
+image: /images/news/hades2-console.jpg
 ---
 
 After spending time in Early Access and a full 1.0 launch on PC and Switch, **Hades 2** officially arrived on PlayStation 5 and Xbox Series X|S on April 14 — and console players are getting the definitive version.

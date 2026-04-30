@@ -3,7 +3,7 @@ title: "Everything Dropping Tomorrow — April 30 Is the Biggest Single Release 
 blurb: "Saros. Invincible VS. Inkonbini on Game Pass. Heroes of Might & Magic Olden Era in Game Preview. TMNT Empire City VR. All hitting the same day — exactly five years after Returnal. Here's your complete April 30 breakdown."
 category: Industry
 date: 2026-04-29
-image: /images/april-30-everything-dropping.jpg
+image: /images/news/april-30-everything-dropping.jpg
 keywords: [April 30 2026 games, Saros launch day, Invincible VS release, Inkonbini Game Pass, Heroes of Might Magic Olden Era, new games April 30 2026, biggest release day 2026]
 ---
 

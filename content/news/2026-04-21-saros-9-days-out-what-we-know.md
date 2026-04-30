@@ -3,7 +3,7 @@ title: "Saros Launches in 9 Days — Here's Everything You Need to Know Before A
 blurb: "Housemarque's Returnal follow-up is gold, confirmed for April 30, and early hands-on coverage is describing it as a triumph. Nine days out, here's your full pre-launch breakdown of what to expect."
 category: Preview
 date: 2026-04-21
-image: /images/saros-preview-launch.jpg
+image: /images/news/saros-preview-launch.jpg
 ---
 
 # Saros Launches in 9 Days — Here's Everything You Need to Know Before April 30

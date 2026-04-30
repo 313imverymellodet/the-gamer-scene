@@ -3,7 +3,7 @@ title: "Saros Launches Tomorrow — Your Final Pre-Launch Guide to PS5's Game of
 blurb: "General launch is tomorrow, April 30. Deluxe players have been inside Carcosa for 48 hours and the reactions are extraordinary. Pre-load is live. Unlock times confirmed. Five-year Returnal anniversary. Here's everything for day one."
 category: Preview
 date: 2026-04-29
-image: /images/saros-tomorrow-launch.jpg
+image: /images/news/saros-tomorrow-launch.jpg
 keywords: [Saros launch date April 30, Saros PS5 review, Saros release time, Saros pre-load, Saros unlock time, Housemarque game 2026, best PS5 game 2026, Returnal successor]
 ---
 

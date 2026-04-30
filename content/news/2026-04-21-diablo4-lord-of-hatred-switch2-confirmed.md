@@ -3,7 +3,7 @@ title: "Diablo 4: Lord of Hatred Is Coming to Switch 2 — Blizzard Makes It Off
 blurb: "After a rating board listing sparked speculation, Blizzard confirmed via a pre-premiere livestream that the Lord of Hatred expansion is coming to Nintendo Switch 2 later this year. It's the first major Diablo title on Nintendo hardware since 2018."
 category: Reveal
 date: 2026-04-21
-image: /images/diablo4-switch2.jpg
+image: /images/news/diablo4-switch2.jpg
 ---
 
 # Diablo 4: Lord of Hatred Is Coming to Switch 2 — Blizzard Makes It Official

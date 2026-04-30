@@ -3,7 +3,7 @@ title: "Everything Happening in Gaming This Week — April 22–27, 2026"
 blurb: "Tides of Tomorrow and Masters of Albion launched today, Kiln drops tomorrow, Diablo 4 expansion arrives April 28, and Saros and Invincible VS close the month on April 30. The full weekly breakdown."
 category: Update
 date: 2026-04-22
-image: /images/gaming-week-apr22.jpg
+image: /images/news/gaming-week-apr22.jpg
 ---
 
 # Everything Happening in Gaming This Week — April 22–27, 2026

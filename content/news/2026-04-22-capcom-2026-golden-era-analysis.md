@@ -3,7 +3,7 @@ title: "Is Capcom Having the Greatest Single Year in Gaming History?"
 blurb: "Resident Evil Requiem, Monster Hunter Stories 3, and Pragmata have all landed in the top 10 highest-rated games of 2026. With Onimusha still coming this year, the question is no longer rhetorical."
 category: Industry
 date: 2026-04-22
-image: /images/capcom-2026-golden-era.jpg
+image: /images/news/capcom-2026-golden-era.jpg
 ---
 
 # Is Capcom Having the Greatest Single Year in Gaming History?

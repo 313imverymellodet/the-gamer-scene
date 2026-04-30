@@ -3,7 +3,7 @@ title: "Friday April 24 Gaming Roundup — Everything You Need to Know Going Int
 blurb: "A massive week ends with Little Nightmares VR launching today, Xbox Free Play Days live, the 'We Are Xbox' memo dropping, a Game Pass Starter Edition leak, and Diablo 4 preloads available. Here's your Friday digest."
 category: Update
 date: 2026-04-24
-image: /images/gaming-roundup-apr24.jpg
+image: /images/news/gaming-roundup-apr24.jpg
 ---
 
 # Friday April 24 Gaming Roundup — Everything You Need to Know Going Into the Weekend

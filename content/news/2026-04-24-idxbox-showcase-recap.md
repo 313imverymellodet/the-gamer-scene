@@ -3,7 +3,7 @@ title: "ID@Xbox April 2026 Showcase Full Recap — Every Game Announced and Ever
 blurb: "The ID@Xbox and IGN Showcase dropped yesterday with 10+ new Game Pass announcements, world premieres, and release date reveals. Here's every game shown, every day-one confirmation, and what to actually put on your wishlist."
 category: Industry
 date: 2026-04-24
-image: /images/idxbox-showcase-april-2026.jpg
+image: /images/news/idxbox-showcase-april-2026.jpg
 ---
 
 # ID@Xbox April 2026 Showcase Full Recap — Every Game Announced and Every Game Pass Confirmation

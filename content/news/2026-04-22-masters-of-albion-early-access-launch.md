@@ -3,7 +3,7 @@ title: "Peter Molyneux's Masters of Albion Is Live in Early Access — The God G
 blurb: "After years of overpromising, Peter Molyneux launched Masters of Albion into Steam Early Access today at $24.99. Build by day, defend by night — and yes, you can kick chickens. Early impressions suggest this might actually be the redemption arc."
 category: Industry
 date: 2026-04-22
-image: /images/masters-of-albion-launch.jpg
+image: /images/news/masters-of-albion-launch.jpg
 ---
 
 # Peter Molyneux's Masters of Albion Is Live in Early Access — The God Game Comeback Is Real

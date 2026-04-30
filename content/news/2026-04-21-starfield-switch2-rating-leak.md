@@ -3,7 +3,7 @@ title: "Starfield Is Coming to Nintendo Switch 2 — A New Age Rating Just Made 
 blurb: "Taiwan's entertainment software rating board has filed a Switch 2 rating for Bethesda's space RPG. No official announcement yet, but rating leaks this credible rarely go anywhere other than a release. The Xbox Games Showcase on June 7 looks like the announcement window."
 category: Rumour
 date: 2026-04-21
-image: /images/starfield-switch2-leak.jpg
+image: /images/news/starfield-switch2-leak.jpg
 ---
 
 # Starfield Is Coming to Nintendo Switch 2 — A New Age Rating Just Made It Official

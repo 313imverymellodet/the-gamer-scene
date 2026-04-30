@@ -3,7 +3,7 @@ title: "Wednesday Gaming Roundup — April 29, 2026: Blood of Dawnwalker Sept 3,
 blurb: "Everything happening in gaming today: Blood of the Dawnwalker locks in September 3, Capcom confirms Pragmata 1M and RE Requiem 7M, Trepang2 hits Game Pass, Saros launches in less than 24 hours, and Diablo 4 day 2 rolls on."
 category: Update
 date: 2026-04-29
-image: /images/gaming-roundup-apr29.jpg
+image: /images/news/gaming-roundup-apr29.jpg
 keywords: [gaming news April 29 2026, Blood of Dawnwalker release date, Capcom sales 2026, Saros tomorrow, Diablo 4 Lord of Hatred, Trepang2 Game Pass, Wednesday gaming news]
 ---
 

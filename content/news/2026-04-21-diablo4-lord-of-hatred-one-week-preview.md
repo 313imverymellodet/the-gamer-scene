@@ -3,7 +3,7 @@ title: "Diablo 4: Lord of Hatred Is One Week Out — Everything We Know Before A
 blurb: "One week until Blizzard's biggest expansion for Diablo 4 drops. New classes, a new act, a new endgame system, and now a confirmed Switch 2 version later this year. Here's your full pre-launch breakdown."
 category: Preview
 date: 2026-04-21
-image: /images/diablo4-lord-of-hatred-preview.jpg
+image: /images/news/diablo4-lord-of-hatred-preview.jpg
 ---
 
 # Diablo 4: Lord of Hatred Is One Week Out — Everything We Know Before April 28

@@ -3,7 +3,7 @@ title: "Best New Games to Play Right Now — April 2026's Biggest Releases Ranke
 blurb: "April 2026 has been one of the best months for gaming in years. From Pragmata to Hades 2 to Vampire Crawlers, here's our definitive ranking of the month's releases so far — and what's still coming."
 category: Industry
 date: 2026-04-21
-image: /images/best-games-april-2026.jpg
+image: /images/news/best-games-april-2026.jpg
 ---
 
 # Best New Games to Play Right Now — April 2026's Biggest Releases Ranked

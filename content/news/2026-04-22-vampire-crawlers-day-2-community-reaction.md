@@ -3,7 +3,7 @@ title: "Vampire Crawlers Day 2: Community Is Already Breaking the Game in the Be
 blurb: "One day after launch, Vampire Crawlers is doing exactly what Vampire Survivors did — the community found the broken builds fast, and the 'just one more run' energy is real. Here's what players are actually discovering."
 category: Industry
 date: 2026-04-22
-image: /images/vampire-crawlers-community.jpg
+image: /images/news/vampire-crawlers-community.jpg
 ---
 
 # Vampire Crawlers Day 2: Community Is Already Breaking the Game in the Best Way

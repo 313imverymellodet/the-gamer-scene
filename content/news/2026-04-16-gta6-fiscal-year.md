@@ -3,7 +3,7 @@ title: "GTA 6 Is Officially in Its Release Year — November 19 Holds Firm"
 blurb: "Rockstar has entered the fiscal year of GTA 6's planned launch for the first time ever, and analysts say that's the strongest signal yet that November 19 isn't moving."
 category: Industry
 date: 2026-04-16
-image: /images/gta6-release.jpg
+image: /images/news/gta6-release.jpg
 ---
 
 After two delays and 13 years of waiting, we are now officially inside Grand Theft Auto 6's fiscal release window — a milestone analysts say significantly reduces the chance of another delay.

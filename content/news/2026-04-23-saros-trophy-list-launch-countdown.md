@@ -3,7 +3,7 @@ title: "Saros Trophy List Revealed With 45 Trophies — 7 Days Until Housemarque
 blurb: "The Saros Platinum trophy list is live, giving a first look at the game's scope and progression systems. Seven days out from the April 30 launch, here's everything you need to know — and whether the Digital Deluxe early access is worth the premium."
 category: Preview
 date: 2026-04-23
-image: /images/saros-trophy-countdown.jpg
+image: /images/news/saros-trophy-countdown.jpg
 ---
 
 # Saros Trophy List Revealed With 45 Trophies — 7 Days Until Housemarque's PS5 Masterpiece

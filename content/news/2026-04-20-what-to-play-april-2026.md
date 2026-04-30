@@ -3,7 +3,7 @@ title: "New Games You Should Be Playing Right Now — April 2026's Best Releases
 blurb: "April 2026 is one of the strongest months for new game releases in years. From Capcom's long-awaited moon mystery to the roguelite sequel everyone is obsessing over — here's your complete guide to what's worth your time right now."
 category: Industry
 date: 2026-04-20
-image: /images/april-2026-releases.jpg
+image: /images/news/april-2026-releases.jpg
 ---
 
 # New Games You Should Be Playing Right Now — April 2026's Best Releases Ranked

@@ -3,7 +3,7 @@ title: "Assassin's Creed Black Flag Resynced Is Official — July 9 Release, Ray
 blurb: "Ubisoft pulled back the curtain today on AC Black Flag Resynced — a ground-up remake of the beloved 2013 pirate adventure, rebuilt in the Anvil Engine with ray tracing, reworked missions, and Matt Ryan returning as Edward Kenway. Launches July 9."
 category: Reveal
 date: 2026-04-23
-image: /images/ac-black-flag-resynced-reveal.jpg
+image: /images/news/ac-black-flag-resynced-reveal.jpg
 ---
 
 # Assassin's Creed Black Flag Resynced Is Official — July 9 Release, Ray Tracing, and Edward Kenway Is Back

@@ -3,7 +3,7 @@ title: "GTA Online Weekly Update April 23–29: 10x Money on Smoke on the Water,
 blurb: "The final week of GTA Online's 420 Event is live with the biggest bonuses of the two-week run — 10x GTA$ on Smoke on the Water legal work, 4x on Hunting Pack, vehicle discounts, and this week's free unlocks."
 category: Update
 date: 2026-04-23
-image: /images/gta-online-weekly-april23.jpg
+image: /images/news/gta-online-weekly-april23.jpg
 ---
 
 # GTA Online Weekly Update April 23–29: 10x Money on Smoke on the Water, 4x on Hunting Pack, and the 420 Event Wraps Up

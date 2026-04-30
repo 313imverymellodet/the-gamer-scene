@@ -3,7 +3,7 @@ title: "The Final Week of April Is the Best Week — Diablo 4, Saros, and Invinc
 blurb: "Eight days. That's how long until the most stacked final week of a month in recent memory. Diablo 4: Lord of Hatred, Saros, and Invincible VS all arrive before April 30 wraps. Here's everything you need to know."
 category: Preview
 date: 2026-04-22
-image: /images/end-of-april-preview.jpg
+image: /images/news/end-of-april-preview.jpg
 ---
 
 # The Final Week of April Is the Best Week — Diablo 4, Saros, and Invincible VS All Drop Before May

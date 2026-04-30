@@ -3,7 +3,7 @@ title: "Blood of the Dawnwalker Has a Release Date — September 3, 2026, and Pr
 blurb: "Rebel Wolves confirmed September 3 during yesterday's Road to Launch stream. New story trailer revealed Coen's 30-day ticking clock against vampire lord Brencis. Standard Edition is $69.99, Eclipse Edition $79.99. Here's everything announced."
 category: Reveal
 date: 2026-04-29
-image: /images/blood-dawnwalker-sept3.jpg
+image: /images/news/blood-dawnwalker-sept3.jpg
 keywords: [Blood of the Dawnwalker release date, Blood of Dawnwalker September 3 2026, Rebel Wolves RPG, Dawnwalker pre-order, Witcher director game 2026, vampire RPG 2026, open world dark fantasy RPG]
 ---
 

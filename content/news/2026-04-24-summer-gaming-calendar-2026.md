@@ -3,7 +3,7 @@ title: "The 2026 Summer Gaming Calendar Is Stacked — Every Major Release From 
 blurb: "April isn't even done and summer 2026 is already shaping up as one of the strongest content periods in years. Forza Horizon 6, 007 First Light, Splatoon Raiders, Elden Ring Nightreign, Metal Gear Solid Vol. 2 — here's the full picture."
 category: Industry
 date: 2026-04-24
-image: /images/summer-gaming-calendar-2026.jpg
+image: /images/news/summer-gaming-calendar-2026.jpg
 ---
 
 # The 2026 Summer Gaming Calendar Is Stacked — Every Major Release From May Through August

@@ -3,7 +3,7 @@ title: "Kiln Is Out Now — Double Fine's Pottery Brawler Is the Weirdest Game P
 blurb: "Double Fine's multiplayer pottery party brawler launched today on PS5, Xbox, PC, and Xbox Game Pass. You sculpt clay pots on a virtual wheel, then smash your opponents' creations in 4v4 arena combat. It is exactly as brilliant as it sounds."
 category: Industry
 date: 2026-04-23
-image: /images/kiln-double-fine-launch.jpg
+image: /images/news/kiln-double-fine-launch.jpg
 ---
 
 # Kiln Is Out Now — Double Fine's Pottery Brawler Is the Weirdest Game Pass Addition of the Year

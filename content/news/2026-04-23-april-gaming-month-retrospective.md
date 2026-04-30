@@ -3,7 +3,7 @@ title: "April 2026 Might Be the Greatest Month in Gaming History — Here's the 
 blurb: "We're not done yet and April 2026 has already given us Pragmata, Hades 2 on console, Mouse PI, Vampire Crawlers, WoW Midnight 12.0.5, AC Black Flag Resynced reveal, Kiln, Splatoon Raiders date, and Age of Mythology Aztecs. With Diablo 4, Saros, and Invincible VS still to come — is this the best month ever?"
 category: Industry
 date: 2026-04-23
-image: /images/april-2026-greatest-month.jpg
+image: /images/news/april-2026-greatest-month.jpg
 ---
 
 # April 2026 Might Be the Greatest Month in Gaming History — Here's the Case

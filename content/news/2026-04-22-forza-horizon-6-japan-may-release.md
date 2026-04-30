@@ -3,7 +3,7 @@ title: "Forza Horizon 6 Sets Course for Japan — Everything You Need to Know Be
 blurb: "The biggest racing game of the year arrives May 19, with the franchise making its long-awaited debut in Japan. Premium Edition early access starts May 15. It's also free on Game Pass from day one. Here's your full pre-launch breakdown."
 category: Preview
 date: 2026-04-22
-image: /images/forza-horizon-6-japan.jpg
+image: /images/news/forza-horizon-6-japan.jpg
 ---
 
 # Forza Horizon 6 Sets Course for Japan — Everything You Need to Know Before May 19

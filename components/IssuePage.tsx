@@ -5,6 +5,10 @@ import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import type { IssueData, CommentItem } from '@/types'
 
+function stripHtml(html: string) {
+  return html.replace(/<[^>]+>/g, '')
+}
+
 const SearchModal    = dynamic(() => import('./SearchModal'),    { ssr: false })
 const MobileNav      = dynamic(() => import('./MobileNav'),      { ssr: false })
 const TrendingWidget = dynamic(() => import('./TrendingWidget'), { ssr: false })
@@ -90,7 +94,7 @@ function Lead({ data }: { data: IssueData }) {
     <section className="lead">
       <div className="lead-art">
         {data.lead.image
-          ? <img src={data.lead.image} alt={data.lead.title} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+          ? <img src={data.lead.image} alt={stripHtml(data.lead.title)} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
           : <div className="placeholder" />
         }
         <div className="hero-tag">{data.lead.tag}</div>
@@ -320,7 +324,7 @@ function IndieSpotlight({ data }: { data: IssueData }) {
       <div className="spotlight-inner">
         <div className="art">
           {data.spotlight.image
-            ? <img src={data.spotlight.image} alt={data.spotlight.title} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+            ? <img src={data.spotlight.image} alt={stripHtml(data.spotlight.title)} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
             : <div className="ph" />
           }
         </div>

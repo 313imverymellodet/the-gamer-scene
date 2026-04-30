@@ -3,7 +3,7 @@ title: "Xbox Game Pass Just Got 5 Day-One Releases — Here's Everything Added T
 blurb: "Wave 2 of April's Game Pass additions landed today and it's stacked. Vampire Crawlers day one, plus Kiln, Aphelion from Don't Nod, Trepang2, and Heroes of Might & Magic: Olden Era all joining within the week."
 category: Update
 date: 2026-04-21
-image: /images/game-pass-april-wave2.jpg
+image: /images/news/game-pass-april-wave2.jpg
 ---
 
 # Xbox Game Pass Just Got 5 Day-One Releases — Here's Everything Added This Week

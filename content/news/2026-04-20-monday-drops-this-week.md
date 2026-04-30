@@ -3,7 +3,7 @@ title: "This Week's Releases: Vampire Crawlers, WoW Patch 12.0.5, Masters of Alb
 blurb: "A massive week for releases kicks off tomorrow — here's everything dropping April 21–24 and what you need to know before it hits."
 category: Update
 date: 2026-04-20
-image: /images/weekly-releases-apr20.jpg
+image: /images/news/weekly-releases-apr20.jpg
 ---
 
 Monday means it's time to look ahead. This week is stacked — here's your full breakdown.

@@ -3,7 +3,7 @@ title: "5 Hidden Gem Games You Need to Play Right Now (AAA Can Wait)"
 blurb: "Over half of all PC gaming revenue now comes from games outside the top 20. Players are done with $70 live-service disappointments — and the indie scene is delivering everything they actually want."
 category: Industry
 date: 2026-04-20
-image: /images/indie-hidden-gems-2026.jpg
+image: /images/news/indie-hidden-gems-2026.jpg
 ---
 
 # 5 Hidden Gem Games You Need to Play Right Now (AAA Can Wait)

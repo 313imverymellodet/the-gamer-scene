@@ -3,7 +3,7 @@ title: "WoW Midnight Patch 12.0.5 'Lingering Shadows' Is Live — Everything Add
 blurb: "Blizzard's first major content patch for the Midnight expansion dropped today after extended maintenance. Void Assaults, the Voidforge, Decor Duels, Abyss Anglers — here's a full breakdown of what's new."
 category: Patch
 date: 2026-04-21
-image: /images/wow-midnight-patch-1205.jpg
+image: /images/news/wow-midnight-patch-1205.jpg
 ---
 
 # WoW Midnight Patch 12.0.5 'Lingering Shadows' Is Live — Everything Added Today

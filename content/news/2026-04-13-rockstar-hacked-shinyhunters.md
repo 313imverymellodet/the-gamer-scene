@@ -3,7 +3,7 @@ title: "Rockstar Hacked Again as GTA 6 Launch Approaches — They're Not Paying"
 blurb: "Hacking group ShinyHunters claims a Rockstar data breach via third-party analytics firm Anodot. No gameplay files leaked. Rockstar has confirmed the breach and refused to pay."
 category: Industry
 date: 2026-04-13
-image: /images/rockstar-hack.jpg
+image: /images/news/rockstar-hack.jpg
 ---
 
 Rockstar Games has been targeted by hackers again — and the timing couldn't be worse.

@@ -3,7 +3,7 @@ title: "GTA 6 Trailer 3: When Is It Coming and What Should We Expect?"
 blurb: "It's been nearly a year since Trailer 2. With Take-Two's earnings call in May and a summer marketing blitz confirmed, here's everything we know about when Trailer 3 is dropping — and what it needs to show."
 category: Industry
 date: 2026-04-22
-image: /images/gta6-trailer3.jpg
+image: /images/news/gta6-trailer3.jpg
 ---
 
 # GTA 6 Trailer 3: When Is It Coming and What Should We Expect?

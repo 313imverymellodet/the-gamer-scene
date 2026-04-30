@@ -3,7 +3,7 @@ title: "Battlefield 6 Goes All-In: 7 New Maps, Naval Warfare & a Real Server Bro
 blurb: "DICE drops its full 2026 roadmap and it's everything the community has been asking for — classic maps, naval warfare, and a server browser with persistent servers."
 category: Update
 date: 2026-04-16
-image: /images/battlefield-6-roadmap.jpg
+image: /images/news/battlefield-6-roadmap.jpg
 ---
 
 After two seasons that failed to hold the player base, EA and Battlefield Studios dropped their full 2026 roadmap this week — and it's a direct response to every major community complaint since launch.

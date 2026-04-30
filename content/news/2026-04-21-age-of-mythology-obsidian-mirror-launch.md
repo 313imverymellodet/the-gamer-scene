@@ -3,7 +3,7 @@ title: "Age of Mythology: Retold Gets the Aztecs Today — Obsidian Mirror Is th
 blurb: "The most-requested pantheon in Age of Mythology history finally arrives. Obsidian Mirror drops today with 3 Major Gods, 9 Minor Gods, a 12-mission campaign, and mechanics built around fear, sacrifice, and illusion."
 category: Update
 date: 2026-04-21
-image: /images/aom-obsidian-mirror.jpg
+image: /images/news/aom-obsidian-mirror.jpg
 ---
 
 # Age of Mythology: Retold Gets the Aztecs Today — Obsidian Mirror Is the RTS Expansion of the Year

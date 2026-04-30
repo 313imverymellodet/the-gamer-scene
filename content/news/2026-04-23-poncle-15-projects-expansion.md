@@ -3,7 +3,7 @@ title: "Vampire Survivors Studio Poncle Is Opening Two New Studios and Has 15+ P
 blurb: "Fresh off Vampire Crawlers' launch, Poncle dropped a bombshell: they're opening studios in Japan and Italy, licensing their engine to other developers, and have over 15 active projects including new IPs, spinoffs, and Warhammer Survivors."
 category: Industry
 date: 2026-04-23
-image: /images/poncle-expansion-2026.jpg
+image: /images/news/poncle-expansion-2026.jpg
 ---
 
 # Vampire Survivors Studio Poncle Is Opening Two New Studios and Has 15+ Projects in Development

@@ -3,7 +3,7 @@ title: "Vampire Crawlers Is Out — Here's What Critics Are Saying on Launch Day
 blurb: "Poncle's bold Vampire Survivors spin-off launched today to an 80 on Metacritic and 82 on OpenCritic. Strong scores for a game that took real risks — here's the full review breakdown."
 category: Industry
 date: 2026-04-21
-image: /images/vampire-crawlers-launch.jpg
+image: /images/news/vampire-crawlers-launch.jpg
 ---
 
 # Vampire Crawlers Is Out — Here's What Critics Are Saying on Launch Day

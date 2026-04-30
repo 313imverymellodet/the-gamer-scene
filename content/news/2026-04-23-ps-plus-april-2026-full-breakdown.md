@@ -3,7 +3,7 @@ title: "PS Plus April 2026: Every Game Added This Month — Essential, Extra, an
 blurb: "April's PlayStation Plus catalog has fully updated across all tiers. Horizon Zero Dawn Remastered headlines Extra, while Essential gets SAO, Lords of the Fallen, and Tomb Raider 1-3 Remastered. Here's everything you can download right now."
 category: Update
 date: 2026-04-23
-image: /images/ps-plus-april-2026.jpg
+image: /images/news/ps-plus-april-2026.jpg
 ---
 
 # PS Plus April 2026: Every Game Added This Month — Essential, Extra, and Premium

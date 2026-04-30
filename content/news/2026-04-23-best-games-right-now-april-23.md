@@ -3,7 +3,7 @@ title: "What to Play Right Now — The Best Games Available This Week (April 23,
 blurb: "New releases just keep coming. Kiln launched today. AC Black Flag Resynced was just revealed for July. Diablo 4 and Saros are 5 and 7 days away. But what should you actually be playing right now? Here's the definitive this-week guide."
 category: Industry
 date: 2026-04-23
-image: /images/what-to-play-april-23.jpg
+image: /images/news/what-to-play-april-23.jpg
 ---
 
 # What to Play Right Now — The Best Games Available This Week (April 23, 2026)

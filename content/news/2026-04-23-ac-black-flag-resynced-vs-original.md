@@ -3,7 +3,7 @@ title: "AC Black Flag Resynced vs the Original: Every Change Confirmed So Far"
 blurb: "Now that the showcase is done, here's a definitive side-by-side of every confirmed change in Resynced vs the 2013 original — from the reworked tailing missions to the new naval combat, and what's not coming back."
 category: Industry
 date: 2026-04-23
-image: /images/ac-black-flag-resynced-vs-original.jpg
+image: /images/news/ac-black-flag-resynced-vs-original.jpg
 ---
 
 # AC Black Flag Resynced vs the Original: Every Change Confirmed So Far

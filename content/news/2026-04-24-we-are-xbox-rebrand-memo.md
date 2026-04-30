@@ -3,7 +3,7 @@ title: "'We Are Xbox' — Microsoft Kills the 'Microsoft Gaming' Name and Asha S
 blurb: "Xbox CEO Asha Sharma and CCO Matt Booty published an internal memo yesterday admitting players are frustrated, outlining a massive brand reset, and dropping 'Microsoft Gaming' for good. Here's the full breakdown of what it means."
 category: Industry
 date: 2026-04-24
-image: /images/we-are-xbox-rebrand.jpg
+image: /images/news/we-are-xbox-rebrand.jpg
 ---
 
 # 'We Are Xbox' — Microsoft Kills the 'Microsoft Gaming' Name and Asha Sharma Says the Quiet Part Out Loud
