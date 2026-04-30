@@ -9,6 +9,7 @@ import ViewCounter from '@/components/ViewCounter'
 import ShareButtons from '@/components/ShareButtons'
 import JsonLd from '@/components/JsonLd'
 import InlineSubscribeCTA from '@/components/InlineSubscribeCTA'
+import VideoPlayer from '@/components/VideoPlayer'
 import type { Metadata } from 'next'
 
 /** Split bodyHtml after the Nth closing </p> tag and inject a CTA node. */
@@ -253,6 +254,11 @@ export default async function NewsArticlePage({
             title={item.title}
           />
         </div>
+
+        {/* Video (if present) */}
+        {item.video && (
+          <VideoPlayer src={item.video} title={item.title} />
+        )}
 
         {/* Article body — split around mid-article CTA */}
         <div

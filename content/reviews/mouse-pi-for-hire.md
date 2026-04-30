@@ -9,7 +9,7 @@ hot: false
 date: 2026-04-18
 author: Romello Morris
 issue: "047"
-image: /images/mouse-pi.jpg
+image: /images/reviews/mouse-pi.jpg
 ---
 
 The first thing you notice is that it looks like a cartoon. A real one — not a game with cel-shading or outlines that approximate hand-drawn art, but something that genuinely, convincingly looks like it was projected off a film reel in 1932. Characters move with that bouncy, rubbery, slightly wrong fluidity of 1930s animation. The world is black and white with graduated greys. Bullets are thick ink strokes. Explosions are abstracted splashes. Backgrounds are painted. It is, frame by frame, one of the most spectacular visual achievements in any game released this year.

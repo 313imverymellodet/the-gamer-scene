@@ -9,7 +9,7 @@ hot: true
 date: 2026-04-18
 author: Romello Morris
 issue: "047"
-image: /images/pragmata.jpg
+image: /images/reviews/pragmata.jpg
 ---
 
 The 90-second reveal at Sony's PS5 showcase in June 2020 showed a man in a cracked spacesuit standing in a glitching New York. A small girl materialised beside him, her eyes luminous and cold. They looked at each other. Then the logo. That was it. Six years of cryptic silence, multiple delays, and relentless community speculation later — Pragmata is finally a game you can actually play. And it is, without qualification, one of the best things Capcom has made in years.

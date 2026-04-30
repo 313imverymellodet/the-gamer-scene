@@ -9,6 +9,7 @@ import ViewCounter from '@/components/ViewCounter'
 import ShareButtons from '@/components/ShareButtons'
 import JsonLd from '@/components/JsonLd'
 import InlineSubscribeCTA from '@/components/InlineSubscribeCTA'
+import VideoPlayer from '@/components/VideoPlayer'
 import type { Metadata } from 'next'
 
 const BASE = 'https://thegamerscene.news'
@@ -237,6 +238,11 @@ export default async function OpinionPage({
               title={piece.title}
             />
           </div>
+        )}
+
+        {/* Video (if present) */}
+        {piece.video && (
+          <VideoPlayer src={piece.video} title={piece.title} />
         )}
 
         {/* Article body — split around mid-article CTA */}

@@ -106,6 +106,7 @@ export interface FullNewsItem {
   category: string
   date: string
   image?: string
+  video?: string
   slug: string
   author: string
   bodyHtml: string
@@ -113,6 +114,7 @@ export interface FullNewsItem {
 
 export interface FullReviewItem extends ReviewItem {
   date: string
+  video?: string
   bodyHtml: string
 }
 
@@ -127,6 +129,7 @@ export function getNewsItemBySlug(slug: string): FullNewsItem | null {
     category: data.category as string,
     date: data.date ? String(data.date) : '',
     image: data.image as string | undefined,
+    video: data.video as string | undefined,
     slug,
     author: data.author ? String(data.author) : 'Romello Morris',
     bodyHtml: marked(content) as string,
@@ -150,6 +153,7 @@ export function getReviewBySlug(slug: string): FullReviewItem | null {
     slug,
     issue: data.issue as string | undefined,
     image: data.image as string | undefined,
+    video: data.video as string | undefined,
     date: data.date ? String(data.date) : '',
     bodyHtml: marked(content) as string,
   }
@@ -263,6 +267,7 @@ export interface OpinionItem {
 }
 
 export interface FullOpinionItem extends OpinionItem {
+  video?: string
   bodyHtml: string
 }
 
@@ -307,6 +312,7 @@ export function getOpinionBySlug(slug: string): FullOpinionItem | null {
     date: data.date ? String(data.date) : '',
     author: data.author ? String(data.author) : 'Romello Morris',
     image: data.image as string | undefined,
+    video: data.video as string | undefined,
     bodyHtml: marked(stripSocialNotes(content)) as string,
   }
 }

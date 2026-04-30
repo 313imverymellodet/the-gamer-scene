@@ -9,6 +9,7 @@ import ViewCounter from '@/components/ViewCounter'
 import ShareButtons from '@/components/ShareButtons'
 import JsonLd from '@/components/JsonLd'
 import InlineSubscribeCTA from '@/components/InlineSubscribeCTA'
+import VideoPlayer from '@/components/VideoPlayer'
 import type { Metadata } from 'next'
 
 function injectMidArticleCTA(html: string, afterParagraph = 3): { before: string; after: string } {
@@ -321,6 +322,11 @@ export default async function ReviewPage({
             title={review.title}
           />
         </div>
+
+        {/* Video (if present) */}
+        {review.video && (
+          <VideoPlayer src={review.video} title={review.title} />
+        )}
 
         {/* Review body — split around mid-article CTA */}
         <div

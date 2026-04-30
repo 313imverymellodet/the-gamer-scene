@@ -4,6 +4,7 @@ blurb: "24 hours in and the Diablo 4 community has found the early Warlock build
 category: Industry
 date: 2026-04-29
 image: /images/diablo4-day2-community.jpg
+video: /videos/diablo4-lord-of-hatred-expansion.mp4
 keywords: [Diablo 4 Lord of Hatred impressions, Warlock build Diablo 4, Diablo 4 Day 2 reactions, Skovos impressions, Diablo 4 endgame 2026, Lord of Hatred community reaction, Diablo 4 Warlock builds]
 ---
 

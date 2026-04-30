@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 
 interface Props {
   src?: string
@@ -9,7 +10,7 @@ interface Props {
   title: string
 }
 
-// Category → background + text color
+// Category → background + accent color
 const CATEGORY_STYLES: Record<string, { bg: string; accent: string; text: string }> = {
   INDUSTRY:  { bg: '#1a0a08', accent: '#c0392b', text: '#f5f0e8' },
   REVIEW:    { bg: '#0a0a10', accent: '#e67e22', text: '#f5f0e8' },
@@ -18,6 +19,7 @@ const CATEGORY_STYLES: Record<string, { bg: string; accent: string; text: string
   DEAL:      { bg: '#081414', accent: '#16a085', text: '#f5f0e8' },
   LEAK:      { bg: '#100816', accent: '#8e44ad', text: '#f5f0e8' },
   WEEKLY:    { bg: '#0e0e0e', accent: '#888',    text: '#f5f0e8' },
+  OPINION:   { bg: '#0e0a04', accent: '#d4a017', text: '#f5f0e8' },
   HOT:       { bg: '#180606', accent: '#c0392b', text: '#f5f0e8' },
 }
 
@@ -85,12 +87,33 @@ export default function ArticleHero({ src, alt, category = '', title }: Props) {
     )
   }
 
+  // External URL (http/https) — use regular <img> since Next.js Image needs domain config
+  const isExternal = src.startsWith('http')
+
+  if (isExternal) {
+    return (
+      <div style={{ margin: '0 0 36px', lineHeight: 0 }}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={src}
+          alt={alt}
+          style={{ width: '100%', display: 'block' }}
+          onError={() => setImgFailed(true)}
+        />
+      </div>
+    )
+  }
+
+  // Local image — use Next.js Image for optimization (WebP, lazy load, responsive)
   return (
-    <div style={{ margin: '0 0 36px', lineHeight: 0 }}>
-      <img
+    <div style={{ margin: '0 0 36px', position: 'relative', width: '100%', aspectRatio: '16/9' }}>
+      <Image
         src={src}
         alt={alt}
-        style={{ width: '100%', display: 'block' }}
+        fill
+        sizes="(max-width: 768px) 100vw, 720px"
+        style={{ objectFit: 'cover', display: 'block' }}
+        priority
         onError={() => setImgFailed(true)}
       />
     </div>
