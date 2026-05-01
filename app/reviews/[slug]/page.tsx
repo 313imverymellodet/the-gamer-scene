@@ -370,11 +370,16 @@ export default async function ReviewPage({
         fontFamily: 'var(--sans)',
         fontSize: '0.75rem',
         color: 'var(--ink-faint)',
+        flexWrap: 'wrap',
+        gap: '12px',
       }}>
-        <span style={{ fontWeight: 700 }}>THE GAMER SCENE</span>
-        <Link href="/" style={{ color: 'var(--ink-soft)', textDecoration: 'none', fontWeight: 600 }}>
-          ← Back to Issue
-        </Link>
+        <span style={{ fontWeight: 700 }}>THE GAMER SCENE · EST. 2013</span>
+        <div style={{ display: 'flex', gap: '20px' }}>
+          <Link href="/about" style={{ color: 'var(--ink-soft)', textDecoration: 'none' }}>About</Link>
+          <Link href="/privacy" style={{ color: 'var(--ink-soft)', textDecoration: 'none' }}>Privacy</Link>
+          <Link href="/contact" style={{ color: 'var(--ink-soft)', textDecoration: 'none' }}>Contact</Link>
+          <Link href="/" style={{ color: 'var(--ink-soft)', textDecoration: 'none', fontWeight: 600 }}>← Back to Issue</Link>
+        </div>
       </footer>
     </div>
   )
