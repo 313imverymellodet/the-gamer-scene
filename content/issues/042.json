@@ -25,7 +25,7 @@
     "initials": "RM",
     "readTime": "14 min read",
     "tag": "REVIEW",
-    "image": "/images/pragmata.jpg"
+    "image": "/images/news/pragmata-launch.jpg"
   },
   "tabs": [
     { "id": "scene",    "num": "01", "label": "The Scene" },
@@ -61,7 +61,7 @@
     "price": "$39.99",
     "platforms": "PC · PS5 · Xbox · Switch · Switch 2",
     "runtime": "~8 hours",
-    "image": "/images/mouse-pi.jpg"
+    "image": "/images/news/mouse-pi-launch.jpg"
   },
   "reactions": [
     { "glyph": "★", "label": "Brilliant",  "count": 0, "key": "brilliant" },

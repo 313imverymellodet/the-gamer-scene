@@ -10,11 +10,26 @@
     "readTime": "15 min"
   },
   "ticker": [
-    { "tag": "HOT",      "text": "Is Capcom having the greatest single year in gaming history? The case is strong" },
-    { "tag": "LIVE",     "text": "Masters of Albion early access — Peter Molyneux's comeback is real" },
-    { "tag": "LIVE",     "text": "Tides of Tomorrow out now — 77 OpenCritic, beautiful but divisive" },
-    { "tag": "COMING",   "text": "Diablo 4: Lord of Hatred drops April 28 — one week out preview" },
-    { "tag": "COMING",   "text": "Forza Horizon 6 Japan — May 19 launch, day one Game Pass" }
+    {
+      "tag": "HOT",
+      "text": "Is Capcom having the greatest single year in gaming history? The case is strong"
+    },
+    {
+      "tag": "LIVE",
+      "text": "Masters of Albion early access — Peter Molyneux's comeback is real"
+    },
+    {
+      "tag": "LIVE",
+      "text": "Tides of Tomorrow out now — 77 OpenCritic, beautiful but divisive"
+    },
+    {
+      "tag": "COMING",
+      "text": "Diablo 4: Lord of Hatred drops April 28 — one week out preview"
+    },
+    {
+      "tag": "COMING",
+      "text": "Forza Horizon 6 Japan — May 19 launch, day one Game Pass"
+    }
   ],
   "lead": {
     "kicker": "The Argument",
@@ -25,34 +40,100 @@
     "initials": "RM",
     "readTime": "8 min read",
     "tag": "ANALYSIS",
-    "image": "/images/pragmata.jpg",
+    "image": "/images/news/capcom-2026-golden-era.jpg",
     "readLink": "/news/2026-04-22-capcom-2026-golden-era-analysis"
   },
   "tabs": [
-    { "id": "scene",    "num": "01", "label": "The Scene" },
-    { "id": "news",     "num": "02", "label": "Dispatch" },
-    { "id": "reviews",  "num": "03", "label": "Reviews" },
-    { "id": "indie",    "num": "04", "label": "Indie Room" },
-    { "id": "calendar", "num": "05", "label": "Calendar" },
-    { "id": "discourse","num": "06", "label": "Discourse" }
+    {
+      "id": "scene",
+      "num": "01",
+      "label": "The Scene"
+    },
+    {
+      "id": "news",
+      "num": "02",
+      "label": "Dispatch"
+    },
+    {
+      "id": "reviews",
+      "num": "03",
+      "label": "Reviews"
+    },
+    {
+      "id": "indie",
+      "num": "04",
+      "label": "Indie Room"
+    },
+    {
+      "id": "calendar",
+      "num": "05",
+      "label": "Calendar"
+    },
+    {
+      "id": "discourse",
+      "num": "06",
+      "label": "Discourse"
+    }
   ],
   "poll": {
     "question": "Which remaining April release are you most locked in for?",
     "options": [
-      { "label": "Diablo 4: Lord of Hatred (Apr 28)", "pct": 0 },
-      { "label": "Saros (Apr 30)",                    "pct": 0 },
-      { "label": "Invincible VS (Apr 30)",             "pct": 0 },
-      { "label": "Clair Obscur: Expedition 33",        "pct": 0 }
+      {
+        "label": "Diablo 4: Lord of Hatred (Apr 28)",
+        "pct": 0
+      },
+      {
+        "label": "Saros (Apr 30)",
+        "pct": 0
+      },
+      {
+        "label": "Invincible VS (Apr 30)",
+        "pct": 0
+      },
+      {
+        "label": "Clair Obscur: Expedition 33",
+        "pct": 0
+      }
     ],
     "total": "0",
     "closes": "Closes Thursday 23:59 UTC"
   },
   "calendar": [
-    { "day": "APR", "date": "23", "title": "Kiln",                        "sub": "Full Launch · Day One Game Pass",             "platform": "Multi" },
-    { "day": "APR", "date": "24", "title": "Clair Obscur: Expedition 33", "sub": "Full Launch",                                 "platform": "PS5 · XSX · PC" },
-    { "day": "APR", "date": "28", "title": "Diablo IV: Lord of Hatred",   "sub": "Expansion Launch",                            "platform": "Multi" },
-    { "day": "APR", "date": "30", "title": "Saros",                       "sub": "PS5 Exclusive · Deluxe Early Access Apr 28",  "platform": "PS5" },
-    { "day": "APR", "date": "30", "title": "Invincible VS",               "sub": "Full Launch",                                 "platform": "Multi" }
+    {
+      "day": "APR",
+      "date": "23",
+      "title": "Kiln",
+      "sub": "Full Launch · Day One Game Pass",
+      "platform": "Multi"
+    },
+    {
+      "day": "APR",
+      "date": "24",
+      "title": "Clair Obscur: Expedition 33",
+      "sub": "Full Launch",
+      "platform": "PS5 · XSX · PC"
+    },
+    {
+      "day": "APR",
+      "date": "28",
+      "title": "Diablo IV: Lord of Hatred",
+      "sub": "Expansion Launch",
+      "platform": "Multi"
+    },
+    {
+      "day": "APR",
+      "date": "30",
+      "title": "Saros",
+      "sub": "PS5 Exclusive · Deluxe Early Access Apr 28",
+      "platform": "PS5"
+    },
+    {
+      "day": "APR",
+      "date": "30",
+      "title": "Invincible VS",
+      "sub": "Full Launch",
+      "platform": "Multi"
+    }
   ],
   "spotlight": {
     "kicker": "Indie Room · Issue 045",
@@ -62,19 +143,76 @@
     "price": "$24.99",
     "platforms": "PC",
     "runtime": "Early Access",
-    "image": "/images/mouse-pi.jpg"
+    "image": "/images/news/mouse-pi-launch.jpg"
   },
   "reactions": [
-    { "glyph": "★", "label": "Brilliant",  "count": 0, "key": "brilliant" },
-    { "glyph": "◐", "label": "Conflicted", "count": 0, "key": "conflicted" },
-    { "glyph": "▲", "label": "Spot on",    "count": 0, "key": "spoton" },
-    { "glyph": "✕", "label": "Disagree",   "count": 0, "key": "disagree" },
-    { "glyph": "♫", "label": "Mood",       "count": 0, "key": "mood" }
+    {
+      "glyph": "★",
+      "label": "Brilliant",
+      "count": 0,
+      "key": "brilliant"
+    },
+    {
+      "glyph": "◐",
+      "label": "Conflicted",
+      "count": 0,
+      "key": "conflicted"
+    },
+    {
+      "glyph": "▲",
+      "label": "Spot on",
+      "count": 0,
+      "key": "spoton"
+    },
+    {
+      "glyph": "✕",
+      "label": "Disagree",
+      "count": 0,
+      "key": "disagree"
+    },
+    {
+      "glyph": "♫",
+      "label": "Mood",
+      "count": 0,
+      "key": "mood"
+    }
   ],
   "comments": [
-    { "name": "Marcus T.",  "handle": "@marcust",      "time": "1h", "initials": "MT", "body": "Capcom has been cooking for three years straight. Requiem, Stories 3, Pragmata, and Onimusha still on deck. If Onimusha is a 9+ this is genuinely the greatest single publisher year in history.", "replies": 6, "likes": 44 },
-    { "name": "Priya S.",   "handle": "@priyasplays",  "time": "2h", "initials": "PS", "body": "Vampire Crawlers day 2 and the community already broke it. The Turboturn speed-run builds are unhinged. This is exactly what happened with Vampire Survivors. Poncle cannot miss.", "replies": 4, "likes": 29 },
-    { "name": "Jade W.",    "handle": "@jadewright",   "time": "3h", "initials": "JW", "body": "Tides of Tomorrow is divisive but I'm firmly in the 'loved it' camp. The Online Story-Link system is genuinely affecting when it works. Digixart are doing things nobody else is trying.", "replies": 5, "likes": 22 },
-    { "name": "Devon K.",   "handle": "@devonk",       "time": "5h", "initials": "DK", "body": "GTA 6 Trailer 3 analysis is exactly what I needed. The marketing silence since Trailer 2 has been painful — Take-Two earnings call in May feels like the unlock moment.", "replies": 3, "likes": 18 }
+    {
+      "name": "Marcus T.",
+      "handle": "@marcust",
+      "time": "1h",
+      "initials": "MT",
+      "body": "Capcom has been cooking for three years straight. Requiem, Stories 3, Pragmata, and Onimusha still on deck. If Onimusha is a 9+ this is genuinely the greatest single publisher year in history.",
+      "replies": 6,
+      "likes": 44
+    },
+    {
+      "name": "Priya S.",
+      "handle": "@priyasplays",
+      "time": "2h",
+      "initials": "PS",
+      "body": "Vampire Crawlers day 2 and the community already broke it. The Turboturn speed-run builds are unhinged. This is exactly what happened with Vampire Survivors. Poncle cannot miss.",
+      "replies": 4,
+      "likes": 29
+    },
+    {
+      "name": "Jade W.",
+      "handle": "@jadewright",
+      "time": "3h",
+      "initials": "JW",
+      "body": "Tides of Tomorrow is divisive but I'm firmly in the 'loved it' camp. The Online Story-Link system is genuinely affecting when it works. Digixart are doing things nobody else is trying.",
+      "replies": 5,
+      "likes": 22
+    },
+    {
+      "name": "Devon K.",
+      "handle": "@devonk",
+      "time": "5h",
+      "initials": "DK",
+      "body": "GTA 6 Trailer 3 analysis is exactly what I needed. The marketing silence since Trailer 2 has been painful — Take-Two earnings call in May feels like the unlock moment.",
+      "replies": 3,
+      "likes": 18
+    }
   ]
 }
