@@ -76,27 +76,31 @@
     }
   ],
   "poll": {
-    "question": "Does the 'We Are Xbox' rebrand change how you feel about the platform?",
+    "question": "What was the best game of April 2026?",
     "options": [
       {
-        "label": "Yes — this feels like a real shift",
+        "label": "Saros — Housemarque's best yet",
         "pct": 0
       },
       {
-        "label": "Words are cheap, show me the games",
+        "label": "Pragmata — Capcom's new IP delivered",
         "pct": 0
       },
       {
-        "label": "Game Pass Starter on Discord is the move",
+        "label": "Hades 2 — finally on PS5 & Xbox",
         "pct": 0
       },
       {
-        "label": "I don't own an Xbox so it doesn't matter",
+        "label": "Diablo 4: Lord of Hatred",
+        "pct": 0
+      },
+      {
+        "label": "Mouse: P.I. For Hire — underdog pick",
         "pct": 0
       }
     ],
     "total": "0",
-    "closes": "Closes Saturday 23:59 UTC"
+    "closes": "Closes May 8, 23:59 UTC"
   },
   "calendar": [
     {
