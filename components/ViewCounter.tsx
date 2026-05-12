@@ -18,15 +18,29 @@ export default function ViewCounter({ slug, style }: Props) {
   const [views, setViews] = useState<number | null>(null)
 
   useEffect(() => {
-    // Increment on mount — fire-and-forget POST, then update display
-    fetch('/api/views', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ slug }),
-    })
-      .then(r => r.json())
-      .then(d => setViews(d.views ?? 0))
-      .catch(() => setViews(null))
+    const storageKey = `viewed:${slug}`
+    const alreadyCounted = sessionStorage.getItem(storageKey)
+
+    if (alreadyCounted) {
+      // Already counted this session — fetch current count without incrementing
+      fetch(`/api/views?slug=${encodeURIComponent(slug)}`)
+        .then(r => r.json())
+        .then(d => setViews(d.views ?? 0))
+        .catch(() => setViews(null))
+    } else {
+      // First view this session — increment and mark as counted
+      fetch('/api/views', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ slug }),
+      })
+        .then(r => r.json())
+        .then(d => {
+          setViews(d.views ?? 0)
+          try { sessionStorage.setItem(storageKey, '1') } catch { /* private browsing */ }
+        })
+        .catch(() => setViews(null))
+    }
   }, [slug])
 
   if (views === null) return null

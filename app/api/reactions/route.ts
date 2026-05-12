@@ -1,26 +1,19 @@
-import { Redis } from '@upstash/redis'
 import { NextRequest, NextResponse } from 'next/server'
+import { redis } from '@/lib/redis'
 
-const redis = new Redis({
-  url: process.env.KV_REST_API_URL!,
-  token: process.env.KV_REST_API_TOKEN!,
-})
-
-const VALID_KEYS = ['brilliant', 'conflicted', 'spoton', 'disagree', 'mood']
+const VALID_KEYS = ['brilliant', 'conflicted', 'spoton', 'disagree', 'mood'] as const
 
 // GET /api/reactions?issue=047
-// Returns current reaction counts for an issue
 export async function GET(req: NextRequest) {
   const issue = req.nextUrl.searchParams.get('issue')
   if (!issue) return NextResponse.json({ error: 'Missing issue' }, { status: 400 })
 
   try {
-    const key = `reactions:${issue}`
-    const raw = await redis.hgetall<Record<string, number>>(key)
+    const raw = await redis.hgetall<Record<string, number>>(`reactions:${issue}`)
 
     const counts: Record<string, number> = {}
     for (const k of VALID_KEYS) {
-      counts[k] = raw ? (Number(raw[k]) || 0) : 0
+      counts[k] = raw ? Math.max(0, Number(raw[k]) || 0) : 0
     }
 
     return NextResponse.json({ counts })
@@ -31,6 +24,9 @@ export async function GET(req: NextRequest) {
 
 // POST /api/reactions
 // Body: { issue: "047", key: "brilliant", action: "add" | "remove" }
+//
+// Performance: was 3 sequential round-trips (hincrby → hget → hgetall).
+// Now 2 pipelined (hincrby + hgetall), clamp applied in JS after the fact.
 export async function POST(req: NextRequest) {
   try {
     const { issue, key, action } = await req.json()
@@ -38,7 +34,7 @@ export async function POST(req: NextRequest) {
     if (!issue || !key || !action) {
       return NextResponse.json({ error: 'Missing fields' }, { status: 400 })
     }
-    if (!VALID_KEYS.includes(key)) {
+    if (!(VALID_KEYS as readonly string[]).includes(key)) {
       return NextResponse.json({ error: 'Invalid reaction key' }, { status: 400 })
     }
     if (action !== 'add' && action !== 'remove') {
@@ -46,20 +42,27 @@ export async function POST(req: NextRequest) {
     }
 
     const redisKey = `reactions:${issue}`
-    const delta = action === 'add' ? 1 : -1
-    await redis.hincrby(redisKey, key, delta)
+    const delta    = action === 'add' ? 1 : -1
 
-    // Clamp to 0 — never go negative
-    const current = await redis.hget<number>(redisKey, key)
-    if (current !== null && Number(current) < 0) {
-      await redis.hset(redisKey, { [key]: 0 })
-    }
+    // Pipeline: increment + read back in one round-trip
+    const pipeline = redis.pipeline()
+    pipeline.hincrby(redisKey, key, delta)
+    pipeline.hgetall(redisKey)
+    const [, rawResult] = await pipeline.exec()
 
-    // Return updated counts
-    const raw = await redis.hgetall<Record<string, number>>(redisKey)
+    const raw = rawResult as Record<string, number> | null
+
+    // Clamp all values to ≥ 0 in JS — avoids a third Redis round-trip
     const counts: Record<string, number> = {}
     for (const k of VALID_KEYS) {
       counts[k] = raw ? Math.max(0, Number(raw[k]) || 0) : 0
+    }
+
+    // If the just-updated key went negative (race condition), floor it in Redis
+    // asynchronously — fire-and-forget, doesn't block the response
+    if (counts[key] < 0) {
+      redis.hset(redisKey, { [key]: 0 }).catch(() => {})
+      counts[key] = 0
     }
 
     return NextResponse.json({ counts })

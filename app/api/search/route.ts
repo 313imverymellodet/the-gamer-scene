@@ -1,10 +1,8 @@
 import { NextResponse } from 'next/server'
-import fs from 'fs'
-import path from 'path'
-import matter from 'gray-matter'
+import { getAllContentMeta } from '@/lib/content'
 
 export interface SearchItem {
-  type: 'news' | 'review'
+  type: 'news' | 'review' | 'opinion'
   title: string
   blurb: string
   category?: string
@@ -15,56 +13,32 @@ export interface SearchItem {
 }
 
 // GET /api/search
-// Returns all articles and reviews as a flat searchable array
+//
+// Returns all articles as a flat sorted array for client-side search.
+// Zero filesystem I/O at request time — getAllContentMeta() pulls from
+// the in-memory cache populated on first access.
 export async function GET() {
-  const contentDir = path.join(process.cwd(), 'content')
-  const items: SearchItem[] = []
+  const meta = getAllContentMeta()
 
-  // News articles
-  const newsDir = path.join(contentDir, 'news')
-  if (fs.existsSync(newsDir)) {
-    for (const file of fs.readdirSync(newsDir).filter(f => f.endsWith('.md'))) {
-      const raw = fs.readFileSync(path.join(newsDir, file), 'utf-8')
-      const { data } = matter(raw)
-      const slug = file.replace('.md', '')
-      items.push({
-        type: 'news',
-        title: String(data.title || ''),
-        blurb: String(data.blurb || ''),
-        category: String(data.category || ''),
-        slug,
-        href: `/news/${slug}`,
-        date: data.date ? String(data.date) : undefined,
-      })
-    }
-  }
+  const items: SearchItem[] = Object.values(meta)
+    .map(m => ({
+      type:     m.type,
+      title:    m.title,
+      blurb:    m.blurb,
+      category: m.category,
+      score:    m.score,
+      slug:     m.slug,
+      href:     m.href,
+      date:     m.date || undefined,
+    }))
+    .sort((a, b) => {
+      if (!a.date && !b.date) return 0
+      if (!a.date) return 1
+      if (!b.date) return -1
+      return new Date(b.date).getTime() - new Date(a.date).getTime()
+    })
 
-  // Reviews
-  const reviewsDir = path.join(contentDir, 'reviews')
-  if (fs.existsSync(reviewsDir)) {
-    for (const file of fs.readdirSync(reviewsDir).filter(f => f.endsWith('.md'))) {
-      const raw = fs.readFileSync(path.join(reviewsDir, file), 'utf-8')
-      const { data } = matter(raw)
-      const slug = file.replace('.md', '')
-      items.push({
-        type: 'review',
-        title: String(data.title || ''),
-        blurb: String(data.pull || data.blurb || ''),
-        score: typeof data.score === 'number' ? data.score : undefined,
-        slug,
-        href: `/reviews/${slug}`,
-        date: data.date ? String(data.date) : undefined,
-      })
-    }
-  }
-
-  // Sort newest first
-  items.sort((a, b) => {
-    if (!a.date && !b.date) return 0
-    if (!a.date) return 1
-    if (!b.date) return -1
-    return new Date(b.date).getTime() - new Date(a.date).getTime()
+  return NextResponse.json(items, {
+    headers: { 'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=600' },
   })
-
-  return NextResponse.json(items)
 }

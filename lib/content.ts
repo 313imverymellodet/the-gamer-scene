@@ -6,59 +6,98 @@ import type { IssueData, NewsItem, ReviewItem } from '@/types'
 
 const contentDir = path.join(process.cwd(), 'content')
 
+// ─── In-memory content cache ──────────────────────────────────────────────────
+//
+// Content is immutable between deploys. We read every file exactly once per
+// process lifetime, parse frontmatter and markdown to HTML, then serve all
+// subsequent requests entirely from memory.
+//
+// Cold-start cost (one-time): ~65 readFileSync + matter() + marked() calls.
+// Warm-request cost: zero disk I/O, zero markdown parsing, pure RAM lookup.
+//
+// Cache invalidation: process restart (= Vercel redeploy). No TTL needed.
+
+interface CachedEntry {
+  slug: string
+  data: Record<string, unknown>  // parsed frontmatter
+  bodyHtml: string               // pre-rendered HTML (done once at cache-build)
+}
+
+interface ContentCache {
+  news: CachedEntry[]
+  reviews: CachedEntry[]
+  opinion: CachedEntry[]
+  builtAt: number
+}
+
+let _cache: ContentCache | null = null
+
+function buildCache(): ContentCache {
+  const read = (dir: string, stripFn?: (s: string) => string): CachedEntry[] => {
+    if (!fs.existsSync(dir)) return []
+    return fs.readdirSync(dir)
+      .filter(f => f.endsWith('.md'))
+      .sort()
+      .reverse()
+      .map(file => {
+        const raw = fs.readFileSync(path.join(dir, file), 'utf-8')
+        const { data, content } = matter(raw)
+        const body = stripFn ? stripFn(content) : content
+        return {
+          slug: file.replace('.md', ''),
+          data: data as Record<string, unknown>,
+          bodyHtml: marked(body) as string,
+        }
+      })
+  }
+
+  return {
+    news:    read(path.join(contentDir, 'news')),
+    reviews: read(path.join(contentDir, 'reviews')),
+    opinion: read(path.join(contentDir, 'opinion'), stripSocialNotes),
+    builtAt: Date.now(),
+  }
+}
+
+/** Lazily build the cache on first access, then reuse forever. */
+function cache(): ContentCache {
+  if (!_cache) _cache = buildCache()
+  return _cache
+}
+
 // ─── News ─────────────────────────────────────────────────────────────────────
 
 export function getNewsItems(limit = 6): NewsItem[] {
-  const newsDir = path.join(contentDir, 'news')
-  if (!fs.existsSync(newsDir)) return []
-
-  return fs.readdirSync(newsDir)
-    .filter(f => f.endsWith('.md'))
-    .sort()
-    .reverse()
+  return cache().news
     .slice(0, limit)
-    .map((file, index) => {
-      const raw = fs.readFileSync(path.join(newsDir, file), 'utf-8')
-      const { data } = matter(raw)
-      return {
-        n: String(index + 1).padStart(2, '0'),
-        title: data.title as string,
-        blurb: data.blurb as string,
-        cat: data.category as string,
-        time: getRelativeTime(data.date as string),
-        slug: file.replace('.md', ''),
-      }
-    })
+    .map((entry, index) => ({
+      n:     String(index + 1).padStart(2, '0'),
+      title: String(entry.data.title  ?? ''),
+      blurb: String(entry.data.blurb  ?? ''),
+      cat:   String(entry.data.category ?? ''),
+      time:  getRelativeTime(String(entry.data.date ?? '')),
+      slug:  entry.slug,
+    }))
 }
 
 // ─── Reviews ──────────────────────────────────────────────────────────────────
 
 export function getReviews(issue?: string): ReviewItem[] {
-  const reviewsDir = path.join(contentDir, 'reviews')
-  if (!fs.existsSync(reviewsDir)) return []
-
-  return fs.readdirSync(reviewsDir)
-    .filter(f => f.endsWith('.md'))
-    .sort()
-    .reverse()
-    .map(file => {
-      const raw = fs.readFileSync(path.join(reviewsDir, file), 'utf-8')
-      const { data } = matter(raw)
-      return {
-        title: data.title as string,
-        studio: data.studio as string,
-        platforms: (data.platforms as string[]) ?? [],
-        score: data.score as number,
-        pull: data.pull as string,
-        author: data.author as string,
-        hours: `${data.hours}h played`,
-        hot: Boolean(data.hot),
-        slug: file.replace('.md', ''),
-        issue: data.issue as string | undefined,
-        image: data.image as string | undefined,
-      }
-    })
-    .filter(r => !issue || r.issue === issue)
+  return cache().reviews
+    .filter(entry => !issue || entry.data.issue === issue)
+    .map(entry => ({
+      title:     String(entry.data.title    ?? ''),
+      studio:    String(entry.data.studio   ?? ''),
+      platforms: (entry.data.platforms as string[]) ?? [],
+      score:     entry.data.score as number,
+      pull:      String(entry.data.pull     ?? ''),
+      author:    String(entry.data.author   ?? ''),
+      hours:     `${entry.data.hours}h played`,
+      hot:       Boolean(entry.data.hot),
+      slug:      entry.slug,
+      issue:     entry.data.issue as string | undefined,
+      image:     entry.data.image as string | undefined,
+    }))
 }
 
 // ─── Issues ───────────────────────────────────────────────────────────────────
@@ -72,15 +111,13 @@ export async function getLatestIssue(): Promise<IssueData> {
 
   if (!files.length) throw new Error('No issues found in content/issues/')
 
-  const raw = fs.readFileSync(path.join(issuesDir, files[0]), 'utf-8')
+  const raw  = fs.readFileSync(path.join(issuesDir, files[0]), 'utf-8')
   const base = JSON.parse(raw) as Omit<IssueData, 'news' | 'reviews'>
-
-  const issueNumber = base.issue.number
 
   return {
     ...base,
-    news: getNewsItems(6),
-    reviews: getReviews(issueNumber),
+    news:    getNewsItems(6),
+    reviews: getReviews(base.issue.number),
   }
 }
 
@@ -88,17 +125,17 @@ export async function getIssue(slug: string): Promise<IssueData> {
   const filePath = path.join(contentDir, 'issues', `${slug}.json`)
   if (!fs.existsSync(filePath)) throw new Error(`Issue not found: ${slug}`)
 
-  const raw = fs.readFileSync(filePath, 'utf-8')
+  const raw  = fs.readFileSync(filePath, 'utf-8')
   const base = JSON.parse(raw) as Omit<IssueData, 'news' | 'reviews'>
 
   return {
     ...base,
-    news: getNewsItems(6),
+    news:    getNewsItems(6),
     reviews: getReviews(base.issue.number),
   }
 }
 
-// ─── Single Article / Review ──────────────────────────────────────────────────
+// ─── Single article / review ──────────────────────────────────────────────────
 
 export interface FullNewsItem {
   title: string
@@ -119,63 +156,51 @@ export interface FullReviewItem extends ReviewItem {
 }
 
 export function getNewsItemBySlug(slug: string): FullNewsItem | null {
-  const file = path.join(contentDir, 'news', `${slug}.md`)
-  if (!fs.existsSync(file)) return null
-  const raw = fs.readFileSync(file, 'utf-8')
-  const { data, content } = matter(raw)
+  const entry = cache().news.find(e => e.slug === slug)
+  if (!entry) return null
   return {
-    title: data.title as string,
-    blurb: data.blurb as string,
-    category: data.category as string,
-    date: data.date ? String(data.date) : '',
-    image: data.image as string | undefined,
-    video: data.video as string | undefined,
+    title:    String(entry.data.title    ?? ''),
+    blurb:    String(entry.data.blurb    ?? ''),
+    category: String(entry.data.category ?? ''),
+    date:     entry.data.date ? String(entry.data.date) : '',
+    image:    entry.data.image as string | undefined,
+    video:    entry.data.video as string | undefined,
     slug,
-    author: data.author ? String(data.author) : 'Romello Morris',
-    bodyHtml: marked(content) as string,
+    author:   entry.data.author ? String(entry.data.author) : 'Romello Morris',
+    bodyHtml: entry.bodyHtml,
   }
 }
 
 export function getReviewBySlug(slug: string): FullReviewItem | null {
-  const file = path.join(contentDir, 'reviews', `${slug}.md`)
-  if (!fs.existsSync(file)) return null
-  const raw = fs.readFileSync(file, 'utf-8')
-  const { data, content } = matter(raw)
+  const entry = cache().reviews.find(e => e.slug === slug)
+  if (!entry) return null
   return {
-    title: data.title as string,
-    studio: data.studio as string,
-    platforms: (data.platforms as string[]) ?? [],
-    score: data.score as number,
-    pull: data.pull as string,
-    author: data.author as string,
-    hours: `${data.hours}h played`,
-    hot: Boolean(data.hot),
+    title:     String(entry.data.title  ?? ''),
+    studio:    String(entry.data.studio ?? ''),
+    platforms: (entry.data.platforms as string[]) ?? [],
+    score:     entry.data.score as number,
+    pull:      String(entry.data.pull   ?? ''),
+    author:    String(entry.data.author ?? ''),
+    hours:     `${entry.data.hours}h played`,
+    hot:       Boolean(entry.data.hot),
     slug,
-    issue: data.issue as string | undefined,
-    image: data.image as string | undefined,
-    video: data.video as string | undefined,
-    date: data.date ? String(data.date) : '',
-    bodyHtml: marked(content) as string,
+    issue:     entry.data.issue as string | undefined,
+    image:     entry.data.image as string | undefined,
+    video:     entry.data.video as string | undefined,
+    date:      entry.data.date ? String(entry.data.date) : '',
+    bodyHtml:  entry.bodyHtml,
   }
 }
 
 export function getAllNewsSlugs(): string[] {
-  const newsDir = path.join(contentDir, 'news')
-  if (!fs.existsSync(newsDir)) return []
-  return fs.readdirSync(newsDir)
-    .filter(f => f.endsWith('.md'))
-    .map(f => f.replace('.md', ''))
+  return cache().news.map(e => e.slug)
 }
 
 export function getAllReviewSlugs(): string[] {
-  const reviewsDir = path.join(contentDir, 'reviews')
-  if (!fs.existsSync(reviewsDir)) return []
-  return fs.readdirSync(reviewsDir)
-    .filter(f => f.endsWith('.md'))
-    .map(f => f.replace('.md', ''))
+  return cache().reviews.map(e => e.slug)
 }
 
-// ─── Related Content ──────────────────────────────────────────────────────────
+// ─── Related content ──────────────────────────────────────────────────────────
 
 export interface RelatedItem {
   type: 'news' | 'review'
@@ -189,34 +214,27 @@ export interface RelatedItem {
 
 /**
  * Returns up to `limit` related articles for a given news slug.
- * Priority: same category → same issue → most recent. Excludes the current slug.
+ * Priority: same category → most recent. Excludes the current slug.
+ * Served entirely from cache — zero disk I/O.
  */
-export function getRelatedNews(currentSlug: string, category?: string, limit = 3): RelatedItem[] {
-  const newsDir = path.join(contentDir, 'news')
-  if (!fs.existsSync(newsDir)) return []
-
-  const files = fs.readdirSync(newsDir)
-    .filter(f => f.endsWith('.md') && f.replace('.md', '') !== currentSlug)
-    .sort()
-    .reverse()
-
-  const items: Array<{ item: RelatedItem; priority: number }> = files.map(file => {
-    const raw = fs.readFileSync(path.join(newsDir, file), 'utf-8')
-    const { data } = matter(raw)
-    const slug = file.replace('.md', '')
-    const item: RelatedItem = {
-      type: 'news',
-      title: String(data.title || ''),
-      blurb: String(data.blurb || ''),
-      category: String(data.category || ''),
-      slug,
-      href: `/news/${slug}`,
-    }
-    const sameCategory = category && data.category === category
-    return { item, priority: sameCategory ? 1 : 0 }
-  })
-
-  return items
+export function getRelatedNews(
+  currentSlug: string,
+  category?: string,
+  limit = 3,
+): RelatedItem[] {
+  return cache().news
+    .filter(e => e.slug !== currentSlug)
+    .map(e => ({
+      item: {
+        type:     'news' as const,
+        title:    String(e.data.title    ?? ''),
+        blurb:    String(e.data.blurb    ?? ''),
+        category: String(e.data.category ?? ''),
+        slug:     e.slug,
+        href:     `/news/${e.slug}`,
+      },
+      priority: category && e.data.category === category ? 1 : 0,
+    }))
     .sort((a, b) => b.priority - a.priority)
     .slice(0, limit)
     .map(x => x.item)
@@ -224,38 +242,23 @@ export function getRelatedNews(currentSlug: string, category?: string, limit = 3
 
 /**
  * Returns up to `limit` related reviews, excluding the current slug.
+ * Served entirely from cache — zero disk I/O.
  */
 export function getRelatedReviews(currentSlug: string, limit = 2): RelatedItem[] {
-  const reviewsDir = path.join(contentDir, 'reviews')
-  if (!fs.existsSync(reviewsDir)) return []
-
-  return fs.readdirSync(reviewsDir)
-    .filter(f => f.endsWith('.md') && f.replace('.md', '') !== currentSlug)
+  return cache().reviews
+    .filter(e => e.slug !== currentSlug)
     .slice(0, limit)
-    .map(file => {
-      const raw = fs.readFileSync(path.join(reviewsDir, file), 'utf-8')
-      const { data } = matter(raw)
-      const slug = file.replace('.md', '')
-      return {
-        type: 'review' as const,
-        title: String(data.title || ''),
-        blurb: String(data.pull || data.blurb || ''),
-        score: typeof data.score === 'number' ? data.score : undefined,
-        slug,
-        href: `/reviews/${slug}`,
-      }
-    })
+    .map(e => ({
+      type:  'review' as const,
+      title: String(e.data.title ?? ''),
+      blurb: String(e.data.pull  ?? e.data.blurb ?? ''),
+      score: typeof e.data.score === 'number' ? e.data.score : undefined,
+      slug:  e.slug,
+      href:  `/reviews/${e.slug}`,
+    }))
 }
 
 // ─── Opinion ──────────────────────────────────────────────────────────────────
-
-/** Strip social-media copy blocks from the bottom of opinion markdown */
-function stripSocialNotes(markdown: string): string {
-  return markdown
-    .replace(/\n\*🎬[^\n]*/g, '')
-    .replace(/\n\*📱[^\n]*/g, '')
-    .trimEnd()
-}
 
 export interface OpinionItem {
   slug: string
@@ -272,50 +275,36 @@ export interface FullOpinionItem extends OpinionItem {
 }
 
 export function getAllOpinionSlugs(): string[] {
-  const opinionDir = path.join(contentDir, 'opinion')
-  if (!fs.existsSync(opinionDir)) return []
-  return fs.readdirSync(opinionDir)
-    .filter(f => f.endsWith('.md'))
-    .map(f => f.replace('.md', ''))
+  return cache().opinion.map(e => e.slug)
 }
 
 export function getAllOpinionItems(): OpinionItem[] {
-  const opinionDir = path.join(contentDir, 'opinion')
-  if (!fs.existsSync(opinionDir)) return []
-  return fs.readdirSync(opinionDir)
-    .filter(f => f.endsWith('.md'))
-    .sort()
-    .reverse()
-    .map(file => {
-      const raw = fs.readFileSync(path.join(opinionDir, file), 'utf-8')
-      const { data } = matter(raw)
-      return {
-        slug: file.replace('.md', ''),
-        title: String(data.title || ''),
-        blurb: String(data.blurb || ''),
-        date: data.date ? String(data.date) : '',
-        author: data.author ? String(data.author) : 'Romello Morris',
-        image: data.image as string | undefined,
-      }
-    })
+  return cache().opinion.map(e => ({
+    slug:   e.slug,
+    title:  String(e.data.title  ?? ''),
+    blurb:  String(e.data.blurb  ?? ''),
+    date:   e.data.date   ? String(e.data.date)   : '',
+    author: e.data.author ? String(e.data.author) : 'Romello Morris',
+    image:  e.data.image as string | undefined,
+  }))
 }
 
 export function getOpinionBySlug(slug: string): FullOpinionItem | null {
-  const file = path.join(contentDir, 'opinion', `${slug}.md`)
-  if (!fs.existsSync(file)) return null
-  const raw = fs.readFileSync(file, 'utf-8')
-  const { data, content } = matter(raw)
+  const entry = cache().opinion.find(e => e.slug === slug)
+  if (!entry) return null
   return {
     slug,
-    title: String(data.title || ''),
-    blurb: String(data.blurb || ''),
-    date: data.date ? String(data.date) : '',
-    author: data.author ? String(data.author) : 'Romello Morris',
-    image: data.image as string | undefined,
-    video: data.video as string | undefined,
-    bodyHtml: marked(stripSocialNotes(content)) as string,
+    title:   String(entry.data.title  ?? ''),
+    blurb:   String(entry.data.blurb  ?? ''),
+    date:    entry.data.date   ? String(entry.data.date)   : '',
+    author:  entry.data.author ? String(entry.data.author) : 'Romello Morris',
+    image:   entry.data.image as string | undefined,
+    video:   entry.data.video as string | undefined,
+    bodyHtml: entry.bodyHtml,
   }
 }
+
+// ─── Issues ───────────────────────────────────────────────────────────────────
 
 export function getAllIssueSlugs(): string[] {
   const issuesDir = path.join(contentDir, 'issues')
@@ -326,16 +315,85 @@ export function getAllIssueSlugs(): string[] {
     .reverse()
 }
 
+// ─── Search / trending index ───────────────────────────────────────────────────
+//
+// Flat map of slug → lightweight metadata. Used by /api/trending and
+// /api/search so they never touch the filesystem at request time.
+
+export interface ContentMeta {
+  slug: string
+  title: string
+  blurb: string
+  category: string
+  type: 'news' | 'review' | 'opinion'
+  score?: number
+  date: string
+  href: string
+}
+
+export function getAllContentMeta(): Record<string, ContentMeta> {
+  const c = cache()
+  const out: Record<string, ContentMeta> = {}
+
+  for (const e of c.news) {
+    out[e.slug] = {
+      slug:     e.slug,
+      title:    String(e.data.title    ?? ''),
+      blurb:    String(e.data.blurb    ?? ''),
+      category: String(e.data.category ?? 'NEWS'),
+      type:     'news',
+      date:     e.data.date ? String(e.data.date) : '',
+      href:     `/news/${e.slug}`,
+    }
+  }
+
+  for (const e of c.reviews) {
+    out[e.slug] = {
+      slug:     e.slug,
+      title:    String(e.data.title ?? ''),
+      blurb:    String(e.data.pull  ?? e.data.blurb ?? ''),
+      category: 'REVIEW',
+      type:     'review',
+      score:    typeof e.data.score === 'number' ? e.data.score : undefined,
+      date:     e.data.date ? String(e.data.date) : '',
+      href:     `/reviews/${e.slug}`,
+    }
+  }
+
+  for (const e of c.opinion) {
+    out[e.slug] = {
+      slug:     e.slug,
+      title:    String(e.data.title ?? ''),
+      blurb:    String(e.data.blurb ?? ''),
+      category: 'OPINION',
+      type:     'opinion',
+      date:     e.data.date ? String(e.data.date) : '',
+      href:     `/opinion/${e.slug}`,
+    }
+  }
+
+  return out
+}
+
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
-function getRelativeTime(dateStr: string): string {
-  const date = new Date(dateStr)
-  const now = new Date()
-  const diffMs = now.getTime() - date.getTime()
-  const diffHours = Math.floor(diffMs / (1000 * 60 * 60))
-  const diffDays = Math.floor(diffHours / 24)
+/** Strip social-media copy blocks appended to opinion markdown. */
+function stripSocialNotes(markdown: string): string {
+  return markdown
+    .replace(/\n\*🎬[^\n]*/g, '')
+    .replace(/\n\*📱[^\n]*/g, '')
+    .trimEnd()
+}
 
-  if (diffHours < 1) return 'just now'
+function getRelativeTime(dateStr: string): string {
+  if (!dateStr) return ''
+  const date = new Date(dateStr)
+  const now   = new Date()
+  const diffMs    = now.getTime() - date.getTime()
+  const diffHours = Math.floor(diffMs / (1_000 * 60 * 60))
+  const diffDays  = Math.floor(diffHours / 24)
+
+  if (diffHours < 1)  return 'just now'
   if (diffHours < 24) return `${diffHours}h ago`
   if (diffDays === 1) return '1d ago'
   return `${diffDays}d ago`

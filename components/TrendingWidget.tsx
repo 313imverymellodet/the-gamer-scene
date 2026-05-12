@@ -11,14 +11,41 @@ function formatViews(n: number): string {
   return n > 0 ? n.toLocaleString() : ''
 }
 
+// Module-level client cache — shared across all component instances and
+// survives React re-renders and same-tab navigation. TTL: 60 seconds.
+// Eliminates duplicate fetches when a user navigates between articles.
+const CACHE_TTL = 60_000
+let _cachedItems: TrendingItem[] | null = null
+let _cacheTime = 0
+
+function getCachedItems(): TrendingItem[] | null {
+  if (_cachedItems && Date.now() - _cacheTime < CACHE_TTL) return _cachedItems
+  return null
+}
+
+function setCachedItems(items: TrendingItem[]) {
+  _cachedItems = items
+  _cacheTime   = Date.now()
+}
+
 export default function TrendingWidget() {
-  const [items, setItems]   = useState<TrendingItem[]>([])
-  const [loading, setLoading] = useState(true)
+  const [items, setItems]     = useState<TrendingItem[]>(() => getCachedItems() ?? [])
+  const [loading, setLoading] = useState(!getCachedItems())
 
   useEffect(() => {
+    const cached = getCachedItems()
+    if (cached) {
+      setItems(cached)
+      setLoading(false)
+      return
+    }
+
     fetch('/api/trending?limit=7')
       .then(r => r.json())
-      .then((data: TrendingItem[]) => setItems(data))
+      .then((data: TrendingItem[]) => {
+        setCachedItems(data)
+        setItems(data)
+      })
       .catch(() => {})
       .finally(() => setLoading(false))
   }, [])
