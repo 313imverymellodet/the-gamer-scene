@@ -8,7 +8,7 @@ hours: 28
 hot: false
 date: 2026-04-15
 author: Romello Morris
-issue: "047"
+issue: "048"
 image: /images/reviews/hades-2.avif
 ---
 

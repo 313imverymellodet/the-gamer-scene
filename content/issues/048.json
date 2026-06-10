@@ -1,0 +1,222 @@
+{
+  "issue": {
+    "number": "048",
+    "date": "June 10, 2026",
+    "weekday": "Wednesday",
+    "volume": "Vol. VII",
+    "subscribers": "3,114",
+    "weather": "100% chance of Hyrule",
+    "location": "Worldwide",
+    "readTime": "13 min"
+  },
+  "ticker": [
+    {
+      "tag": "BREAKING",
+      "text": "Ocarina of Time Remake officially confirmed for Switch 2 — holiday 2026 window expected"
+    },
+    {
+      "tag": "DATED",
+      "text": "Kingdom Hearts 4 launches October 8 — Switch 2 native, full saga coming with it"
+    },
+    {
+      "tag": "DEMO",
+      "text": "Star Fox free demo live on eShop NOW — full game June 25, saves transfer"
+    },
+    {
+      "tag": "DATED",
+      "text": "Final Fantasy Resonance + Switch 2 Sports both land October 22"
+    },
+    {
+      "tag": "SILENT",
+      "text": "GTA 6 Trailer 3 a no-show through the entire showcase season — Rockstar says nothing"
+    }
+  ],
+  "lead": {
+    "kicker": "Nintendo Direct Special",
+    "title": "<em>Ocarina of Time</em> Is Coming Back — Nintendo Just Dropped the Direct of the Year",
+    "dek": "A full Ocarina of Time remake, Kingdom Hearts 4 on Switch 2 with a firm October date, a new Star Fox in sixteen days with a demo out now, and 30+ reveals that turned the Switch 2's quiet year into the most stacked calendar in recent Nintendo history.",
+    "author": "Romello Morris",
+    "role": "Editor-in-Chief",
+    "initials": "RM",
+    "readTime": "8 min read",
+    "tag": "REVEAL",
+    "image": "/images/news/switch2-summer-lineup.jpg",
+    "readLink": "/news/2026-06-09-nintendo-direct-june-2026-recap"
+  },
+  "tabs": [
+    {
+      "id": "scene",
+      "num": "01",
+      "label": "The Scene"
+    },
+    {
+      "id": "news",
+      "num": "02",
+      "label": "Dispatch"
+    },
+    {
+      "id": "reviews",
+      "num": "03",
+      "label": "Reviews"
+    },
+    {
+      "id": "indie",
+      "num": "04",
+      "label": "Indie Room"
+    },
+    {
+      "id": "calendar",
+      "num": "05",
+      "label": "Calendar"
+    },
+    {
+      "id": "discourse",
+      "num": "06",
+      "label": "Discourse"
+    }
+  ],
+  "poll": {
+    "question": "What was the biggest reveal from the June Nintendo Direct?",
+    "options": [
+      {
+        "label": "Ocarina of Time Remake — 27 years coming",
+        "pct": 0
+      },
+      {
+        "label": "Kingdom Hearts 4 on Switch 2 — Oct 8",
+        "pct": 0
+      },
+      {
+        "label": "Star Fox — June 25, demo out now",
+        "pct": 0
+      },
+      {
+        "label": "Final Fantasy Resonance — HD-2D RPG",
+        "pct": 0
+      },
+      {
+        "label": "Xenoblade Genesis — 2027 tease",
+        "pct": 0
+      }
+    ],
+    "total": "0",
+    "closes": "Closes June 24, 23:59 UTC"
+  },
+  "calendar": [
+    {
+      "day": "JUN",
+      "date": "25",
+      "title": "Star Fox",
+      "sub": "Switch 2 · Free demo on eShop now",
+      "platform": "Switch 2"
+    },
+    {
+      "day": "JUL",
+      "date": "2",
+      "title": "Rhythm Heaven Groove",
+      "sub": "80+ minigames · 30 co-op modes",
+      "platform": "Switch 2"
+    },
+    {
+      "day": "AUG",
+      "date": "TBA",
+      "title": "Final Fantasy XIV",
+      "sub": "Switch 2 Early Access",
+      "platform": "Switch 2"
+    },
+    {
+      "day": "OCT",
+      "date": "8",
+      "title": "Kingdom Hearts 4",
+      "sub": "PS5 · Xbox · Switch 2 — KH3 demo out now",
+      "platform": "Multi"
+    },
+    {
+      "day": "OCT",
+      "date": "22",
+      "title": "Switch 2 Sports + FF Resonance",
+      "sub": "Double release day — start saving",
+      "platform": "Switch 2"
+    }
+  ],
+  "spotlight": {
+    "kicker": "Indie Room · Issue 048",
+    "title": "PikuNiku 2 Is Real, and 2027 Just Got a Little Sillier",
+    "blurb": "Buried in the Direct's 2027 sizzle reel: <em>PikuNiku 2</em>, the sequel to one of the most charming co-op platformers of the last decade. The original was a 4-hour burst of pure joy about a red blob kicking capitalism in the shins. More of that, please.",
+    "dev": "Sectordub",
+    "price": "TBA",
+    "platforms": "Switch 2",
+    "runtime": "2027",
+    "image": ""
+  },
+  "reactions": [
+    {
+      "glyph": "★",
+      "label": "Brilliant",
+      "count": 0,
+      "key": "brilliant"
+    },
+    {
+      "glyph": "◐",
+      "label": "Conflicted",
+      "count": 0,
+      "key": "conflicted"
+    },
+    {
+      "glyph": "▲",
+      "label": "Spot on",
+      "count": 0,
+      "key": "spoton"
+    },
+    {
+      "glyph": "✕",
+      "label": "Disagree",
+      "count": 0,
+      "key": "disagree"
+    },
+    {
+      "glyph": "♫",
+      "label": "Mood",
+      "count": 0,
+      "key": "mood"
+    }
+  ],
+  "comments": [
+    {
+      "name": "Marcus T.",
+      "handle": "@marcust",
+      "time": "2h",
+      "initials": "MT",
+      "body": "The Ocarina remake announcement genuinely got me. 99 Metacritic, 27 years, and they're rebuilding it from the ground up instead of another remaster. This is the one Nintendo couldn't afford to get wrong and they know it.",
+      "replies": 12,
+      "likes": 74
+    },
+    {
+      "name": "Priya S.",
+      "handle": "@priyasplays",
+      "time": "3h",
+      "initials": "PS",
+      "body": "Kingdom Hearts 4 running natively on Switch 2 is the real story here. Everyone assumed that hardware couldn't do it. Square Enix bringing the ENTIRE saga over with save transfer is how you treat a fanbase right.",
+      "replies": 8,
+      "likes": 52
+    },
+    {
+      "name": "Devon K.",
+      "handle": "@devonk",
+      "time": "4h",
+      "initials": "DK",
+      "body": "Downloaded the Star Fox demo on my lunch break. The Arwing handles like 64 with modern weight. First Star Fox to actually feel right since 1997 and I will die on this hill.",
+      "replies": 7,
+      "likes": 45
+    },
+    {
+      "name": "Jade W.",
+      "handle": "@jadewright",
+      "time": "5h",
+      "initials": "JW",
+      "body": "KH4 Oct 8, Dragon's Dogma 2 Oct 9, Switch 2 Sports AND FF Resonance Oct 22, then Ocarina for the holidays. October is a financial crime scene. My backlog filed a restraining order.",
+      "replies": 6,
+      "likes": 38
+    }
+  ]
+}
