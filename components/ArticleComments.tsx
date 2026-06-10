@@ -36,7 +36,7 @@ export default function ArticleComments({ issueContext }: Props) {
     try {
       const res  = await fetch(`/api/comments?issue=${issueContext}&page=${p}`)
       const data = await res.json()
-      setComments(prev => append ? [...prev, ...data.comments] : data.comments)
+      setComments(prev => append ? [...prev, ...(data.comments ?? [])] : (data.comments ?? []))
       setTotal(data.total || 0)
       setHasMore(data.hasMore || false)
     } catch {}

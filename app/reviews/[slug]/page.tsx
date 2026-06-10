@@ -10,9 +10,12 @@ import ShareButtons from '@/components/ShareButtons'
 import JsonLd from '@/components/JsonLd'
 import InlineSubscribeCTA from '@/components/InlineSubscribeCTA'
 import VideoPlayer from '@/components/VideoPlayer'
+import SiteHeader from '@/components/SiteHeader'
 import type { Metadata } from 'next'
 
-function injectMidArticleCTA(html: string, afterParagraph = 3): { before: string; after: string } {
+const MIN_PARAGRAPHS_FOR_CTA = 7
+
+function injectMidArticleCTA(html: string, afterParagraph = 4): { before: string; after: string } {
   let count = 0
   let idx = -1
   let search = 0
@@ -25,6 +28,10 @@ function injectMidArticleCTA(html: string, afterParagraph = 3): { before: string
   }
   if (idx === -1 || count < afterParagraph) return { before: html, after: '' }
   return { before: html.slice(0, idx), after: html.slice(idx) }
+}
+
+function countParagraphs(html: string): number {
+  return (html.match(/<\/p>/g) ?? []).length
 }
 
 const BASE = 'https://thegamerscene.news'
@@ -75,13 +82,13 @@ export default async function ReviewPage({
   const review = getReviewBySlug(slug)
   if (!review) notFound()
 
-  const formattedDate = review.date
-    ? new Date(review.date + 'T12:00:00').toLocaleDateString('en-US', {
-        month: 'long',
-        day: 'numeric',
-        year: 'numeric',
-      })
-    : ''
+  const formattedDate = (() => {
+    if (!review.date) return ''
+    const clean = review.date.match(/\d{4}-\d{2}-\d{2}/)
+    const d = clean ? new Date(clean[0] + 'T12:00:00') : new Date(review.date)
+    if (isNaN(d.getTime())) return ''
+    return d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
+  })()
 
   const scoreColor = review.hot ? 'var(--hot)' : 'var(--ink)'
 
@@ -90,7 +97,10 @@ export default async function ReviewPage({
   const relatedNews   = getRelatedNews(slug, undefined, 2)
   const related       = [...otherReviews, ...relatedNews].slice(0, 3)
 
-  const { before: bodyBefore, after: bodyAfter } = injectMidArticleCTA(review.bodyHtml, 3)
+  const { before: bodyBefore, after: bodyAfter } =
+    countParagraphs(review.bodyHtml) >= MIN_PARAGRAPHS_FOR_CTA
+      ? injectMidArticleCTA(review.bodyHtml, 4)
+      : { before: review.bodyHtml, after: '' }
 
   const isoDate = (() => {
     if (!review.date) return undefined
@@ -136,56 +146,9 @@ export default async function ReviewPage({
     <div style={{ background: 'var(--bg)', minHeight: '100vh', color: 'var(--ink)' }}>
       <JsonLd data={jsonLd} />
       <ReadingProgress />
+      <SiteHeader active="reviews" />
 
-      {/* Site header */}
-      <header style={{
-        borderBottom: '2px solid var(--ink)',
-        padding: '12px 32px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        position: 'sticky',
-        top: 0,
-        background: 'var(--bg)',
-        zIndex: 100,
-      }}>
-        <Link href="/" style={{
-          fontFamily: 'var(--serif)',
-          fontWeight: 900,
-          fontSize: '1.1rem',
-          letterSpacing: '-0.02em',
-          color: 'var(--ink)',
-          textDecoration: 'none',
-        }}>
-          THE GAMER SCENE
-        </Link>
-        <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
-          <Link href="/issues" style={{
-            fontFamily: 'var(--sans)',
-            fontSize: '0.72rem',
-            fontWeight: 600,
-            letterSpacing: '0.08em',
-            textTransform: 'uppercase',
-            color: 'var(--ink-soft)',
-            textDecoration: 'none',
-          }}>
-            Archive
-          </Link>
-          <Link href="/" style={{
-            fontFamily: 'var(--sans)',
-            fontSize: '0.72rem',
-            fontWeight: 600,
-            letterSpacing: '0.08em',
-            textTransform: 'uppercase',
-            color: 'var(--ink-soft)',
-            textDecoration: 'none',
-          }}>
-            ← Back to Issue
-          </Link>
-        </div>
-      </header>
-
-      <main style={{ maxWidth: '720px', margin: '0 auto', padding: '48px 24px 80px' }}>
+      <main id="main-content" style={{ maxWidth: '720px', margin: '0 auto', padding: '48px 24px 80px' }}>
         {/* REVIEW badge */}
         <div style={{ marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '10px' }}>
           <span style={{
@@ -282,6 +245,35 @@ export default async function ReviewPage({
           &ldquo;{review.pull}&rdquo;
         </p>
 
+        {/* Quick Verdict box */}
+        <aside className="verdict-box" aria-label="Quick verdict">
+          <div className="verdict-box-head">
+            <span className="verdict-box-label">Quick Verdict</span>
+            <span>
+              <span className={`verdict-score${review.hot ? ' hot' : ''}`}>{review.score}</span>
+              <span className="verdict-score-denom">/ 10</span>
+            </span>
+          </div>
+          <div className="verdict-grid">
+            <div className="verdict-cell">
+              <div className="verdict-cell-label">Developer</div>
+              <div className="verdict-cell-value">{review.studio}</div>
+            </div>
+            <div className="verdict-cell">
+              <div className="verdict-cell-label">Time Played</div>
+              <div className="verdict-cell-value">{review.hours}</div>
+            </div>
+            <div className="verdict-cell" style={{ gridColumn: 'span 2' }}>
+              <div className="verdict-cell-label">Platforms</div>
+              <div className="verdict-platforms">
+                {review.platforms.map(p => (
+                  <span key={p} className="verdict-platform-chip">{p}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </aside>
+
         {/* Meta bar + view counter */}
         <div style={{
           fontFamily: 'var(--sans)',
@@ -375,10 +367,12 @@ export default async function ReviewPage({
       }}>
         <span style={{ fontWeight: 700 }}>THE GAMER SCENE · EST. 2013</span>
         <div style={{ display: 'flex', gap: '20px' }}>
-          <Link href="/about" style={{ color: 'var(--ink-soft)', textDecoration: 'none' }}>About</Link>
+          <Link href="/news"    style={{ color: 'var(--ink-soft)', textDecoration: 'none' }}>News</Link>
+          <Link href="/reviews" style={{ color: 'var(--ink-soft)', textDecoration: 'none' }}>Reviews</Link>
+          <Link href="/opinion" style={{ color: 'var(--ink-soft)', textDecoration: 'none' }}>Opinion</Link>
+          <Link href="/about"   style={{ color: 'var(--ink-soft)', textDecoration: 'none' }}>About</Link>
           <Link href="/privacy" style={{ color: 'var(--ink-soft)', textDecoration: 'none' }}>Privacy</Link>
           <Link href="/contact" style={{ color: 'var(--ink-soft)', textDecoration: 'none' }}>Contact</Link>
-          <Link href="/" style={{ color: 'var(--ink-soft)', textDecoration: 'none', fontWeight: 600 }}>← Back to Issue</Link>
         </div>
       </footer>
     </div>

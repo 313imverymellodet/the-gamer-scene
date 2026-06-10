@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { getAllOpinionItems } from '@/lib/content'
+import SiteHeader from '@/components/SiteHeader'
 import type { Metadata } from 'next'
 
 const BASE = 'https://thegamerscene.news'
@@ -22,34 +23,9 @@ export default function OpinionIndexPage() {
 
   return (
     <div style={{ background: 'var(--bg)', minHeight: '100vh', color: 'var(--ink)' }}>
-      {/* Header */}
-      <header style={{
-        borderBottom: '2px solid var(--ink)',
-        padding: '12px 32px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        position: 'sticky',
-        top: 0,
-        background: 'var(--bg)',
-        zIndex: 100,
-      }}>
-        <Link href="/" style={{
-          fontFamily: 'var(--serif)', fontWeight: 900, fontSize: '1.1rem',
-          letterSpacing: '-0.02em', color: 'var(--ink)', textDecoration: 'none',
-        }}>
-          THE GAMER SCENE
-        </Link>
-        <Link href="/" style={{
-          fontFamily: 'var(--sans)', fontSize: '0.72rem', fontWeight: 600,
-          letterSpacing: '0.08em', textTransform: 'uppercase',
-          color: 'var(--ink-soft)', textDecoration: 'none',
-        }}>
-          ← Latest Issue
-        </Link>
-      </header>
+      <SiteHeader active="opinion" />
 
-      <main style={{ maxWidth: '860px', margin: '0 auto', padding: '48px 24px 80px' }}>
+      <main id="main-content" style={{ maxWidth: '860px', margin: '0 auto', padding: '48px 24px 80px' }}>
 
         {/* Section header */}
         <div style={{ marginBottom: '48px', borderBottom: '2px solid var(--ink)', paddingBottom: '24px' }}>
@@ -148,11 +124,16 @@ export default function OpinionIndexPage() {
         borderTop: '2px solid var(--ink)', padding: '24px 32px',
         display: 'flex', justifyContent: 'space-between', alignItems: 'center',
         fontFamily: 'var(--sans)', fontSize: '0.75rem', color: 'var(--ink-faint)',
+        flexWrap: 'wrap', gap: '12px',
       }}>
         <span style={{ fontWeight: 700 }}>© 2026 THE GAMER SCENE</span>
-        <Link href="/" style={{ color: 'var(--ink-soft)', textDecoration: 'none', fontWeight: 600 }}>
-          ← Latest Issue
-        </Link>
+        <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
+          <Link href="/news"    style={{ color: 'var(--ink-soft)', textDecoration: 'none' }}>News</Link>
+          <Link href="/reviews" style={{ color: 'var(--ink-soft)', textDecoration: 'none' }}>Reviews</Link>
+          <Link href="/about"   style={{ color: 'var(--ink-soft)', textDecoration: 'none' }}>About</Link>
+          <Link href="/privacy" style={{ color: 'var(--ink-soft)', textDecoration: 'none' }}>Privacy</Link>
+          <Link href="/"        style={{ color: 'var(--ink-soft)', textDecoration: 'none', fontWeight: 600 }}>Latest Issue →</Link>
+        </div>
       </footer>
     </div>
   )

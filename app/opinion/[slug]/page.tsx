@@ -10,9 +10,11 @@ import ShareButtons from '@/components/ShareButtons'
 import JsonLd from '@/components/JsonLd'
 import InlineSubscribeCTA from '@/components/InlineSubscribeCTA'
 import VideoPlayer from '@/components/VideoPlayer'
+import SiteHeader from '@/components/SiteHeader'
 import type { Metadata } from 'next'
 
 const BASE = 'https://thegamerscene.news'
+const MIN_PARAGRAPHS_FOR_CTA = 7
 
 function injectMidArticleCTA(html: string, afterParagraph = 4): { before: string; after: string } {
   let count = 0
@@ -27,6 +29,10 @@ function injectMidArticleCTA(html: string, afterParagraph = 4): { before: string
   }
   if (idx === -1 || count < afterParagraph) return { before: html, after: '' }
   return { before: html.slice(0, idx), after: html.slice(idx) }
+}
+
+function countParagraphs(html: string): number {
+  return (html.match(/<\/p>/g) ?? []).length
 }
 
 export async function generateStaticParams() {
@@ -113,50 +119,18 @@ export default async function OpinionPage({
     mainEntityOfPage: { '@type': 'WebPage', '@id': `${BASE}/opinion/${slug}` },
   }
 
-  const { before: bodyBefore, after: bodyAfter } = injectMidArticleCTA(piece.bodyHtml, 4)
+  const { before: bodyBefore, after: bodyAfter } =
+    countParagraphs(piece.bodyHtml) >= MIN_PARAGRAPHS_FOR_CTA
+      ? injectMidArticleCTA(piece.bodyHtml, 4)
+      : { before: piece.bodyHtml, after: '' }
 
   return (
     <div style={{ background: 'var(--bg)', minHeight: '100vh', color: 'var(--ink)' }}>
       <JsonLd data={jsonLd} />
       <ReadingProgress />
+      <SiteHeader active="opinion" />
 
-      {/* Site header */}
-      <header style={{
-        borderBottom: '2px solid var(--ink)',
-        padding: '12px 32px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        position: 'sticky',
-        top: 0,
-        background: 'var(--bg)',
-        zIndex: 100,
-      }}>
-        <Link href="/" style={{
-          fontFamily: 'var(--serif)', fontWeight: 900, fontSize: '1.1rem',
-          letterSpacing: '-0.02em', color: 'var(--ink)', textDecoration: 'none',
-        }}>
-          THE GAMER SCENE
-        </Link>
-        <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
-          <Link href="/opinion" style={{
-            fontFamily: 'var(--sans)', fontSize: '0.72rem', fontWeight: 600,
-            letterSpacing: '0.08em', textTransform: 'uppercase',
-            color: 'var(--ink-soft)', textDecoration: 'none',
-          }}>
-            Opinion
-          </Link>
-          <Link href="/" style={{
-            fontFamily: 'var(--sans)', fontSize: '0.72rem', fontWeight: 600,
-            letterSpacing: '0.08em', textTransform: 'uppercase',
-            color: 'var(--ink-soft)', textDecoration: 'none',
-          }}>
-            ← Back to Issue
-          </Link>
-        </div>
-      </header>
-
-      <main style={{ maxWidth: '720px', margin: '0 auto', padding: '48px 24px 80px' }}>
+      <main id="main-content" style={{ maxWidth: '720px', margin: '0 auto', padding: '48px 24px 80px' }}>
 
         {/* Opinion badge */}
         <div style={{ marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '10px' }}>
@@ -209,7 +183,6 @@ export default async function OpinionPage({
           borderTop: '1px solid var(--rule)',
           borderBottom: '1px solid var(--rule)',
           padding: '10px 0',
-          margin: '0 0 0',
           display: 'flex',
           gap: '16px',
           alignItems: 'center',
@@ -245,7 +218,7 @@ export default async function OpinionPage({
           <VideoPlayer src={piece.video} title={piece.title} />
         )}
 
-        {/* Article body — split around mid-article CTA */}
+        {/* Article body */}
         <div
           className="article-body opinion-body"
           dangerouslySetInnerHTML={{ __html: bodyBefore }}
@@ -262,41 +235,29 @@ export default async function OpinionPage({
           <div
             className="article-body opinion-body"
             dangerouslySetInnerHTML={{ __html: bodyAfter }}
-            style={{
-              fontFamily: 'var(--serif)',
-              fontSize: '1.05rem',
-              lineHeight: 1.75,
-              color: 'var(--ink)',
-            }}
+            style={{ fontFamily: 'var(--serif)', fontSize: '1.05rem', lineHeight: 1.75, color: 'var(--ink)' }}
           />
         )}
 
-        {/* Related articles */}
         <RelatedArticles items={related} heading="More From The Gamer Scene" />
-
-        {/* Comments */}
         <ArticleComments issueContext={slug} />
       </main>
 
       {/* Footer */}
       <footer style={{
-        borderTop: '2px solid var(--ink)',
-        padding: '24px 32px',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        fontFamily: 'var(--sans)',
-        fontSize: '0.75rem',
-        color: 'var(--ink-faint)',
-        flexWrap: 'wrap',
-        gap: '12px',
+        borderTop: '2px solid var(--ink)', padding: '24px 32px',
+        display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+        fontFamily: 'var(--sans)', fontSize: '0.75rem', color: 'var(--ink-faint)',
+        flexWrap: 'wrap', gap: '12px',
       }}>
         <span style={{ fontWeight: 700 }}>THE GAMER SCENE · EST. 2013</span>
-        <div style={{ display: 'flex', gap: '20px' }}>
-          <Link href="/about" style={{ color: 'var(--ink-soft)', textDecoration: 'none' }}>About</Link>
+        <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
+          <Link href="/news"    style={{ color: 'var(--ink-soft)', textDecoration: 'none' }}>News</Link>
+          <Link href="/reviews" style={{ color: 'var(--ink-soft)', textDecoration: 'none' }}>Reviews</Link>
+          <Link href="/opinion" style={{ color: 'var(--ink-soft)', textDecoration: 'none' }}>Opinion</Link>
+          <Link href="/about"   style={{ color: 'var(--ink-soft)', textDecoration: 'none' }}>About</Link>
           <Link href="/privacy" style={{ color: 'var(--ink-soft)', textDecoration: 'none' }}>Privacy</Link>
           <Link href="/contact" style={{ color: 'var(--ink-soft)', textDecoration: 'none' }}>Contact</Link>
-          <Link href="/" style={{ color: 'var(--ink-soft)', textDecoration: 'none', fontWeight: 600 }}>← Back to Issue</Link>
         </div>
       </footer>
     </div>

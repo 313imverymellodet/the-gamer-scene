@@ -10,10 +10,13 @@ import ShareButtons from '@/components/ShareButtons'
 import JsonLd from '@/components/JsonLd'
 import InlineSubscribeCTA from '@/components/InlineSubscribeCTA'
 import VideoPlayer from '@/components/VideoPlayer'
+import SiteHeader from '@/components/SiteHeader'
 import type { Metadata } from 'next'
 
-/** Split bodyHtml after the Nth closing </p> tag and inject a CTA node. */
-function injectMidArticleCTA(html: string, afterParagraph = 3): { before: string; after: string } {
+const MIN_PARAGRAPHS_FOR_CTA = 7
+
+/** Split bodyHtml after the Nth </p> tag — only used when article is long enough. */
+function injectMidArticleCTA(html: string, afterParagraph = 4): { before: string; after: string } {
   let count = 0
   let idx = -1
   let search = 0
@@ -26,6 +29,10 @@ function injectMidArticleCTA(html: string, afterParagraph = 3): { before: string
   }
   if (idx === -1 || count < afterParagraph) return { before: html, after: '' }
   return { before: html.slice(0, idx), after: html.slice(idx) }
+}
+
+function countParagraphs(html: string): number {
+  return (html.match(/<\/p>/g) ?? []).length
 }
 
 const BASE = 'https://thegamerscene.news'
@@ -76,20 +83,23 @@ export default async function NewsArticlePage({
   const item = getNewsItemBySlug(slug)
   if (!item) notFound()
 
-  const formattedDate = item.date
-    ? new Date(item.date + 'T12:00:00').toLocaleDateString('en-US', {
-        month: 'long',
-        day: 'numeric',
-        year: 'numeric',
-      })
-    : ''
+  const formattedDate = (() => {
+    if (!item.date) return ''
+    const clean = item.date.match(/\d{4}-\d{2}-\d{2}/)
+    const d = clean ? new Date(clean[0] + 'T12:00:00') : new Date(item.date)
+    if (isNaN(d.getTime())) return ''
+    return d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
+  })()
 
   // Related: same-category news + 1 review (up to 3 total)
   const relatedNews    = getRelatedNews(slug, item.category, 2)
   const relatedReviews = getRelatedReviews(slug, 1)
   const related        = [...relatedNews, ...relatedReviews].slice(0, 3)
 
-  const { before: bodyBefore, after: bodyAfter } = injectMidArticleCTA(item.bodyHtml, 3)
+  const { before: bodyBefore, after: bodyAfter } =
+    countParagraphs(item.bodyHtml) >= MIN_PARAGRAPHS_FOR_CTA
+      ? injectMidArticleCTA(item.bodyHtml, 4)
+      : { before: item.bodyHtml, after: '' }
 
   // Safe ISO date: item.date may be a stringified JS Date from gray-matter
   const isoDate = (() => {
@@ -123,56 +133,9 @@ export default async function NewsArticlePage({
     <div style={{ background: 'var(--bg)', minHeight: '100vh', color: 'var(--ink)' }}>
       <JsonLd data={jsonLd} />
       <ReadingProgress />
+      <SiteHeader active="news" />
 
-      {/* Site header */}
-      <header style={{
-        borderBottom: '2px solid var(--ink)',
-        padding: '12px 32px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        position: 'sticky',
-        top: 0,
-        background: 'var(--bg)',
-        zIndex: 100,
-      }}>
-        <Link href="/" style={{
-          fontFamily: 'var(--serif)',
-          fontWeight: 900,
-          fontSize: '1.1rem',
-          letterSpacing: '-0.02em',
-          color: 'var(--ink)',
-          textDecoration: 'none',
-        }}>
-          THE GAMER SCENE
-        </Link>
-        <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
-          <Link href="/issues" style={{
-            fontFamily: 'var(--sans)',
-            fontSize: '0.72rem',
-            fontWeight: 600,
-            letterSpacing: '0.08em',
-            textTransform: 'uppercase',
-            color: 'var(--ink-soft)',
-            textDecoration: 'none',
-          }}>
-            Archive
-          </Link>
-          <Link href="/" style={{
-            fontFamily: 'var(--sans)',
-            fontSize: '0.72rem',
-            fontWeight: 600,
-            letterSpacing: '0.08em',
-            textTransform: 'uppercase',
-            color: 'var(--ink-soft)',
-            textDecoration: 'none',
-          }}>
-            ← Back to Issue
-          </Link>
-        </div>
-      </header>
-
-      <main style={{ maxWidth: '720px', margin: '0 auto', padding: '48px 24px 80px' }}>
+      <main id="main-content" style={{ maxWidth: '720px', margin: '0 auto', padding: '48px 24px 80px' }}>
         {/* Category chip */}
         <div style={{ marginBottom: '16px' }}>
           <span style={{
@@ -306,11 +269,13 @@ export default async function NewsArticlePage({
         gap: '12px',
       }}>
         <span style={{ fontWeight: 700 }}>THE GAMER SCENE · EST. 2013</span>
-        <div style={{ display: 'flex', gap: '20px' }}>
-          <Link href="/about" style={{ color: 'var(--ink-soft)', textDecoration: 'none' }}>About</Link>
+        <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
+          <Link href="/news"    style={{ color: 'var(--ink-soft)', textDecoration: 'none' }}>News</Link>
+          <Link href="/reviews" style={{ color: 'var(--ink-soft)', textDecoration: 'none' }}>Reviews</Link>
+          <Link href="/opinion" style={{ color: 'var(--ink-soft)', textDecoration: 'none' }}>Opinion</Link>
+          <Link href="/about"   style={{ color: 'var(--ink-soft)', textDecoration: 'none' }}>About</Link>
           <Link href="/privacy" style={{ color: 'var(--ink-soft)', textDecoration: 'none' }}>Privacy</Link>
           <Link href="/contact" style={{ color: 'var(--ink-soft)', textDecoration: 'none' }}>Contact</Link>
-          <Link href="/" style={{ color: 'var(--ink-soft)', textDecoration: 'none', fontWeight: 600 }}>← Back to Issue</Link>
         </div>
       </footer>
     </div>
