@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useSubscribe } from '@/lib/useSubscribe'
 
 export default function InlineSubscribeCTA() {
-  const { status, message, subscribe } = useSubscribe()
+  const { status, message, subscribe, notifyStarted } = useSubscribe()
   const [email, setEmail] = useState('')
   const [honeypot, setHoneypot] = useState('')
 
@@ -42,7 +42,10 @@ export default function InlineSubscribeCTA() {
             inputMode="email"
             autoComplete="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => {
+              notifyStarted()
+              setEmail(e.target.value)
+            }}
             placeholder="you@example.com"
             className="inline-cta-input"
             required

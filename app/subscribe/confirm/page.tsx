@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import SiteHeader from '@/components/SiteHeader'
+import TrackPageView from '@/components/TrackPageView'
 
 export const metadata: Metadata = {
   title: 'Check your inbox',
@@ -13,6 +14,8 @@ export const metadata: Metadata = {
 export default function SubscribeConfirmPage() {
   return (
     <div className="subscribe-page">
+      {/* Instructions viewed — NOT a confirmed subscriber. Confirmation comes from beehiiv. */}
+      <TrackPageView event="newsletter_confirmation_instructions_viewed" />
       <SiteHeader />
 
       <main id="main-content" className="sp-main sp-main--narrow">

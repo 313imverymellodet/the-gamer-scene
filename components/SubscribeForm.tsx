@@ -6,7 +6,7 @@ import { useSubscribe } from '@/lib/useSubscribe'
 
 export default function SubscribeForm() {
   const router = useRouter()
-  const { status, message, subscribe } = useSubscribe()
+  const { status, message, subscribe, notifyStarted } = useSubscribe()
   const [email, setEmail] = useState('')
   const [honeypot, setHoneypot] = useState('')
 
@@ -35,7 +35,10 @@ export default function SubscribeForm() {
           className="sf-input"
           placeholder="you@example.com"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => {
+            notifyStarted()
+            setEmail(e.target.value)
+          }}
           disabled={busy}
           required
           aria-describedby="sf-consent"

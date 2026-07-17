@@ -471,7 +471,7 @@ function Discussion({ data }: { data: IssueData }) {
 // ─── Subscribe Banner ─────────────────────────────────────────────────────────
 
 function SubscribeBanner() {
-  const { status, message, subscribe } = useSubscribe()
+  const { status, message, subscribe, notifyStarted } = useSubscribe()
   const [email, setEmail] = useState('')
   const [honeypot, setHoneypot] = useState('')
   const busy = status === 'loading'
@@ -511,7 +511,10 @@ function SubscribeBanner() {
                 autoComplete="email"
                 placeholder="YOUR@EMAIL.COM"
                 value={email}
-                onChange={e => setEmail(e.target.value)}
+                onChange={e => {
+                  notifyStarted()
+                  setEmail(e.target.value)
+                }}
                 disabled={busy}
                 required
                 aria-invalid={status === 'error'}

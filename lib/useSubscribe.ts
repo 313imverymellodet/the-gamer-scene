@@ -1,6 +1,7 @@
 'use client'
 
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
+import { track } from '@/lib/analytics'
 
 const UTM_FIELDS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'] as const
 
@@ -21,6 +22,7 @@ export function useSubscribe() {
   const [utm, setUtm] = useState<Record<string, string>>({})
   const [status, setStatus] = useState<SubscribeStatus>('idle')
   const [message, setMessage] = useState('')
+  const startedRef = useRef(false)
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
@@ -45,6 +47,9 @@ export function useSubscribe() {
         const json = (await res.json().catch(() => ({}))) as { error?: string }
         if (res.ok) {
           setStatus('ok')
+          // "submitted", never "confirmed" — beehiiv's webhook owns the confirmation event.
+          // utm_source only; the email address must never reach analytics.
+          track('newsletter_signup_submitted', { utm_source: utm.utm_source ?? 'direct' })
           return true
         }
         setStatus('error')
@@ -59,5 +64,12 @@ export function useSubscribe() {
     [utm]
   )
 
-  return { status, message, subscribe, utm }
+  /** Call when the visitor first interacts with the field. Fires at most once per mount. */
+  const notifyStarted = useCallback(() => {
+    if (startedRef.current) return
+    startedRef.current = true
+    track('newsletter_signup_started', { utm_source: utm.utm_source ?? 'direct' })
+  }, [utm])
+
+  return { status, message, subscribe, notifyStarted, utm }
 }

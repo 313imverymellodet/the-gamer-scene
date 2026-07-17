@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import SiteHeader from '@/components/SiteHeader'
 import SubscribeForm from '@/components/SubscribeForm'
+import TrackPageView from '@/components/TrackPageView'
 
 export const metadata: Metadata = {
   title: 'Subscribe to The Weekly Drop',
@@ -24,6 +25,7 @@ const PREVIEW_ITEMS = [
 export default function SubscribePage() {
   return (
     <div className="subscribe-page">
+      <TrackPageView event="newsletter_landing_view" />
       <SiteHeader />
 
       <main id="main-content" className="sp-main">
