@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
+import { useSubscribe } from '@/lib/useSubscribe'
 import type { IssueData, CommentItem } from '@/types'
 
 function stripHtml(html: string) {
@@ -29,8 +30,6 @@ function Topbar({ data, onSearchOpen }: { data: IssueData; onSearchOpen: () => v
       </div>
       <div className="right">
         <span>{data.issue.weekday}, {data.issue.date}</span>
-        <span>·</span>
-        <span>{data.issue.subscribers} readers</span>
         <button
           onClick={onSearchOpen}
           className="topbar-search-btn"
@@ -471,62 +470,78 @@ function Discussion({ data }: { data: IssueData }) {
 
 // ─── Subscribe Banner ─────────────────────────────────────────────────────────
 
-function SubscribeBanner({ data }: { data: IssueData }) {
+function SubscribeBanner() {
+  const { status, message, subscribe } = useSubscribe()
   const [email, setEmail] = useState('')
-  const [status, setStatus] = useState<'idle' | 'loading' | 'done' | 'error'>('idle')
+  const [honeypot, setHoneypot] = useState('')
+  const busy = status === 'loading'
 
   const handleSubmit = async (e?: React.FormEvent) => {
     e?.preventDefault()
-    if (!email.trim() || !email.includes('@') || status === 'loading') return
-    setStatus('loading')
-    try {
-      const res = await fetch('/api/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
-      })
-      setStatus(res.ok ? 'done' : 'error')
-    } catch {
-      setStatus('error')
-    }
+    if (busy) return
+    await subscribe(email, honeypot)
   }
 
   return (
-    <div className="subscribe-banner">
+    <div className="subscribe-banner" id="subscribe">
       <div className="subscribe-banner-inner">
         <div className="subscribe-banner-text">
-          <div className="subscribe-kicker">Free · Weekly · Independent</div>
-          <h2>Join {data.issue.subscribers} readers who actually care about games.</h2>
-          <p>Every Friday — news, reviews, the indie room, and a poll. No algorithm. No noise. Just the week in games, done right.</p>
+          <div className="subscribe-kicker">The Weekly Drop · Free · Once a week</div>
+          <h2>Five gaming stories that matter, explained in five minutes.</h2>
+          <p>The biggest stories, releases, deals, and culture moments — once a week. No algorithm. No noise.</p>
         </div>
         <div className="subscribe-banner-form">
-          {status === 'done' ? (
+          {status === 'ok' ? (
+            // Double opt-in: they are not subscribed until they click the link in that email.
             <div className="subscribe-success">
               <span className="subscribe-check">✓</span>
               <div>
-                <strong>You&apos;re in.</strong>
-                <p>Check your inbox for a confirmation email.</p>
+                <strong>One more step.</strong>
+                <p>Check your inbox and confirm your subscription.</p>
               </div>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="subscribe-form-row">
+            <form onSubmit={handleSubmit} className="subscribe-form-row" noValidate>
+              <label className="sf-label" htmlFor="banner-email">Email address</label>
               <input
+                id="banner-email"
+                name="email"
                 type="email"
+                inputMode="email"
+                autoComplete="email"
                 placeholder="YOUR@EMAIL.COM"
                 value={email}
                 onChange={e => setEmail(e.target.value)}
-                disabled={status === 'loading'}
+                disabled={busy}
                 required
+                aria-invalid={status === 'error'}
               />
-              <button type="submit" disabled={status === 'loading'}>
-                {status === 'loading' ? 'SENDING…' : 'SUBSCRIBE FREE →'}
+              <button type="submit" disabled={busy}>
+                {busy ? 'SENDING…' : 'SUBSCRIBE FREE →'}
               </button>
-              {status === 'error' && (
-                <p className="subscribe-error">Something went wrong — try again.</p>
-              )}
+
+              <div className="sf-hp" aria-hidden="true">
+                <label htmlFor="banner-website">Leave this field empty</label>
+                <input
+                  id="banner-website"
+                  name="website"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={honeypot}
+                  onChange={e => setHoneypot(e.target.value)}
+                />
+              </div>
+
+              <p className="subscribe-error" role="status" aria-live="polite">
+                {status === 'error' ? message : ''}
+              </p>
             </form>
           )}
-          <p className="subscribe-fine">No spam. Unsubscribe anytime. Published every Friday.</p>
+          <p className="subscribe-fine">
+            By subscribing, you agree to receive TheGamerScene by email. You will receive a
+            confirmation email to verify your subscription. Unsubscribe anytime.
+          </p>
         </div>
       </div>
     </div>
@@ -541,7 +556,7 @@ function Footer({ data }: { data: IssueData }) {
       <div className="footer-grid">
         <div>
           <div className="brand">The Gamer·Scene</div>
-          <p>An independent gaming publication. Published Fridays. Read by {data.issue.subscribers} people who take games seriously.</p>
+          <p>An independent gaming publication. Published Fridays. Read by people who take games seriously.</p>
         </div>
         <div>
           <h4>Sections</h4>
@@ -566,8 +581,7 @@ function Footer({ data }: { data: IssueData }) {
         <div>
           <h4>Follow</h4>
           <ul>
-            <li><a href="https://thegamerscenedaily.substack.com" target="_blank" rel="noopener noreferrer">Newsletter</a></li>
-            <li><a href="https://thegamerscenedaily.substack.com" target="_blank" rel="noopener noreferrer">Substack</a></li>
+            <li><Link href="/subscribe">The Weekly Drop</Link></li>
           </ul>
         </div>
         <div className="colophon">
@@ -688,7 +702,7 @@ export default function IssuePage({ data }: { data: IssueData }) {
         <Discussion data={data} />
       </div>
 
-      <SubscribeBanner data={data} />
+      <SubscribeBanner />
       <Footer data={data} />
 
     </div>

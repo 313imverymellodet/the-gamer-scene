@@ -164,12 +164,10 @@ export default function ContactPage() {
             lineHeight: 1.6,
             margin: '0 0 16px',
           }}>
-            <strong style={{ color: 'var(--ink-soft)' }}>Newsletter</strong> — The fastest way to stay current is through our Substack. Issues drop weekly.
+            <strong style={{ color: 'var(--ink-soft)' }}>Newsletter</strong> — The fastest way to stay current is through our newsletter. Issues drop weekly.
           </p>
           <Link
-            href="https://thegamerscenedaily.substack.com"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/subscribe"
             style={{
               display: 'inline-block',
               fontFamily: 'var(--sans)',
@@ -183,7 +181,7 @@ export default function ContactPage() {
               textDecoration: 'none',
             }}
           >
-            Subscribe on Substack →
+            Subscribe Free →
           </Link>
         </div>
       </main>

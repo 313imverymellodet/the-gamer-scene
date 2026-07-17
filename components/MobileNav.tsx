@@ -92,7 +92,6 @@ export default function MobileNav({ data, activeTab, onTabChange, onSearchOpen }
           <div className="mobile-drawer-meta">
             {data.issue.weekday}, {data.issue.date}
           </div>
-          <div className="mobile-drawer-meta">{data.issue.subscribers} readers</div>
         </div>
       </div>
     </>

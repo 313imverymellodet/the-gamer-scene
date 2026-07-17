@@ -99,7 +99,7 @@ export default function PrivacyPage() {
 
           <h3>Information You Provide</h3>
           <ul>
-            <li><strong>Newsletter subscription</strong> — if you subscribe to our Substack newsletter, your email address is collected and managed by Substack, Inc. Their privacy policy governs that data: <a href="https://substack.com/privacy" target="_blank" rel="noopener noreferrer">substack.com/privacy</a>.</li>
+            <li><strong>Newsletter subscription</strong> — if you subscribe to our newsletter, your email address is collected and managed by beehiiv Inc., the platform we use to send it. We use double opt-in: you will receive a confirmation email, and you are only subscribed once you click to confirm. You can unsubscribe at any time using the link in any issue. beehiiv&apos;s privacy policy governs that data: <a href="https://www.beehiiv.com/privacy" target="_blank" rel="noopener noreferrer">beehiiv.com/privacy</a>.</li>
             <li><strong>Email contact</strong> — if you email us directly, we retain that correspondence to respond to you. We do not share your email address with third parties.</li>
           </ul>
 

@@ -139,7 +139,7 @@ export default function AboutPage() {
           </h2>
 
           <p style={{ margin: '0 0 1.4em' }}>
-            The best way to follow The Gamer Scene is through our newsletter on Substack. Every issue lands directly in your inbox — no algorithm, no feed, just the publication.
+            The best way to follow The Gamer Scene is through our newsletter. Every issue lands directly in your inbox — no algorithm, no feed, just the publication.
           </p>
 
           <p style={{ margin: '0 0 1.4em' }}>
@@ -154,9 +154,7 @@ export default function AboutPage() {
 
           <div style={{ marginTop: '40px', paddingTop: '24px', borderTop: '1px solid var(--rule)' }}>
             <Link
-              href="https://thegamerscenedaily.substack.com"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/subscribe"
               style={{
                 display: 'inline-block',
                 fontFamily: 'var(--sans)',
@@ -171,7 +169,7 @@ export default function AboutPage() {
                 marginRight: '12px',
               }}
             >
-              Subscribe on Substack →
+              Subscribe Free →
             </Link>
             <Link
               href="/contact"
