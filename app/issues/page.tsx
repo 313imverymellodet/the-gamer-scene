@@ -13,7 +13,6 @@ interface IssueMeta {
   date: string
   weekday: string
   readTime: string
-  subscribers: string
 }
 
 interface IssueLead {

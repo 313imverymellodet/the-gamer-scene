@@ -99,7 +99,6 @@ export interface IssueData {
     date: string
     weekday: string
     volume: string
-    subscribers: string
     weather: string
     location: string
     readTime: string
