@@ -51,7 +51,7 @@ export async function generateMetadata({
   if (!item) return {}
   const base = 'https://thegamerscene.news'
   return {
-    title: `${item.title} — The Gamer Scene`,
+    title: item.title, // layout template appends " — The Gamer Scene"
     description: item.blurb,
     openGraph: {
       title: item.title,

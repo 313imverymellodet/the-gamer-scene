@@ -293,10 +293,10 @@ function Reviews({ data }: { data: IssueData }) {
                 ? <img src={r.image} alt={r.title} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
                 : <div className="placeholder" />
               }
-              <div className={`score${r.hot ? ' hot' : ''}`}>
-                <b>{r.score}</b>
-                <span className="outof">/ 10</span>
-              </div>
+              {r.analysis
+                ? <div className="score analysis"><b>◍</b><span className="outof">Analysis</span></div>
+                : <div className={`score${r.hot ? ' hot' : ''}`}><b>{r.score}</b><span className="outof">/ 10</span></div>
+              }
             </div>
             <div className="meta">
               <span>{r.studio}</span>
@@ -306,7 +306,7 @@ function Reviews({ data }: { data: IssueData }) {
             <p className="pull">&ldquo;{r.pull}&rdquo;</p>
             <div className="foot">
               <span>{r.author}</span>
-              <span>{r.hours}</span>
+              <span>{r.analysis ? (r.consensusScore ? `Consensus ${r.consensusScore.split(' ')[0]}` : 'Review Analysis') : r.hours}</span>
             </div>
           </article>
         </Link>
@@ -318,6 +318,8 @@ function Reviews({ data }: { data: IssueData }) {
 // ─── Indie Spotlight ──────────────────────────────────────────────────────────
 
 function IndieSpotlight({ data }: { data: IssueData }) {
+  // Optional module — hide cleanly when an issue has no spotlight item.
+  if (!data.spotlight || !data.spotlight.title) return null
   return (
     <section className="spotlight">
       <div className="spotlight-inner">

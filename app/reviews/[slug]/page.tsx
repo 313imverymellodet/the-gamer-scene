@@ -11,6 +11,7 @@ import JsonLd from '@/components/JsonLd'
 import InlineSubscribeCTA from '@/components/InlineSubscribeCTA'
 import VideoPlayer from '@/components/VideoPlayer'
 import SiteHeader from '@/components/SiteHeader'
+import { formatLongDate, toIso } from '@/lib/date'
 import type { Metadata } from 'next'
 
 const MIN_PARAGRAPHS_FOR_CTA = 7
@@ -49,11 +50,14 @@ export async function generateMetadata({
   const review = getReviewBySlug(slug)
   if (!review) return {}
   const base = 'https://thegamerscene.news'
+  const isAnalysis = Boolean(review.analysis)
+  const pageTitle = isAnalysis ? review.title : `${review.title} Review` // template appends site name
+  const ogTitle   = isAnalysis ? review.title : `${review.title} Review — ${review.score}/10`
   return {
-    title: `${review.title} Review — The Gamer Scene`,
+    title: pageTitle,
     description: review.pull,
     openGraph: {
-      title: `${review.title} Review — ${review.score}/10`,
+      title: ogTitle,
       description: review.pull,
       type: 'article',
       url: `${base}/reviews/${slug}`,
@@ -62,7 +66,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${review.title} Review — ${review.score}/10`,
+      title: ogTitle,
       description: review.pull,
       site: '@thegamerscene',
       creator: '@rmorris',
@@ -82,15 +86,9 @@ export default async function ReviewPage({
   const review = getReviewBySlug(slug)
   if (!review) notFound()
 
-  const formattedDate = (() => {
-    if (!review.date) return ''
-    const clean = review.date.match(/\d{4}-\d{2}-\d{2}/)
-    const d = clean ? new Date(clean[0] + 'T12:00:00') : new Date(review.date)
-    if (isNaN(d.getTime())) return ''
-    return d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
-  })()
-
-  const scoreColor = review.hot ? 'var(--hot)' : 'var(--ink)'
+  const isAnalysis    = Boolean(review.analysis)
+  const formattedDate = formatLongDate(review.date)
+  const scoreColor    = review.hot ? 'var(--hot)' : 'var(--ink)'
 
   // Related: other reviews + recent news
   const otherReviews  = getRelatedReviews(slug, 1)
@@ -102,45 +100,60 @@ export default async function ReviewPage({
       ? injectMidArticleCTA(review.bodyHtml, 4)
       : { before: review.bodyHtml, after: '' }
 
-  const isoDate = (() => {
-    if (!review.date) return undefined
-    const clean = review.date.match(/\d{4}-\d{2}-\d{2}/)
-    if (clean) return `${clean[0]}T12:00:00Z`
-    try { return new Date(review.date).toISOString() } catch { return undefined }
-  })()
+  const isoDate = toIso(review.date)
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Review',
-    name: `${review.title} Review`,
-    url: `${BASE}/reviews/${slug}`,
-    datePublished: isoDate,
-    reviewBody: review.pull,
-    reviewRating: {
-      '@type': 'Rating',
-      ratingValue: String(review.score),
-      bestRating: '10',
-      worstRating: '0',
-    },
-    itemReviewed: {
-      '@type': 'VideoGame',
-      name: review.title,
-      author: { '@type': 'Organization', name: review.studio },
-      applicationCategory: 'Game',
-      operatingSystem: review.platforms.join(', '),
-    },
-    author: {
-      '@type': 'Person',
-      name: review.author,
-      worksFor: { '@type': 'Organization', name: 'The Gamer Scene', url: BASE },
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'The Gamer Scene',
-      url: BASE,
-      logo: { '@type': 'ImageObject', url: `${BASE}/icon.svg` },
-    },
-  }
+  // Analyses are unscored → emit Article schema (no reviewRating).
+  // Scored hands-on reviews → emit Review schema with rating.
+  const jsonLd = isAnalysis
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        headline: review.title,
+        description: review.pull,
+        url: `${BASE}/reviews/${slug}`,
+        datePublished: isoDate,
+        dateModified: isoDate,
+        author: { '@type': 'Organization', name: 'The Gamer Scene', url: BASE },
+        publisher: {
+          '@type': 'Organization',
+          name: 'The Gamer Scene',
+          url: BASE,
+          logo: { '@type': 'ImageObject', url: `${BASE}/icon.svg` },
+        },
+        mainEntityOfPage: { '@type': 'WebPage', '@id': `${BASE}/reviews/${slug}` },
+      }
+    : {
+        '@context': 'https://schema.org',
+        '@type': 'Review',
+        name: `${review.title} Review`,
+        url: `${BASE}/reviews/${slug}`,
+        datePublished: isoDate,
+        reviewBody: review.pull,
+        reviewRating: {
+          '@type': 'Rating',
+          ratingValue: String(review.score),
+          bestRating: '10',
+          worstRating: '0',
+        },
+        itemReviewed: {
+          '@type': 'VideoGame',
+          name: review.title,
+          author: { '@type': 'Organization', name: review.studio },
+          applicationCategory: 'Game',
+          operatingSystem: review.platforms.join(', '),
+        },
+        author: {
+          '@type': 'Person',
+          name: review.author,
+          worksFor: { '@type': 'Organization', name: 'The Gamer Scene', url: BASE },
+        },
+        publisher: {
+          '@type': 'Organization',
+          name: 'The Gamer Scene',
+          url: BASE,
+          logo: { '@type': 'ImageObject', url: `${BASE}/icon.svg` },
+        },
+      }
 
   return (
     <div style={{ background: 'var(--bg)', minHeight: '100vh', color: 'var(--ink)' }}>
@@ -149,7 +162,7 @@ export default async function ReviewPage({
       <SiteHeader active="reviews" />
 
       <main id="main-content" style={{ maxWidth: '720px', margin: '0 auto', padding: '48px 24px 80px' }}>
-        {/* REVIEW badge */}
+        {/* Badge — Review Analysis vs hands-on Review */}
         <div style={{ marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '10px' }}>
           <span style={{
             fontFamily: 'var(--sans)',
@@ -157,11 +170,11 @@ export default async function ReviewPage({
             fontWeight: 700,
             letterSpacing: '0.12em',
             textTransform: 'uppercase',
-            background: 'var(--ink)',
-            color: 'var(--bg)',
+            background: isAnalysis ? 'var(--accent)' : 'var(--ink)',
+            color: isAnalysis ? 'var(--accent-ink)' : 'var(--bg)',
             padding: '3px 8px',
           }}>
-            Review
+            {isAnalysis ? 'Review Analysis' : 'Review'}
           </span>
           <span style={{
             fontFamily: 'var(--sans)',
@@ -186,7 +199,7 @@ export default async function ReviewPage({
           {review.title}
         </h1>
 
-        {/* Score + platforms row */}
+        {/* Score + platforms row — hands-on reviews only show a TGS score */}
         <div style={{
           display: 'flex',
           alignItems: 'center',
@@ -194,25 +207,27 @@ export default async function ReviewPage({
           margin: '0 0 20px',
           flexWrap: 'wrap',
         }}>
-          <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px' }}>
-            <span style={{
-              fontFamily: 'var(--serif)',
-              fontSize: '3rem',
-              fontWeight: 900,
-              lineHeight: 1,
-              color: scoreColor,
-            }}>
-              {review.score}
-            </span>
-            <span style={{
-              fontFamily: 'var(--sans)',
-              fontSize: '1rem',
-              color: 'var(--ink-faint)',
-              fontWeight: 500,
-            }}>
-              / 10
-            </span>
-          </div>
+          {!isAnalysis && (
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px' }}>
+              <span style={{
+                fontFamily: 'var(--serif)',
+                fontSize: '3rem',
+                fontWeight: 900,
+                lineHeight: 1,
+                color: scoreColor,
+              }}>
+                {review.score}
+              </span>
+              <span style={{
+                fontFamily: 'var(--sans)',
+                fontSize: '1rem',
+                color: 'var(--ink-faint)',
+                fontWeight: 500,
+              }}>
+                / 10
+              </span>
+            </div>
+          )}
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
             {review.platforms.map(p => (
               <span key={p} style={{
@@ -231,6 +246,26 @@ export default async function ReviewPage({
           </div>
         </div>
 
+        {/* Review Analysis disclosure — research-based, not a hands-on TGS review */}
+        {isAnalysis && (
+          <div style={{
+            border: '1.5px solid var(--accent)',
+            background: 'oklch(from var(--accent) l c h / 0.12)',
+            padding: '14px 16px',
+            margin: '0 0 24px',
+            fontFamily: 'var(--sans)',
+            fontSize: '0.82rem',
+            lineHeight: 1.5,
+            color: 'var(--ink-soft)',
+          }}>
+            <strong style={{ color: 'var(--ink)', fontWeight: 700 }}>Review Analysis.</strong>{' '}
+            {review.reviewMethod
+              ? `${review.reviewMethod}. `
+              : 'Research-based critic-consensus analysis; not a TGS hands-on playthrough. '}
+            The Gamer Scene has not personally scored or timed this game.
+          </div>
+        )}
+
         {/* Pull quote */}
         <p style={{
           fontFamily: 'var(--serif)',
@@ -245,34 +280,67 @@ export default async function ReviewPage({
           &ldquo;{review.pull}&rdquo;
         </p>
 
-        {/* Quick Verdict box */}
-        <aside className="verdict-box" aria-label="Quick verdict">
-          <div className="verdict-box-head">
-            <span className="verdict-box-label">Quick Verdict</span>
-            <span>
-              <span className={`verdict-score${review.hot ? ' hot' : ''}`}>{review.score}</span>
-              <span className="verdict-score-denom">/ 10</span>
-            </span>
-          </div>
-          <div className="verdict-grid">
-            <div className="verdict-cell">
-              <div className="verdict-cell-label">Developer</div>
-              <div className="verdict-cell-value">{review.studio}</div>
+        {/* Snapshot box — Analysis (critic consensus) vs Quick Verdict (TGS score) */}
+        {isAnalysis ? (
+          <aside className="verdict-box" aria-label="Analysis snapshot">
+            <div className="verdict-box-head">
+              <span className="verdict-box-label">Analysis Snapshot</span>
+              <span className="verdict-box-label" style={{ opacity: 0.85 }}>Critic Consensus</span>
             </div>
-            <div className="verdict-cell">
-              <div className="verdict-cell-label">Time Played</div>
-              <div className="verdict-cell-value">{review.hours}</div>
-            </div>
-            <div className="verdict-cell" style={{ gridColumn: 'span 2' }}>
-              <div className="verdict-cell-label">Platforms</div>
-              <div className="verdict-platforms">
-                {review.platforms.map(p => (
-                  <span key={p} className="verdict-platform-chip">{p}</span>
-                ))}
+            <div className="verdict-grid">
+              <div className="verdict-cell">
+                <div className="verdict-cell-label">Developer</div>
+                <div className="verdict-cell-value">{review.studio}</div>
+              </div>
+              <div className="verdict-cell">
+                <div className="verdict-cell-label">Consensus Score</div>
+                <div className="verdict-cell-value">{review.consensusScore || '—'}</div>
+              </div>
+              {review.criticRecommendation && (
+                <div className="verdict-cell">
+                  <div className="verdict-cell-label">Critics Recommend</div>
+                  <div className="verdict-cell-value">{review.criticRecommendation}</div>
+                </div>
+              )}
+              <div className="verdict-cell" style={{ gridColumn: review.criticRecommendation ? 'auto' : 'span 2' }}>
+                <div className="verdict-cell-label">Platforms</div>
+                <div className="verdict-platforms">
+                  {review.platforms.map(p => (
+                    <span key={p} className="verdict-platform-chip">{p}</span>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-        </aside>
+          </aside>
+        ) : (
+          <aside className="verdict-box" aria-label="Quick verdict">
+            <div className="verdict-box-head">
+              <span className="verdict-box-label">Quick Verdict</span>
+              <span>
+                <span className={`verdict-score${review.hot ? ' hot' : ''}`}>{review.score}</span>
+                <span className="verdict-score-denom">/ 10</span>
+              </span>
+            </div>
+            <div className="verdict-grid">
+              <div className="verdict-cell">
+                <div className="verdict-cell-label">Developer</div>
+                <div className="verdict-cell-value">{review.studio}</div>
+              </div>
+              <div className="verdict-cell">
+                <div className="verdict-cell-label">Time Played</div>
+                <div className="verdict-cell-value">{review.hours}</div>
+              </div>
+              <div className="verdict-cell" style={{ gridColumn: 'span 2' }}>
+                <div className="verdict-cell-label">Platforms</div>
+                <div className="verdict-platforms">
+                  {review.platforms.map(p => (
+                    <span key={p} className="verdict-platform-chip">{p}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </aside>
+        )}
 
         {/* Meta bar + view counter */}
         <div style={{
@@ -291,10 +359,14 @@ export default async function ReviewPage({
           flexWrap: 'wrap',
           alignItems: 'center',
         }}>
-          <Link href="/authors/romello-morris" style={{ color: 'inherit', textDecoration: 'none' }}>
-            {review.author}
-          </Link>
-          <span>{review.hours}</span>
+          {isAnalysis ? (
+            <span>{review.author}</span>
+          ) : (
+            <Link href="/authors/romello-morris" style={{ color: 'inherit', textDecoration: 'none' }}>
+              {review.author}
+            </Link>
+          )}
+          {!isAnalysis && review.hours && <span>{review.hours}</span>}
           {formattedDate && <span>{formattedDate}</span>}
           <ViewCounter
             slug={slug}
@@ -310,7 +382,7 @@ export default async function ReviewPage({
           <ArticleHero
             src={review.image}
             alt={review.title}
-            category="REVIEW"
+            category={isAnalysis ? 'ANALYSIS' : 'REVIEW'}
             title={review.title}
           />
         </div>

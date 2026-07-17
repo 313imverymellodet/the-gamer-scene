@@ -23,8 +23,9 @@ export default async function Image({
   const score    = review?.score  ?? 0
   const pull     = review?.pull   || ''
   const platforms = review?.platforms?.join(' · ') || ''
+  const isAnalysis = Boolean(review?.analysis)
 
-  const color = scoreColor(score)
+  const color = isAnalysis ? '#9aa0a6' : scoreColor(score)
   const displayPull = pull.length > 130 ? pull.slice(0, 127) + '…' : pull
 
   return new ImageResponse(
@@ -71,7 +72,7 @@ export default async function Image({
             padding: '4px 12px',
             display: 'flex',
           }}>
-            REVIEW
+            {isAnalysis ? 'REVIEW ANALYSIS' : 'REVIEW'}
           </div>
         </div>
 
@@ -91,33 +92,61 @@ export default async function Image({
             flexShrink: 0,
             width: 160,
           }}>
-            <div style={{
-              fontFamily: 'serif',
-              fontSize: 100,
-              fontWeight: 900,
-              lineHeight: 1,
-              color: color,
-            }}>
-              {score}
-            </div>
-            <div style={{
-              fontFamily: 'monospace',
-              fontSize: 14,
-              letterSpacing: '0.15em',
-              color: '#666',
-            }}>
-              / 10
-            </div>
-            <div style={{
-              marginTop: 8,
-              fontFamily: 'monospace',
-              fontSize: 10,
-              letterSpacing: '0.2em',
-              textTransform: 'uppercase',
-              color: color,
-            }}>
-              {score >= 9.5 ? 'ESSENTIAL' : score >= 9 ? 'OUTSTANDING' : score >= 8 ? 'GREAT' : score >= 7 ? 'GOOD' : 'MIXED'}
-            </div>
+            {isAnalysis ? (
+              <>
+                <div style={{
+                  fontFamily: 'serif',
+                  fontSize: 84,
+                  fontWeight: 900,
+                  lineHeight: 1,
+                  color: color,
+                  display: 'flex',
+                }}>
+                  ◍
+                </div>
+                <div style={{
+                  marginTop: 12,
+                  fontFamily: 'monospace',
+                  fontSize: 11,
+                  letterSpacing: '0.2em',
+                  textTransform: 'uppercase',
+                  color: color,
+                  textAlign: 'center',
+                }}>
+                  Consensus
+                </div>
+              </>
+            ) : (
+              <>
+                <div style={{
+                  fontFamily: 'serif',
+                  fontSize: 100,
+                  fontWeight: 900,
+                  lineHeight: 1,
+                  color: color,
+                }}>
+                  {score}
+                </div>
+                <div style={{
+                  fontFamily: 'monospace',
+                  fontSize: 14,
+                  letterSpacing: '0.15em',
+                  color: '#666',
+                }}>
+                  / 10
+                </div>
+                <div style={{
+                  marginTop: 8,
+                  fontFamily: 'monospace',
+                  fontSize: 10,
+                  letterSpacing: '0.2em',
+                  textTransform: 'uppercase',
+                  color: color,
+                }}>
+                  {score >= 9.5 ? 'ESSENTIAL' : score >= 9 ? 'OUTSTANDING' : score >= 8 ? 'GREAT' : score >= 7 ? 'GOOD' : 'MIXED'}
+                </div>
+              </>
+            )}
           </div>
 
           {/* Divider */}
@@ -194,7 +223,7 @@ export default async function Image({
             color: color,
             fontWeight: 700,
           }}>
-            READ FULL REVIEW →
+            {isAnalysis ? 'READ ANALYSIS →' : 'READ FULL REVIEW →'}
           </div>
         </div>
       </div>

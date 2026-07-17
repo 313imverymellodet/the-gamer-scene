@@ -1,0 +1,207 @@
+{
+  "issue": {
+    "number": "049",
+    "date": "July 17, 2026",
+    "weekday": "Friday",
+    "volume": "Vol. VII",
+    "subscribers": "3,412",
+    "weather": "100% chance of Fallout",
+    "location": "Worldwide",
+    "readTime": "13 min"
+  },
+  "ticker": [
+    {
+      "tag": "BREAKING",
+      "text": "Fallout 5, two remasters, and an Obsidian project are moving"
+    },
+    {
+      "tag": "RECORD",
+      "text": "GTA 6 opens the strongest preorder campaign Newzoo has tracked"
+    },
+    {
+      "tag": "SHUTDOWN",
+      "text": "Final Fantasy XIV Mobile closes September 30; global version canceled"
+    },
+    {
+      "tag": "INDUSTRY",
+      "text": "EA's reported $55 billion takeover moves closer to EU approval"
+    },
+    {
+      "tag": "CASTING",
+      "text": "God of War is recasting its live-action Kratos"
+    },
+    {
+      "tag": "DATED",
+      "text": "Black Ops 7 and Warzone Season 5 go live July 23"
+    }
+  ],
+  "lead": {
+    "kicker": "Fallout Roadmap",
+    "title": "Bethesda Just Mapped <em>Fallout's</em> Future — Fallout 5, Two Remasters, and an Obsidian Game Are Moving",
+    "dek": "Bethesda confirmed Fallout 5 is in preproduction, remasters of Fallout 3 and New Vegas are underway, and Obsidian is officially back in the wasteland. No release dates yet — but the franchise is no longer trapped behind one studio's calendar.",
+    "author": "The Gamer Scene Editorial",
+    "role": "Editorial",
+    "initials": "GS",
+    "readTime": "4 min read",
+    "tag": "REVEAL",
+    "image": "",
+    "readLink": "/news/2026-07-17-bethesda-fallout-5-obsidian-remasters-roadmap"
+  },
+  "tabs": [
+    {
+      "id": "scene",
+      "num": "01",
+      "label": "The Scene"
+    },
+    {
+      "id": "news",
+      "num": "02",
+      "label": "Dispatch"
+    },
+    {
+      "id": "reviews",
+      "num": "03",
+      "label": "Reviews"
+    },
+    {
+      "id": "calendar",
+      "num": "04",
+      "label": "Calendar"
+    },
+    {
+      "id": "discourse",
+      "num": "05",
+      "label": "Discourse"
+    }
+  ],
+  "poll": {
+    "question": "Which Fallout project should arrive first?",
+    "options": [
+      {
+        "label": "Fallout 3 remaster",
+        "pct": 0
+      },
+      {
+        "label": "Fallout: New Vegas remaster",
+        "pct": 0
+      },
+      {
+        "label": "Obsidian's new Fallout project",
+        "pct": 0
+      },
+      {
+        "label": "Fallout 5",
+        "pct": 0
+      }
+    ],
+    "total": "0",
+    "closes": "Closes July 24, 23:59 EDT"
+  },
+  "calendar": [
+    {
+      "day": "JUL",
+      "date": "23",
+      "title": "Black Ops 7 / Warzone Season 5",
+      "sub": "Season reset, new maps, Zombies, and weapons",
+      "platform": "Multi"
+    },
+    {
+      "day": "JUL",
+      "date": "24",
+      "title": "Marvel Tokon Open Beta",
+      "sub": "72-hour test on PS5 and PC (Jul 24–26)",
+      "platform": "PS5 · PC"
+    },
+    {
+      "day": "JUL",
+      "date": "30",
+      "title": "Fortnite AI NPC Publishing",
+      "sub": "Conversational characters open to UEFN islands",
+      "platform": "Multi"
+    },
+    {
+      "day": "AUG",
+      "date": "6",
+      "title": "Marvel Tokon: Fighting Souls",
+      "sub": "Full game launch",
+      "platform": "PS5 · PC"
+    },
+    {
+      "day": "OCT",
+      "date": "8",
+      "title": "Clive Barker's Hellraiser: Revival",
+      "sub": "First-person horror release",
+      "platform": "PS5"
+    }
+  ],
+  "reactions": [
+    {
+      "glyph": "★",
+      "label": "Brilliant",
+      "count": 0,
+      "key": "brilliant"
+    },
+    {
+      "glyph": "◐",
+      "label": "Conflicted",
+      "count": 0,
+      "key": "conflicted"
+    },
+    {
+      "glyph": "▲",
+      "label": "Spot on",
+      "count": 0,
+      "key": "spoton"
+    },
+    {
+      "glyph": "✕",
+      "label": "Disagree",
+      "count": 0,
+      "key": "disagree"
+    },
+    {
+      "glyph": "♫",
+      "label": "Mood",
+      "count": 0,
+      "key": "mood"
+    }
+  ],
+  "comments": [
+    {
+      "name": "Marcus T.",
+      "handle": "@marcust",
+      "time": "2h",
+      "initials": "MT",
+      "body": "A multi-studio Fallout pipeline with Obsidian back in the wasteland is the best-case scenario nobody thought Bethesda would actually commit to. Now show footage before the hype writes checks the roadmap can't cash.",
+      "replies": 11,
+      "likes": 64
+    },
+    {
+      "name": "Priya S.",
+      "handle": "@priyasplays",
+      "time": "3h",
+      "initials": "PS",
+      "body": "GTA 6 pulling a record $260M preorder week from a third-party estimate is wild, but remember Newzoo is modeling, not Rockstar disclosing. Still, the appetite is obviously real.",
+      "replies": 7,
+      "likes": 43
+    },
+    {
+      "name": "Devon K.",
+      "handle": "@devonk",
+      "time": "4h",
+      "initials": "DK",
+      "body": "FFXIV Mobile dying before it even reached global is brutal. That's a lot of goodwill and dev time gone. Square Enix's mobile strategy needs a rethink.",
+      "replies": 5,
+      "likes": 31
+    },
+    {
+      "name": "Jade W.",
+      "handle": "@jadewright",
+      "time": "6h",
+      "initials": "JW",
+      "body": "The Black Flag Resynced analysis nails it — a gorgeous rebuild wrapped in modern Ubisoft baggage. The Jackdaw is still the best ship in gaming, but the launcher outage on a single-player game is unacceptable.",
+      "replies": 4,
+      "likes": 26
+    }
+  ]
+}

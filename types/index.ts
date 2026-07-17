@@ -43,6 +43,11 @@ export interface ReviewItem {
   slug?: string
   issue?: string
   image?: string
+  // Review Analysis (research-based, not a hands-on TGS review)
+  analysis?: boolean
+  consensusScore?: string
+  criticRecommendation?: string
+  reviewMethod?: string
 }
 
 export interface PollOption {
@@ -108,7 +113,7 @@ export interface IssueData {
   tabs: TabItem[]
   poll: PollData
   calendar: CalendarItem[]
-  spotlight: SpotlightData
+  spotlight?: SpotlightData
   reactions: ReactionItem[]
   comments: CommentItem[]
   // Loaded from markdown files, not stored in the issue JSON

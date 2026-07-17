@@ -502,6 +502,9 @@ h1, h2, h3, h4 { margin: 0; font-family: var(--serif); font-weight: 500; letter-
 .review .score b { font-size: 24px; line-height: 1; }
 .review .score .outof { font-family: var(--mono); font-size: 8px; letter-spacing: 0.1em; opacity: 0.7; }
 .review .score.hot { background: var(--accent); color: var(--accent-ink); }
+.review .score.analysis { background: var(--bg); color: var(--ink); border-color: var(--ink); }
+.review .score.analysis b { font-size: 20px; }
+.review .score.analysis .outof { font-size: 7px; opacity: 0.9; }
 .review .meta { padding: 20px 18px 6px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; color: var(--ink-soft); display: flex; gap: 10px; }
 .review h3 { padding: 4px 18px 8px; font-family: var(--serif); font-size: 24px; line-height: 1.1; letter-spacing: -0.02em; }
 .review .pull { padding: 0 18px 16px; font-family: var(--serif); font-style: italic; color: var(--ink-soft); font-size: 14px; line-height: 1.4; }

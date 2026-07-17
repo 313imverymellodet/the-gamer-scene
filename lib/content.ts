@@ -89,14 +89,18 @@ export function getReviews(issue?: string): ReviewItem[] {
       title:     String(entry.data.title    ?? ''),
       studio:    String(entry.data.studio   ?? ''),
       platforms: (entry.data.platforms as string[]) ?? [],
-      score:     entry.data.score as number,
+      score:     typeof entry.data.score === 'number' ? entry.data.score : 0,
       pull:      String(entry.data.pull     ?? ''),
       author:    String(entry.data.author   ?? ''),
-      hours:     `${entry.data.hours}h played`,
+      hours:     entry.data.hours != null ? `${entry.data.hours}h played` : '',
       hot:       Boolean(entry.data.hot),
       slug:      entry.slug,
       issue:     entry.data.issue as string | undefined,
       image:     entry.data.image as string | undefined,
+      analysis:  Boolean(entry.data.analysis),
+      consensusScore:       entry.data.consensusScore as string | undefined,
+      criticRecommendation: entry.data.criticRecommendation as string | undefined,
+      reviewMethod:         entry.data.reviewMethod as string | undefined,
     }))
 }
 
@@ -151,6 +155,7 @@ export interface FullNewsItem {
 
 export interface FullReviewItem extends ReviewItem {
   date: string
+  releaseDate?: string
   video?: string
   bodyHtml: string
 }
@@ -178,17 +183,22 @@ export function getReviewBySlug(slug: string): FullReviewItem | null {
     title:     String(entry.data.title  ?? ''),
     studio:    String(entry.data.studio ?? ''),
     platforms: (entry.data.platforms as string[]) ?? [],
-    score:     entry.data.score as number,
+    score:     typeof entry.data.score === 'number' ? entry.data.score : 0,
     pull:      String(entry.data.pull   ?? ''),
     author:    String(entry.data.author ?? ''),
-    hours:     `${entry.data.hours}h played`,
+    hours:     entry.data.hours != null ? `${entry.data.hours}h played` : '',
     hot:       Boolean(entry.data.hot),
     slug,
     issue:     entry.data.issue as string | undefined,
     image:     entry.data.image as string | undefined,
     video:     entry.data.video as string | undefined,
     date:      entry.data.date ? String(entry.data.date) : '',
+    releaseDate: entry.data.releaseDate ? String(entry.data.releaseDate) : undefined,
     bodyHtml:  entry.bodyHtml,
+    analysis:  Boolean(entry.data.analysis),
+    consensusScore:       entry.data.consensusScore as string | undefined,
+    criticRecommendation: entry.data.criticRecommendation as string | undefined,
+    reviewMethod:         entry.data.reviewMethod as string | undefined,
   }
 }
 

@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
+import { parseContentDate } from '@/lib/date'
 
 const BASE_URL = 'https://thegamerscene.news'
 
@@ -37,7 +38,7 @@ function getNewsItems(): FeedItem[] {
         title: String(data.title || ''),
         link: `${BASE_URL}/news/${slug}`,
         description: String(data.blurb || ''),
-        pubDate: data.date ? new Date(String(data.date) + 'T12:00:00Z') : new Date(),
+        pubDate: parseContentDate(data.date) ?? new Date(),
         category: String(data.category || 'News'),
         guid: `${BASE_URL}/news/${slug}`,
       }
@@ -55,13 +56,15 @@ function getReviewItems(): FeedItem[] {
       const raw = fs.readFileSync(path.join(reviewsDir, file), 'utf-8')
       const { data } = matter(raw)
       const slug = file.replace('.md', '')
-      const score = data.score ? ` [${data.score}/10]` : ''
+      const isAnalysis = Boolean(data.analysis)
+      const score = !isAnalysis && data.score ? ` [${data.score}/10]` : ''
+      const prefix = isAnalysis ? '' : 'Review: '
       return {
-        title: `Review: ${String(data.title || '')}${score}`,
+        title: `${prefix}${String(data.title || '')}${score}`,
         link: `${BASE_URL}/reviews/${slug}`,
         description: String(data.pull || data.blurb || ''),
-        pubDate: data.date ? new Date(String(data.date) + 'T12:00:00Z') : new Date(),
-        category: 'Review',
+        pubDate: parseContentDate(data.date) ?? new Date(),
+        category: isAnalysis ? 'Review Analysis' : 'Review',
         guid: `${BASE_URL}/reviews/${slug}`,
       }
     })
