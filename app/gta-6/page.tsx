@@ -3,6 +3,11 @@ import type { Metadata } from 'next'
 import SiteHeader from '@/components/SiteHeader'
 import Gta6CountdownHero from '@/components/Gta6CountdownHero'
 import JsonLd from '@/components/JsonLd'
+import {
+  Status, SectionHead, TrustModule,
+  gta6Body as body, GTA6_DISCLAIMER,
+  type StatusKind,
+} from '@/components/Gta6Ui'
 
 const BASE = 'https://thegamerscene.news'
 const LAST_VERIFIED = 'July 18, 2026'
@@ -48,10 +53,6 @@ const QUICK_FACTS: Array<[string, string, StatusKind]> = [
   ['GTA 6 Online', 'Unannounced; online development reported', 'reported'],
   ['Trailer 3', 'Not announced', 'confirmed'],
 ]
-
-type StatusKind =
-  | 'confirmed' | 'reported' | 'analysis'
-  | 'community' | 'unverified' | 'debunked' | 'scam'
 
 const CHARACTERS: Array<[string, string]> = [
   ['Jason Duval', 'Grew up around grifters and crooks, spent time in the Army, and later worked for drug runners in the Leonida Keys. His relationship with Lucia is central to the story.'],
@@ -127,36 +128,6 @@ const jsonLd = [
   },
 ]
 
-// ─── Small helpers ───────────────────────────────────────────────────────────
-
-function Status({ kind, children }: { kind: StatusKind; children: React.ReactNode }) {
-  return <span className={`gta6-status ${kind}`}>{children}</span>
-}
-
-function SectionHead({ num, title }: { num: string; title: string }) {
-  return (
-    <div style={{
-      display: 'flex', alignItems: 'baseline', gap: '14px',
-      borderBottom: '2px solid var(--ink)', paddingBottom: '10px',
-      margin: '52px 0 20px',
-    }}>
-      <span style={{
-        fontFamily: 'var(--mono)', fontSize: '10px', letterSpacing: '0.14em',
-        color: 'var(--ink-faint)',
-      }}>{num}</span>
-      <h2 style={{
-        fontFamily: 'var(--serif)', fontSize: 'clamp(1.3rem, 3vw, 1.7rem)',
-        fontWeight: 900, letterSpacing: '-0.02em', margin: 0,
-      }}>{title}</h2>
-    </div>
-  )
-}
-
-const body: React.CSSProperties = {
-  fontFamily: 'var(--sans)', fontSize: '0.92rem', lineHeight: 1.65,
-  color: 'var(--ink-soft)', margin: '0 0 14px',
-}
-
 // ─── Page ────────────────────────────────────────────────────────────────────
 
 export default function Gta6HubPage() {
@@ -194,19 +165,27 @@ export default function Gta6HubPage() {
         </p>
 
         {/* Trust module */}
-        <div style={{
-          border: '1.5px solid var(--rule)', background: 'var(--bg-alt)',
-          padding: '14px 18px', fontFamily: 'var(--mono)', fontSize: '10px',
-          letterSpacing: '0.08em', lineHeight: 2, color: 'var(--ink-soft)',
-        }}>
-          <div><b style={{ color: 'var(--ink)' }}>STATUS:</b> <Status kind="confirmed">Confirmed</Status> core facts, with rumor labels inline</div>
-          <div><b style={{ color: 'var(--ink)' }}>LAST VERIFIED:</b> {LAST_VERIFIED}</div>
-          <div><b style={{ color: 'var(--ink)' }}>PRIMARY SOURCE:</b> Rockstar Games official listings and media library</div>
-          <div><b style={{ color: 'var(--ink)' }}>STILL UNKNOWN:</b> PC date · GTA 6 Online plan · install size · final age rating · frame-rate modes · Trailer 3</div>
-        </div>
+        <TrustModule
+          status="confirmed"
+          statusNote="core facts, with rumor labels inline"
+          lastVerified={LAST_VERIFIED}
+          primarySource="Rockstar Games official listings and media library"
+          stillUnknown="PC date · GTA 6 Online plan · install size · final age rating · frame-rate modes · Trailer 3"
+        />
 
         {/* Countdown centerpiece */}
         <Gta6CountdownHero />
+
+        <p style={{ ...body, textAlign: 'center', margin: '-18px 0 0' }}>
+          <Link href="/gta-6/release-date" style={{
+            fontFamily: 'var(--mono)', fontSize: '10px', letterSpacing: '0.14em',
+            textTransform: 'uppercase', fontWeight: 700, color: 'var(--ink)',
+            borderBottom: '2px solid var(--accent)', textDecoration: 'none',
+            paddingBottom: '2px',
+          }}>
+            Full release date &amp; launch timeline →
+          </Link>
+        </p>
 
         {/* Quick facts */}
         <SectionHead num="§ 01" title="GTA 6 quick facts" />
@@ -452,11 +431,7 @@ export default function Gta6HubPage() {
           color: 'var(--ink-faint)', marginTop: '40px', lineHeight: 1.8,
           borderTop: '1px solid var(--rule)', paddingTop: '16px',
         }}>
-          Page last verified {LAST_VERIFIED}. This is an unofficial fan publication and is not
-          affiliated with, endorsed by, or sponsored by Rockstar Games or Take-Two Interactive.
-          Grand Theft Auto, Grand Theft Auto VI, Rockstar Games, and related names, logos,
-          characters, and imagery are trademarks and copyrighted properties of their respective
-          owners.
+          Page last verified {LAST_VERIFIED}. {GTA6_DISCLAIMER}
         </p>
       </main>
 
