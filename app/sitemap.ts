@@ -35,6 +35,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     { url: base,                   lastModified: now, changeFrequency: 'weekly',  priority: 1.0 },
+    { url: `${base}/gta-6`,        lastModified: now, changeFrequency: 'daily',   priority: 0.95 },
     { url: `${base}/subscribe`,    lastModified: now, changeFrequency: 'monthly', priority: 0.95 },
     { url: `${base}/issues`,       lastModified: now, changeFrequency: 'weekly',  priority: 0.9 },
     { url: `${base}/reviews`,      lastModified: now, changeFrequency: 'weekly',  priority: 0.9 },

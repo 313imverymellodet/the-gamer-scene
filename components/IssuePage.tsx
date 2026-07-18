@@ -13,6 +13,7 @@ function stripHtml(html: string) {
 const SearchModal    = dynamic(() => import('./SearchModal'),    { ssr: false })
 const MobileNav      = dynamic(() => import('./MobileNav'),      { ssr: false })
 const TrendingWidget = dynamic(() => import('./TrendingWidget'), { ssr: false })
+const Gta6Countdown  = dynamic(() => import('./Gta6Countdown'))
 
 // ─── Topbar ──────────────────────────────────────────────────────────────────
 
@@ -639,6 +640,7 @@ export default function IssuePage({ data }: { data: IssueData }) {
   return (
     <div className="app">
       <SearchModal isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
+      <Gta6Countdown />
       {/* Desktop topbar — hidden on mobile via CSS */}
       <div className="desktop-only">
         <Topbar data={data} onSearchOpen={() => setSearchOpen(true)} />
