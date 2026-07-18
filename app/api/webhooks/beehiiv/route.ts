@@ -35,13 +35,28 @@ interface BeehiivWebhookPayload {
   }
 }
 
-function tokenMatches(provided: string | null, expected: string): boolean {
-  if (!provided) return false
+function tokenMatches(provided: string, expected: string): boolean {
   const a = Buffer.from(provided)
   const b = Buffer.from(expected)
   // timingSafeEqual throws on length mismatch, which itself leaks length; guard first.
   if (a.length !== b.length) return false
   return timingSafeEqual(a, b)
+}
+
+/**
+ * Reads the token from the query string.
+ *
+ * Falls back to parsing req.url directly: req.nextUrl can be affected by rewrites and proxies,
+ * and if it ever yields no query params the request would look identical to a wrong secret.
+ */
+function readToken(req: NextRequest): string | null {
+  const fromNextUrl = req.nextUrl.searchParams.get('token')
+  if (fromNextUrl) return fromNextUrl
+  try {
+    return new URL(req.url).searchParams.get('token')
+  } catch {
+    return null
+  }
 }
 
 /** Asks beehiiv whether this subscription is genuinely active. Returns its utm_source if so. */
@@ -75,9 +90,19 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Not configured' }, { status: 503 })
   }
 
-  if (!tokenMatches(req.nextUrl.searchParams.get('token'), secret)) {
-    // No detail in the response: an attacker probing the endpoint learns nothing.
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  // Distinguish "no token supplied" from "token supplied but wrong". Both are failures and
+  // neither reveals the secret, but collapsing them into one status made a misconfigured URL
+  // indistinguishable from a mismatched value — which cost real debugging time.
+  const provided = readToken(req)
+  if (!provided) {
+    return NextResponse.json(
+      { error: 'Missing token', hint: 'Append ?token=<secret> to the webhook URL.' },
+      { status: 400 }
+    )
+  }
+
+  if (!tokenMatches(provided, secret)) {
+    return NextResponse.json({ error: 'Invalid token' }, { status: 401 })
   }
 
   try {
