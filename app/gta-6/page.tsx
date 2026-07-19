@@ -355,7 +355,11 @@ export default function Gta6HubPage() {
           version or PC release date.</strong> A former Rockstar producer has explained the
           studio&rsquo;s console-first logic — fixed hardware targets first, the wide PC
           configuration matrix later — but that is context, not an announcement. Any specific PC
-          year you see is unverified.
+          year you see is unverified. Full detail on our{' '}
+          <Link href="/gta-6/pc" style={{ color: 'var(--ink)', textDecoration: 'underline' }}>
+            GTA 6 PC release date status page
+          </Link>
+          , including the historical GTA V and RDR2 PC gaps and a rumor tracker.
         </p>
         <p style={body}>
           <Status kind="reported">Reported</Status>&nbsp; Court-document reporting describes an

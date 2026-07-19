@@ -203,11 +203,11 @@ export default function Gta6ReleaseDatePage() {
           Enhanced label — that label does not promise any specific resolution or frame rate.
         </p>
         <p style={body}>
-          If you are buying for PC, read our{' '}
-          <Link href="/gta-6" style={{ color: 'var(--ink)', textDecoration: 'underline' }}>
-            current GTA 6 PC status
+          If you are on PC, read our{' '}
+          <Link href="/gta-6/pc" style={{ color: 'var(--ink)', textDecoration: 'underline' }}>
+            current GTA 6 PC release date status
           </Link>{' '}
-          before pre-ordering anything.
+          before buying anything — Rockstar has not announced a PC release date.
         </p>
 
         {/* Timeline */}
@@ -304,6 +304,7 @@ export default function Gta6ReleaseDatePage() {
         <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
           {[
             ['/gta-6', 'GTA 6 hub: everything confirmed about Grand Theft Auto VI'],
+            ['/gta-6/pc', 'GTA 6 PC release date: no date has been announced'],
             ['/news/2026-07-17-gta-6-preorder-record-newzoo-estimate', 'GTA 6 Just Opened the Strongest Preorder Campaign Newzoo Has Ever Tracked'],
             ['/news/2026-04-22-gta6-trailer-3-when-and-what-to-expect', 'GTA 6 Trailer 3: When Is It Coming and What Should We Expect?'],
             ['/news/2026-04-16-gta6-fiscal-year', 'GTA 6 Is Officially in Its Release Year — November 19 Holds Firm'],

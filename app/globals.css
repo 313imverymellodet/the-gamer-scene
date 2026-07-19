@@ -141,8 +141,19 @@ textarea:focus-visible {
   border-color: var(--ink);
   font-weight: 700;
 }
-@media (max-width: 600px) {
-  .site-header { padding: 12px 20px; }
+@media (max-width: 620px) {
+  /* Brand + 5 nav items no longer fit one line — wrap the nav onto its own
+     row and let it scroll rather than pushing the page sideways. */
+  .site-header { padding: 10px 16px; flex-wrap: wrap; gap: 8px; }
+  .site-header-brand { font-size: 1rem; }
+  .site-header-nav {
+    width: 100%;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .site-header-nav::-webkit-scrollbar { display: none; }
   .site-header-link { padding: 5px 7px; font-size: 9px; letter-spacing: 0.08em; }
 }
 @media (max-width: 420px) {
@@ -471,12 +482,224 @@ h1, h2, h3, h4 { margin: 0; font-family: var(--serif); font-weight: 500; letter-
   white-space: nowrap;
 }
 .gta6-status.confirmed  { color: #1e7a34; border-color: #1e7a34; }
+.gta6-status.on-the-record { color: #146b6b; border-color: #146b6b; }
 .gta6-status.reported   { color: #2980b9; border-color: #2980b9; }
+.gta6-status.false-or-misleading { color: #c0392b; border-color: #c0392b; }
 .gta6-status.analysis   { color: #8e44ad; border-color: #8e44ad; }
 .gta6-status.community  { color: #7f8c8d; border-color: #7f8c8d; }
 .gta6-status.unverified { color: #b8860b; border-color: #b8860b; }
 .gta6-status.debunked   { color: #c0392b; border-color: #c0392b; }
 .gta6-status.scam       { color: var(--bg); border-color: #c0392b; background: #c0392b; }
+
+/* ─── GTA VI PC status page ──────────────────────────────────────────────── */
+.pc-status-panel {
+  border: 2px solid var(--ink);
+  margin: 24px 0 28px;
+}
+.pc-status-banner {
+  background: var(--ink);
+  color: var(--bg);
+  padding: 16px 20px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.pc-status-banner b {
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: clamp(1.3rem, 4vw, 1.9rem);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--accent);
+}
+.pc-status-banner span {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: oklch(from var(--bg) l c h / 0.6);
+}
+.pc-status-list { margin: 0; }
+.pc-status-list div {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 14px;
+  padding: 9px 20px;
+  border-bottom: 1px solid var(--rule);
+  align-items: center;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+.pc-status-list div:last-child { border-bottom: none; }
+.pc-status-list dt { font-weight: 500; }
+.pc-status-list dd { margin: 0; text-align: right; }
+.pc-status-list b { color: var(--ink); font-weight: 700; }
+@media (max-width: 480px) {
+  .pc-status-list div { grid-template-columns: 1fr; gap: 3px; }
+  .pc-status-list dd { text-align: left; }
+}
+
+/* Table of contents */
+.pc-toc {
+  border: 1px solid var(--rule);
+  background: var(--bg-alt);
+  padding: 16px 20px;
+  margin: 28px 0;
+}
+.pc-toc-head {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 10px;
+}
+.pc-toc ol {
+  margin: 0;
+  padding-left: 1.1em;
+  columns: 2;
+  column-gap: 28px;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  line-height: 1.9;
+}
+.pc-toc a { color: var(--ink-soft); text-decoration: none; }
+.pc-toc a:hover { color: var(--ink); text-decoration: underline; }
+@media (max-width: 560px) { .pc-toc ol { columns: 1; } }
+
+/* Analysis assessment card */
+.pc-assessment {
+  border: 2px dashed var(--rule);
+  background: var(--bg-alt);
+  padding: 20px;
+  margin: 20px 0;
+}
+.pc-assessment-flag {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  background: #8e44ad;
+  color: #fff;
+  padding: 3px 9px;
+  margin-bottom: 12px;
+}
+.pc-assessment dl { margin: 0 0 14px; }
+.pc-assessment dl > div {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+.pc-assessment dd { margin: 0; text-align: right; color: var(--ink); font-weight: 600; }
+
+/* Latest-update card */
+.pc-update-card {
+  border-left: 4px solid var(--accent);
+  background: var(--bg-alt);
+  padding: 14px 18px;
+  margin: 24px 0;
+}
+.pc-update-card-date {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 5px;
+}
+.pc-update-card b {
+  display: block;
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 900;
+  color: var(--ink);
+  margin-bottom: 5px;
+}
+
+/* Rumor entry */
+.pc-rumor {
+  border: 1px solid var(--rule);
+  padding: 14px 16px;
+  margin-bottom: 10px;
+}
+.pc-rumor-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+.pc-rumor-claim {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+
+/* Unknowns grid */
+.pc-unknowns {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  margin: 16px 0;
+}
+.pc-unknowns > div {
+  background: var(--bg);
+  padding: 11px 14px;
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink-soft);
+}
+.pc-unknowns em {
+  font-style: normal;
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  white-space: nowrap;
+}
+
+/* Decision guide columns */
+.pc-decision {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 16px 0;
+}
+.pc-decision > div { border: 1px solid var(--rule); padding: 16px 18px; }
+.pc-decision h3 {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 900;
+  margin: 0 0 10px;
+  color: var(--ink);
+}
+.pc-decision ul {
+  margin: 0;
+  padding-left: 1.1em;
+  font-family: var(--sans);
+  font-size: 0.84rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+@media (max-width: 600px) { .pc-decision { grid-template-columns: 1fr; } }
 
 /* ─── GTA VI hub tables ──────────────────────────────────────────────────── */
 .gta6-table-wrap { overflow-x: auto; margin: 16px 0 8px; }

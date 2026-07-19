@@ -1,10 +1,14 @@
 import Link from 'next/link'
 
 export type StatusKind =
-  | 'confirmed' | 'reported' | 'analysis'
-  | 'community' | 'unverified' | 'debunked' | 'scam'
+  | 'confirmed' | 'on-the-record' | 'reported' | 'analysis'
+  | 'community' | 'unverified' | 'debunked' | 'scam' | 'false-or-misleading'
 
-/** Evidence chip. Always renders visible text — never color alone. */
+/**
+ * Evidence chip. Always renders visible text — never color alone.
+ * `kind` drives the colour; `children` sets the visible wording, so a kind can
+ * carry variant labels (e.g. kind="unverified" showing "NOT ANNOUNCED").
+ */
 export function Status({ kind, children }: { kind: StatusKind; children: React.ReactNode }) {
   return <span className={`gta6-status ${kind}`}>{children}</span>
 }
