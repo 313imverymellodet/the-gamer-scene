@@ -213,9 +213,10 @@ export default function Gta6HubPage() {
         <SectionHead num="§ 02" title="Latest GTA 6 coverage" />
         <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
           {[
+            ['/news/2026-08-20-gta-6-leak-crisis-cyberleek', 'GTA 6 Leak Crisis Escalates as Gameplay, Leonida Map and Possible Playable Build Surface Online'],
+            ['/news/2026-08-20-gta-6-news-roundup', 'GTA 6 News Roundup: Netflix Reveal Dated, Leaks Surface, and the $100 Edition Dominates Preorders'],
             ['/news/2026-07-17-gta-6-preorder-record-newzoo-estimate', 'GTA 6 Just Opened the Strongest Preorder Campaign Newzoo Has Ever Tracked'],
             ['/news/2026-04-22-gta6-trailer-3-when-and-what-to-expect', 'GTA 6 Trailer 3: When Is It Coming and What Should We Expect?'],
-            ['/news/2026-04-16-gta6-fiscal-year', 'GTA 6 Is Officially in Its Release Year — November 19 Holds Firm'],
           ].map(([href, title]) => (
             <li key={href} style={{ borderBottom: '1px solid var(--rule)' }}>
               <Link href={href} style={{
