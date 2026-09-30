@@ -4,7 +4,7 @@ blurb: "Fable. Phantom Blade Zero. Dragon Age: The Veilguard's shadow. A Septemb
 category: Opinion
 date: 2026-04-29
 author: The Gamer Scene
-image: /images/opinion-blood-dawnwalker-important.jpg
+image:
 keywords: [Blood of Dawnwalker opinion, Rebel Wolves game, Witcher 3 director game, best RPGs 2026, Blood of Dawnwalker September 2026, open world RPG 2026, vampire RPG, most anticipated game 2026]
 ---
 

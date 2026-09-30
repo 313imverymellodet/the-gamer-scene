@@ -30,7 +30,9 @@ auto-deploys on push.
    - `poll` = the newsletter's question of the day (5 options)
    - `calendar` = upcoming dates mentioned in the newsletter
    - `spotlight` = any indie-adjacent item from the newsletter
-   - `comments` = 4 seeded reader comments themed to the issue
+   - Do NOT add a `comments` array. The Discourse section shows real reader
+     comments from `/api/comments`; seeded, invented comments are no longer
+     rendered and should never be written.
 
 3. **Images.** Check `public/images/news/` for reusable images first.
    - Image exists → use it
@@ -41,7 +43,8 @@ auto-deploys on push.
 
 4. **Reviews.** If the newsletter recommends games ("What to Play This Week")
    that have reviews on the site, retag those reviews' `issue:` field to the
-   new issue number so the issue's Reviews section isn't empty.
+   new issue number. If no review is tagged to the new issue, the homepage
+   falls back to the three most recent reviews, so the section is never empty.
 
 5. **Validate and ship.**
    - `python3 -c "import json; json.load(open('content/issues/NNN.json'))"`

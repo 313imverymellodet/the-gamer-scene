@@ -23,8 +23,10 @@ but will be used when individual article pages are added.
 |---|---|
 | `title` | Headline shown on the site |
 | `blurb` | 1-2 sentence summary shown under the headline |
-| `category` | Label tag — use: `Industry`, `Hardware`, `Reveal`, `Interview`, `Exclusive`, `Update`, `Rumor`, `Deal`, `Patch` |
+| `category` | Label tag — use: `Industry`, `Update`, `Reveal`, `Preview`, `Rumor`, `Patch`, `Poll` (the /news filters are built from these automatically) |
 | `date` | Publication date `YYYY-MM-DD` — controls sort order |
+| `updated` | Optional. Date of the last substantive edit — shown as "Updated" on the article |
+| `correction` | Optional. Editor's correction note shown above the article body (see `templates/README.md`) |
 
 The **6 most recent news items** by date always show on the homepage. Just save the file and push.
 

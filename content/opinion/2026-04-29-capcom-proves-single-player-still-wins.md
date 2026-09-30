@@ -4,7 +4,7 @@ blurb: "Resident Evil Requiem. Pragmata. Monster Hunter Stories 3. All premium, 
 category: Opinion
 date: 2026-04-29
 author: The Gamer Scene
-image: /images/opinion-capcom-single-player.jpg
+image:
 keywords: [single player games 2026, Capcom 2026, live service vs single player, best games 2026, Pragmata review, Resident Evil Requiem, gaming industry 2026, single player wins]
 ---
 

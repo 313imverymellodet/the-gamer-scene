@@ -1019,6 +1019,25 @@ h1, h2, h3, h4 { margin: 0; font-family: var(--serif); font-weight: 500; letter-
 .comment-compose textarea { flex: 1; border: none; background: transparent; font-family: var(--serif); font-size: 15px; line-height: 1.5; color: var(--ink); resize: none; min-height: 52px; outline: none; }
 .comment-compose textarea::placeholder { color: var(--ink-faint); font-style: italic; }
 .comment-compose button { padding: 8px 14px; background: var(--ink); color: var(--bg); font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; align-self: flex-end; }
+.comment-compose button:disabled { opacity: 0.5; cursor: not-allowed; }
+.comment-compose form { flex: 1; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.comment-compose input { border: none; border-bottom: 1px solid var(--rule); background: transparent; font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; color: var(--ink); padding: 4px 0; outline: none; max-width: 240px; }
+.comment-compose input:focus, .comment-compose textarea:focus { border-color: var(--ink); }
+.comment-compose .compose-row { display: flex; align-items: center; gap: 12px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; color: var(--ink-faint); }
+.comment-compose .compose-row button { margin-left: auto; }
+.comment-compose .compose-error { color: var(--hot); }
+.comments-empty { grid-column: span 2; padding: 24px; border: 1px solid var(--rule); font-family: var(--serif); font-style: italic; color: var(--ink-soft); text-align: center; }
+.comments-more { grid-column: span 2; justify-self: start; padding: 8px 14px; border: 1.5px solid var(--ink); font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; }
+
+/* Dispatch → full archive link */
+.dispatch-more { display: flex; justify-content: flex-end; padding: 14px 0 0; }
+.dispatch-more a { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); text-decoration: none; border-bottom: 1.5px solid var(--hot); padding-bottom: 2px; }
+.dispatch-more a:hover { color: var(--hot); }
+
+/* Editor's correction note on articles */
+.article-correction { margin: 28px 0 0; padding: 14px 18px; border: 1px solid var(--rule); border-left: 4px solid var(--hot); background: var(--bg-alt); }
+.article-correction-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--hot); margin-bottom: 6px; }
+.article-correction p { margin: 0; font-family: var(--sans); font-size: 0.9rem; line-height: 1.55; color: var(--ink); }
 
 /* Footer */
 .footer { padding: 48px 0 32px; border-top: 4px double var(--rule); margin-top: 48px; }
@@ -1108,6 +1127,7 @@ h1, h2, h3, h4 { margin: 0; font-family: var(--serif); font-weight: 500; letter-
   .spotlight-inner { grid-template-columns: 1fr; }
   .comments { grid-template-columns: 1fr; }
   .comment-compose { grid-column: span 1; }
+  .comments-empty, .comments-more { grid-column: span 1; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .masthead-meta { grid-template-columns: 1fr 1fr; }
   .news-row { grid-template-columns: 60px 1fr; }
