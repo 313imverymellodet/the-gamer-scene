@@ -1,13 +1,15 @@
 ---
 title: "Nintendo Direct June 2026: Every Announcement From the Biggest Direct in 9 Months"
-blurb: "Ocarina of Time Remake confirmed, Kingdom Hearts 4 lands on Switch 2 October 8, Star Fox launches June 25 with a free demo out now — the complete recap of 30+ reveals."
+blurb: "Ocarina of Time Remake confirmed, the full Kingdom Hearts saga lands on Switch 2 October 8, Star Fox launches June 25 with a free demo out now — the complete recap of 30+ reveals."
 category: Reveal
 date: 2026-06-09
+updated: "2026-09-30"
+correction: "An earlier version of this article said Kingdom Hearts 4 launches on October 8, 2026. That was wrong. The October 8 release is the Kingdom Hearts Collection [I~III]; Kingdom Hearts 4 is coming to Switch 2 but is slated for late 2027. We regret the error."
 author: Romello Morris
 image: /images/news/switch2-summer-lineup.jpg
 ---
 
-Nintendo just broke the internet. This morning's Nintendo Direct — the first major presentation in nine months — delivered the kind of show fans spend years asking for and rarely get. **The Legend of Zelda: Ocarina of Time Remake** is real. **Kingdom Hearts 4** is coming to Switch 2 with a firm date. **Star Fox** returns in sixteen days with a free demo you can download right now.
+Nintendo just broke the internet. This morning's Nintendo Direct — the first major presentation in nine months — delivered the kind of show fans spend years asking for and rarely get. **The Legend of Zelda: Ocarina of Time Remake** is real. The **Kingdom Hearts Collection** is coming to Switch 2 with a firm date, and **Kingdom Hearts 4** is coming too. **Star Fox** returns in sixteen days with a free demo you can download right now.
 
 Here is everything that matters from the full presentation.
 
@@ -17,9 +19,9 @@ After 27 years, Nintendo officially announced **The Legend of Zelda: Ocarina of 
 
 This is a full remake, not a remaster — updated visuals with modern lighting, reimagined Hyrule Field and Kakariko Village, refined combat, and Koji Kondo's original soundtrack. A holiday 2026 window is expected. We've broken down every frame of the trailer in our [full Ocarina of Time Remake deep-dive](/news/2026-06-09-zelda-ocarina-of-time-remake-switch-2).
 
-## Kingdom Hearts 4 — October 8, Including Switch 2
+## Kingdom Hearts Collection — October 8, Including Switch 2
 
-The biggest third-party surprise of the show: **Kingdom Hearts 4** launches October 8, 2026, and Switch 2 is getting it natively alongside PS5 and Xbox Series X/S. Square Enix is also bringing the entire back catalog — 1.5 + 2.5 ReMIX, 2.8, and Kingdom Hearts III with Re Mind — to Switch 2, with save transfer support from the old cloud versions. A Kingdom Hearts 3 demo is on the eShop today. [Full breakdown here](/news/2026-06-09-kingdom-hearts-4-switch-2-october-8).
+The biggest third-party surprise of the show: the **Kingdom Hearts Collection [I~III]** — 1.5 + 2.5 ReMIX, 2.8 Final Chapter Prologue, and Kingdom Hearts III with Re Mind — launches October 8, 2026, running natively on Switch 2 alongside PS5, Xbox Series X|S and PC. Owners of the old cloud versions get 50% off. **Kingdom Hearts 4** is also confirmed for Switch 2, with a release now set for late 2027. [Full breakdown here](/news/2026-06-09-kingdom-hearts-4-switch-2-october-8).
 
 ## Star Fox — June 25, Demo Out Now
 
