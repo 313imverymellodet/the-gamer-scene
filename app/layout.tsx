@@ -116,6 +116,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           crossOrigin="anonymous"
           strategy="afterInteractive"
         />
+        {/* Site analytics tracker */}
+        <Script
+          src="https://web-production-694ea.up.railway.app/tracker.js"
+          data-site-id="a03e4831-0201-40bf-b858-eb29d4ab68b6"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   )
