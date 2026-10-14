@@ -15,7 +15,7 @@
     },
     {
       "tag": "DATED",
-      "text": "Kingdom Hearts 4 launches October 8 — Switch 2 native, full saga coming with it"
+      "text": "Kingdom Hearts Collection launches October 8 — Switch 2 native, KH4 coming too"
     },
     {
       "tag": "DEMO",
@@ -33,7 +33,7 @@
   "lead": {
     "kicker": "Nintendo Direct Special",
     "title": "<em>Ocarina of Time</em> Is Coming Back — Nintendo Just Dropped the Direct of the Year",
-    "dek": "A full Ocarina of Time remake, Kingdom Hearts 4 on Switch 2 with a firm October date, a new Star Fox in sixteen days with a demo out now, and 30+ reveals that turned the Switch 2's quiet year into the most stacked calendar in recent Nintendo history.",
+    "dek": "A full Ocarina of Time remake, the full Kingdom Hearts saga on Switch 2 with a firm October date, a new Star Fox in sixteen days with a demo out now, and 30+ reveals that turned the Switch 2's quiet year into the most stacked calendar in recent Nintendo history.",
     "author": "Romello Morris",
     "role": "Editor-in-Chief",
     "initials": "RM",
@@ -82,7 +82,7 @@
         "pct": 0
       },
       {
-        "label": "Kingdom Hearts 4 on Switch 2 — Oct 8",
+        "label": "Kingdom Hearts Collection on Switch 2 — Oct 8",
         "pct": 0
       },
       {
@@ -126,8 +126,8 @@
     {
       "day": "OCT",
       "date": "8",
-      "title": "Kingdom Hearts 4",
-      "sub": "PS5 · Xbox · Switch 2 — KH3 demo out now",
+      "title": "Kingdom Hearts Collection [I~III]",
+      "sub": "Full saga, native on Switch 2 · PS5 · Xbox · PC",
       "platform": "Multi"
     },
     {

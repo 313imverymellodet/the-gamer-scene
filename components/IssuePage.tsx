@@ -4,10 +4,20 @@ import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import { useSubscribe } from '@/lib/useSubscribe'
-import type { IssueData, CommentItem } from '@/types'
+import type { IssueData } from '@/types'
+import type { StoredComment } from '@/app/api/comments/route'
 
 function stripHtml(html: string) {
   return html.replace(/<[^>]+>/g, '')
+}
+
+function timeAgo(ts: number): string {
+  const mins = Math.floor((Date.now() - ts) / 60_000)
+  if (mins < 1)  return 'just now'
+  if (mins < 60) return `${mins}m ago`
+  const hrs = Math.floor(mins / 60)
+  if (hrs < 24)  return `${hrs}h ago`
+  return `${Math.floor(hrs / 24)}d ago`
 }
 
 const SearchModal    = dynamic(() => import('./SearchModal'),    { ssr: false })
@@ -162,6 +172,9 @@ function News({ data }: { data: IssueData }) {
           </article>
         </Link>
       ))}
+      <div className="dispatch-more">
+        <Link href="/news">Every story in the archive →</Link>
+      </div>
     </div>
   )
 }
@@ -357,8 +370,32 @@ function Discussion({ data }: { data: IssueData }) {
     Object.fromEntries(data.reactions.map(r => [r.key, r.count]))
   )
   const [reactionsLoaded, setReactionsLoaded] = useState(false)
-  const [composeVal, setCompose] = useState('')
-  const [comments, setComments] = useState<CommentItem[]>(data.comments)
+
+  // Reader comments are persisted per issue via /api/comments (Redis).
+  // Nothing is seeded: the thread shows only what readers actually posted.
+  const [comments, setComments]       = useState<StoredComment[]>([])
+  const [total, setTotal]             = useState(0)
+  const [hasMore, setHasMore]         = useState(false)
+  const [page, setPage]               = useState(0)
+  const [commentsLoaded, setCommentsLoaded] = useState(false)
+  const [name, setName]               = useState('')
+  const [composeVal, setCompose]      = useState('')
+  const [posting, setPosting]         = useState(false)
+  const [postError, setPostError]     = useState('')
+
+  const fetchComments = useCallback(async (p: number, append: boolean) => {
+    try {
+      const res = await fetch(`/api/comments?issue=${issueNumber}&page=${p}`)
+      const d = await res.json()
+      setComments(prev => append ? [...prev, ...(d.comments ?? [])] : (d.comments ?? []))
+      setTotal(d.total || 0)
+      setHasMore(Boolean(d.hasMore))
+    } catch {}
+  }, [issueNumber])
+
+  useEffect(() => {
+    fetchComments(0, false).finally(() => setCommentsLoaded(true))
+  }, [fetchComments])
 
   // Load real reaction counts + restore which ones this device toggled
   useEffect(() => {
@@ -408,21 +445,49 @@ function Discussion({ data }: { data: IssueData }) {
     } catch {}
   }, [active, counts, issueNumber, storageKey])
 
-  const submit = () => {
-    if (!composeVal.trim()) return
-    setComments([{
-      name: 'You', handle: '@you', time: 'now', initials: 'YO',
-      body: composeVal.trim(), replies: 0, likes: 0,
-    }, ...comments])
-    setCompose('')
+  const submit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!composeVal.trim() || posting) return
+    setPosting(true)
+    setPostError('')
+    try {
+      const res = await fetch('/api/comments', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ issue: issueNumber, name: name.trim() || 'Anonymous', body: composeVal }),
+      })
+      const d = await res.json()
+      if (!res.ok) {
+        setPostError(d.error || 'Could not post. Try again.')
+      } else {
+        setComments(prev => [d.comment, ...prev])
+        setTotal(prev => prev + 1)
+        setCompose('')
+      }
+    } catch {
+      setPostError('Network error. Try again.')
+    } finally {
+      setPosting(false)
+    }
   }
+
+  const loadMore = async () => {
+    const next = page + 1
+    setPage(next)
+    await fetchComments(next, true)
+  }
+
+  const composeInitials = (name.trim() || 'You')
+    .split(/\s+/).slice(0, 2).map(w => w[0]?.toUpperCase() ?? '').join('')
 
   return (
     <section className="discussion">
       <div className="section-head">
         <span className="num">§ 06</span>
         <h2>Discourse</h2>
-        <span className="tag">{comments.length} readers chiming in</span>
+        <span className="tag">
+          {!commentsLoaded ? 'Loading…' : total === 0 ? 'Start the conversation' : `${total} ${total === 1 ? 'reader' : 'readers'} chiming in`}
+        </span>
       </div>
       <div className="reactions">
         {data.reactions.map(r => (
@@ -441,31 +506,51 @@ function Discussion({ data }: { data: IssueData }) {
       </div>
       <div className="comments">
         <div className="comment-compose">
-          <div className="av">YO</div>
-          <textarea
-            placeholder="Share a thought on this week's issue…"
-            value={composeVal}
-            onChange={e => setCompose(e.target.value)}
-          />
-          <button onClick={submit}>POST →</button>
+          <div className="av" aria-hidden="true">{composeInitials || 'YO'}</div>
+          <form onSubmit={submit}>
+            <label className="sf-label" htmlFor="issue-comment-name">Your name</label>
+            <input
+              id="issue-comment-name"
+              type="text"
+              placeholder="YOUR NAME (OPTIONAL)"
+              value={name}
+              maxLength={60}
+              onChange={e => setName(e.target.value)}
+            />
+            <label className="sf-label" htmlFor="issue-comment-body">Comment</label>
+            <textarea
+              id="issue-comment-body"
+              placeholder="Share a thought on this week's issue…"
+              value={composeVal}
+              maxLength={1000}
+              onChange={e => setCompose(e.target.value)}
+            />
+            <div className="compose-row">
+              <span className="compose-error" role="status" aria-live="polite">{postError}</span>
+              <span>{composeVal.length}/1000</span>
+              <button type="submit" disabled={posting || composeVal.trim().length < 10}>
+                {posting ? 'POSTING…' : 'POST →'}
+              </button>
+            </div>
+          </form>
         </div>
-        {comments.map((c, i) => (
-          <article className="comment" key={i}>
+        {commentsLoaded && comments.length === 0 && (
+          <p className="comments-empty">No comments on this issue yet. Be the first to weigh in.</p>
+        )}
+        {comments.map(c => (
+          <article className="comment" key={c.id}>
             <div className="comment-head">
               <div className="av">{c.initials}</div>
               <b>{c.name}</b>
-              <span>{c.handle}</span>
               <span className="dot">·</span>
-              <span>{c.time}</span>
+              <span>{timeAgo(c.timestamp)}</span>
             </div>
             <p>{c.body}</p>
-            <div className="foot">
-              <span>↑ {c.likes}</span>
-              <span>↳ {c.replies} replies</span>
-              <span>SHARE</span>
-            </div>
           </article>
         ))}
+        {hasMore && (
+          <button className="comments-more" onClick={loadMore}>LOAD MORE →</button>
+        )}
       </div>
     </section>
   )
@@ -576,12 +661,12 @@ function Footer({ data }: { data: IssueData }) {
           </ul>
         </div>
         <div>
-          <h4>Archive</h4>
+          <h4>Coverage</h4>
           <ul>
+            <li><Link href="/gta-6">GTA 6 Hub</Link></li>
+            <li><Link href="/gta-6/release-date">GTA 6 Release Date</Link></li>
+            <li><Link href="/gta-6/pc">GTA 6 on PC</Link></li>
             <li><Link href="/issues">All Issues</Link></li>
-            <li><a href="/issues">Issues 2026</a></li>
-            <li><a href="/issues">Issues 2025</a></li>
-            <li><a href="/issues">Best of 2024</a></li>
           </ul>
         </div>
         <div>

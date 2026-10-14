@@ -1,0 +1,200 @@
+{
+  "issue": {
+    "number": "050",
+    "date": "September 30, 2026",
+    "weekday": "Wednesday",
+    "volume": "Vol. VII",
+    "weather": "Typhoon clearing, GTA inbound",
+    "location": "Worldwide",
+    "readTime": "24 min"
+  },
+  "ticker": [
+    {
+      "tag": "COUNTDOWN",
+      "text": "GTA 6 is 50 days out — preloads and boxed codes arrive November 12"
+    },
+    {
+      "tag": "EMBARGO",
+      "text": "Gears of War: E-Day reviews go live October 1 at 9 a.m. ET"
+    },
+    {
+      "tag": "TGS",
+      "text": "Typhoon Dujuan cuts Tokyo Game Show short; Bill Skarsgård leads Kojima's Physint"
+    },
+    {
+      "tag": "DATED",
+      "text": "Final Fantasy VII Revelation launches April 8, 2027 — on every platform"
+    },
+    {
+      "tag": "SCORE",
+      "text": "Marvel's Wolverine settles at 78 on Metacritic"
+    },
+    {
+      "tag": "CORRECTION",
+      "text": "October 8 is the Kingdom Hearts Collection — Kingdom Hearts 4 is late 2027"
+    }
+  ],
+  "lead": {
+    "kicker": "The October Issue",
+    "title": "October Is Gaming's Last Stand Before <em>GTA 6</em>",
+    "dek": "Gears of War: E-Day, Modern Warfare 4, Phantom Blade Zero, Castlevania, Hellraiser and a Switch 2 wave all land in a 29-day stretch. Every publisher wants out of the way before November 19. Here is every date that matters — and which two games we would actually buy.",
+    "author": "The Gamer Scene Editorial",
+    "role": "Editorial",
+    "initials": "GS",
+    "readTime": "6 min read",
+    "tag": "PREVIEW",
+    "image": "/images/news/gta6-release.jpg",
+    "readLink": "/news/2026-09-30-october-2026-game-releases"
+  },
+  "tabs": [
+    {
+      "id": "scene",
+      "num": "01",
+      "label": "The Scene"
+    },
+    {
+      "id": "news",
+      "num": "02",
+      "label": "Dispatch"
+    },
+    {
+      "id": "reviews",
+      "num": "03",
+      "label": "Reviews"
+    },
+    {
+      "id": "calendar",
+      "num": "04",
+      "label": "Calendar"
+    },
+    {
+      "id": "discourse",
+      "num": "05",
+      "label": "Discourse"
+    }
+  ],
+  "poll": {
+    "question": "Which October release are you playing first?",
+    "options": [
+      {
+        "label": "Gears of War: E-Day",
+        "pct": 0
+      },
+      {
+        "label": "Call of Duty: Modern Warfare 4",
+        "pct": 0
+      },
+      {
+        "label": "Phantom Blade Zero",
+        "pct": 0
+      },
+      {
+        "label": "Castlevania: Belmont's Curse",
+        "pct": 0
+      },
+      {
+        "label": "Nothing — saving it all for GTA 6",
+        "pct": 0
+      }
+    ],
+    "total": "0",
+    "closes": "Closes October 9, 23:59 EDT"
+  },
+  "calendar": [
+    {
+      "day": "OCT",
+      "date": "2",
+      "title": "Ace Combat 8: Wings of Theve",
+      "sub": "Bandai Namco's first mainline Ace Combat since 2019",
+      "platform": "PS5 · XSX · PC"
+    },
+    {
+      "day": "OCT",
+      "date": "6",
+      "title": "Gears of War: E-Day",
+      "sub": "Game Pass day one · early access from Oct 2",
+      "platform": "XSX · PC"
+    },
+    {
+      "day": "OCT",
+      "date": "8",
+      "title": "Clive Barker's Hellraiser: Revival",
+      "sub": "First-person horror from Saber · $39.99",
+      "platform": "Multi"
+    },
+    {
+      "day": "OCT",
+      "date": "8",
+      "title": "Kingdom Hearts Collection [I~III]",
+      "sub": "The full saga, native on Switch 2",
+      "platform": "Multi"
+    },
+    {
+      "day": "OCT",
+      "date": "15",
+      "title": "Castlevania: Belmont's Curse",
+      "sub": "Konami's 40th-anniversary return",
+      "platform": "Multi"
+    },
+    {
+      "day": "OCT",
+      "date": "22",
+      "title": "Switch Sports Resort · FF Resonance",
+      "sub": "Nintendo's $529.99 Switch 2 bundle lands the same day",
+      "platform": "Switch 2 · Multi"
+    },
+    {
+      "day": "OCT",
+      "date": "23",
+      "title": "Call of Duty: Modern Warfare 4",
+      "sub": "Day-and-date on Switch 2",
+      "platform": "Multi"
+    },
+    {
+      "day": "OCT",
+      "date": "29",
+      "title": "Phantom Blade Zero",
+      "sub": "S-Game's kung fu action-RPG",
+      "platform": "PS5 · PC"
+    },
+    {
+      "day": "NOV",
+      "date": "12",
+      "title": "GTA 6 preload + boxed codes",
+      "sub": "Launch follows November 19",
+      "platform": "PS5 · XSX"
+    }
+  ],
+  "reactions": [
+    {
+      "glyph": "★",
+      "label": "Brilliant",
+      "count": 0,
+      "key": "brilliant"
+    },
+    {
+      "glyph": "◐",
+      "label": "Conflicted",
+      "count": 0,
+      "key": "conflicted"
+    },
+    {
+      "glyph": "▲",
+      "label": "Spot on",
+      "count": 0,
+      "key": "spoton"
+    },
+    {
+      "glyph": "✕",
+      "label": "Disagree",
+      "count": 0,
+      "key": "disagree"
+    },
+    {
+      "glyph": "♫",
+      "label": "Mood",
+      "count": 0,
+      "key": "mood"
+    }
+  ]
+}

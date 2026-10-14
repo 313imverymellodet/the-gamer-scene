@@ -1,8 +1,10 @@
 ---
 title: "Switch 2's Second Half of 2026 Is Now Completely Stacked — Full Release Calendar"
-blurb: "One Direct just transformed the Switch 2's year: Star Fox in June, Kingdom Hearts 4 and Dragon's Dogma 2 in October, Ocarina of Time for the holidays. Every confirmed date in one place."
+blurb: "One Direct just transformed the Switch 2's year: Star Fox in June, the Kingdom Hearts Collection and Dragon's Dogma 2 in October, Ocarina of Time for the holidays. Every confirmed date in one place."
 category: Update
 date: 2026-06-09
+updated: "2026-09-30"
+correction: "An earlier version of this article said Kingdom Hearts 4 launches on October 8, 2026. That was wrong. The October 8 release is the Kingdom Hearts Collection [I~III]; Kingdom Hearts 4 is coming to Switch 2 but is slated for late 2027. We regret the error."
 author: Romello Morris
 image: /images/news/switch2-summer-lineup.jpg
 ---
@@ -16,7 +18,7 @@ Before this morning, the Switch 2's second half of 2026 looked quiet. One Ninten
 | **June 25** | Star Fox |
 | **July 2** | Rhythm Heaven Groove |
 | **August** | Final Fantasy XIV Switch 2 early access |
-| **October 8** | Kingdom Hearts 4 |
+| **October 8** | Kingdom Hearts Collection [I~III] |
 | **October 9** | Dragon's Dogma 2 |
 | **October 22** | Switch 2 Sports + Final Fantasy Resonance |
 | **Holiday 2026** | Zelda: Ocarina of Time Remake |
@@ -34,9 +36,9 @@ The cult-favorite rhythm series returns with over 80 minigames and 30 co-op mult
 
 Square Enix's MMO lands on Nintendo hardware for the first time. Early access starts in August, and if the Switch 2's portable performance holds up, this becomes the default way to run dailies from the couch.
 
-## October 8–9 — Kingdom Hearts 4 and Dragon's Dogma 2
+## October 8–9 — Kingdom Hearts Collection and Dragon's Dogma 2
 
-The single most brutal back-to-back in the calendar. [Kingdom Hearts 4 arrives natively on Switch 2](/news/2026-06-09-kingdom-hearts-4-switch-2-october-8) with the entire saga in tow, then Capcom's Dragon's Dogma 2 port lands literally the next day. Two enormous RPGs, twenty-four hours apart.
+The single most brutal back-to-back in the calendar. [The complete Kingdom Hearts saga arrives natively on Switch 2](/news/2026-06-09-kingdom-hearts-4-switch-2-october-8) — Kingdom Hearts 4 follows in 2027 — then Capcom's Dragon's Dogma 2 port lands literally the next day. Two enormous RPGs, twenty-four hours apart.
 
 ## October 22 — Switch 2 Sports and Final Fantasy Resonance
 
