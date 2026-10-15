@@ -2,21 +2,13 @@ import Link from 'next/link'
 import { getAllOpinionItems } from '@/lib/content'
 import SiteHeader from '@/components/SiteHeader'
 import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/site'
 
-const BASE = 'https://thegamerscene.news'
-
-export const metadata: Metadata = {
-  title: 'Opinion — The Gamer Scene',
+export const metadata: Metadata = pageMetadata({
+  title: 'Opinion',
   description: 'Takes, arguments, and analysis from The Gamer Scene editorial team.',
-  openGraph: {
-    title: 'Opinion — The Gamer Scene',
-    description: 'Takes, arguments, and analysis from The Gamer Scene editorial team.',
-    type: 'website',
-    url: `${BASE}/opinion`,
-    siteName: 'The Gamer Scene',
-  },
-  alternates: { canonical: `${BASE}/opinion` },
-}
+  path: '/opinion',
+})
 
 export default function OpinionIndexPage() {
   const pieces = getAllOpinionItems()

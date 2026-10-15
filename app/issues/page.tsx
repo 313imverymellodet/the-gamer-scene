@@ -2,11 +2,13 @@ import Link from 'next/link'
 import fs from 'fs'
 import path from 'path'
 import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/site'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'Issue Archive',
   description: 'Every issue of The Gamer Scene — the independent weekly gaming publication.',
-}
+  path: '/issues',
+})
 
 interface IssueMeta {
   number: string

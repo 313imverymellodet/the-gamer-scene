@@ -214,7 +214,7 @@ export default async function Image({
             textTransform: 'uppercase',
             color: '#555',
           }}>
-            thegamerscene.news
+            www.thegamerscene.news
           </div>
           <div style={{
             fontFamily: 'monospace',

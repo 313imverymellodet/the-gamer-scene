@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation'
 import { getIssue, getAllIssueSlugs } from '@/lib/content'
 import IssuePage from '@/components/IssuePage'
 import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/site'
 
 export async function generateStaticParams() {
   return getAllIssueSlugs().map(slug => ({ slug }))
@@ -15,10 +16,11 @@ export async function generateMetadata({
   const { slug } = await params
   try {
     const data = await getIssue(slug)
-    return {
-      title: `Issue №${data.issue.number} — The Gamer Scene`,
+    return pageMetadata({
+      title: `Issue №${data.issue.number}`,
       description: data.lead.dek,
-    }
+      path: `/issues/${slug}`,
+    })
   } catch {
     return {}
   }
