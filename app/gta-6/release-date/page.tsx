@@ -7,8 +7,9 @@ import {
   Status, SectionHead, TrustModule, Gta6Breadcrumbs,
   gta6Body as body, GTA6_DISCLAIMER,
 } from '@/components/Gta6Ui'
+import { SITE_URL } from '@/lib/site'
 
-const BASE = 'https://thegamerscene.news'
+const BASE = SITE_URL
 const URL = `${BASE}/gta-6/release-date`
 const LAST_VERIFIED = 'July 18, 2026'
 
@@ -104,7 +105,7 @@ const jsonLd = [
       '@type': 'Organization',
       name: 'The Gamer Scene',
       url: BASE,
-      logo: { '@type': 'ImageObject', url: `${BASE}/icon.svg` },
+      logo: { '@type': 'ImageObject', url: `${BASE}/logo.png` },
     },
     mainEntityOfPage: { '@type': 'WebPage', '@id': URL },
     about: {

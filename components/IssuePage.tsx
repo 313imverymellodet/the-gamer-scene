@@ -135,12 +135,17 @@ function Lead({ data }: { data: IssueData }) {
 
 // ─── News ─────────────────────────────────────────────────────────────────────
 
-function News({ data }: { data: IssueData }) {
+function SectionLabel({ children, asHeading }: { children: React.ReactNode; asHeading: boolean }) {
+  if (asHeading) return <h2>{children}</h2>
+  return <div className="section-title">{children}</div>
+}
+
+function News({ data, asHeading = true }: { data: IssueData; asHeading?: boolean }) {
   return (
     <div>
       <div className="section-head">
         <span className="num">§ 02</span>
-        <h2>The Dispatch</h2>
+        <SectionLabel asHeading={asHeading}>The Dispatch</SectionLabel>
         <span className="tag">Filed this week</span>
       </div>
       {data.news.map(n => (
@@ -256,12 +261,12 @@ function Poll({ data }: { data: IssueData }) {
 
 // ─── Release Calendar ─────────────────────────────────────────────────────────
 
-function ReleaseCalendar({ data }: { data: IssueData }) {
+function ReleaseCalendar({ data, asHeading = true }: { data: IssueData; asHeading?: boolean }) {
   return (
     <div>
       <div className="section-head">
         <span className="num">§ 05</span>
-        <h2>On Deck</h2>
+        <SectionLabel asHeading={asHeading}>On Deck</SectionLabel>
         <span className="tag">Next 4 weeks</span>
       </div>
       <div className="calendar">
@@ -348,7 +353,7 @@ function IndieSpotlight({ data }: { data: IssueData }) {
 
 // ─── Discussion ───────────────────────────────────────────────────────────────
 
-function Discussion({ data }: { data: IssueData }) {
+function Discussion({ data, asHeading = true }: { data: IssueData; asHeading?: boolean }) {
   const issueNumber = data.issue.number
   const storageKey = `tgs-reactions-${issueNumber}`
 
@@ -421,7 +426,7 @@ function Discussion({ data }: { data: IssueData }) {
     <section className="discussion">
       <div className="section-head">
         <span className="num">§ 06</span>
-        <h2>Discourse</h2>
+        <SectionLabel asHeading={asHeading}>Discourse</SectionLabel>
         <span className="tag">{comments.length} readers chiming in</span>
       </div>
       <div className="reactions">
@@ -673,10 +678,10 @@ export default function IssuePage({ data }: { data: IssueData }) {
         <Discussion data={data} />
       </div>
 
-      {/* Dispatch */}
+      {/* Dispatch — second copy lives in an inactive tab; keep it out of the heading outline */}
       <div className={`panel${tab === 'news' ? ' active' : ''}`}>
         <div style={{ padding: '32px 0' }}>
-          <News data={data} />
+          <News data={data} asHeading={false} />
         </div>
       </div>
 
@@ -697,16 +702,16 @@ export default function IssuePage({ data }: { data: IssueData }) {
         <IndieSpotlight data={data} />
       </div>
 
-      {/* Calendar */}
+      {/* Calendar — second copy of On Deck, not a second heading */}
       <div className={`panel${tab === 'calendar' ? ' active' : ''}`}>
         <div style={{ padding: '32px 0', maxWidth: 720 }}>
-          <ReleaseCalendar data={data} />
+          <ReleaseCalendar data={data} asHeading={false} />
         </div>
       </div>
 
-      {/* Discourse */}
+      {/* Discourse — second copy, not a second heading */}
       <div className={`panel${tab === 'discourse' ? ' active' : ''}`}>
-        <Discussion data={data} />
+        <Discussion data={data} asHeading={false} />
       </div>
 
       <SubscribeBanner />

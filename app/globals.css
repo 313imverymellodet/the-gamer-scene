@@ -908,7 +908,11 @@ h1, h2, h3, h4 { margin: 0; font-family: var(--serif); font-weight: 500; letter-
   display: flex; align-items: baseline; gap: 16px;
   margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid var(--rule);
 }
-.section-head h2 { font-size: 28px; letter-spacing: -0.02em; }
+.section-head h2,
+.section-head .section-title {
+  font-size: 28px; letter-spacing: -0.02em; margin: 0;
+  font-family: var(--serif); font-weight: 500; line-height: 1;
+}
 .section-head .num { font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: 0.1em; }
 .section-head .tag { margin-left: auto; font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; color: var(--ink-soft); }
 

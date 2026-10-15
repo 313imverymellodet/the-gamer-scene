@@ -12,6 +12,7 @@ import InlineSubscribeCTA from '@/components/InlineSubscribeCTA'
 import VideoPlayer from '@/components/VideoPlayer'
 import SiteHeader from '@/components/SiteHeader'
 import type { Metadata } from 'next'
+import { SITE_URL } from '@/lib/site'
 
 const MIN_PARAGRAPHS_FOR_CTA = 7
 
@@ -35,7 +36,7 @@ function countParagraphs(html: string): number {
   return (html.match(/<\/p>/g) ?? []).length
 }
 
-const BASE = 'https://thegamerscene.news'
+const BASE = SITE_URL
 
 export async function generateStaticParams() {
   return getAllNewsSlugs().map(slug => ({ slug }))
@@ -49,7 +50,6 @@ export async function generateMetadata({
   const { slug } = await params
   const item = getNewsItemBySlug(slug)
   if (!item) return {}
-  const base = 'https://thegamerscene.news'
   return {
     title: item.title, // layout template appends " — The Gamer Scene"
     description: item.blurb,
@@ -57,7 +57,7 @@ export async function generateMetadata({
       title: item.title,
       description: item.blurb,
       type: 'article',
-      url: `${base}/news/${slug}`,
+      url: `${BASE}/news/${slug}`,
       siteName: 'The Gamer Scene',
       // Next.js auto-generates /news/[slug]/opengraph-image as the OG image
     },
@@ -69,7 +69,7 @@ export async function generateMetadata({
       creator: '@rmorris',
     },
     alternates: {
-      canonical: `${base}/news/${slug}`,
+      canonical: `${BASE}/news/${slug}`,
     },
   }
 }
@@ -124,7 +124,7 @@ export default async function NewsArticlePage({
       '@type': 'Organization',
       name: 'The Gamer Scene',
       url: BASE,
-      logo: { '@type': 'ImageObject', url: `${BASE}/icon.svg` },
+      logo: { '@type': 'ImageObject', url: `${BASE}/logo.png` },
     },
     mainEntityOfPage: { '@type': 'WebPage', '@id': `${BASE}/news/${slug}` },
   }

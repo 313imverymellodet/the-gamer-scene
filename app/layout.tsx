@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Fraunces, Inter_Tight, JetBrains_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import Script from 'next/script'
+import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL } from '@/lib/site'
 import './globals.css'
 
 const fraunces = Fraunces({
@@ -23,23 +24,21 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://thegamerscene.news'),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: 'The Gamer Scene',
-    template: '%s — The Gamer Scene',
+    default: SITE_TITLE,
+    template: `%s — ${SITE_NAME}`,
   },
-  description: 'An independent gaming publication. Reviews, news, and criticism published weekly.',
+  description: SITE_DESCRIPTION,
+  // No openGraph.url / twitter title here. Child pages that omit them would
+  // otherwise inherit the homepage URL and the generic card text.
   openGraph: {
-    title: 'The Gamer Scene',
-    description: 'An independent gaming publication. Reviews, news, and criticism published weekly.',
     type: 'website',
-    siteName: 'The Gamer Scene',
-    url: 'https://thegamerscene.news',
+    siteName: SITE_NAME,
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'The Gamer Scene',
-    description: 'An independent gaming publication.',
+    site: '@thegamerscene',
   },
   other: {
     'google-adsense-account': 'ca-pub-3986912390941751',
