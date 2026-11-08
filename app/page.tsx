@@ -1,20 +1,24 @@
 import type { Metadata } from 'next'
 import { getLatestIssue } from '@/lib/content'
 import IssuePage from '@/components/IssuePage'
+import JsonLd from '@/components/JsonLd'
+import { homeStructuredData, pageMetadata, SITE_DESCRIPTION, SITE_TITLE } from '@/lib/site'
 
 export async function generateMetadata(): Promise<Metadata> {
-  const data = await getLatestIssue()
-  return {
-    title: `Issue ${data.issue.number} — ${data.issue.date}`,
-    description: data.lead.dek,
-    openGraph: {
-      title: `The Gamer Scene — Issue ${data.issue.number}`,
-      description: data.lead.dek,
-    },
-  }
+  return pageMetadata({
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    path: '/',
+    absoluteTitle: true,
+  })
 }
 
 export default async function Home() {
   const data = await getLatestIssue()
-  return <IssuePage data={data} />
+  return (
+    <>
+      <JsonLd data={homeStructuredData()} />
+      <IssuePage data={data} />
+    </>
+  )
 }

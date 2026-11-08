@@ -3,6 +3,7 @@ import path from 'path'
 import matter from 'gray-matter'
 import { marked } from 'marked'
 import type { IssueData, NewsItem, ReviewItem } from '@/types'
+import { parseContentDate } from '@/lib/date'
 
 const contentDir = path.join(process.cwd(), 'content')
 
@@ -323,6 +324,77 @@ export function getAllIssueSlugs(): string[] {
     .map(f => f.replace('.json', ''))
     .sort()
     .reverse()
+}
+
+// ─── Archive + sitemap dates ──────────────────────────────────────────────────
+
+export interface NewsArchiveItem {
+  slug: string
+  title: string
+  blurb: string
+  category: string
+  date: Date | null
+  href: string
+}
+
+/** Every news article, newest first (content filenames are date-prefixed). */
+export function getNewsArchive(): NewsArchiveItem[] {
+  return cache().news.map(entry => ({
+    slug: entry.slug,
+    title: String(entry.data.title ?? ''),
+    blurb: String(entry.data.blurb ?? ''),
+    category: String(entry.data.category ?? ''),
+    date: parseContentDate(entry.data.date),
+    href: `/news/${entry.slug}`,
+  }))
+}
+
+export interface DatedEntry {
+  slug: string
+  date: Date | null
+}
+
+function datedFromCache(entries: CachedEntry[]): DatedEntry[] {
+  return entries.map(entry => ({
+    slug: entry.slug,
+    date: parseContentDate(entry.data.date),
+  }))
+}
+
+export function getNewsDated(): DatedEntry[] {
+  return datedFromCache(cache().news)
+}
+
+export function getReviewDated(): DatedEntry[] {
+  return datedFromCache(cache().reviews)
+}
+
+export function getOpinionDated(): DatedEntry[] {
+  return datedFromCache(cache().opinion)
+}
+
+export function getIssueDated(): DatedEntry[] {
+  const issuesDir = path.join(contentDir, 'issues')
+  return fs.readdirSync(issuesDir)
+    .filter(file => file.endsWith('.json'))
+    .map(file => {
+      const raw = fs.readFileSync(path.join(issuesDir, file), 'utf-8')
+      const data = JSON.parse(raw) as { issue?: { date?: string } }
+      return {
+        slug: file.replace('.json', ''),
+        date: parseContentDate(data.issue?.date),
+      }
+    })
+    .sort((a, b) => (b.date?.getTime() ?? 0) - (a.date?.getTime() ?? 0))
+}
+
+export function latestDate(entries: { date: Date | null }[]): Date | undefined {
+  let max = 0
+  for (const entry of entries) {
+    const time = entry.date?.getTime()
+    if (time && time > max) max = time
+  }
+  return max ? new Date(max) : undefined
 }
 
 // ─── Search / trending index ───────────────────────────────────────────────────

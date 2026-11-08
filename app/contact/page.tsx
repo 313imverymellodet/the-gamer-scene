@@ -1,10 +1,12 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/site'
 
-export const metadata: Metadata = {
-  title: 'Contact — The Gamer Scene',
+export const metadata: Metadata = pageMetadata({
+  title: 'Contact',
   description: 'Get in touch with The Gamer Scene. Press inquiries, review code submissions, tips, and general contact.',
-}
+  path: '/contact',
+})
 
 export default function ContactPage() {
   return (

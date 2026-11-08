@@ -5,15 +5,13 @@ import matter from 'gray-matter'
 import type { Metadata } from 'next'
 import SiteHeader from '@/components/SiteHeader'
 import { formatMonthYear } from '@/lib/date'
+import { pageMetadata } from '@/lib/site'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'Review Index',
   description: 'Every game reviewed by The Gamer Scene, ranked by score, plus research-based review analyses.',
-  openGraph: {
-    title: 'Review Index — The Gamer Scene',
-    description: 'Every game reviewed by The Gamer Scene, ranked by score, plus research-based review analyses.',
-  },
-}
+  path: '/reviews',
+})
 
 interface ReviewEntry {
   slug: string

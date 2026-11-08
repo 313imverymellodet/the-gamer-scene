@@ -4,6 +4,7 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/site'
 
 interface AuthorData {
   slug: string
@@ -106,15 +107,13 @@ export async function generateMetadata({
   const { slug } = await params
   const author = getAuthor(slug)
   if (!author) return {}
-  return {
-    title: `${author.name} — The Gamer Scene`,
+  return pageMetadata({
+    title: author.name,
     description: author.bio,
-    openGraph: {
-      title: `${author.name} — ${author.role}`,
-      description: author.bio,
-      type: 'profile',
-    },
-  }
+    path: `/authors/${slug}`,
+    ogType: 'profile',
+    ogTitle: `${author.name} — ${author.role}`,
+  })
 }
 
 export default async function AuthorPage({

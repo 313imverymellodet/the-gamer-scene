@@ -2,17 +2,17 @@ import type { Metadata } from 'next'
 import SiteHeader from '@/components/SiteHeader'
 import SubscribeForm from '@/components/SubscribeForm'
 import TrackPageView from '@/components/TrackPageView'
+import { pageMetadata } from '@/lib/site'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'Subscribe to The Weekly Drop',
   description:
     'The five biggest gaming stories, releases, deals, and culture moments delivered once a week. Free, sharp, and readable in under five minutes.',
-  openGraph: {
-    title: 'Subscribe to The Weekly Drop — TheGamerScene',
-    description:
-      'Know what matters in gaming without living on your timeline. One email a week, about five minutes.',
-  },
-}
+  path: '/subscribe',
+  ogTitle: 'Subscribe to The Weekly Drop — TheGamerScene',
+  ogDescription:
+    'Know what matters in gaming without living on your timeline. One email a week, about five minutes.',
+})
 
 const PREVIEW_ITEMS = [
   'The biggest gaming story',

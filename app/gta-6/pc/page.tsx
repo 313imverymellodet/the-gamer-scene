@@ -7,8 +7,9 @@ import {
   gta6Body as body, GTA6_DISCLAIMER,
   type StatusKind,
 } from '@/components/Gta6Ui'
+import { SITE_URL } from '@/lib/site'
 
-const BASE = 'https://thegamerscene.news'
+const BASE = SITE_URL
 const URL = `${BASE}/gta-6/pc`
 const LAST_VERIFIED = 'July 19, 2026'
 const PUBLISHED_ISO = '2026-07-19T12:00:00Z'
@@ -224,7 +225,7 @@ const jsonLd = {
         '@type': 'Organization',
         name: 'The Gamer Scene',
         url: BASE,
-        logo: { '@type': 'ImageObject', url: `${BASE}/icon.svg` },
+        logo: { '@type': 'ImageObject', url: `${BASE}/logo.png` },
       },
       about: {
         '@type': 'VideoGame',

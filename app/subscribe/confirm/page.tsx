@@ -2,14 +2,16 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import SiteHeader from '@/components/SiteHeader'
 import TrackPageView from '@/components/TrackPageView'
+import { pageMetadata } from '@/lib/site'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'Check your inbox',
   description: 'One more step to finish subscribing to The Weekly Drop.',
+  path: '/subscribe/confirm',
   // This page is only meaningful right after a submission, and it must never rank or be shared
   // as though it were a subscription confirmation in itself.
   robots: { index: false, follow: false },
-}
+})
 
 export default function SubscribeConfirmPage() {
   return (

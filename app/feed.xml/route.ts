@@ -3,8 +3,9 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 import { parseContentDate } from '@/lib/date'
+import { SITE_URL } from '@/lib/site'
 
-const BASE_URL = 'https://thegamerscene.news'
+const BASE_URL = SITE_URL
 
 function escapeXml(str: string): string {
   return str
@@ -108,7 +109,7 @@ export async function GET() {
     <webMaster>romello.morris@gmail.com (Romello Morris)</webMaster>
     <ttl>60</ttl>
     <image>
-      <url>${BASE_URL}/icon.svg</url>
+      <url>${BASE_URL}/logo.png</url>
       <title>The Gamer Scene</title>
       <link>${BASE_URL}</link>
     </image>

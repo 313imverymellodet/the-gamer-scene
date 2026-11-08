@@ -19,7 +19,7 @@ import { redis } from '@/lib/redis'
  *     manufacture a confirmation, because we ask beehiiv directly before believing it.
  *
  * Configure in beehiiv (Settings > Webhooks, Scale plan or above):
- *   https://thegamerscene.news/api/webhooks/beehiiv?token=<BEEHIIV_WEBHOOK_SECRET>
+ *   https://www.thegamerscene.news/api/webhooks/beehiiv?token=<BEEHIIV_WEBHOOK_SECRET>
  */
 
 const CONFIRMED_EVENT = 'subscription.confirmed'

@@ -81,7 +81,7 @@ export default function ArticleHero({ src, alt, category = '', title }: Props) {
           fontFamily: 'var(--mono)', fontSize: '9px', letterSpacing: '0.18em',
           textTransform: 'uppercase', color: `${style.text}33`,
         }}>
-          thegamerscene.news
+          www.thegamerscene.news
         </div>
       </div>
     )

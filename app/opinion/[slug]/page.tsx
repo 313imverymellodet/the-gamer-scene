@@ -12,8 +12,9 @@ import InlineSubscribeCTA from '@/components/InlineSubscribeCTA'
 import VideoPlayer from '@/components/VideoPlayer'
 import SiteHeader from '@/components/SiteHeader'
 import type { Metadata } from 'next'
+import { SITE_URL } from '@/lib/site'
 
-const BASE = 'https://thegamerscene.news'
+const BASE = SITE_URL
 const MIN_PARAGRAPHS_FOR_CTA = 7
 
 function injectMidArticleCTA(html: string, afterParagraph = 4): { before: string; after: string } {
@@ -48,7 +49,7 @@ export async function generateMetadata({
   const piece = getOpinionBySlug(slug)
   if (!piece) return {}
   return {
-    title: `${piece.title} — The Gamer Scene`,
+    title: piece.title,
     description: piece.blurb,
     openGraph: {
       title: piece.title,
@@ -114,7 +115,7 @@ export default async function OpinionPage({
       '@type': 'Organization',
       name: 'The Gamer Scene',
       url: BASE,
-      logo: { '@type': 'ImageObject', url: `${BASE}/icon.svg` },
+      logo: { '@type': 'ImageObject', url: `${BASE}/logo.png` },
     },
     mainEntityOfPage: { '@type': 'WebPage', '@id': `${BASE}/opinion/${slug}` },
   }

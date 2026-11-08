@@ -8,8 +8,9 @@ import {
   gta6Body as body, GTA6_DISCLAIMER,
   type StatusKind,
 } from '@/components/Gta6Ui'
+import { SITE_URL } from '@/lib/site'
 
-const BASE = 'https://thegamerscene.news'
+const BASE = SITE_URL
 const LAST_VERIFIED = 'July 18, 2026'
 
 export const metadata: Metadata = {

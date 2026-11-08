@@ -1,10 +1,12 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/site'
 
-export const metadata: Metadata = {
-  title: 'About — The Gamer Scene',
+export const metadata: Metadata = pageMetadata({
+  title: 'About',
   description: 'The Gamer Scene is an independent gaming publication covering reviews, news, and criticism. Founded in 2013 by Romello Morris.',
-}
+  path: '/about',
+})
 
 export default function AboutPage() {
   return (

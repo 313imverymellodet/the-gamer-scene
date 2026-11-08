@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://thegamerscene.news/sitemap.xml
+Sitemap: https://www.thegamerscene.news/sitemap.xml

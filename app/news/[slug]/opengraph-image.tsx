@@ -76,7 +76,7 @@ export default async function Image({
             textTransform: 'uppercase',
             color: '#888',
           }}>
-            thegamerscene.news
+            www.thegamerscene.news
           </div>
         </div>
 

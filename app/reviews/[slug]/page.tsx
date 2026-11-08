@@ -13,6 +13,7 @@ import VideoPlayer from '@/components/VideoPlayer'
 import SiteHeader from '@/components/SiteHeader'
 import { formatLongDate, toIso } from '@/lib/date'
 import type { Metadata } from 'next'
+import { gameNameFromHeadline, SITE_URL } from '@/lib/site'
 
 const MIN_PARAGRAPHS_FOR_CTA = 7
 
@@ -35,7 +36,7 @@ function countParagraphs(html: string): number {
   return (html.match(/<\/p>/g) ?? []).length
 }
 
-const BASE = 'https://thegamerscene.news'
+const BASE = SITE_URL
 
 export async function generateStaticParams() {
   return getAllReviewSlugs().map(slug => ({ slug }))
@@ -49,10 +50,13 @@ export async function generateMetadata({
   const { slug } = await params
   const review = getReviewBySlug(slug)
   if (!review) return {}
-  const base = 'https://thegamerscene.news'
   const isAnalysis = Boolean(review.analysis)
-  const pageTitle = isAnalysis ? review.title : `${review.title} Review` // template appends site name
-  const ogTitle   = isAnalysis ? review.title : `${review.title} Review — ${review.score}/10`
+  // Headlines already include "Review" or "Review Analysis". Appending
+  // "Review" again produced titles like "…It's Perfect Review — The Gamer Scene".
+  const pageTitle = review.title
+  const ogTitle = !isAnalysis && review.score
+    ? `${review.title} — ${review.score}/10`
+    : review.title
   return {
     title: pageTitle,
     description: review.pull,
@@ -60,7 +64,7 @@ export async function generateMetadata({
       title: ogTitle,
       description: review.pull,
       type: 'article',
-      url: `${base}/reviews/${slug}`,
+      url: `${BASE}/reviews/${slug}`,
       siteName: 'The Gamer Scene',
       // Next.js auto-generates /reviews/[slug]/opengraph-image as the OG image
     },
@@ -72,7 +76,7 @@ export async function generateMetadata({
       creator: '@rmorris',
     },
     alternates: {
-      canonical: `${base}/reviews/${slug}`,
+      canonical: `${BASE}/reviews/${slug}`,
     },
   }
 }
@@ -118,14 +122,14 @@ export default async function ReviewPage({
           '@type': 'Organization',
           name: 'The Gamer Scene',
           url: BASE,
-          logo: { '@type': 'ImageObject', url: `${BASE}/icon.svg` },
+          logo: { '@type': 'ImageObject', url: `${BASE}/logo.png` },
         },
         mainEntityOfPage: { '@type': 'WebPage', '@id': `${BASE}/reviews/${slug}` },
       }
     : {
         '@context': 'https://schema.org',
         '@type': 'Review',
-        name: `${review.title} Review`,
+        name: review.title,
         url: `${BASE}/reviews/${slug}`,
         datePublished: isoDate,
         reviewBody: review.pull,
@@ -137,7 +141,7 @@ export default async function ReviewPage({
         },
         itemReviewed: {
           '@type': 'VideoGame',
-          name: review.title,
+          name: gameNameFromHeadline(review.title),
           author: { '@type': 'Organization', name: review.studio },
           applicationCategory: 'Game',
           operatingSystem: review.platforms.join(', '),
@@ -151,7 +155,7 @@ export default async function ReviewPage({
           '@type': 'Organization',
           name: 'The Gamer Scene',
           url: BASE,
-          logo: { '@type': 'ImageObject', url: `${BASE}/icon.svg` },
+          logo: { '@type': 'ImageObject', url: `${BASE}/logo.png` },
         },
       }
 
