@@ -11,6 +11,7 @@ import JsonLd from '@/components/JsonLd'
 import InlineSubscribeCTA from '@/components/InlineSubscribeCTA'
 import VideoPlayer from '@/components/VideoPlayer'
 import SiteHeader from '@/components/SiteHeader'
+import { formatLongDate, toIso } from '@/lib/date'
 import type { Metadata } from 'next'
 
 const MIN_PARAGRAPHS_FOR_CTA = 7
@@ -83,13 +84,8 @@ export default async function NewsArticlePage({
   const item = getNewsItemBySlug(slug)
   if (!item) notFound()
 
-  const formattedDate = (() => {
-    if (!item.date) return ''
-    const clean = item.date.match(/\d{4}-\d{2}-\d{2}/)
-    const d = clean ? new Date(clean[0] + 'T12:00:00') : new Date(item.date)
-    if (isNaN(d.getTime())) return ''
-    return d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
-  })()
+  const formattedDate    = formatLongDate(item.date)
+  const formattedUpdated = formatLongDate(item.updated)
 
   // Related: same-category news + 1 review (up to 3 total)
   const relatedNews    = getRelatedNews(slug, item.category, 2)
@@ -101,14 +97,8 @@ export default async function NewsArticlePage({
       ? injectMidArticleCTA(item.bodyHtml, 4)
       : { before: item.bodyHtml, after: '' }
 
-  // Safe ISO date: item.date may be a stringified JS Date from gray-matter
-  const isoDate = (() => {
-    if (!item.date) return undefined
-    // If it looks like YYYY-MM-DD already, use it directly
-    const clean = item.date.match(/\d{4}-\d{2}-\d{2}/)
-    if (clean) return `${clean[0]}T12:00:00Z`
-    try { return new Date(item.date).toISOString() } catch { return undefined }
-  })()
+  const isoDate     = toIso(item.date)
+  const isoModified = toIso(item.updated) ?? isoDate
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -116,7 +106,7 @@ export default async function NewsArticlePage({
     headline: item.title,
     description: item.blurb,
     datePublished: isoDate,
-    dateModified: isoDate,
+    dateModified: isoModified,
     url: `${BASE}/news/${slug}`,
     image: item.image ? `${BASE}${item.image}` : `${BASE}/news/${slug}/opengraph-image`,
     author: { '@type': 'Organization', name: 'The Gamer Scene', url: BASE },
@@ -191,13 +181,17 @@ export default async function NewsArticlePage({
           padding: '10px 0',
           margin: '0 0 0',
           display: 'flex',
-          gap: '16px',
+          flexWrap: 'wrap',
+          gap: '6px 16px',
           alignItems: 'center',
         }}>
           <Link href="/authors/romello-morris" style={{ color: 'inherit', textDecoration: 'none' }}>
             {item.author}
           </Link>
           {formattedDate && <span>{formattedDate}</span>}
+          {formattedUpdated && formattedUpdated !== formattedDate && (
+            <span style={{ color: 'var(--ink-soft)' }}>Updated {formattedUpdated}</span>
+          )}
           <ViewCounter
             slug={slug}
             style={{ marginLeft: 'auto', color: 'var(--ink-faint)', fontFamily: 'var(--mono)', fontSize: '9px', letterSpacing: '0.12em' }}
@@ -217,6 +211,16 @@ export default async function NewsArticlePage({
             title={item.title}
           />
         </div>
+
+        {/* Editor's correction — sits above the body so readers see it first */}
+        {item.correction && (
+          <aside className="article-correction" role="note" aria-label="Correction">
+            <div className="article-correction-label">
+              Correction{formattedUpdated ? ` · ${formattedUpdated}` : ''}
+            </div>
+            <p>{item.correction}</p>
+          </aside>
+        )}
 
         {/* Video (if present) */}
         {item.video && (

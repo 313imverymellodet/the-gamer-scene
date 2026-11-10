@@ -1,42 +1,48 @@
 ---
-title: "Kingdom Hearts 4 Hits October 8 — and It's Coming to Switch 2"
-blurb: "Square Enix's biggest surprise of the Nintendo Direct: KH4 launches natively on Switch 2 alongside PS5 and Xbox, the entire saga is coming with it, and a Kingdom Hearts 3 demo is on the eShop today."
+title: "The Kingdom Hearts Collection Hits Switch 2 on October 8 — and Kingdom Hearts 4 Is Coming Too"
+blurb: "Square Enix's biggest surprise of the Nintendo Direct: the complete Kingdom Hearts saga lands natively on Switch 2 on October 8, and Kingdom Hearts 4 is confirmed for Switch 2 alongside PS5, Xbox and PC."
 category: Reveal
 date: 2026-06-09
+updated: "2026-09-30"
+correction: "An earlier version of this article said Kingdom Hearts 4 launches on October 8, 2026. That was wrong. The October 8 release is the Kingdom Hearts Collection [I~III]. Kingdom Hearts 4 does not share that date; Square Enix has since committed to a late 2027 launch. The headline and article have been corrected, and unverified claims about save transfers and an eShop demo have been removed. We regret the error."
 author: Romello Morris
 image:
 ---
 
-The biggest third-party surprise of this morning's Nintendo Direct wasn't a new game — it was where an existing one is going. **Kingdom Hearts 4** launches **October 8, 2026**, and it's coming to **Nintendo Switch 2 natively**, day and date with PS5 and Xbox Series X/S.
+The biggest third-party surprise of this morning's Nintendo Direct wasn't a new game — it was where an existing series is going. The **Kingdom Hearts Collection [I~III]** launches **October 8, 2026**, running **natively on Nintendo Switch 2**, alongside PS5, Xbox Series X|S and PC. And **Kingdom Hearts 4** is confirmed for Switch 2 as well.
 
-Let that land for a second. Kingdom Hearts 4 was announced years ago for PlayStation and Xbox, and the assumption ever since has been that Nintendo hardware simply couldn't run it. The Switch 1 era reinforced that belief — the series only existed there as cloud versions, widely considered the worst way to play these games. This morning, Nintendo and Square Enix proved everyone wrong.
+Let that land for a second. The assumption for years has been that Nintendo hardware simply couldn't run these games properly. The Switch 1 era reinforced that belief — the series only existed there as cloud versions, widely considered the worst way to play. This morning, Nintendo and Square Enix proved everyone wrong.
 
 ## The Full Package
 
-This isn't just KH4. Square Enix is moving the entire saga onto Switch 2:
+The Kingdom Hearts Collection [I~III] bundles the complete mainline saga to date:
 
-- **Kingdom Hearts 1.5 + 2.5 ReMIX** — native Switch 2 release
-- **Kingdom Hearts 2.8 Final Chapter Prologue** — native Switch 2 release
-- **Kingdom Hearts III + Re Mind** — native Switch 2 release
-- **Kingdom Hearts 4** — October 8, 2026
-- **Kingdom Hearts 3 demo** — available today on the Switch 2 eShop
+- **Kingdom Hearts HD 1.5 + 2.5 ReMIX**
+- **Kingdom Hearts HD 2.8 Final Chapter Prologue**
+- **Kingdom Hearts III + Re Mind (DLC)**
+
+It launches **October 8** on **Switch 2, PS5, Xbox Series X|S, and PC** (via the Microsoft Store). Square Enix is including a platform-exclusive Keyblade, "Long Night," with purchase.
 
 That's the complete series, playable natively and portably, for the first time in franchise history.
 
-## Save Transfer Confirmed
+## A Discount for Cloud Owners
 
-If you've been suffering through the cloud versions on the original Switch, there's good news: save data transfers to the new native Switch 2 versions. No progress lost, no restarting Kingdom Hearts II for the fifth time unless you want to. Given how long these games are — and how convoluted the saga's structure already is — this is the right call.
+If you bought the cloud versions on the original Switch, Square Enix isn't making you pay full price twice. Players who own all of the Kingdom Hearts Cloud titles individually, or **Kingdom Hearts Integrum Masterpiece for Cloud**, are eligible for **50% off** the native Switch 2 versions and the Collection. Given how many fans put up with the cloud releases, this is the right call.
+
+## Kingdom Hearts 4: Coming, But Not in October
+
+**Kingdom Hearts 4** is confirmed for Switch 2 alongside PS5, Xbox Series X|S and PC — but it does **not** launch on October 8.
+
+*Update, September 30:* Square Enix has since committed to a **late 2027** release for Kingdom Hearts 4. At D23, director Tetsuya Nomura addressed delay rumors directly — "That is not happening" — and co-director Tai Yasue called the 2027 window "a 100-percent thing."
 
 ## Why This Matters
 
 The Kingdom Hearts franchise has sold over 40 million copies, built on a fanbase that skews young and plays portably. The series landing on Nintendo hardware natively is the most natural fit imaginable — Disney worlds, on the console your whole family owns, that you can take anywhere. It's genuinely strange it took this long.
 
-For Square Enix, this is the deepest Nintendo collaboration in years, and it's not happening in isolation. The same Direct confirmed **Final Fantasy Resonance** for October 22 and **Final Fantasy XIV early access on Switch 2** for August. Square Enix has clearly decided the Switch 2 install base is worth a full-portfolio commitment, and Kingdom Hearts is the flagship of that bet.
-
-## The Technical Question
-
-How does Kingdom Hearts 4 — built on Unreal Engine 5 with the Quadratum city setting pushing serious visual ambition — actually run on Switch 2? The Direct footage looked legitimately good: stable framerate in the Shibuya-inspired city traversal, fast loads, and the combat's signature particle chaos intact. Whether that holds across the full game is the question we'll answer in our review, but the early showing is far more convincing than anyone expected.
+For Square Enix, this is the deepest Nintendo collaboration in years, and it's not happening in isolation. The same Direct confirmed **Final Fantasy Resonance** for October 22. Square Enix has clearly decided the Switch 2 install base is worth a full-portfolio commitment, and Kingdom Hearts is the flagship of that bet.
 
 ## October Is Going to Hurt
 
-KH4 lands October 8. Dragon's Dogma 2 hits Switch 2 October 9. Final Fantasy Resonance and Switch 2 Sports both arrive October 22. That's four major releases in three weeks, before Ocarina of Time Remake even enters the holiday picture. Start budgeting now — your wallet and your backlog are both in trouble.
+The Kingdom Hearts Collection lands October 8. **Dragon's Dogma 2: Dark Arisen** hits Switch 2 October 9. **Final Fantasy Resonance** and **Switch Sports Resort** both arrive October 22. That's four major Switch 2 releases in three weeks. Start budgeting now — your wallet and your backlog are both in trouble.
+
+For every date in the month across all platforms, see our [October 2026 release guide](/news/2026-09-30-october-2026-game-releases).

@@ -115,7 +115,9 @@ export interface IssueData {
   calendar: CalendarItem[]
   spotlight?: SpotlightData
   reactions: ReactionItem[]
-  comments: CommentItem[]
+  /** @deprecated Legacy seeded comments in issues ≤049. No longer rendered —
+   *  the Discourse section reads real reader comments from /api/comments. */
+  comments?: CommentItem[]
   // Loaded from markdown files, not stored in the issue JSON
   news: NewsItem[]
   reviews: ReviewItem[]

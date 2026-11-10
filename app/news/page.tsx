@@ -5,7 +5,16 @@ import Link from 'next/link'
 import SiteHeader from '@/components/SiteHeader'
 import type { SearchItem } from '@/app/api/search/route'
 
-const CATEGORIES = ['All', 'Industry', 'Update', 'Reveal', 'Rumor', 'Poll']
+// Filters are derived from the categories actually in use, ordered by how many
+// articles each has — a new category in frontmatter shows up here automatically.
+function categoriesFor(articles: SearchItem[]): string[] {
+  const counts = new Map<string, number>()
+  for (const a of articles) {
+    if (!a.category) continue
+    counts.set(a.category, (counts.get(a.category) ?? 0) + 1)
+  }
+  return ['All', ...[...counts.entries()].sort((a, b) => b[1] - a[1]).map(([c]) => c)]
+}
 
 function formatDate(dateStr: string): string {
   if (!dateStr) return ''
@@ -30,6 +39,8 @@ export default function NewsIndexPage() {
       .catch(() => {})
       .finally(() => setLoading(false))
   }, [])
+
+  const categories = useMemo(() => categoriesFor(articles), [articles])
 
   const filtered = useMemo(() => {
     if (filter === 'All') return articles
@@ -69,10 +80,11 @@ export default function NewsIndexPage() {
         <div style={{
           display: 'flex', gap: '6px', flexWrap: 'wrap', marginBottom: '32px',
         }}>
-          {CATEGORIES.map(cat => (
+          {categories.map(cat => (
             <button
               key={cat}
               onClick={() => setFilter(cat)}
+              aria-pressed={filter === cat}
               style={{
                 fontFamily: 'var(--mono)', fontSize: '9px', letterSpacing: '0.14em',
                 textTransform: 'uppercase', padding: '5px 12px',

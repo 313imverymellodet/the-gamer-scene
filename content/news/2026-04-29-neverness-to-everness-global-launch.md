@@ -3,7 +3,7 @@ title: "Neverness to Everness Launches Globally Today — The Anime Open-World R
 blurb: "Hotta Studio's urban open-world RPG launched today on PC, Android, iOS, PS5, and Mac with full cross-platform support. Anime visuals, supernatural anomalies, city exploration. Here's what NTE is and whether it's worth your time."
 category: Industry
 date: 2026-04-29
-image: /images/neverness-to-everness-launch.jpg
+image: /images/news/neverness-to-everness-launch.jpg
 keywords: [Neverness to Everness launch, NTE release date, NTE global launch, Hotta Studio RPG, anime open world RPG 2026, Neverness to Everness PC PS5, NTE gameplay]
 ---
 

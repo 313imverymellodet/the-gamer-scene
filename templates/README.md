@@ -42,11 +42,23 @@ Bad:  `image: public/images/news/forza-horizon-6-launch.jpg`
 |------------|----------|-----------------------------------------------|
 | `title`    | ✅       | Full headline in quotes                       |
 | `blurb`    | ✅       | 1–2 sentence summary                          |
-| `category` | ✅       | Industry · Update · Reveal · Rumor · Poll     |
+| `category` | ✅       | Industry · Update · Reveal · Preview · Rumor · Patch · Poll (US spelling — `Rumor`, not `Rumour`) |
 | `date`     | ✅       | `YYYY-MM-DD`                                  |
 | `author`   | ✅       | `Romello Morris`                              |
 | `image`    | ○        | `/images/news/slug.jpg` — blank = fallback    |
 | `video`    | ○        | MP4 path or YouTube URL                       |
+| `updated`  | ○        | `"YYYY-MM-DD"` — last substantive edit; shown as "Updated" and sent to Google as `dateModified` |
+| `correction` | ○      | Plain-text editor's note shown in a box above the article. Set `updated` too. |
+
+The /news filter buttons are generated from the categories in use, so a new
+category appears automatically — but stick to the list above to keep filters tidy.
+
+### Corrections
+
+When a published fact is wrong: fix the headline/body, keep the same filename
+(so links don't break), add `updated:` and a `correction:` note that says what
+was wrong and what is right, then fix any other articles or issue JSON that
+repeat the error. Example: `content/news/2026-06-09-kingdom-hearts-4-switch-2-october-8.md`.
 
 ### Review
 | Field       | Required | Notes                                          |

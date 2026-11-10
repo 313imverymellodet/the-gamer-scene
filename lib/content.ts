@@ -2,6 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 import { marked } from 'marked'
+import { parseContentDate } from '@/lib/date'
 import type { IssueData, NewsItem, ReviewItem } from '@/types'
 
 const contentDir = path.join(process.cwd(), 'content')
@@ -104,6 +105,15 @@ export function getReviews(issue?: string): ReviewItem[] {
     }))
 }
 
+/** Newest reviews first, by frontmatter date (filenames aren't dated). */
+function getRecentReviews(limit: number): ReviewItem[] {
+  const time = (slug?: string) =>
+    parseContentDate(cache().reviews.find(e => e.slug === slug)?.data.date)?.getTime() ?? 0
+  return getReviews()
+    .sort((a, b) => time(b.slug) - time(a.slug))
+    .slice(0, limit)
+}
+
 // ─── Issues ───────────────────────────────────────────────────────────────────
 
 export async function getLatestIssue(): Promise<IssueData> {
@@ -118,10 +128,14 @@ export async function getLatestIssue(): Promise<IssueData> {
   const raw  = fs.readFileSync(path.join(issuesDir, files[0]), 'utf-8')
   const base = JSON.parse(raw) as Omit<IssueData, 'news' | 'reviews'>
 
+  // The live homepage should never show an empty Reviews section: if nothing
+  // is tagged to the current issue yet, fall back to the latest verdicts.
+  const issueReviews = getReviews(base.issue.number)
+
   return {
     ...base,
     news:    getNewsItems(6),
-    reviews: getReviews(base.issue.number),
+    reviews: issueReviews.length ? issueReviews : getRecentReviews(3),
   }
 }
 
@@ -151,6 +165,10 @@ export interface FullNewsItem {
   slug: string
   author: string
   bodyHtml: string
+  /** Last substantive edit, YYYY-MM-DD. Shown as "Updated" and used for dateModified. */
+  updated?: string
+  /** Editor's correction note, rendered above the article body. */
+  correction?: string
 }
 
 export interface FullReviewItem extends ReviewItem {
@@ -173,6 +191,8 @@ export function getNewsItemBySlug(slug: string): FullNewsItem | null {
     slug,
     author:   entry.data.author ? String(entry.data.author) : 'Romello Morris',
     bodyHtml: entry.bodyHtml,
+    updated:    entry.data.updated    ? String(entry.data.updated)    : undefined,
+    correction: entry.data.correction ? String(entry.data.correction) : undefined,
   }
 }
 
