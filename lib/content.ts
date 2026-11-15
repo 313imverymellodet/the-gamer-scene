@@ -82,9 +82,17 @@ export function getNewsItems(limit = 6): NewsItem[] {
 
 // ─── Reviews ──────────────────────────────────────────────────────────────────
 
+/** A review's `issue` frontmatter may be a single issue ("048") or a list
+ *  (["048", "050"]) so one review can be featured in several issues. */
+function reviewIssues(data: Record<string, unknown>): string[] {
+  const v = data.issue
+  if (Array.isArray(v)) return v.map(String)
+  return v != null ? [String(v)] : []
+}
+
 export function getReviews(issue?: string): ReviewItem[] {
   return cache().reviews
-    .filter(entry => !issue || entry.data.issue === issue)
+    .filter(entry => !issue || reviewIssues(entry.data).includes(issue))
     .map(entry => ({
       title:     String(entry.data.title    ?? ''),
       studio:    String(entry.data.studio   ?? ''),
@@ -95,7 +103,7 @@ export function getReviews(issue?: string): ReviewItem[] {
       hours:     entry.data.hours != null ? `${entry.data.hours}h played` : '',
       hot:       Boolean(entry.data.hot),
       slug:      entry.slug,
-      issue:     entry.data.issue as string | undefined,
+      issue:     reviewIssues(entry.data)[0],
       image:     entry.data.image as string | undefined,
       analysis:  Boolean(entry.data.analysis),
       consensusScore:       entry.data.consensusScore as string | undefined,
@@ -189,7 +197,7 @@ export function getReviewBySlug(slug: string): FullReviewItem | null {
     hours:     entry.data.hours != null ? `${entry.data.hours}h played` : '',
     hot:       Boolean(entry.data.hot),
     slug,
-    issue:     entry.data.issue as string | undefined,
+    issue:     reviewIssues(entry.data)[0],
     image:     entry.data.image as string | undefined,
     video:     entry.data.video as string | undefined,
     date:      entry.data.date ? String(entry.data.date) : '',

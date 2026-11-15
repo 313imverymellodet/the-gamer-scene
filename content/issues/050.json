@@ -1,0 +1,103 @@
+{
+  "issue": {
+    "number": "050",
+    "date": "November 15, 2026",
+    "weekday": "Sunday",
+    "volume": "Vol. VII",
+    "subscribers": "3,412",
+    "weather": "4 days until Vice City",
+    "location": "Leonida",
+    "readTime": "15 min"
+  },
+  "ticker": [
+    {
+      "tag": "LAUNCH",
+      "text": "Grand Theft Auto VI arrives Thursday, November 19 on PS5 and Xbox Series X|S"
+    },
+    {
+      "tag": "LIVE",
+      "text": "GTA 6 preload is open now. Start your download before launch day"
+    },
+    {
+      "tag": "UNKNOWN",
+      "text": "Rockstar still hasn't announced regional unlock times or the final install size"
+    },
+    {
+      "tag": "WARNING",
+      "text": "There is no GTA 6 beta, early access or PC version. Every offer is a scam"
+    },
+    {
+      "tag": "DEALS",
+      "text": "Black Friday lands November 27, eight days after GTA 6. Our guide to real deals"
+    }
+  ],
+  "lead": {
+    "kicker": "Launch Week",
+    "title": "Four Days to <em>Vice City</em>: The GTA 6 Launch Week Guide",
+    "dek": "Preload is live, editions are locked and Rockstar still has questions left unanswered. Everything you need to sort out before Grand Theft Auto VI arrives on Thursday, November 19.",
+    "author": "Romello Morris",
+    "role": "Editor-in-Chief",
+    "initials": "RM",
+    "readTime": "5 min read",
+    "tag": "UPDATE",
+    "image": "/images/news/gta6-release.jpg",
+    "readLink": "/news/2026-11-15-gta-6-launch-week-guide"
+  },
+  "tabs": [
+    { "id": "scene", "num": "01", "label": "The Scene" },
+    { "id": "news", "num": "02", "label": "Dispatch" },
+    { "id": "reviews", "num": "03", "label": "Reviews" },
+    { "id": "calendar", "num": "04", "label": "Calendar" },
+    { "id": "discourse", "num": "05", "label": "Discourse" }
+  ],
+  "poll": {
+    "question": "Where are you playing GTA 6 on launch day?",
+    "options": [
+      { "label": "PS5", "pct": 0 },
+      { "label": "PS5 Pro", "pct": 0 },
+      { "label": "Xbox Series X", "pct": 0 },
+      { "label": "Xbox Series S", "pct": 0 },
+      { "label": "Waiting for PC", "pct": 0 }
+    ],
+    "total": "0",
+    "closes": "Closes November 26, 23:59 ET"
+  },
+  "calendar": [
+    {
+      "day": "NOV",
+      "date": "19",
+      "title": "Grand Theft Auto VI",
+      "sub": "Standard $79.99 · Ultimate $99.99 · Preload live now",
+      "platform": "PS5 · Xbox"
+    },
+    {
+      "day": "NOV",
+      "date": "27",
+      "title": "Black Friday",
+      "sub": "Storage, consoles and bundles. Read the fine print",
+      "platform": "Multi"
+    },
+    {
+      "day": "NOV",
+      "date": "30",
+      "title": "Cyber Monday",
+      "sub": "Last big sale weekend before the holidays",
+      "platform": "Multi"
+    },
+    {
+      "day": "DEC",
+      "date": "TBA",
+      "title": "Zelda: Ocarina of Time Remake",
+      "sub": "Holiday 2026 window · no firm date yet",
+      "platform": "Switch 2"
+    }
+  ],
+  "reactions": [
+    { "glyph": "★", "label": "Brilliant", "count": 0, "key": "brilliant" },
+    { "glyph": "◐", "label": "Conflicted", "count": 0, "key": "conflicted" },
+    { "glyph": "▲", "label": "Spot on", "count": 0, "key": "spoton" },
+    { "glyph": "✕", "label": "Disagree", "count": 0, "key": "disagree" },
+    { "glyph": "♫", "label": "Mood", "count": 0, "key": "mood" }
+  ],
+  "comments": []
+}

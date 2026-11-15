@@ -213,10 +213,14 @@ export default function Gta6HubPage() {
         <SectionHead num="§ 02" title="Latest GTA 6 coverage" />
         <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
           {[
-            ['/news/2026-11-05-gta-6-two-weeks-away-prelaunch-checklist', 'GTA 6 Is Two Weeks Away — Your Complete Pre-Launch Checklist'],
+            ['/news/2026-11-15-gta-6-launch-week-guide', 'GTA 6 Launch Week Guide: Everything Happening Before November 19'],
+            ['/news/2026-11-15-gta-6-standard-vs-ultimate-worth-it', 'GTA 6 Standard vs Ultimate Edition: Is the $20 Upgrade Worth It?'],
+            ['/news/2026-11-15-gta-6-ps5-vs-xbox-series-which-to-play-on', 'GTA 6 on PS5 vs Xbox Series X|S: Which Should You Play On?'],
+            ['/news/2026-11-15-gta-6-60fps-what-we-know', 'Will GTA 6 Run at 60fps? What We Actually Know'],
+            ['/news/2026-11-15-gta-6-jason-lucia-explained', 'Who Are Jason and Lucia? GTA 6’s Protagonists Explained'],
+            ['/news/2026-11-15-gta-6-leonida-regions-explained', 'GTA 6 Map: Leonida’s Six Confirmed Regions Explained'],
+            ['/news/2026-11-15-gta-6-scams-how-to-spot', 'GTA 6 Scams Are Everywhere This Week: How to Spot Them'],
             ['/news/2026-11-05-gta-6-preload-guide', 'How to Preload GTA 6: Date, Platforms, and What We Still Don’t Know'],
-            ['/news/2026-08-20-gta-6-leak-crisis-cyberleek', 'GTA 6 Leak Crisis Escalates as Gameplay, Leonida Map and Possible Playable Build Surface Online'],
-            ['/news/2026-08-20-gta-6-news-roundup', 'GTA 6 News Roundup: Netflix Reveal Dated, Leaks Surface, and the $100 Edition Dominates Preorders'],
           ].map(([href, title]) => (
             <li key={href} style={{ borderBottom: '1px solid var(--rule)' }}>
               <Link href={href} style={{
