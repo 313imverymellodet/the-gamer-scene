@@ -10,7 +10,7 @@ import {
 } from '@/components/Gta6Ui'
 
 const BASE = 'https://thegamerscene.news'
-const LAST_VERIFIED = 'July 18, 2026'
+const LAST_VERIFIED = 'November 18, 2026'
 
 export const metadata: Metadata = {
   title: 'GTA 6: Release Date, News, Trailers and Everything Confirmed',
@@ -46,12 +46,15 @@ const QUICK_FACTS: Array<[string, string, StatusKind]> = [
   ['Standard Edition', '$79.99 US MSRP (PlayStation listing)', 'confirmed'],
   ['Ultimate Edition', '$99.99 US MSRP (PlayStation listing)', 'confirmed'],
   ['Pre-orders', 'Opened June 25, 2026', 'confirmed'],
-  ['Pre-load', 'November 12, 2026 (Rockstar Store listing)', 'confirmed'],
-  ['Physical package', 'Rockstar Store package is code-in-box — no disc', 'confirmed'],
-  ['Install size', 'Not announced', 'confirmed'],
-  ['Age rating', 'Not final at last check', 'confirmed'],
-  ['GTA 6 Online', 'Unannounced; online development reported', 'reported'],
-  ['Trailer 3', 'Not announced', 'confirmed'],
+  ['Unlock time', 'Midnight local time, November 19', 'confirmed'],
+  ['Pre-load', 'Open since November 10, 2026', 'confirmed'],
+  ['Physical package', 'Boxed Standard Edition is a download code — no disc', 'confirmed'],
+  ['Download size', 'Up to 212 GB', 'confirmed'],
+  ['Performance', '30fps target on every console; no 60fps mode', 'confirmed'],
+  ['Critic score', '99 on Metacritic at last check', 'reported'],
+  ['Age rating', 'Adult ratings issued, including ESRB and PEGI', 'reported'],
+  ['GTA 6 Online', 'No launch plan announced', 'confirmed'],
+  ['Extended Look', '27-minute showcase premiered August 27', 'confirmed'],
 ]
 
 const CHARACTERS: Array<[string, string]> = [
@@ -75,23 +78,24 @@ const REGIONS: Array<[string, string]> = [
 ]
 
 const RUMORS: Array<{ claim: string; status: StatusKind; label: string; note: string }> = [
-  { claim: 'GTA 6 has already earned $1 billion in pre-orders', status: 'debunked', label: 'DEBUNKED', note: 'Newzoo explicitly rejected the viral figure. Its own estimate is roughly $260M in first-week global digital pre-orders — a modeled estimate, not a Rockstar figure.' },
-  { claim: 'Trailer 3 has an official date', status: 'unverified', label: 'UNVERIFIED', note: 'Rockstar’s media library lists no Trailer 3. Treat any "official Trailer 3" upload as fake unless it appears on Rockstar’s verified channels.' },
-  { claim: 'GTA 6’s file size is 676.7GB', status: 'debunked', label: 'DEBUNKED', note: 'No official install size exists. The viral storage screenshot is not authoritative.' },
-  { claim: 'PS5 Pro will run GTA 6 at 60fps', status: 'unverified', label: 'UNSUPPORTED', note: 'Rockstar has not announced frame-rate or resolution modes. Technical analysts consider a 30fps baseline more realistic, with a 40fps mode plausible — that is analysis, not confirmation.' },
+  { claim: 'GTA 6 made $1 billion in its first preorder week', status: 'debunked', label: 'DEBUNKED', note: 'Newzoo rejected that viral July claim. Sensor Tower now estimates more than $1.5 billion before launch, but that is a third-party estimate built up over months, not a Rockstar figure.' },
+  { claim: 'A video called Trailer 3 is official', status: 'unverified', label: 'CHECK THE SOURCE', note: 'Rockstar numbers Trailer 1 and Trailer 2. Its major August video is titled An Extended Look. Only trust uploads from Rockstar’s verified channels.' },
+  { claim: 'GTA 6’s file size is 676.7GB', status: 'debunked', label: 'DEBUNKED', note: 'Rockstar’s stated requirement is up to 212 GB.' },
+  { claim: 'PS5 Pro will run GTA 6 at 60fps', status: 'debunked', label: 'DEBUNKED', note: 'GTA 6 targets 30fps on every console, including PS5 Pro. Digital Foundry’s testing found no separate performance mode.' },
   { claim: 'GTA 6 Online launches with the base game on November 19', status: 'unverified', label: 'UNVERIFIED', note: 'Court-document reporting supports online development work (including a reported 32-player internal session), but no launch plan, mode design, or final player count is confirmed.' },
   { claim: 'The fan-made State of Leonida map is the official map', status: 'community', label: 'COMMUNITY', note: 'Rockstar has not released a complete map. Fan reconstructions are community projects, not canon.' },
   { claim: 'A public GTA 6 beta or paid early access exists', status: 'scam', label: 'SCAM', note: 'No public beta or early-access program has been announced. Sites offering one are scams — see the warning below.' },
 ]
 
 const FAQ: Array<[string, string]> = [
-  ['When does GTA 6 come out?', 'Grand Theft Auto VI releases Thursday, November 19, 2026 on PlayStation 5 and Xbox Series X|S, per Rockstar Games’ official listing. Exact regional unlock times have not been announced.'],
-  ['Is GTA 6 coming to PC?', 'No PC version or PC release date has been announced. Rockstar has historically brought GTA games to PC after console launch, but any specific PC date you see is unverified.'],
+  ['When does GTA 6 come out?', 'Grand Theft Auto VI releases Thursday, November 19, 2026 on PlayStation 5 and Xbox Series X|S. It unlocks at midnight local time, rolling around the world by time zone.'],
+  ['Is GTA 6 coming to PC?', 'Rockstar has not announced a PC version or date. GamesBeat has reported a first-quarter 2027 target, but Rockstar has not confirmed it.'],
   ['How much does GTA 6 cost?', 'At our last check, the Standard Edition is listed at $79.99 US MSRP and the Ultimate Edition at $99.99 US MSRP on PlayStation. Prices can vary by country, taxes, and retailer.'],
   ['Who are the GTA 6 main characters?', 'Jason Duval and Lucia Caminos are the confirmed protagonists. The confirmed supporting cast includes Cal Hampton, Boobie Ike, Dre’Quan Priest, Real Dimez, Raul Bautista, and Brian Heder.'],
   ['Where is GTA 6 set?', 'GTA 6 is set in Vice City and the wider state of Leonida, with six officially named regions: Vice City, the Leonida Keys, Grassrivers, Port Gellhorn, Ambrosia, and Mount Kalaga National Park.'],
   ['Is there a GTA 6 beta?', 'No. Rockstar has not announced any public beta or early-access program. Every "GTA 6 beta," "VIP early access," or crypto-payment download offer is a scam.'],
-  ['Has Trailer 3 been released?', 'No. As of our last verification, Rockstar’s official media library lists Trailer 1, Trailer 2, the cover-art animation, and eight character clips — no Trailer 3. Verify any new video against Rockstar’s official channels.'],
+  ['Does GTA 6 run at 60fps?', 'No. It targets 30 frames per second on PS5, PS5 Pro, Xbox Series X and Xbox Series S, with no separate 60fps mode.'],
+  ['How big is GTA 6?', 'Rockstar says the download requires up to 212 GB, depending on your device.'],
 ]
 
 // ─── JSON-LD ─────────────────────────────────────────────────────────────────
@@ -160,8 +164,9 @@ export default function Gta6HubPage() {
         }}>
           <strong>Grand Theft Auto VI (GTA 6) releases Thursday, November 19, 2026</strong> on
           PlayStation 5 and Xbox Series X|S. It stars Jason Duval and Lucia Caminos in Vice City
-          and the state of Leonida, in Standard ($79.99) and Ultimate ($99.99) editions. No PC
-          version, no GTA 6 Online plan, and no Trailer 3 have been announced.
+          and the state of Leonida, in Standard ($79.99) and Ultimate ($99.99) editions. It unlocks at
+          midnight local time, needs up to 212 GB, targets 30fps on every console and holds a 99
+          on Metacritic. No PC version or GTA 6 Online plan has been announced.
         </p>
 
         {/* Trust module */}
@@ -169,8 +174,8 @@ export default function Gta6HubPage() {
           status="confirmed"
           statusNote="core facts, with rumor labels inline"
           lastVerified={LAST_VERIFIED}
-          primarySource="Rockstar Games official listings and media library"
-          stillUnknown="PC date · GTA 6 Online plan · install size · final age rating · frame-rate modes · Trailer 3"
+          primarySource="Rockstar and Take-Two statements, cross-checked against launch-week reporting"
+          stillUnknown="PC date · GTA 6 Online plan · full voice cast · complete radio lineup"
         />
 
         {/* Countdown centerpiece */}
@@ -213,14 +218,14 @@ export default function Gta6HubPage() {
         <SectionHead num="§ 02" title="Latest GTA 6 coverage" />
         <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
           {[
-            ['/news/2026-11-15-gta-6-launch-week-guide', 'GTA 6 Launch Week Guide: Everything Happening Before November 19'],
-            ['/news/2026-11-15-gta-6-standard-vs-ultimate-worth-it', 'GTA 6 Standard vs Ultimate Edition: Is the $20 Upgrade Worth It?'],
-            ['/news/2026-11-15-gta-6-ps5-vs-xbox-series-which-to-play-on', 'GTA 6 on PS5 vs Xbox Series X|S: Which Should You Play On?'],
-            ['/news/2026-11-15-gta-6-60fps-what-we-know', 'Will GTA 6 Run at 60fps? What We Actually Know'],
-            ['/news/2026-11-15-gta-6-jason-lucia-explained', 'Who Are Jason and Lucia? GTA 6’s Protagonists Explained'],
-            ['/news/2026-11-15-gta-6-leonida-regions-explained', 'GTA 6 Map: Leonida’s Six Confirmed Regions Explained'],
-            ['/news/2026-11-15-gta-6-scams-how-to-spot', 'GTA 6 Scams Are Everywhere This Week: How to Spot Them'],
-            ['/news/2026-11-05-gta-6-preload-guide', 'How to Preload GTA 6: Date, Platforms, and What We Still Don’t Know'],
+            ['/news/2026-11-18-gta-6-reviews-metacritic-99-roundup', 'GTA 6 Reviews Are In: A 99 on Metacritic Ties Ocarina of Time’s All-Time Record'],
+            ['/news/2026-11-18-gta-6-release-time-every-time-zone', 'What Time Does GTA 6 Unlock? Release Times for Every Major Time Zone'],
+            ['/news/2026-11-15-gta-6-60fps-what-we-know', 'Will GTA 6 Run at 60fps? No. Here’s How It Performs on Every Console'],
+            ['/news/2026-11-05-gta-6-preload-guide', 'GTA 6 Preload and File Size: Start Times and the 212 GB Requirement'],
+            ['/news/2026-11-15-gta-6-ps5-vs-xbox-series-which-to-play-on', 'GTA 6 on PS5, PS5 Pro, Xbox Series X or Series S: Which Version Should You Play?'],
+            ['/news/2026-11-18-gta-6-1-5-billion-preorders', 'GTA 6 Has Reportedly Made $1.5 Billion Before Launch Day'],
+            ['/news/2026-11-18-gta-6-how-long-to-beat', 'How Long Is GTA 6? Story Length, Side Content and Platinum Time'],
+            ['/news/2026-11-18-gta-6-miami-vice-city-takeover-backlash', 'Miami’s $3.9M GTA 6 Deal Explained: Who’s Paying, and Why Officials Are Fighting'],
           ].map(([href, title]) => (
             <li key={href} style={{ borderBottom: '1px solid var(--rule)' }}>
               <Link href={href} style={{
@@ -237,8 +242,9 @@ export default function Gta6HubPage() {
         {/* Trailers */}
         <SectionHead num="§ 03" title="Every official GTA 6 trailer and video" />
         <p style={body}>
-          Rockstar&rsquo;s official media library lists <strong>11 GTA 6 videos</strong>: Trailer 1,
-          Trailer 2, the official cover-art animation, and eight character clips. A video is only
+          Rockstar&rsquo;s official videos include Trailer 1, Trailer 2, the cover-art animation,
+          eight character clips and the 27-minute <strong>Extended Look</strong> that premiered on
+          Netflix on August 27. A video is only
           &ldquo;official&rdquo; when it appears on Rockstar&rsquo;s verified channels — the words
           &ldquo;official trailer&rdquo; in a YouTube title prove nothing.
         </p>
@@ -272,9 +278,8 @@ export default function Gta6HubPage() {
         <p style={body}>
           Rockstar describes Trailer 2 as a mix of gameplay and cutscenes captured in-game on
           PlayStation 5 — that does not make every shot player-controlled gameplay. Trailer songs
-          are not automatically confirmed as in-game radio tracks. <strong>Trailer 3 does not
-          exist</strong> in the official library; any upload claiming otherwise is fake until
-          Rockstar publishes it.
+          are not automatically confirmed as in-game radio tracks. Check any new
+          &ldquo;trailer&rdquo; against Rockstar&rsquo;s verified channels before trusting it.
         </p>
 
         {/* Characters */}
@@ -300,8 +305,11 @@ export default function Gta6HubPage() {
           ))}
         </div>
         <p style={{ ...body, marginTop: '14px' }}>
-          Voice actors have <strong>not</strong> been announced. Rumored casting names remain
-          unverified until Rockstar confirms them.
+          Rockstar has not published a full voice cast. Manni L. Perez has been linked to Lucia
+          through a Game Awards nomination; Jason&rsquo;s actor remains unconfirmed.{' '}
+          <Link href="/news/2026-11-18-gta-6-voice-cast-confirmed-so-far" style={{ color: 'var(--ink)', textDecoration: 'underline' }}>
+            See what&rsquo;s known about the cast
+          </Link>.
         </p>
 
         {/* Locations */}
@@ -432,7 +440,7 @@ export default function Gta6HubPage() {
           <li><a href="https://www.rockstargames.com/VI" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--ink)', textDecoration: 'underline' }}>Rockstar Games — official GTA VI site</a></li>
           <li><a href="https://www.rockstargames.com/VI/media/videos" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--ink)', textDecoration: 'underline' }}>Rockstar Games — official video library</a></li>
           <li><a href="https://newzoo.com/articles/gta-6-first-week-pre-order-sales" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--ink)', textDecoration: 'underline' }}>Newzoo — pre-order estimate and $1B fact check</a></li>
-          <li><a href="https://www.take2games.com/ir" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--ink)', textDecoration: 'underline' }}>Take-Two Interactive — investor relations (next earnings call: August 7, 2026)</a></li>
+          <li><a href="https://www.take2games.com/ir" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--ink)', textDecoration: 'underline' }}>Take-Two Interactive — investor relations</a></li>
         </ul>
 
         <p style={{

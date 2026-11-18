@@ -19,7 +19,7 @@ Price-history tools for major retailers can show you whether a discount is real.
 
 ## 2. Storage is the smartest GTA 6 purchase
 
-Rockstar hasn't announced GTA 6's install size, but it won't be small. If you're running short:
+GTA 6 needs [up to 212 GB](/news/2026-11-05-gta-6-preload-guide), so storage is suddenly a very real concern. If you're running short:
 
 - **PS5:** a compatible M.2 SSD with a heatsink is the standard upgrade
 - **Xbox Series X|S:** official storage expansion cards are the plug-and-play option
@@ -53,9 +53,9 @@ PlayStation Plus and Xbox Game Pass sometimes run promotions around Black Friday
 
 Holiday return windows are often extended. Check them before buying, especially for hardware you might want to swap later.
 
-## 7. Wait for real GTA 6 performance info before buying hardware
+## 7. Check real GTA 6 performance before buying hardware
 
-If you're choosing between a PS5, PS5 Pro or Xbox mainly for GTA 6, remember Rockstar hasn't published performance modes. Technical analysis will arrive in the days after November 19, which is still before Black Friday. Read our [PS5 vs Xbox guide](/news/2026-11-15-gta-6-ps5-vs-xbox-series-which-to-play-on) first.
+If you're choosing a console mainly for GTA 6, the data is now in: every version targets 30fps, PS5 Pro is the steadiest and Xbox Series S has the biggest compromises. Read our [version comparison](/news/2026-11-15-gta-6-ps5-vs-xbox-series-which-to-play-on) first.
 
 ## The bottom line
 

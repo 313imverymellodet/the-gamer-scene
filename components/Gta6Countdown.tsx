@@ -3,10 +3,9 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 
-// GTA VI launches Thursday, November 19, 2026 (per Rockstar's official listing).
-// Midnight Eastern used as the tick target; exact global launch times are
-// unannounced, which is why the strip always shows the plain date too.
-const LAUNCH_TS = new Date('2026-11-19T00:00:00-05:00').getTime()
+// GTA VI unlocks at midnight local time on November 19, 2026, so the clock
+// counts down to midnight in the reader's own time zone.
+const launchTs = () => new Date(2026, 10, 19).getTime()
 
 interface Remaining {
   d: number
@@ -16,7 +15,7 @@ interface Remaining {
 }
 
 function remaining(): Remaining | null {
-  const diff = LAUNCH_TS - Date.now()
+  const diff = launchTs() - Date.now()
   if (diff <= 0) return null
   return {
     d: Math.floor(diff / 86_400_000),

@@ -25,13 +25,13 @@ Rockstar described Trailer 2 as a mix of gameplay and cutscenes captured in-game
 
 ## The official video list
 
-Rockstar's official GTA VI media library lists **11 videos**: Trailer 1, Trailer 2, an official cover-art animation and eight character clips. You can find them on [our GTA 6 hub](/gta-6), with links to the official uploads.
+Rockstar's official GTA VI videos include Trailer 1, Trailer 2, a cover-art animation, eight character clips and the 27-minute Extended Look that premiered on Netflix in August. You can find links on [our GTA 6 hub](/gta-6).
 
 ## Are these songs on the in-game radio?
 
-This is the most common question, and the honest answer is **not necessarily**. Trailer music is licensed for marketing, which isn't the same as a radio soundtrack license. Rockstar hasn't published GTA 6's radio station tracklists, so treat "Love Is a Long Road is on the radio" claims as unconfirmed until players can tune in themselves.
+This is the most common question, and the honest answer is **not necessarily**. Trailer music is licensed for marketing, which isn't the same as a radio soundtrack license. Rockstar has previewed several stations, but treat any claim about a specific trailer song as unconfirmed unless Rockstar's own listings show it.
 
-GTA's radio has always been one of the series' signatures, from Flash FM in Vice City to Non-Stop-Pop in GTA V. We'll know Leonida's lineup soon.
+GTA's radio has always been one of the series' signatures, and [Flash FM is back along with five other named stations](/news/2026-11-18-gta-6-radio-stations-soundtrack).
 
 ## The streaming effect
 

@@ -1,60 +1,63 @@
 ---
-title: "Will GTA 6 Run at 60fps? What We Actually Know"
-blurb: "Rockstar hasn't announced frame-rate or resolution modes for Grand Theft Auto VI. Here's what technical analysts expect, why 30fps is the likely baseline, and why you shouldn't trust 'confirmed 60fps' claims."
-category: Rumor
+title: "Will GTA 6 Run at 60fps? No. Here's How It Performs on Every Console"
+blurb: "Grand Theft Auto VI targets 30 frames per second on every console, including PS5 Pro, with no performance mode. Here's what Digital Foundry found on each machine and why 60fps didn't happen."
+category: Update
 date: "2026-11-15"
 author: Romello Morris
 image:
 ---
 
-"Will GTA 6 run at 60fps?" is one of the most searched questions about **Grand Theft Auto VI**, and four days before launch the official answer still hasn't changed: **Rockstar has not announced any frame-rate or resolution modes** for PS5, PS5 Pro or Xbox Series X|S.
+> **Updated November 18, 2026:** This article originally said performance details hadn't been announced. Technical analysis is now out, so we've rewritten it with the results.
 
-Here's what is known, what technical analysts expect, and how to treat the claims you'll see this week.
+**No. Grand Theft Auto VI does not run at 60fps on any console.** It targets **30 frames per second** on PS5, PS5 Pro, Xbox Series X and Xbox Series S, and there's no separate performance mode. [Digital Foundry's analysis](https://www.tweaktown.com/news/114763/gta-6-deemed-the-single-most-visually-striking-game-of-the-generation-by-tech-experts/index.html) also calls it one of the most visually striking games of the generation, which helps explain the trade.
 
-## What's officially confirmed
+## Performance on every console
 
-Not much:
+| Console | Internal resolution | Output approach | Frame rate |
+|---|---|---|---|
+| **PS5 Pro** | 1440p | PSSR, close to 4K | 30fps target, near-locked |
+| **PS5** | 1440p | Upscaled | 30fps target, more frequent dips |
+| **Xbox Series X** | 1440p | Upscaled to 4K | 30fps target, occasional drops |
+| **Xbox Series S** | 720p | FSR 4 to 1080p | 30fps target, frequent drops |
 
-- GTA 6 launches November 19, 2026 on PS5 and Xbox Series X|S
-- PlayStation's listing labels the game **PS5 / PS5 Pro Enhanced**
-- That's it. No frame-rate target, no performance mode, no resolution figures
+These figures come from coverage of [Digital Foundry's testing](https://www.dexerto.com/gta/gta-6s-ps5-pro-upgrade-is-bigger-than-you-might-expect-3429387/) and [Rockstar's stated specs](https://www.purexbox.com/news/2026/11/gta-6-comparison-shows-difference-between-xbox-series-x-and-series-s). They're based on launch-window code, so patches could change them.
 
-The PS5 Pro Enhanced label means Rockstar has done work for the Pro. It doesn't say what that work delivers.
+## PS5 Pro: the steadiest version
 
-## What technical analysts expect
+Digital Foundry's John Linneman reportedly played for more than 50 hours on PS5 Pro with [frame pacing he described as near flawless](https://www.tweaktown.com/news/114764/gta-6-struggles-to-hold-30-fps-on-base-ps5-more-often-than-expected/index.html), dropping to about 24fps only when deliberately causing explosive chaos. The Pro also adds ray-traced shadows and a much cleaner image.
 
-Digital Foundry's analysis of GTA 6's trailers argued that the game's **density and CPU demands** make a 60fps mode look difficult on current consoles, **including PS5 Pro**. The same analysis suggested a **40fps mode** could be technically plausible on 120Hz displays.
+## Base PS5: good, but less steady
 
-That's informed analysis, not confirmation. But it's worth understanding why analysts lean toward 30fps.
+The standard PS5 misses 30 more often than expected, with minor dips in normal play and lower readings during heavy action. One account puts the worst explosive moments [around 23fps](https://www.altchar.com/game-news/gta-vi-dips-as-low-as-23fps-on-base-ps5-in-heavy-action-digital-foundry-finds-aJybE7x7IsZa).
 
-## Why 30fps can be a CPU decision, not a graphics one
+## Xbox Series X: close to PS5
 
-Most people assume frame rate is about graphics, and that dropping resolution should buy you 60fps. That works when the **GPU** is the bottleneck. GTA 6's challenge is likely different:
+Series X and PS5 are broadly comparable, with [reports suggesting Series X can dip slightly lower in big fights](https://www.nacionale.com/en/articles/gta-6-xbox-series-x-vs-ps5-which-runs-better-1440p-30fps-series-s-720p). Digital Foundry's fuller four-console comparison was reported to be on the way.
 
-- **Crowd density.** Rockstar's trailers show packed beaches, streets and clubs, and every person on screen needs simulation.
-- **Traffic and physics.** Cars, collisions and world systems run on the CPU.
-- **World simulation.** Rockstar's open worlds are famous for systems running everywhere at once.
+## Xbox Series S: the one to think twice about
 
-If the **CPU** is the limit, lowering resolution doesn't help much. That's why analysts think a stable 30fps (or 40fps) baseline is more realistic than 60.
+The Series S has the [biggest compromises](https://www.purexbox.com/news/2026/11/gta-6-comparison-shows-difference-between-xbox-series-x-and-series-s), including reduced ray tracing and textures. Reports describe busier scenes in the mid-20s and heavier moments going lower, and [Digital Foundry reportedly advised](https://windowsforum.com/news/gta-6-xbox-series-s-performance-digital-foundry-finds-frequent-sub-30-fps-drops.453047/) that players consider another console for this game if they can.
 
-## Rockstar's history
+## Why no 60fps?
 
-Rockstar has historically prioritized visual and simulation ambition over frame rate on consoles. Red Dead Redemption 2 launched at 30fps on PS4 and Xbox One. That doesn't predict GTA 6, but it's consistent with what analysts expect.
+Most people think of frame rate as a graphics problem, solved by lowering resolution. GTA 6's limit appears to be the **CPU**. Every pedestrian, car, police response and world system has to be simulated, regardless of how many pixels are drawn. Digital Foundry reportedly considers even a [40fps mode too difficult on PS5 Pro](https://www.techtroduce.com/gta-6-digital-foundry-ps5-pro-performance-review), because it would cut the time available for each frame from 33.3 ms to 25 ms.
 
-## Claims to be skeptical of this week
+## Does 30fps matter?
 
-- **"GTA 6 confirmed 60fps on PS5 Pro."** No official source supports this.
-- **"GTA 6 confirmed locked 30fps."** Also not confirmed. Rockstar hasn't announced modes either way.
-- **Leaked footage frame rates.** Clips from the summer's leaks may come from a 2023 development build and say nothing about the final game. More in our [leak coverage](/news/2026-08-20-gta-6-leak-crisis-cyberleek).
+It depends on you. [TechRadar warned](https://www.thenationalnews.com/arts-culture/pop-culture/2026/11/18/gta-6-reviews-metacritic/) that it may disappoint some players, while IGN's reviewer wasn't bothered. Stable frame pacing often matters more than the headline number. That's why the Pro's consistency is its biggest advantage.
 
-## Does 30fps actually matter for GTA?
+If you have a compatible TV, turn on VRR and use your console's recommended display settings. On Series S, one suggestion is 120Hz output with VRR.
 
-It depends on what you value. Fast competitive shooters benefit enormously from 60fps, but GTA has always been as much about atmosphere, driving and story as twitch reflexes. Plenty of players happily put hundreds of hours into GTA V and Red Dead Redemption 2 at 30fps. A stable 30, with consistent frame pacing, generally feels better than an unstable "unlocked" mode that swings between 40 and 60. Consistency is worth watching for in launch reviews as much as the headline number.
+## Could a patch add 60fps?
 
-## When will we know?
-
-Realistically, at launch. Expect detailed technical breakdowns within days of November 19, and those will be the first reliable answers on PS5, PS5 Pro, Series X and Series S performance.
+Nothing has been announced, and given the CPU issue, don't count on it. A [future PC version](/news/2026-11-18-gta-6-pc-early-2027-report) is the likeliest route to high frame rates, but Rockstar hasn't announced one.
 
 ## The bottom line
 
-Expect a 30fps-class experience on base consoles, possibly with a 40fps option, and don't buy hardware based on unconfirmed 60fps promises. If you're choosing between platforms, our [PS5 vs Xbox guide](/news/2026-11-15-gta-6-ps5-vs-xbox-series-which-to-play-on) covers what you can actually decide on today.
+It's 30fps everywhere. PS5 Pro is the most stable, PS5 and Series X are close, and Series S is the compromise. Choosing a console? Read our [version comparison](/news/2026-11-15-gta-6-ps5-vs-xbox-series-which-to-play-on).
+
+## Sources
+
+- [TweakTown: Digital Foundry on PS5 and Pro](https://www.tweaktown.com/news/114764/gta-6-struggles-to-hold-30-fps-on-base-ps5-more-often-than-expected/index.html)
+- [Dexerto: PS5 Pro upgrades](https://www.dexerto.com/gta/gta-6s-ps5-pro-upgrade-is-bigger-than-you-might-expect-3429387/)
+- [Pure Xbox: Series X and S](https://www.purexbox.com/news/2026/11/gta-6-comparison-shows-difference-between-xbox-series-x-and-series-s)

@@ -49,7 +49,7 @@ GTA V's story mode launched first, and **GTA Online** followed about two weeks l
 
 ## What we can't compare yet
 
-Gameplay systems, mission structure, wanted levels, map size and performance are all things we'll only be able to compare fairly once the game is out. Leaked footage from earlier this year suggested some changes, but it may come from an old build, so we're not treating any of it as confirmed.
+Gameplay systems, mission structure, wanted levels and map size are things players will be able to compare properly once they've spent real time with the game. Early reviews [suggest big changes, including a more grounded driving and damage model](/news/2026-11-18-gta-6-reviews-metacritic-99-roundup). One thing is already known: GTA 6 [targets 30fps on every console](/news/2026-11-15-gta-6-60fps-what-we-know).
 
 ## The bottom line
 

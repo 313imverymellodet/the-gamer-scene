@@ -1,0 +1,114 @@
+{
+  "issue": {
+    "number": "051",
+    "date": "November 18, 2026",
+    "weekday": "Wednesday",
+    "volume": "Vol. VII",
+    "subscribers": "3,412",
+    "weather": "Midnight in Vice City",
+    "location": "Leonida",
+    "readTime": "20 min"
+  },
+  "ticker": [
+    {
+      "tag": "REVIEWS",
+      "text": "GTA 6 hits 99 on Metacritic, tying Ocarina of Time's all-time record"
+    },
+    {
+      "tag": "LAUNCH",
+      "text": "GTA 6 unlocks at midnight local time on November 19 and is already live in New Zealand"
+    },
+    {
+      "tag": "SALES",
+      "text": "Sensor Tower estimates more than $1.5 billion in sales before launch"
+    },
+    {
+      "tag": "TECH",
+      "text": "30fps on every console: Digital Foundry's PS5, Pro and Xbox findings"
+    },
+    {
+      "tag": "BACKLASH",
+      "text": "Miami, Fox News and South Korea's ratings board all have something to say"
+    },
+    {
+      "tag": "WARNING",
+      "text": "There is no GTA 6 PC download. Every offer is a scam"
+    }
+  ],
+  "lead": {
+    "kicker": "The Verdict",
+    "title": "A <em>99</em> on Metacritic: GTA 6's Reviews Are In",
+    "dek": "Grand Theft Auto VI has tied The Legend of Zelda: Ocarina of Time for the highest score in Metacritic history. Here's what critics loved, what they didn't, and why the number could still move.",
+    "author": "Romello Morris",
+    "role": "Editor-in-Chief",
+    "initials": "RM",
+    "readTime": "4 min read",
+    "tag": "REVIEWS",
+    "image": "/images/news/gta6-release.jpg",
+    "readLink": "/news/2026-11-18-gta-6-reviews-metacritic-99-roundup"
+  },
+  "tabs": [
+    { "id": "scene", "num": "01", "label": "The Scene" },
+    { "id": "news", "num": "02", "label": "Dispatch" },
+    { "id": "reviews", "num": "03", "label": "Reviews" },
+    { "id": "calendar", "num": "04", "label": "Calendar" },
+    { "id": "discourse", "num": "05", "label": "Discourse" }
+  ],
+  "poll": {
+    "question": "Does GTA 6 deserve a 99?",
+    "options": [
+      { "label": "Yes, it's an all-timer", "pct": 0 },
+      { "label": "Great, but 99 is too high", "pct": 0 },
+      { "label": "Ask me after I've played it", "pct": 0 },
+      { "label": "Ocarina still wears the crown", "pct": 0 },
+      { "label": "30fps should cost it points", "pct": 0 }
+    ],
+    "total": "0",
+    "closes": "Closes November 30, 23:59 ET"
+  },
+  "calendar": [
+    {
+      "day": "NOV",
+      "date": "19",
+      "title": "Grand Theft Auto VI",
+      "sub": "Unlocks at midnight local time · up to 212 GB",
+      "platform": "PS5 · Xbox"
+    },
+    {
+      "day": "NOV",
+      "date": "20",
+      "title": "The Game Awards Eligibility Cutoff",
+      "sub": "GTA 6 is already up for eight awards",
+      "platform": "Awards"
+    },
+    {
+      "day": "NOV",
+      "date": "27",
+      "title": "Black Friday",
+      "sub": "Storage, consoles and bundles. Read the fine print",
+      "platform": "Multi"
+    },
+    {
+      "day": "DEC",
+      "date": "10",
+      "title": "The Game Awards",
+      "sub": "Peacock Theater, Los Angeles",
+      "platform": "Awards"
+    },
+    {
+      "day": "DEC",
+      "date": "11",
+      "title": "GTA VI: Original Score",
+      "sub": "Justice's score album, reported release date",
+      "platform": "Music"
+    }
+  ],
+  "reactions": [
+    { "glyph": "★", "label": "Brilliant", "count": 0, "key": "brilliant" },
+    { "glyph": "◐", "label": "Conflicted", "count": 0, "key": "conflicted" },
+    { "glyph": "▲", "label": "Spot on", "count": 0, "key": "spoton" },
+    { "glyph": "✕", "label": "Disagree", "count": 0, "key": "disagree" },
+    { "glyph": "♫", "label": "Mood", "count": 0, "key": "mood" }
+  ],
+  "comments": []
+}

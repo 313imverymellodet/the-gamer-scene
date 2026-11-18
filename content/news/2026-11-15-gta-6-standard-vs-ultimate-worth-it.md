@@ -57,10 +57,10 @@ Because the upgrade content is spread through the story, it's mostly bonus conve
 
 ## A note on physical copies
 
-Rockstar's own store package is **code-in-box with no disc**. Retailer listings may differ, so check the specific product if a disc matters to you.
+The boxed version is **code-in-box with no disc**, and it's only available as the Standard Edition. [Here's what you actually get](/news/2026-11-18-gta-6-no-disc-code-in-box-explained).
 
 ## The verdict
 
-For most players, **Standard is enough**. The story, the world and the core game are identical. Ultimate is a good deal only if you already know you'll live in Leonida for months. One caveat: Rockstar hasn't said whether the Ultimate Edition Upgrade will be sold separately later, so if you want it, don't assume you can add it after launch.
+For most players, **Standard is enough**. The story, the world and the core game are identical. Ultimate is a good deal only if you already know you'll live in Leonida for months. If you change your mind, reports indicate the Ultimate Edition Upgrade can be bought separately through the PlayStation and Microsoft stores, including by people who redeem a boxed code.
 
 See our [launch week guide](/news/2026-11-15-gta-6-launch-week-guide) for everything else to sort before Thursday, and the [GTA 6 hub](/gta-6) for every confirmed detail.

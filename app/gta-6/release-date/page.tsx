@@ -10,7 +10,7 @@ import {
 
 const BASE = 'https://thegamerscene.news'
 const URL = `${BASE}/gta-6/release-date`
-const LAST_VERIFIED = 'July 18, 2026'
+const LAST_VERIFIED = 'November 18, 2026'
 
 export const metadata: Metadata = {
   title: 'GTA 6 Release Date: Latest Official GTA VI Launch Update',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'GTA 6 Release Date: Latest Official GTA VI Launch Update',
     description:
-      'Grand Theft Auto VI launches November 19, 2026 on PS5 and Xbox Series X|S. Track the full launch timeline, preload date and everything still unannounced.',
+      'Grand Theft Auto VI launches November 19, 2026 on PS5 and Xbox Series X|S. Track the full launch timeline, unlock time, preload date and download size.',
     type: 'article',
     url: URL,
     siteName: 'The Gamer Scene',
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'GTA 6 Release Date: Latest Official GTA VI Launch Update',
     description:
-      'GTA 6 launches November 19, 2026 on PS5 and Xbox Series X|S. Full timeline, preload date, and what Rockstar still has not announced.',
+      'GTA 6 launches November 19, 2026 on PS5 and Xbox Series X|S. Full timeline, unlock time, preload date and download size.',
     site: '@thegamerscene',
   },
 }
@@ -41,13 +41,14 @@ const FACTS: Array<[string, string, 'confirmed' | 'reported' | 'unverified']> = 
   ['Release date', 'Thursday, November 19, 2026', 'confirmed'],
   ['Platforms at launch', 'PlayStation 5, Xbox Series X|S', 'confirmed'],
   ['Pre-orders opened', 'June 25, 2026', 'confirmed'],
-  ['Pre-load date', 'November 12, 2026 (Rockstar Store listing)', 'confirmed'],
-  ['Regional unlock times', 'Not announced', 'confirmed'],
+  ['Pre-load', 'Open since November 10, 2026', 'confirmed'],
+  ['Unlock time', 'Midnight local time, November 19', 'confirmed'],
+  ['Download size', 'Up to 212 GB', 'confirmed'],
   ['PC release date', 'Not announced', 'confirmed'],
   ['PS4 / Xbox One', 'Not supported', 'confirmed'],
   ['Nintendo Switch 2', 'Not announced', 'unverified'],
-  ['Next corporate checkpoint', 'Take-Two earnings call, August 7, 2026', 'confirmed'],
-  ['Another delay', 'No official evidence of one', 'unverified'],
+  ['Development status', 'Complete, per Take-Two', 'confirmed'],
+  ['Another delay', 'None. The rollout has begun', 'confirmed'],
 ]
 
 // Dates from Rockstar/Take-Two listings (current window) and from The Gamer
@@ -70,23 +71,25 @@ const TIMELINE: Array<{
   { date: 'Jun 25, 2026', event: 'Pre-orders open for Standard ($79.99) and Ultimate ($99.99) editions.', status: 'confirmed' },
   { date: 'Jul 16, 2026', event: 'Newzoo estimates the strongest pre-order opening in its dataset (~$260M worldwide, week one).', status: 'reported', href: '/news/2026-07-17-gta-6-preorder-record-newzoo-estimate' },
   { date: 'Aug 7, 2026',  event: 'Take-Two fiscal Q1 2027 earnings call — next known corporate checkpoint.', status: 'confirmed' },
-  { date: 'Nov 12, 2026', event: 'Pre-load begins, per the Rockstar Store listing.', status: 'confirmed' },
+  { date: 'Nov 9, 2026', event: 'Take-Two says development is complete and preorders are far above expectations.', status: 'confirmed', href: '/news/2026-11-18-gta-6-1-5-billion-preorders' },
+  { date: 'Nov 10, 2026', event: 'Pre-load begins on PS5 and Xbox Series X|S.', status: 'confirmed', href: '/news/2026-11-05-gta-6-preload-guide' },
+  { date: 'Nov 18, 2026', event: 'Reviews publish, with a 99 on Metacritic. Rollout begins in New Zealand as midnight arrives there.', status: 'reported', href: '/news/2026-11-18-gta-6-reviews-metacritic-99-roundup' },
   { date: 'Nov 19, 2026', event: 'Grand Theft Auto VI launches on PS5 and Xbox Series X|S.', status: 'confirmed' },
 ]
 
 const FAQ: Array<[string, string]> = [
   ['When exactly does GTA 6 come out?',
-   'Grand Theft Auto VI releases Thursday, November 19, 2026 on PlayStation 5 and Xbox Series X|S. Rockstar has not announced regional unlock times, so the exact hour the game becomes playable in your territory is still unknown.'],
+   'Grand Theft Auto VI releases Thursday, November 19, 2026 on PlayStation 5 and Xbox Series X|S. It unlocks at midnight local time, so players in New Zealand get it first and the launch moves west.'],
   ['Has GTA 6 been delayed again?',
-   'No. There is no official evidence of a further delay. The game moved from an original Fall 2025 window to May 2026 and then to November 19, 2026, but the current date has held through pre-orders opening and Take-Two entering the fiscal year that contains the launch.'],
+   'No. After moving from Fall 2025 to May 2026 and then to November 19, 2026, the game is complete and the worldwide rollout has begun.'],
   ['What time does GTA 6 unlock?',
-   'Rockstar has not announced launch times for any region. Treat any specific hour you see circulating as unverified until Rockstar publishes a schedule. We will update this page when official times exist.'],
+   'Midnight local time on November 19, 2026, in every region. See our time-zone guide for when that happens around the world.'],
   ['When can I pre-load GTA 6?',
-   'The Rockstar Store lists pre-load beginning November 12, 2026 — one week before launch. The final install size has not been announced, so clear more space than you expect to need.'],
+   'Pre-load opened November 10, 2026. Rockstar says it requires up to 212 GB depending on your device.'],
   ['Is GTA 6 coming to PC on November 19?',
-   'No. GTA 6 launches on PS5 and Xbox Series X|S only. No PC version or PC release date has been announced, and any specific PC year you see is unverified.'],
-  ['Could GTA 6 still be delayed a third time?',
-   'It is possible but there is no current evidence for it. The strongest counter-signal is financial: Take-Two’s guidance and investor expectations are now built around a November 2026 launch, which raises the cost of moving it.'],
+   'No. GTA 6 launches on PS5 and Xbox Series X|S only. Rockstar has not announced a PC version. A GamesBeat report points to the first quarter of 2027, but that is unconfirmed.'],
+  ['Is the launch still at risk of a delay?',
+   'No. Take-Two has said development is complete, reviews are published and the game is already unlocking in the first time zones.'],
 ]
 
 const jsonLd = [
@@ -95,10 +98,10 @@ const jsonLd = [
     '@type': 'Article',
     headline: 'GTA 6 release date and launch timeline',
     description:
-      'The official GTA 6 release date is November 19, 2026 on PS5 and Xbox Series X|S. Full launch timeline, preload date, and everything still unannounced.',
+      'The official GTA 6 release date is November 19, 2026 on PS5 and Xbox Series X|S. Full launch timeline, unlock time, preload date and download size.',
     url: URL,
     datePublished: '2026-07-18T12:00:00Z',
-    dateModified: '2026-07-18T12:00:00Z',
+    dateModified: '2026-11-18T12:00:00Z',
     author: { '@type': 'Organization', name: 'The Gamer Scene', url: BASE },
     publisher: {
       '@type': 'Organization',
@@ -161,17 +164,17 @@ export default function Gta6ReleaseDatePage() {
           color: 'var(--ink)', margin: '0 0 20px', maxWidth: '62ch',
         }}>
           <strong>Grand Theft Auto VI (GTA 6) releases Thursday, November 19, 2026</strong> on
-          PlayStation 5 and Xbox Series X|S. Pre-orders opened June 25, 2026, and the Rockstar
-          Store lists pre-load beginning November 12, 2026. Rockstar has not announced regional
-          unlock times, a PC release date, or the final install size.
+          PlayStation 5 and Xbox Series X|S. It unlocks at midnight local time, rolling
+          around the world from New Zealand. Pre-load opened November 10, 2026, and the download
+          requires up to 212 GB. Rockstar has not announced a PC version.
         </p>
 
         <TrustModule
           status="confirmed"
-          statusNote="release date per Rockstar’s official listing"
+          statusNote="date and unlock time per Rockstar"
           lastVerified={LAST_VERIFIED}
           primarySource="Rockstar Games and Take-Two Interactive official listings"
-          stillUnknown="Regional launch times · PC date · install size · final age rating"
+          stillUnknown="PC date · GTA 6 Online plan"
         />
 
         <Gta6CountdownHero />
@@ -244,43 +247,37 @@ export default function Gta6ReleaseDatePage() {
         {/* Preload */}
         <SectionHead num="§ 04" title="Pre-load and launch times" />
         <p style={body}>
-          <Status kind="confirmed">Confirmed</Status>&nbsp; The Rockstar Store lists{' '}
-          <strong>pre-load beginning November 12, 2026</strong>, one week before launch. Rockstar&rsquo;s
-          own physical package is code-in-box and ships the same day — it does not include a disc.
+          <Status kind="confirmed">Confirmed</Status>&nbsp; <strong>Pre-load opened November 10,
+          2026</strong> and requires <strong>up to 212 GB</strong>, depending on your device. Boxed
+          copies contain a download code, not a disc. Read our{' '}
+          <Link href="/news/2026-11-05-gta-6-preload-guide" style={{ color: 'var(--ink)', textDecoration: 'underline' }}>
+            GTA 6 preload and file size guide
+          </Link>.
         </p>
         <p style={body}>
-          <Status kind="unverified">Unknown</Status>&nbsp; <strong>Regional unlock times have not
-          been announced.</strong> We are not publishing invented midnight-local or
-          simultaneous-global times, because Rockstar has not confirmed either model. The final
-          install size is also unannounced, so any file-size figure circulating right now — including
-          the widely shared 676.7GB screenshot — is unverified at best.
+          <Status kind="confirmed">Confirmed</Status>&nbsp; <strong>GTA 6 unlocks at midnight local
+          time on November 19.</strong> New Zealand is first, and the launch moves west with each
+          time zone. See{' '}
+          <Link href="/news/2026-11-18-gta-6-release-time-every-time-zone" style={{ color: 'var(--ink)', textDecoration: 'underline' }}>
+            GTA 6 unlock times around the world
+          </Link>.
         </p>
 
         {/* Will it slip */}
-        <SectionHead num="§ 05" title="Could GTA 6 be delayed again?" />
+        <SectionHead num="§ 05" title="Could GTA 6 still be delayed?" />
         <p style={body}>
-          There is <strong>no official evidence of a third delay</strong>. The strongest argument
-          that November 19 holds is financial rather than editorial: Take-Two has entered the
-          fiscal year that contains the launch, so the revenue now sits inside published guidance
-          and investor expectations. Moving the date at this stage would be a significant financial
-          event, and third-party publishers have already scheduled around not competing with it.
-        </p>
-        <p style={body}>
-          That is an argument about probability, not a guarantee. The next real checkpoint is{' '}
-          <strong>Take-Two&rsquo;s August 7, 2026 earnings call</strong> — the most likely venue
-          for either a date reaffirmation or, far less likely, a change. We will update this page
-          the same day.
+          No. Take-Two said on its November earnings call that development is complete, reviews
+          have been published, and the rollout has started in the first time zones. After moving
+          from Fall 2025 to May 2026 and then to November 19, 2026, the date held.
         </p>
 
         {/* Still unknown */}
         <SectionHead num="§ 06" title="What is still unknown" />
         <ul style={{ ...body, paddingLeft: '1.2em' }}>
-          <li>Regional launch and unlock times</li>
-          <li>PC release date (no version announced)</li>
-          <li>Final install size and storage requirements</li>
-          <li>Final ESRB / PEGI age rating</li>
-          <li>Frame-rate and resolution modes on PS5, PS5 Pro, and Xbox Series X|S</li>
-          <li>Whether any GTA 6 Online component launches alongside the base game</li>
+          <li>Whether and when a PC version will be announced</li>
+          <li>Whether and when GTA 6 Online will launch</li>
+          <li>The full voice cast and complete radio lineup</li>
+          <li>Official sales figures from Rockstar or Take-Two</li>
         </ul>
 
         {/* FAQ */}
@@ -327,6 +324,10 @@ export default function Gta6ReleaseDatePage() {
           <table className="gta6-table">
             <thead><tr><th>Date</th><th>Change</th></tr></thead>
             <tbody>
+              <tr>
+                <td>Nov 18, 2026</td>
+                <td>Corrected the pre-load date to November 10. Added the midnight-local unlock time, 212 GB download size, completed development status and review launch.</td>
+              </tr>
               <tr>
                 <td>Jul 18, 2026</td>
                 <td>Page published. Release date, platforms, pre-order and pre-load dates verified against Rockstar and Take-Two listings.</td>

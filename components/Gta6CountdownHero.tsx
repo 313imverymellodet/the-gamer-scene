@@ -2,12 +2,14 @@
 
 import { useEffect, useState } from 'react'
 
-const LAUNCH_TS = new Date('2026-11-19T00:00:00-05:00').getTime()
+// GTA VI unlocks at midnight local time on November 19, 2026, so the clock
+// counts down to midnight in the reader's own time zone.
+const launchTs = () => new Date(2026, 10, 19).getTime()
 
 interface Remaining { d: number; h: number; m: number; s: number }
 
 function remaining(): Remaining | null {
-  const diff = LAUNCH_TS - Date.now()
+  const diff = launchTs() - Date.now()
   if (diff <= 0) return null
   return {
     d: Math.floor(diff / 86_400_000),
@@ -71,7 +73,7 @@ export default function Gta6CountdownHero() {
       )}
 
       <div className="gta6-hero-clock-foot">
-        Exact regional unlock times have not been announced by Rockstar Games.
+        Unlocks at midnight in your local time zone.
       </div>
     </div>
   )

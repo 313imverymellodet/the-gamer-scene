@@ -1,13 +1,15 @@
 ---
 title: "GTA 6 Launch Week Guide: Everything Happening Before November 19"
-blurb: "Four days out, preload is live and Grand Theft Auto VI is almost here. Here's the day-by-day rundown of launch week, what's confirmed, and what Rockstar still hasn't told us."
+blurb: "Grand Theft Auto VI unlocks at midnight local time on November 19. Here's the launch-week rundown: preload, the 212 GB download, performance, and what Rockstar still hasn't told us."
 category: Update
 date: "2026-11-15"
 author: Romello Morris
 image: /images/news/gta6-release.jpg
 ---
 
-It's launch week. **Grand Theft Auto VI arrives Thursday, November 19, 2026** on PlayStation 5 and Xbox Series X|S, and preloading has been open since November 12. After thirteen years, two delays and a summer of leaks, there are now just four days between Leonida and the rest of us.
+> **Updated November 18, 2026:** Corrected the preload date and added Rockstar's confirmed unlock time and file size, which were not reflected when this guide was first published.
+
+It's launch week. **Grand Theft Auto VI arrives Thursday, November 19, 2026** on PlayStation 5 and Xbox Series X|S, and preloading has been open since November 10. After thirteen years, two delays and a summer of leaks, the wait is almost over.
 
 Here's everything you need to know for the final stretch.
 
@@ -15,7 +17,9 @@ Here's everything you need to know for the final stretch.
 
 - **Release date:** Thursday, November 19, 2026
 - **Platforms:** PlayStation 5 and Xbox Series X|S only
-- **Preload:** Live since November 12, per the Rockstar Store listing
+- **Unlock time:** Midnight local time on November 19
+- **Preload:** Open since November 10
+- **Download:** Up to 212 GB
 - **Editions:** Standard ($79.99) and Ultimate ($99.99)
 - **PC:** No PC version or date has been announced
 
@@ -25,10 +29,10 @@ If you haven't preloaded yet, do it now. Launch-day download queues for a releas
 
 Even this close to launch, Rockstar has left several practical questions unanswered:
 
-- **Exact unlock times.** Rockstar has not published a regional launch schedule. Don't trust specific hours circulating on social media until Rockstar posts them.
-- **Final install size.** Still unannounced. Clear more space than you think you need.
-- **Performance modes.** No official frame-rate or resolution options have been detailed for PS5, PS5 Pro or Xbox Series X|S. We break down what's known in our [60fps explainer](/news/2026-11-15-gta-6-60fps-what-we-know).
-- **Online.** There is no announced GTA 6 Online launch plan.
+- **GTA 6 Online.** Rockstar has not announced a launch plan.
+- **A PC version.** Nothing official has been announced.
+- **A full cast list.** Rockstar hasn't published one. See [what's known so far](/news/2026-11-18-gta-6-voice-cast-confirmed-so-far).
+
 
 We'll update our [GTA 6 hub](/gta-6) as each answer lands.
 
@@ -44,7 +48,7 @@ We'll update our [GTA 6 hub](/gta-6) as each answer lands.
 
 **Thursday, November 19:**
 
-Watch your console's library rather than refreshing social media. If the game hasn't unlocked yet, it's not you. Rockstar simply hasn't flipped the switch in your region.
+The game unlocks at [midnight in your local time zone](/news/2026-11-18-gta-6-release-time-every-time-zone). If it hasn't opened yet, check that your download and update have finished, then give it a few minutes.
 
 ## Still deciding which edition?
 
@@ -60,4 +64,4 @@ The hardest news of launch week belongs to PC players: **there is still no annou
 
 ## The bottom line
 
-Four days. Preload now, clear storage, lock down your feeds and ignore the scammers. Thursday belongs to Vice City.
+Finish the preload, clear about 240 GB, lock down your feeds and ignore the scammers. Thursday belongs to Vice City.

@@ -8,7 +8,7 @@ hours: 22
 hot: true
 date: 2026-05-01
 author: Romello Morris
-issue: ["048", "050"]
+issue: ["048", "050", "051"]
 image: /images/reviews/saros.jpg
 ---
 

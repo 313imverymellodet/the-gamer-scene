@@ -42,7 +42,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: base,                         lastModified: latestAny,     changeFrequency: 'daily',   priority: 1.0 },
     { url: `${base}/gta-6`,              lastModified: latestGta,     changeFrequency: 'daily',   priority: 0.95 },
     { url: `${base}/gta-6/release-date`, lastModified: latestGta,     changeFrequency: 'daily',   priority: 0.95 },
-    { url: `${base}/gta-6/pc`,           lastModified: new Date('2026-07-19T12:00:00Z'), changeFrequency: 'weekly', priority: 0.95 },
+    { url: `${base}/gta-6/pc`,           lastModified: new Date('2026-11-18T12:00:00Z'), changeFrequency: 'weekly', priority: 0.95 },
     { url: `${base}/news`,               lastModified: latestNews,    changeFrequency: 'daily',   priority: 0.9 },
     { url: `${base}/reviews`,            lastModified: latestReview,  changeFrequency: 'weekly',  priority: 0.9 },
     { url: `${base}/opinion`,            lastModified: latestOpinion, changeFrequency: 'weekly',  priority: 0.85 },

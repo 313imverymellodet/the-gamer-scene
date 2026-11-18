@@ -10,7 +10,8 @@ import {
 
 const BASE = 'https://thegamerscene.news'
 const URL = `${BASE}/gta-6/pc`
-const LAST_VERIFIED = 'July 19, 2026'
+const LAST_VERIFIED = 'November 18, 2026'
+const MODIFIED_ISO = '2026-11-18T12:00:00Z'
 const PUBLISHED_ISO = '2026-07-19T12:00:00Z'
 
 export const metadata: Metadata = {
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
     url: URL,
     siteName: 'The Gamer Scene',
     publishedTime: PUBLISHED_ISO,
-    modifiedTime: PUBLISHED_ISO,
+    modifiedTime: MODIFIED_ISO,
   },
   twitter: {
     card: 'summary_large_image',
@@ -53,7 +54,7 @@ const STATUS_ROWS: Array<[string, string]> = [
   ['PC storefronts', 'Not announced'],
   ['PC system requirements', 'Not announced'],
   ['PC file size', 'Not announced'],
-  ['Next scheduled Take-Two earnings update', 'August 7, 2026'],
+  ['Latest credible report', 'GamesBeat: Q1 2027 target (unconfirmed)'],
 ]
 
 const ANSWER_CARD: Array<[string, string]> = [
@@ -91,6 +92,11 @@ const RUMORS: Array<{
   verdict: string
   reason: string
 }> = [
+  {
+    claim: 'GTA 6 PC is targeting the first quarter of 2027',
+    kind: 'reported', verdict: 'Reported',
+    reason: 'GamesBeat reported this in October, citing four unnamed sources. Rockstar declined to comment and has not announced a PC version, so treat it as a report rather than a release window.',
+  },
   {
     claim: 'GTA 6 PC is confirmed for 2027',
     kind: 'unverified', verdict: 'Unverified',
@@ -183,6 +189,7 @@ const FAQ: Array<[string, string]> = [
 ]
 
 const UPDATES: Array<[string, string, string, string]> = [
+  ['November 18, 2026', 'Reverified that PC remains absent from the announced launch. Added the GamesBeat report of a first-quarter 2027 target, which Rockstar has not confirmed.', 'No', 'CBS News, Dexerto coverage of GamesBeat, Take-Two comments'],
   ['July 19, 2026', 'Reverified the GTA VI product page, console platform list, Take-Two preorder announcement, recent console-first comments, and historical PC release dates.', 'No', 'Rockstar, Take-Two, Rockstar Newswire'],
   ['June 24, 2026', 'Take-Two announced GTA VI console preorders and continued to list only PS5 and Xbox Series X|S for November 19, 2026.', 'No', 'Take-Two'],
   ['May 2026', 'Take-Two CEO Strauss Zelnick discussed Rockstar’s console-first strategy. No PC date was announced.', 'No', 'Bloomberg interview and secondary coverage'],
@@ -218,7 +225,7 @@ const jsonLd = {
       description:
         'Rockstar has not announced a GTA 6 PC release date. See the official platform status, PC release history, rumor checks and every verified update.',
       datePublished: PUBLISHED_ISO,
-      dateModified: PUBLISHED_ISO,
+      dateModified: MODIFIED_ISO,
       author: { '@type': 'Organization', name: 'The Gamer Scene', url: BASE },
       publisher: {
         '@type': 'Organization',
@@ -347,14 +354,14 @@ export default function Gta6PcPage() {
 
         {/* Latest update */}
         <div className="pc-update-card">
-          <div className="pc-update-card-date">Latest update · July 19, 2026 · Status unchanged</div>
+          <div className="pc-update-card-date">Latest update · November 18, 2026 · Status unchanged</div>
           <b>No GTA 6 PC date has been announced</b>
           <p style={{ ...body, margin: 0, fontSize: '0.85rem' }}>
-            Rockstar and Take-Two continue to list the November 19, 2026 launch for PlayStation 5
-            and Xbox Series X|S only. Recent comments explain Rockstar&rsquo;s console-first
-            strategy but do not reveal a PC date. Next monitoring point:{' '}
-            <strong>Take-Two&rsquo;s Q1 FY2027 earnings call on August 7, 2026</strong> — a
-            scheduled corporate checkpoint, <em>not</em> a confirmed PC announcement.
+            GTA 6 is launching on PlayStation 5 and Xbox Series X|S only. GamesBeat has reported a
+            first-quarter 2027 PC target, citing unnamed sources, but Rockstar declined to comment
+            and has not announced a PC version.{' '}
+            <Link href="/news/2026-11-18-gta-6-pc-early-2027-report" style={link}>How much weight that report deserves</Link>.
+
           </p>
         </div>
 

@@ -7,6 +7,8 @@ author: Romello Morris
 image:
 ---
 
+> **Updated November 18, 2026:** Corrected the preload date and added details Rockstar has since confirmed, including the unlock time and download size.
+
 The wait is almost over. **Grand Theft Auto VI launches Thursday, November 19, 2026**, on PlayStation 5 and Xbox Series X|S — exactly two weeks from today. After thirteen years, two delays and the most scrutinized marketing campaign in gaming history, Rockstar's return to Vice City is finally in sight.
 
 If you're planning to play on day one, there are a few things worth sorting out now rather than scrambling the night before. Here's the complete pre-launch checklist — and an honest accounting of what Rockstar still hasn't told us.
@@ -17,11 +19,11 @@ GTA 6 launches on **PlayStation 5 and Xbox Series X|S only**. It is **not** comi
 
 If you're a PC player, this is the hard part: **Rockstar has not announced a GTA 6 PC release date.** A later PC edition is a strong expectation based on how GTA V and Red Dead Redemption 2 eventually reached PC — but there's no date, no preorder, and no system requirements. We track every official statement and rumor on our [GTA 6 PC status page](/gta-6/pc). If you need to play at launch, a PS5 or Xbox Series console is currently the only way.
 
-## 2. Mark your preload date: November 12
+## 2. Start your preload (open since November 10)
 
-The Rockstar Store lists **preload beginning November 12, 2026** — one week before launch. Preloading lets you download the game ahead of time so it's ready to play the moment it unlocks.
+Preloading **opened November 10**, so you can download the game now and have it ready to play the moment it unlocks at midnight local time on November 19.
 
-One important caveat: **Rockstar has not announced the final install size.** Clear more storage than you think you'll need, and treat any specific file-size figure circulating online — including the widely shared 676.7GB screenshot — as unverified. We'll update our [preload guide](/news/2026-11-05-gta-6-preload-guide) the moment official numbers land.
+You'll need **up to 212 GB** of space, according to Rockstar, and it's wise to leave some headroom. Our [preload and file size guide](/news/2026-11-05-gta-6-preload-guide) has the details.
 
 ## 3. Decide which edition you want
 
@@ -34,7 +36,7 @@ A few things to know before you commit: the Vintage Vice City Pack (the 1955 Vap
 
 ## 4. Know what you're buying — physical or digital
 
-If you want a physical copy, read the fine print. **Rockstar's own store package is code-in-box — it does not include a disc.** Retailer listings can vary, so check the specific SKU before ordering if a disc matters to you.
+If you want a physical copy, read the fine print. **The boxed version is a download code, not a disc,** and only the Standard Edition is sold that way. [Here's what's in the box](/news/2026-11-18-gta-6-no-disc-code-in-box-explained).
 
 ## 5. Go into spoiler lockdown
 
@@ -46,11 +48,11 @@ As launch nears, fake "beta," "early access" and download offers multiply. **The
 
 ## What Rockstar still hasn't told us
 
-Two weeks out, a surprising amount remains officially unconfirmed:
+A few important things remain officially unconfirmed:
 
-- **Exact regional unlock times** — the hour the game becomes playable in your territory
-- **Final install size** and storage requirements
-- **Frame-rate and resolution modes** on PS5, PS5 Pro and Xbox Series X|S
+- **A full voice cast list**
+- **The complete radio lineup**
+- **Any future patch plans for performance** (the game [targets 30fps on every console](/news/2026-11-15-gta-6-60fps-what-we-know))
 - **A PC release date**
 - **Whether any GTA 6 Online component launches** alongside the story mode
 
@@ -58,4 +60,4 @@ We'll be updating our [GTA 6 hub](/gta-6) and [release-date tracker](/gta-6/rele
 
 ## The bottom line
 
-Fourteen days out, the plan is simple: own a PS5 or Xbox Series console, free up storage, preload on November 12, pick your edition, lock down your spoilers, and ignore anyone selling early access. After thirteen years, the smart move is to do the boring prep now so launch day is nothing but Vice City.
+The plan is simple: own a PS5 or Xbox Series console, clear storage, finish your preload, pick your edition, lock down your spoilers, and ignore anyone selling early access. After thirteen years, do the boring prep now so launch day is nothing but Vice City.

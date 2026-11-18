@@ -13,7 +13,7 @@ Here's what's actually known.
 
 ## The short answer
 
-**Rockstar has not announced a GTA 6 Online launch plan, and it has not announced an end date for GTA Online.** Most of what you'll read beyond that is speculation.
+**Rockstar has not announced a GTA 6 Online launch plan.** Take-Two has said it [will keep supporting the current GTA Online after GTA 6 releases](https://www.dlcompare.com/gaming-news/gta-6-online-is-there-multiplayer-at-launch-everything-confirmed-so-far), so it isn't shutting down at launch. Talk of a 2027 online debut, including [comments attributed to Twitch's CEO](https://www.ibtimes.com.au/gta-6-online-release-date-multiplayer-1878642), is not a Rockstar announcement.
 
 ## What's confirmed
 
@@ -41,7 +41,7 @@ When GTA V launched in September 2013, **GTA Online arrived about two weeks late
 
 ## Will GTA Online shut down?
 
-There's no announcement of that. GTA Online still has an enormous player base and makes a lot of money. A sudden shutdown at GTA 6's launch would be surprising, and Rockstar has given no indication of one. More likely, GTA Online keeps running while Rockstar's attention gradually shifts, but that's our analysis, not a confirmed plan.
+Not at launch. Take-Two has said support will continue after GTA 6's release. GTA Online still has an enormous player base and makes a lot of money. Over time Rockstar's attention may gradually shift, but that's our analysis, not a confirmed plan.
 
 ## Will progress transfer?
 

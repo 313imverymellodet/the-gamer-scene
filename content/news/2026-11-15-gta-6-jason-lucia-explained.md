@@ -9,7 +9,7 @@ image:
 
 Every Grand Theft Auto lives or dies on its leads. Niko Bellic carried GTA IV's immigrant tragedy. Michael, Franklin and Trevor gave GTA V its three-way chaos. **Grand Theft Auto VI** goes a different direction: two protagonists, **Jason Duval** and **Lucia Caminos**, whose story is built around their partnership.
 
-Here's everything Rockstar has officially revealed about the pair, and what we still don't know four days before launch.
+Here's everything Rockstar has officially revealed about the pair, and what we still don't know as the game launches.
 
 ## The premise
 
@@ -52,8 +52,8 @@ The confirmed supporting cast gives a sense of the world Jason and Lucia move th
 
 Rockstar has deliberately held back a lot:
 
-- **Voice actors** have not been officially announced. Treat any names circulating online as unconfirmed.
-- **How switching works.** Rockstar hasn't detailed whether players swap freely between Jason and Lucia the way GTA V allowed.
+- **The full voice cast.** Rockstar hasn't published one, though Manni L. Perez has been [linked to Lucia through a Game Awards nomination](/news/2026-11-18-gta-6-voice-cast-confirmed-so-far). Jason's actor remains unconfirmed.
+- **How far the relationship can bend.** Rockstar's footage has shown switching between the two leads, and [reviews say your choices affect how they treat each other](/news/2026-11-18-gta-6-reviews-metacritic-99-roundup).
 - **Where the story goes.** The "easy score gone wrong" is the hook. Everything after it is unknown, and we'd suggest keeping it that way. Our [spoiler guide](/news/2026-11-15-gta-6-avoid-spoilers-launch-week) can help.
 
 ## Why this pairing matters

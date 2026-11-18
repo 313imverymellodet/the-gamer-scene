@@ -54,4 +54,4 @@ Once the game is out, expect offers of in-game cash, modded accounts or unlocks.
 
 ## The bottom line
 
-Buy GTA 6 from an official store for PS5 or Xbox. Ignore betas, PC downloads, crypto giveaways and "leaked" videos. If it sounds too good to be true four days before launch, it is.
+Buy GTA 6 from an official store for PS5 or Xbox. Ignore betas, PC downloads, crypto giveaways and "leaked" videos. If it sounds too good to be true, it is.
