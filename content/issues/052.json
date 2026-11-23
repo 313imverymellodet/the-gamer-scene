@@ -1,0 +1,113 @@
+{
+  "issue": {
+    "number": "052",
+    "date": "November 23, 2026",
+    "weekday": "Monday",
+    "volume": "Vol. VII",
+    "weather": "Record-breaking",
+    "location": "Leonida",
+    "readTime": "22 min"
+  },
+  "ticker": [
+    {
+      "tag": "SALES",
+      "text": "Rockstar says GTA 6 made $3.79 billion in day-one retail sales, the biggest entertainment launch ever"
+    },
+    {
+      "tag": "PATCH",
+      "text": "GTA 6 update 01.002.002 fixes crashes, autosaves and missing story phone calls"
+    },
+    {
+      "tag": "LAYOFFS",
+      "text": "Firaxis reportedly cuts a third of its staff, and Ubisoft cuts 166 jobs in Quebec"
+    },
+    {
+      "tag": "ENGINE",
+      "text": "Unreal Engine 6 drops Blueprints for Verse, and developers are pushing back"
+    },
+    {
+      "tag": "XBOX",
+      "text": "Xbox says Project Helix is a console that plays PC games, not a PC"
+    },
+    {
+      "tag": "DEALS",
+      "text": "Switch 2 Mario Kart World bundle drops to $499.99. No PS5 console discount this year"
+    }
+  ],
+  "lead": {
+    "kicker": "The Numbers",
+    "title": "<em>$3.79 Billion</em> in a Day: GTA 6 Is the Biggest Launch Ever",
+    "dek": "Rockstar's first official figures blow past every estimate: $3.79 billion in day-one retail sales and 32.5 million copies sold before release. Here's what the number measures, and what it doesn't.",
+    "author": "Romello Morris",
+    "role": "Editor-in-Chief",
+    "initials": "RM",
+    "readTime": "4 min read",
+    "tag": "SALES",
+    "image": "/images/news/gta6-release.jpg",
+    "readLink": "/news/2026-11-23-gta-6-sales-3-79-billion-biggest-launch-ever"
+  },
+  "tabs": [
+    { "id": "scene", "num": "01", "label": "The Scene" },
+    { "id": "news", "num": "02", "label": "Dispatch" },
+    { "id": "reviews", "num": "03", "label": "Reviews" },
+    { "id": "calendar", "num": "04", "label": "Calendar" },
+    { "id": "discourse", "num": "05", "label": "Discourse" }
+  ],
+  "poll": {
+    "question": "Four days in, how's GTA 6 treating you?",
+    "options": [
+      { "label": "Living up to the 99", "pct": 0 },
+      { "label": "Great, but the bugs hurt", "pct": 0 },
+      { "label": "30fps is getting to me", "pct": 0 },
+      { "label": "Still waiting on my code or PSN", "pct": 0 },
+      { "label": "Waiting for the PC version", "pct": 0 }
+    ],
+    "total": "0",
+    "closes": "Closes December 6, 23:59 ET"
+  },
+  "calendar": [
+    {
+      "day": "NOV",
+      "date": "27",
+      "title": "Black Friday",
+      "sub": "Switch 2 bundle $499.99 · PS VR2 $100 off",
+      "platform": "Multi"
+    },
+    {
+      "day": "NOV",
+      "date": "30",
+      "title": "Cyber Monday",
+      "sub": "Most PlayStation discounts end at 11:59 p.m. PT",
+      "platform": "Multi"
+    },
+    {
+      "day": "DEC",
+      "date": "05",
+      "title": "Switch 2 Bundle Deal Ends",
+      "sub": "Mario Kart World bundle, while supplies last",
+      "platform": "Switch 2"
+    },
+    {
+      "day": "DEC",
+      "date": "10",
+      "title": "The Game Awards",
+      "sub": "GTA 6 is up for eight awards",
+      "platform": "Awards"
+    },
+    {
+      "day": "DEC",
+      "date": "11",
+      "title": "GTA VI: Original Score",
+      "sub": "Justice's score album, reported release date",
+      "platform": "Music"
+    }
+  ],
+  "reactions": [
+    { "glyph": "★", "label": "Brilliant", "count": 0, "key": "brilliant" },
+    { "glyph": "◐", "label": "Conflicted", "count": 0, "key": "conflicted" },
+    { "glyph": "▲", "label": "Spot on", "count": 0, "key": "spoton" },
+    { "glyph": "✕", "label": "Disagree", "count": 0, "key": "disagree" },
+    { "glyph": "♫", "label": "Mood", "count": 0, "key": "mood" }
+  ],
+  "comments": []
+}
