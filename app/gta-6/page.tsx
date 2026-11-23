@@ -78,7 +78,7 @@ const REGIONS: Array<[string, string]> = [
 ]
 
 const RUMORS: Array<{ claim: string; status: StatusKind; label: string; note: string }> = [
-  { claim: 'GTA 6 made $1 billion in its first preorder week', status: 'debunked', label: 'DEBUNKED', note: 'Newzoo rejected that viral July claim. Sensor Tower now estimates more than $1.5 billion before launch, but that is a third-party estimate built up over months, not a Rockstar figure.' },
+  { claim: 'GTA 6 made $1 billion in its first preorder week', status: 'debunked', label: 'DEBUNKED', note: 'Newzoo rejected that viral July claim. Rockstar later reported $3.79 billion in day-one retail sales, its own estimate through Nov 19, after a long preorder run.' },
   { claim: 'A video called Trailer 3 is official', status: 'unverified', label: 'CHECK THE SOURCE', note: 'Rockstar numbers Trailer 1 and Trailer 2. Its major August video is titled An Extended Look. Only trust uploads from Rockstar’s verified channels.' },
   { claim: 'GTA 6’s file size is 676.7GB', status: 'debunked', label: 'DEBUNKED', note: 'Rockstar’s stated requirement is up to 212 GB.' },
   { claim: 'PS5 Pro will run GTA 6 at 60fps', status: 'debunked', label: 'DEBUNKED', note: 'GTA 6 targets 30fps on every console, including PS5 Pro. Digital Foundry’s testing found no separate performance mode.' },

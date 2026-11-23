@@ -7,6 +7,8 @@ author: Romello Morris
 image: /images/news/gta6-release.jpg
 ---
 
+> **Update, November 23, 2026:** Rockstar has now published official figures: **$3.79 billion in day-one retail sales** and **32.5 million units sold before release**. [Read what those numbers mean](/news/2026-11-23-gta-6-sales-3-79-billion-biggest-launch-ever). The estimates below are kept for the record.
+
 **Grand Theft Auto VI** may be the first entertainment product to make more than a billion dollars before most of its audience could use it. Market intelligence firm **Sensor Tower estimates the game had sold nearly 16 million copies, generating more than $1.5 billion, as of Tuesday**, according to [NBC News](https://nbcnews.com/pop-culture/pop-culture-news/grand-theft-auto-six-release-rockstar-games-what-to-know-rcna609644) and [Australian Associated Press](https://aapnews.aap.com.au/news/nz-and-aussie-gamers-among-first-to-play-gta-vi).
 
 The important caveat: **these are third-party estimates, not figures from Rockstar or Take-Two.**
