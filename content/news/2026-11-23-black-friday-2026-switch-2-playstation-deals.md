@@ -1,6 +1,6 @@
 ---
 title: "Black Friday 2026: The Official Nintendo and PlayStation Deals, and the Console Discount Sony Skipped"
-blurb: "Nintendo has cut the Switch 2 Mario Kart World bundle to $499.99, while Sony's Black Friday sale discounts PS VR2 and controllers but not the PS5. Here are the official deals and dates."
+blurb: "Nintendo has cut the Switch 2 Mario Kart World bundle to $499.99, while Sony's Black Friday sale discounts PS VR2 and controllers but not the PS5. Xbox's sale skips consoles too. Here are the deals and dates."
 category: Update
 date: "2026-11-23"
 author: Romello Morris
@@ -45,7 +45,9 @@ Most discounts run until **November 30**. Sony is also discounting physical copi
 
 ## Xbox
 
-We haven't been able to verify Microsoft's full Black Friday console and accessory offers yet. Check the Microsoft Store directly, and we'll update this article when we've confirmed the details.
+*Updated November 28.* Microsoft's Black Friday sale runs from **November 19 to December 2**, according to [PlayDay](https://playday.one/2026/11/17/xbox-black-friday-sale-2026-announced-with-discounts-of-up-to-80/). It reportedly covers more than **2,000 Xbox and PC games** at up to **80% off**, including *Forza Horizon 6* Premium and *Gears of War: E-Day* Premium at 30% off, and *NBA 2K27* at 55% off.
+
+Like Sony, Microsoft doesn't appear to be discounting its consoles. The reported hardware deals are smaller: up to 15% off custom controllers through **Xbox Design Lab**, and in the US, a controller plus two months of Game Pass Ultimate for new subscribers with eligible Samsung TVs. Check the Microsoft Store for exact prices in your region.
 
 ## The GTA 6 angle
 
